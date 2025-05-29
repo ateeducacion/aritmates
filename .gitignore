@@ -1,3 +1,4 @@
 .gitignore
 .aider*
 node_modules/
+dist/
