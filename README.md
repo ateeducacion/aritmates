@@ -1,10 +1,33 @@
 README.md
 # Aritmates
 
-> **Nota:** El código original se encuentra en la rama `vendor`. La rama `main` contendrá las actualizaciones para solucionar vulnerabilidades y pulir el código antes de su publicación en GitHub siguiendo buenas prácticas.
+![Node.js Version](https://img.shields.io/badge/Node.js-14.x-green)
+![Language](https://img.shields.io/badge/Language-JavaScript-yellow)
+![License: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)
+![Last Commit](https://img.shields.io/github/last-commit/ateeducacion/aritmates)
+![Open Issues](https://img.shields.io/github/issues/ateeducacion/aritmates)
 
-Aplicación para realizar ejercicios de matemáticas 
-desarrollada por la Consejería de Educación del Gobierno de Canarias
+**Aritmates** es una aplicación desarrollada por el Área de Tecnología Educativa (ATE) para realizar ejercicios de matemáticas. Su objetivo principal es proporcionar una herramienta educativa interactiva para estudiantes.
+
+## Características Clave
+
+- **Interactividad**: Ejercicios de matemáticas interactivos y dinámicos.
+- **Desarrollo Continuo**: Actualizaciones regulares para mejorar la funcionalidad y la seguridad.
+- **Cumplimiento de Estándares**: Adherencia a las mejores prácticas de desarrollo de software.
+
+## Instalación
+
+Para instalar y ejecutar el proyecto localmente, sigue estos pasos:
+
+1. Clona el repositorio desde [GitHub](https://github.com/ateeducacion/aritmates/).
+2. Ejecuta `npm install` para instalar las dependencias.
+3. Usa `make up` para iniciar el entorno de desarrollo.
+
+## Comandos de Desarrollo
+
+- `make up`: Inicia el servidor de desarrollo.
+- `make build`: Compila el proyecto para producción.
+- `make test`: Ejecuta las pruebas automatizadas.
 
 ## Licencia
 
