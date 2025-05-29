@@ -12,6 +12,7 @@
  *
  * @author Fernando Ramirez <fernando.ramirez@altia.es>
  * @version 1.0.0-rc1
+ * @license AGPL-3.0 
  */
 /** @global */
 window.debug = false;
