@@ -209,3 +209,49 @@ Ejemplos no válido:
 
 Estas opciones cambian la manera en la que se calculan las operaciones internamente, como normal general si se alteran y se pone un número mayor, la aplicación tardará más en generar las operaciones, no recomendamos cambiarlas
 
+## Ejecución de Tests
+
+Para ejecutar los tests, primero asegúrate de tener todas las dependencias instaladas. Luego, puedes usar los siguientes comandos:
+
+1. Para crear el bundle de tests:
+   ```bash
+   npm run testwatch
+   ```
+
+2. Para ejecutar los tests:
+   ```bash
+   npx mocha dist/testBundle.js
+   ```
+
+3. Para ejecutar un test específico:
+   ```bash
+   npx mocha -g "Nombre test" dist/testBundle.js
+   ```
+
+## Pipelines de GitHub
+
+Asegúrate de que los tests se ejecuten en el pipeline de GitHub. Puedes configurar un archivo `.github/workflows/test.yml` con el siguiente contenido:
+
+```yaml
+name: Run Tests
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm run testbuild
+```
