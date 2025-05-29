@@ -5,7 +5,6 @@
     - [1.  Clonar el proyecto](#1--clonar-el-proyecto)
     - [2.  Moverse a nueva carpeta que aparece](#2--moverse-a-nueva-carpeta-que-aparece)
     - [3. Cambiar a la rama de desarrolo](#3-cambiar-a-la-rama-de-desarrolo)
-    - [4. Instalar las dependencias PHP del proyecto con Composer](#4-instalar-las-dependencias-php-del-proyecto-con-composer)
   - [5. Instalar dependencias de javascript con NPM](#5-instalar-dependencias-de-javascript-con-npm)
   - [7. Generar version desarrollo de los archivos](#7-generar-version-desarrollo-de-los-archivos)
   - [7. Generar version de producción de los archivos](#7-generar-version-de-producción-de-los-archivos)
@@ -36,18 +35,6 @@ git clone https://www3.gobiernodecanarias.org/educacion/cau_ce/repositoriocodigo
 
 ```shell
 cd OperacionesMatematicas
-```
-
-### 3. Cambiar a la rama de desarrolo
-
-```shell
-git checkout develop
-```
-
-### 4. Instalar las dependencias PHP del proyecto con Composer
-
-```shell
-   composer install
 ```
 
 Esto creará el directorio *vendor*
@@ -89,7 +76,6 @@ El contenido es debe ser similar a esto:
 * 📁 templates
 * 📁 vendor
 * index.php
-* send.php
 * app.~filehash~.bundle.js
 * app.~filehash~.css
 * vendors.~filehash~.css
@@ -99,17 +85,9 @@ Podremos probar los archivos php en esta version al poner la carpeta dist en un 
 
 # Algunas notas útiles en el desarrollo
 
-## Aritmates y PHP
+## Aritmates
 
-La aplicacion es principalmente en javascript con una pequeña parte de genera pdf de resultados en php
-
-Para instalar las librerias:
-
-> composer install
-
-actualizar
-
-> composer update
+La aplicacion es principalmente en javascript
 
 ## Iniciar servidor de pruebas javascript
 

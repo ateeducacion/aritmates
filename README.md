@@ -1,4 +1,6 @@
-# Aritmates 1.0.5
+# Aritmates
+
+> **Nota:** El código original se encuentra en la rama `vendor`. La rama `main` contendrá las actualizaciones para solucionar vulnerabilidades y pulir el código antes de su publicación en GitHub siguiendo buenas prácticas.
 
 Aplicación para realizar ejercicios de matemáticas 
 desarrollada por la Consejería de Educación del Gobierno de Canarias

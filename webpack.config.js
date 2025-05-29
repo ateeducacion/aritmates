@@ -17,20 +17,11 @@ module.exports = (env, argv) => {
       template: 'src/templates/plantillaPdf.html',
       filename: 'plantilla/index.html',
     }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-      },
-    }),
     new CopyPlugin({
       patterns: [
         { from: 'src/templates', to: 'templates' },
         { from: 'src/img', to: 'img' },
-        { from: 'src/pdf.php', to: '.' },
-        // { from: 'src/send.php', to: 'send.php' },
-        // { from: 'src/smtpconfig.php', to: 'smtpconfig.php' },
         { from: 'src/config.json', to: 'config.json' },
-        { from: 'vendor', to: 'vendor' },
       ],
     }),
     // new BundleAnalyzerPlugin(), // analizar paquetes visitar http://127.0.0.1:8888/ para ver desglose
@@ -48,8 +39,8 @@ module.exports = (env, argv) => {
     arrPlugins.push(new HtmlWebPackPlugin({
       // inject: false,
       chunks: ['app', 'vendors'],
-      template: 'src/templates/index.php',
-      filename: 'index.php',
+      template: 'src/templates/index.html',
+      filename: 'index.html',
       minify: false,
     }));
   }
@@ -60,17 +51,29 @@ module.exports = (env, argv) => {
       plantilla: './src/view/plantilla.js',
     },
     output: {
+      path: path.resolve(__dirname, 'dist'),
       filename: '[name].[contenthash].bundle.js',
       clean: true, // Webpack 5's built-in cleaning feature
+      publicPath: '/'
     },
     devtool: 'cheap-source-map',
     devServer: {
       static: {
-        directory: path.join(__dirname, 'src'),
+        directory: path.join(__dirname, 'dist'),
       },
       compress: true,
       port: 9012,
-      // publicPath: '/',
+      hot: true,
+      historyApiFallback: true,
+      devMiddleware: {
+        publicPath: '/',
+        writeToDisk: true,
+      },
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+        'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
+      }
     },
     optimization: {
       minimize: true,
@@ -104,15 +107,30 @@ module.exports = (env, argv) => {
           test: /\.css$/i,
           use: [
             MiniCssExtractPlugin.loader,
-            'css-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true
+              }
+            }
           ],
         },
         {
           test: /\.(sass|scss)$/i,
           use: [
             MiniCssExtractPlugin.loader,
-            'css-loader',
-            'sass-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true
+              }
+            }
           ],
         },
         {

@@ -1,5 +1,6 @@
 
-@import "color.scss";
+@use "sass:color";
+@use "color.scss" as color2;
 
 #ejercicios .circulo {
     --diametro: 50px;
@@ -21,34 +22,34 @@
 }
 
 #ejercicios .circulo.mini.bronze {
-    background-color: $bronze;
+    background-color: color2.$bronze;
 }
 #ejercicios .circulo.mini.silver {
-    background-color: $silver;
+    background-color: color2.$silver;
 }
 #ejercicios .circulo.mini.gold {
-    background-color: $gold;
+    background-color: color2.$gold;
 }
 #ejercicios .circulo.mini.platinum {
-    background-color: $platinum;
+    background-color: color2.$platinum;
     --diametro: 32px;
 }
 #ejercicios .circulo.mini.perfect {
-    background-color: $platinum;
+    background-color: color2.$platinum;
     --diametro: 36px;
 }
 
 #ejercicios .circulo.mini.skin1 {
-    background-color: transparentize($color: #FDEFDD, $amount: 0.1);
-    color: transparentize($color: #F6AD55, $amount: 0.1);;
+    background-color: color.adjust($color: #FDEFDD, $alpha: -0.1);
+    color: color.adjust($color: #F6AD55, $alpha: -0.1);;
 }
 #ejercicios .circulo.mini.skin2 {
-    background-color: transparentize($color: #FDEFDD, $amount: 0.3);
-    color: transparentize($color: #F6AD55, $amount: 0.3);;
+    background-color: color.adjust($color: #FDEFDD, $alpha: -0.3);
+    color: color.adjust($color: #F6AD55, $alpha: -0.3);;
 }
 #ejercicios .circulo.mini.skin3 {
-    background-color: transparentize($color: #FDEFDD, $amount: 0.5);
-    color: transparentize($color: #F6AD55, $amount: 0.5);;
+    background-color: color.adjust($color: #FDEFDD, $alpha: -0.5);
+    color: color.adjust($color: #F6AD55, $alpha: -0.5);;
 }
 
 #rowPuntuacion .circulo{

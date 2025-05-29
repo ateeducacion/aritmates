@@ -69,7 +69,7 @@ import OptionsShortcode from './OptionsShortcode';
 import utils from './utils';
 import ImprimirPdf from './imprimirPdf';
 
-import {tooltip} from 'bootstrap';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 import html2canvas from 'html2canvas';
 
@@ -790,11 +790,14 @@ $(document).on('selected:btnMul100', (ev) => {
 // inicializar tooltips
 $(document).ready(function() {
   console.log('document ready');
-  $('[data-toggle="tooltip"]').tooltip( {
-    placement: 'bottom',
-    template: '<div class="tooltip" role="tooltip">'+
-    '<div class="tooltip-arrow d-hide"></div>'+
-    '<div class="tooltip-inner"></div></div>',
+  const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+  const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl, {
+      placement: 'bottom',
+      template: '<div class="tooltip" role="tooltip">'+
+      '<div class="tooltip-arrow d-hide"></div>'+
+      '<div class="tooltip-inner"></div></div>'
+    })
   });
 });
 
@@ -1258,33 +1261,10 @@ $('body').on('finEjercicios', (ev) => {
 
             formData.append('correcciones', $('#correciones').html() );
 
-            // descargarPdfResultados('send.php',formData);
             enviarform('pdf.php', formData);
 
           // console.log('lanzado abrir modal #btnDownloadScore', ev);
 
-          // abrirModalCorreo();
-          // const modalContentOriginal = $('#modal-dialog-content')[0].innerHTML;
-          // $('#button_ok').click( (ev) => {
-          //   console.log('click ok btnDownloadScore');            
-          //   // const element = document.querySelector('#tablaPuntuacion');
-          //   const formData = new FormData();
-          //   formData.append('score', JSON.stringify(score) );
-          //   formData.append('puntuacion', puntuacion);
-          //   formData.append('cantidadOperaciones', opcionesGuardadas.cantidadOperaciones);
-          //   formData.append('tiempoTotal', ttotal);
-          //   formData.append('tiempoConsumido', tiempoConsumido);
-          //   formData.append('tiempoMedia', utils.milisToMinSg(score.tiempoMedioEjercicio) );
-          //   formData.append('tiempoTotalMilis', opcionesGuardadas.cuentaAtras );
-
-          //   formData.append('date', hdate );
-          //   formData.append('hashfirma', hash );
-
-          //   formData.append('correcciones', $('#correciones').html() );
-
-          //   // descargarPdfResultados('send.php',formData);
-          //   enviarform('send.php',formData);
-          // });
         });
 
         $('#ejercicios').show();

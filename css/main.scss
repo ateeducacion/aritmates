@@ -1,7 +1,7 @@
-@import "~bootstrap/scss/bootstrap";
+@use "~bootstrap/scss/bootstrap";
 
 // @import "../css/dev";
-@import "color.scss";
+@use "color.scss";
 
 $backgroundPatron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23e7effa' fill-opacity='1'%3E%3Cpath opacity='.5' d='M9695h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 
@@ -10,7 +10,7 @@ $backgroundPatron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/
 .headline {
     font-size: 24pt;
     letter-spacing: 0;
-    font-weight: $medium;
+    font-weight: color.$medium;
 }
 .title {
     // 18 pt 
@@ -18,42 +18,42 @@ $backgroundPatron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/
     // font-size: 20pt;
     font-size: 20px;
     line-height: 24px;
-    font-weight: $medium;
+    font-weight: color.$medium;
 }
 .title2 {
     font-size: 18pt;
-    font-weight: $medium;
+    font-weight: color.$medium;
 }
 .subheader {
     font-size: 16pt;
-    font-weight: $medium;
+    font-weight: color.$medium;
     font-style: Light;
     font-size: 14px;
     line-height: 24px;
 }
 .subheader-l {
     font-size: 16pt;
-    font-weight: $regular;
+    font-weight: color.$regular;
 }
 
 .menu {
     font-size: 14pt;
-    font-weight: $medium;
+    font-weight: color.$medium;
 }
 body, .body {
     font-size: 14px;
     line-height: 24px;
-    font-weight: $regular;
+    font-weight: color.$regular;
 }
 
 .caption {
     font-size: 12pt;
-    font-weight: $regular;
+    font-weight: color.$regular;
 }
 
 .button {
     font-size: 14pt;
-    font-weight: $medium;
+    font-weight: color.$medium;
     letter-spacing: 0;
     text-transform: uppercase;
     user-select: none
@@ -87,7 +87,7 @@ body {
 main {
     .caja{
         background-color: white;
-        border: 2px solid $colorPrincipal;
+        border: 2px solid color.$colorPrincipal;
         border-radius: 40px;
         padding: 40px;
 
@@ -142,7 +142,7 @@ main {
     }
 
     .fondo {
-        background: $resaltadoClaro;
+        background: color.$resaltadoClaro;
         border-radius: 20px;
         opacity: 1;
         min-height: 200px;
@@ -191,10 +191,10 @@ main {
         min-width: 10rem;
         height: 10rem;
         span {
-            font: $medium 10px/32px Roboto;
+            font: color.$medium 10px/32px Roboto;
         }
         span.big {
-            font: $medium 14px/32px Roboto;
+            font: color.$medium 14px/32px Roboto;
         }
     }
     .big{
@@ -207,7 +207,7 @@ main {
     font-size: xx-large;
     font-weight: 900;
     line-height: 80px;
-    color: $interiorBoxButton;    
+    color: color.$interiorBoxButton;    
 }
 
 .hoja{
@@ -216,11 +216,10 @@ main {
 
     right: 0;
     opacity: 1;
-    width: 100%;
 }
 
 .bg-dark {
-    background-color: $colorPrincipal !important;
+    background-color: color.$colorPrincipal !important;
 }
 
 // inputs a los laterales del slider

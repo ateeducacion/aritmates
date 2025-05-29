@@ -1302,38 +1302,10 @@ $('body').on('finEjercicios', (ev) => {
             formData.append('tiempoMedia', utils.milisToMinSg(score.tiempoMedioEjercicio) );
             formData.append('tiempoTotalMilis', opcionesGuardadas.cuentaAtras );
 
-            // formData.append('date', hdate );
-            // formData.append('hashfirma', hash );
-
             formData.append('correcciones', $('#correciones').html() );
 
-            // descargarPdfResultados('send.php',formData);
             enviarform('pdf.php', formData);
 
-          // console.log('lanzado abrir modal #btnDownloadScore', ev);
-
-          // abrirModalCorreo();
-          // const modalContentOriginal = $('#modal-dialog-content')[0].innerHTML;
-          // $('#button_ok').click( (ev) => {
-          //   console.log('click ok btnDownloadScore');            
-          //   // const element = document.querySelector('#tablaPuntuacion');
-          //   const formData = new FormData();
-          //   formData.append('score', JSON.stringify(score) );
-          //   formData.append('puntuacion', puntuacion);
-          //   formData.append('cantidadOperaciones', opcionesGuardadas.cantidadOperaciones);
-          //   formData.append('tiempoTotal', ttotal);
-          //   formData.append('tiempoConsumido', tiempoConsumido);
-          //   formData.append('tiempoMedia', utils.milisToMinSg(score.tiempoMedioEjercicio) );
-          //   formData.append('tiempoTotalMilis', opcionesGuardadas.cuentaAtras );
-
-          //   formData.append('date', hdate );
-          //   formData.append('hashfirma', hash );
-
-          //   formData.append('correcciones', $('#correciones').html() );
-
-          //   // descargarPdfResultados('send.php',formData);
-          //   enviarform('send.php',formData);
-          // });
         });
 
         $('#ejercicios').show();
@@ -1344,12 +1316,6 @@ $('body').on('finEjercicios', (ev) => {
         console.timeEnd('resultados');
       });
 
-  // fetch('./templates/modal_envioCorreo.html')
-  //   .then((response) => response.text())
-  //   .then((template) => {
-  //     modalCorreoHtml = template;
-  //     console.log('cargado modal');
-  // });
 });
 
 function ocultarInsignias() {
