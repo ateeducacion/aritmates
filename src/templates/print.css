@@ -1,0 +1,78 @@
+/* 
+#paper {
+    font: 13px Arial, Helvetica, "Lucida Grande", serif;
+    color: #000;
+    border: 1px solid blue;
+}
+
+#paper .title {
+    position: relative;
+    margin-left: 10mm;
+    width: auto;
+}
+
+#paper .title img {
+    height: 1.8cm;
+    margin-top: 0;
+    margin-bottom: 5mm;
+}
+
+#paper .title img.right {
+    position: relative;
+    height: 1cm;
+    left: 50mm;
+    top: 3mm;
+}
+
+#paper .input {
+	display: inline-block;
+	border: solid 1px black;
+	border-radius: 1mm;
+	width: 15mm;
+	height: 10mm;
+	line-height: 9mm;
+}
+
+#paper .ejercicios {
+    margin-top: 15mm;
+    margin-left: 10mm;
+}
+#paper .soluciones {
+    margin-top: 15mm;
+    margin-left: 10mm;
+}
+
+
+#paper .simbolo {
+    margin:0 0.5em;
+}
+
+#paper .simbolo.parentesis {
+    margin:0 0.1em;
+}
+#paper p.operacion.f-operacion {
+    display: inline-block;
+}
+#paper .separator {
+    width: 3mm;
+    display: inline-block;
+}
+
+
+#paper .boxOperacion {
+    display: block;
+    padding-top: 3mm;
+    break-inside: avoid;
+}
+
+/* #paper .soluciones{
+    border: 1px solid blue;
+} */
+/*
+#paper .opSolucion {
+    display: block;
+    padding-top: 2mm;
+    break-inside: avoid;
+}
+
+*/

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <title>Hoja Ejercicios Aritmates</title>
+</head>
+<body>
+    <style> 
+        html {
+            padding: 0;
+            margin: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+        };
+        body {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            top: 0;
+            left: 0;
+        }
+        #print {
+            width: 100%;
+            position: relative;
+            left: -5px;
+        }
+        #print p {
+            page-break-inside: avoid;
+        }
+        #print hr {
+            display: none;
+            break-after: always;
+        }
+        #print.fondo,
+        #print .fondo {            
+            /* background-image: 
+            url('./img/escudo.png'),
+            linear-gradient(gainsboro, gainsboro), 
+            url('./img/fondoA4cm.png'); */
+            background-image: url('./img/fondoA4_300dpi.png');
+            background-color: 
+            /* transparent, gainsboro, */
+            transparent;
+            
+            background-size: 
+            /* auto 1cm, 100% 2cm , */
+            210mm 297mm;
+            background-position: 
+            /* 1cm 5mm, top,  */
+            left top;
+            background-repeat: 
+            /* no-repeat, no-repeat,  */
+            repeat-y;
+        }
+        
+        #print .container {   
+            width: 100%;
+            position: absolute;         
+            padding: 20mm 10mm; 
+            /* border: 1px solid green;
+            border-radius: 20mm; */
+        }
+        #print .contenido{
+            position: relative;
+            background-color: gray;
+            margin-top: 1cm;
+            left: 1cm;
+            
+            /* display: flex;
+            flex-wrap: wrap; */    
+            /* align-content: space-between */
+        }
+        #print .boxOperacion{ 
+            /* min-width: 8cm;   
+            float: left; 
+            margin-left: 10mm; 
+            margin-bottom: 10mm; */
+            
+            border: 1px solid black;
+            
+            /* text-align: center; */
+            font-size: 10mm;
+        }
+        #print .input {
+            display: inline-block;
+            position:relative;
+            top: 5mm;
+            width: 2cm; 
+            height: 15mm;
+            border: solid 1px black;
+        }
+        #print .center {
+            text-align: center;
+        }    
+    </style>
+
+    <!-- <div id="print" class="fondo">    
+        <div >
+            <div class="container">
+                <h1 class="center" >Hoja Ejercicios Aritmates </h1>                
+                <div class="contenido"></div>
+            </div>
+        </div>  
+    </div> -->
+
+    <!-- <div id="print" class="fondo">    
+        <div >
+            <div class="container">
+                <h1 class="center" >Hoja Ejercicios Aritmates </h1>                
+                
+            </div>
+        </div>  
+    </div> -->
+    
+    <div id="print">    
+        <div class="container">
+            <h1 class="center" >Hoja Ejercicios Aritmates </h1>                
+            <div class="contenido"></div>
+        </div>
+    </div>
+    
+</body>
+</html> 

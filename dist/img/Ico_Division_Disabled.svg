@@ -1,0 +1,32 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="80"
+    height="80"
+    viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .a {
+                fill: #dfdfdf;
+            }
+            .b {
+                fill: #c5c5c5;
+            }
+        </style>
+    </defs><circle class="a" cx="40" cy="40" r="40"/>
+    <g transform="translate(23 23)"><path
+        class="b"
+        d="M17.932-55.349H5.414v-9.018H39.5v9.018H17.932Z"
+        transform="translate(-5.414 77.093)"/><ellipse
+        class="b"
+        cx="4.885"
+        cy="4.885"
+        rx="4.885"
+        ry="4.885"
+        transform="translate(12.543 0)"/><ellipse
+        class="b"
+        cx="4.885"
+        cy="4.885"
+        rx="4.885"
+        ry="4.885"
+        transform="translate(12.543 24.423)"/></g>
+</svg>

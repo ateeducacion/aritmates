@@ -1,0 +1,59 @@
+
+body{
+    position: relative;
+    // background-color: palegoldenrod;
+    background-color: whitesmoke;
+}
+
+h1{
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+.linea{
+    display: block;
+    position: relative;
+    background-color: rgba($color: black, $alpha: .3);
+    padding: 0.5em 2em;
+    height: 3em;
+    width: 90%;
+    margin: 0.5em auto;
+    font-size: large;
+
+    .examen{
+        // background-color: green;
+        display: inline-block;
+        position: absolute;
+        top: 0.5em;
+    }
+
+    .soluciones{
+        display: block;
+        position: absolute;
+        top: 0.5em;
+        // margin: 1;
+        // left: 20em;
+        right: 1em;
+        padding: 0 15px;
+        // border: solid red 1px;
+        text-decoration: rgba($color: red, $alpha: 1.0) underline;
+        // background-color: rgba($color: red, $alpha: .9);
+    }
+}
+
+.clear{
+    width: 100%;
+    clear: both;
+}
+
+// #lista{
+//     float: left;
+//     width: 45%;
+// }
+// #resuelto{
+//     padding: 0,5em;
+//     float: right;
+//     width: 49%;
+// }
+

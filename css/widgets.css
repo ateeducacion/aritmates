@@ -1,0 +1,134 @@
+:root{
+    --lado : 56px;
+    /* --long-lado: 320px; */
+    --long-lado: 100%;
+}
+
+xy-slider {
+    background-color: #fff;
+    height: 40px;
+    width: 100%;
+    padding: 0 15px;
+    /* background-color: blue; */
+    /* height: 3em; */
+    /* border: 1px solid black; */
+    /* Cambiar el color del fondo del tip */
+    --color: var(--colorPrincipal);
+}
+
+/* variables */
+/* :root{
+    --color: red;
+} */
+
+/* switch */
+.mdc-switch.mdc-switch--checked .mdc-switch__thumb {
+    background-color: var(--colorPrincipal);
+}
+mwc-switch {
+    --mdc-theme-secondary: var(--colorPrincipal);
+    /* --mdc-theme-secondary: var(--colorSecundario); */
+}
+paper-dropdown-menu paper-listbox {
+    min-width: 7em;
+}
+paper-dropdown-menu paper-listbox paper-item {
+
+    
+    cursor: pointer;
+    /* padding: inherit 4em; */
+}
+
+paper-dropdown-menu paper-listbox paper-item.iron-selected{
+    background-color: var(--colorSecundary);
+}
+
+.button {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    min-width: var(--lado);
+    height: var(--lado);
+    padding: 0 2em;
+
+    background: var(--colorSecundary) 0% 0% no-repeat padding-box;
+    box-shadow: 1px 3px 0px var(--colorSecundaryHover);
+    border-radius: 4px;
+
+    text-align: center;
+    line-height: var(--lado);
+    cursor: pointer;
+    opacity: 1;
+
+    /* Ocultar texto que sobre salga por elipsis... */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.button.clear {
+    border: 2px solid var(--colorSecundary);
+    border-radius: 4px;
+    box-shadow: none;
+    background: transparent 0% 0% no-repeat padding-box;
+    
+    text-align: left;
+     /* medium 500  */
+     /* 14px/19px */
+    font: 500 14px/var(--lado) Roboto;
+    
+    letter-spacing: 1.25px;
+}
+.button.clear:hover {
+    background: #F3FBF9 0% 0% no-repeat padding-box;
+}
+.button.clear.disabled {
+    border: 2px solid var(--borderBoxIconDisabled);
+}
+
+.button-long {
+    min-width: var(--long-lado);
+}
+.button.mini {
+    --lado: 36px;
+    padding: 0 16px;
+}
+
+.button:hover {
+    background: var(--colorSecundaryHover) 0% 0% no-repeat padding-box;
+    /* box-shadow: 1px 2px 0px --var(--colorSecundaryHover); */
+}
+
+.button:active {
+    position: relative;
+    top: 3px;
+    box-shadow: none;
+}
+
+.button.disabled {
+    background: #DFDFDF 0% 0% no-repeat padding-box;
+    box-shadow: 1px 3px 0px #9C9C9C;
+    border-radius: 4px;
+    color: #00000060;
+    
+}
+
+.md-icon-fix {
+    position: relative;
+    top: 5px;
+}
+
+/* tooltip -------- */
+a[data-toggle="tooltip"], a[data-toggle="tooltip"]:visited {
+    color: var(--textColor);
+}
+.tooltip-inner {
+    text-align: left;
+    background-color: #757575;
+    border-radius: 4px;
+    padding: 8px 14px;
+    font: 400 12px/16px Roboto;
+    /* regular = 400  */
+}
+
+/* css de creditos movido a creditos.scss */

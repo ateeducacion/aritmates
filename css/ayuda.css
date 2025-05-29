@@ -1,0 +1,122 @@
+
+.openAyuda {
+    cursor: pointer;
+}
+
+#ayuda {
+    width: 40%;
+    /* --paper-font-subhead_-_font-size : 14px; */
+}
+
+
+paper-expansion-panel {
+    background: #F7FAFF 0% 0% no-repeat padding-box;
+    border: 1px solid #D0E0F6;
+    border-radius: 4px;
+    margin-bottom: 0.6em;
+}
+
+paper-expansion-panel paper-item {
+    background: white;
+    font-size: 14px;
+}
+
+#ayuda img.big {
+    width: 80%;
+}
+#ayuda paper-item-body > div{
+    display: block;
+}
+#ayuda paper-item-body > div.mediateca{
+    display: block;
+}
+#ayuda div.mediateca iframe{
+    width: 100%;
+}
+
+#ayuda img.tab-icon {
+    width: 23px;
+}
+
+#ayuda .zoom {
+    width: 100%;
+    cursor: pointer;
+}
+.iv-image.iv-small-image, 
+.iv-snap-image {
+    background-color: white;
+}
+
+.iv-fullscreen-close{
+    background: rgba(0,0,0,0.2);
+}
+/* 
+los mixins no funcionan las variables si
+#ayuda {
+    --paper-expansion-panel-header: {
+        color: red;
+        font-size: 12px;
+    }
+    --paper-expansion-panel-summary: {
+        color: blue;
+        font-size: 14px;
+    }
+    --paper-expansion-panel-content: {
+        color: green;
+        padding: 0 16px;
+    }
+} */
+
+#thisapp,
+paper-item-body,
+paper-item-body:focus::before {
+    /* background-color: transparent; */
+    /* opacity: 0 !important; */
+    --paper-item-focused-before_-_background: transparent !important;
+    --dark-divider-opacity: 1;
+}
+
+
+paper-expansion-panel {
+    --paper-item-focused-before_-_background: transparent !important;
+}
+
+
+
+.zoomtxt {
+    -webkit-animation: seconds 3s forwards;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-delay: 2s;
+    animation: hideinseconds 3.0s forwards;
+    animation-iteration-count: 1;
+    animation-delay: 2s;
+
+    position: absolute;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    bottom: 25%;
+    padding: 0.5em 1em;
+    width: 100%;
+    text-align: center;
+
+}
+@-webkit-keyframes hideinseconds {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        /* left: -9999px;  */
+        /* position: absolute;    */
+    }
+}
+@keyframes hideinseconds {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        /* left: -9999px; */
+        /* position: absolute;      */
+    }
+}

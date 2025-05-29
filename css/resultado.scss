@@ -1,0 +1,219 @@
+
+@import "color.scss";
+
+#ejercicios .circulo {
+    --diametro: 50px;
+    display: inline-block;
+    text-align: center;
+    width: var(--diametro);
+    height: var(--diametro);
+    border-radius: calc(var(--diametro)/2);
+    i {
+        line-height: var(--diametro);
+        position: relative;
+    }
+}
+
+#ejercicios .circulo.mini {
+    // background-color: #777;
+    --diametro: 28px;
+    color: #fff;
+}
+
+#ejercicios .circulo.mini.bronze {
+    background-color: $bronze;
+}
+#ejercicios .circulo.mini.silver {
+    background-color: $silver;
+}
+#ejercicios .circulo.mini.gold {
+    background-color: $gold;
+}
+#ejercicios .circulo.mini.platinum {
+    background-color: $platinum;
+    --diametro: 32px;
+}
+#ejercicios .circulo.mini.perfect {
+    background-color: $platinum;
+    --diametro: 36px;
+}
+
+#ejercicios .circulo.mini.skin1 {
+    background-color: transparentize($color: #FDEFDD, $amount: 0.1);
+    color: transparentize($color: #F6AD55, $amount: 0.1);;
+}
+#ejercicios .circulo.mini.skin2 {
+    background-color: transparentize($color: #FDEFDD, $amount: 0.3);
+    color: transparentize($color: #F6AD55, $amount: 0.3);;
+}
+#ejercicios .circulo.mini.skin3 {
+    background-color: transparentize($color: #FDEFDD, $amount: 0.5);
+    color: transparentize($color: #F6AD55, $amount: 0.5);;
+}
+
+#rowPuntuacion .circulo{
+    background-color: #FFF6DB;
+    color: #FFD970;
+}
+
+#rowInsignia .circulo{
+    background-color: #FDEFDD;
+        color: #F6AD55;
+}
+
+#rowVelocidad .circulo{
+    background-color: #C4E9EE;
+    color: #64878C;
+}
+
+#tablaEstadisticas i.material-icons{
+    color: var(--colorTertiary);
+}
+
+#tablaPuntuacion{
+    
+    font: 500 16px/30px Roboto;
+    .label{
+        text-transform: uppercase;
+    }
+    .puntos{
+        text-align: left;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 30px;
+        .circulo{
+            text-align: center;
+        }
+    }
+
+    // td{
+    //     height: 5em;
+    // }
+}
+
+#tablaEstadisticas {
+    font: 400 16px/30px Roboto;
+    // td{
+    //     height: 4em;
+    // }
+}
+
+.sharpbox {
+    border: 1px solid #D0E0F6;
+    padding: 0;
+    .title{
+        // width: 488px;
+        height: 60px;
+        background: #E7EFFA 0% 0% no-repeat padding-box;
+        border: 1px solid #D0E0F6;
+        margin: 0;
+        width: 100%;
+        line-height: 60px;
+        color: var(--colorPrincipal);
+
+    }
+    table{
+        margin: 1em;
+        width: 80%;
+        margin: 2.2em auto;
+        th {
+            font: 500 14px/30px Roboto;
+            text-transform: capitalize;
+            
+            border-bottom: 1px solid var(--colorTertiary);
+            padding: 0 3em 0.5em 3em  ;
+        }
+        td {
+            padding: 1em 3em 0 3em;
+        }
+        th:first-child, td:first-child {
+            text-align: left;
+        }
+        th:last-child, td:last-child {
+            text-align: right;
+        }
+    }
+}
+
+#correciones {
+    margin-bottom: 5em;
+    td,th {
+        // font-size: 13px;
+        width: 45%;
+        padding: 0.7rem;
+    }
+}
+
+#comoTeHaIdo {
+    
+    > div {
+        border-top: 1px solid var(--colorTertiary);
+        text-align: left;
+        // border: 1px solid red;
+        .txt {
+            font: 500 12px Roboto;
+            line-height: var(--lado);
+        }
+    }
+    .groupTitle.title {
+        font: 500 16px/21px Roboto;
+    }
+    .description {
+        font: 400 14px/21px Roboto;
+    }
+}
+
+.part_resultado {
+    .button{
+        margin-bottom: 0.6rem;
+    }
+    #comoTeHaIdo .col-md{
+        padding-right: 0;
+        // padding-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+
+    #ejercicios #interior.part_resultado {
+        .headbar .barbox {
+            justify-content: center;
+            height: auto;
+        }
+        .puntos {
+            padding-left: 0.5rem;
+        }
+        #comoTeHaIdo {
+            .groupTitle-icon{
+                display: none;
+            }   
+        }
+        .operationZone {
+            padding: 1.5rem;
+        }
+        .operationZone > div {
+            flex-direction: column;
+            padding: 0;
+        }
+        #correciones > div {
+            border: none;
+        }
+        td {
+            text-align: left;
+        }
+        #comoTeHaIdo .col-md{
+            padding-right: 0;
+            padding-left: 0;
+        }
+    }
+
+    #ejercicios #interior.part_resultado {
+        .container {
+            padding: 0;
+        }
+        #correciones {
+            width: 97%;
+            margin: 0 auto;
+        }
+    }
+}

@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   contentScriptType="application/ecmascript"
+   contentStyleType="text/css"
+   height="503px"
+   preserveAspectRatio="none"
+   style="width:565px;height:503px;"
+   version="1.1"
+   viewBox="0 0 565 503"
+   width="565px"
+   zoomAndPan="magnify"
+   id="svg155"
+   sodipodi:docname="clases.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata159">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="775"
+     inkscape:window-height="480"
+     id="namedview157"
+     showgrid="false"
+     inkscape:zoom="0.46918489"
+     inkscape:cx="282.5"
+     inkscape:cy="251.5"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g153" />
+  <defs
+     id="defs11">
+    <filter
+       height="300%"
+       id="f1gjd3jyqmrapv"
+       width="300%"
+       x="-1"
+       y="-1">
+      <feGaussianBlur
+         result="blurOut"
+         stdDeviation="2.0"
+         id="feGaussianBlur2" />
+      <feColorMatrix
+         in="blurOut"
+         result="blurOut2"
+         type="matrix"
+         values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"
+         id="feColorMatrix4" />
+      <feOffset
+         dx="4.0"
+         dy="4.0"
+         in="blurOut2"
+         result="blurOut3"
+         id="feOffset6" />
+      <feBlend
+         in="SourceGraphic"
+         in2="blurOut3"
+         mode="normal"
+         id="feBlend8" />
+    </filter>
+  </defs>
+  <g
+     id="g153">
+    <!--MD5=[5b1781b8b194bbdd4b2317784496282a]
+class Operacion-->
+    <rect
+       codeLine="1"
+       fill="#FEFECE"
+       filter="url(#f1gjd3jyqmrapv)"
+       height="265.6797"
+       id="Operacion"
+       style="stroke:#A80036;stroke-width:1.5;"
+       width="122"
+       x="140.5"
+       y="7" />
+    <ellipse
+       cx="167.65"
+       cy="23"
+       fill="#ADD1B2"
+       rx="11"
+       ry="11"
+       style="stroke:#A80036;stroke-width:1.0;"
+       id="ellipse14" />
+    <path
+       d="M169.9938,18.6719 C169.0563,18.2344 168.4625,18.0938 167.5875,18.0938 C164.9625,18.0938 162.9625,20.1719 162.9625,22.8906 L162.9625,24.0156 C162.9625,26.5938 165.0719,28.4844 167.9625,28.4844 C169.1813,28.4844 170.3375,28.1875 171.0875,27.6406 C171.6656,27.2344 171.9938,26.7813 171.9938,26.3906 C171.9938,25.9375 171.6031,25.5469 171.1344,25.5469 C170.9156,25.5469 170.7125,25.625 170.525,25.8125 C170.0719,26.2969 170.0719,26.2969 169.8844,26.3906 C169.4625,26.6563 168.775,26.7813 168.0094,26.7813 C165.9625,26.7813 164.6656,25.6875 164.6656,23.9844 L164.6656,22.8906 C164.6656,21.1094 165.9156,19.7969 167.65,19.7969 C168.2281,19.7969 168.8375,19.9531 169.3063,20.2031 C169.7906,20.4844 169.9625,20.7031 170.0563,21.1094 C170.1188,21.5156 170.15,21.6406 170.2906,21.7656 C170.4313,21.9063 170.6656,22.0156 170.8844,22.0156 C171.15,22.0156 171.4156,21.875 171.5875,21.6563 C171.6969,21.5 171.7281,21.3125 171.7281,20.8906 L171.7281,19.4688 C171.7281,19.0313 171.7125,18.9063 171.6188,18.75 C171.4625,18.4844 171.1813,18.3438 170.8844,18.3438 C170.5875,18.3438 170.3844,18.4375 170.1656,18.75 L169.9938,18.6719 Z "
+       fill="#000000"
+       id="path16" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="12"
+       lengthAdjust="spacing"
+       textLength="63"
+       x="184.35"
+       y="27.1543"
+       id="text18">Operacion</text>
+    <line
+       style="stroke:#A80036;stroke-width:1.5;"
+       x1="141.5"
+       x2="261.5"
+       y1="39"
+       y2="39"
+       id="line20" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="28"
+       x="146.5"
+       y="53.2104"
+       id="text22">nivel</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="80"
+       x="146.5"
+       y="66.0151"
+       id="text24">posicion_nivel</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="72"
+       x="146.5"
+       y="78.8198"
+       id="text26">lower_bound</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="74"
+       x="146.5"
+       y="91.6245"
+       id="text28">upper_bound</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="110"
+       x="146.5"
+       y="104.4292"
+       id="text30">cantidadOperandos</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="101"
+       x="146.5"
+       y="117.2339"
+       id="text32">permitirNegativos</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="53"
+       x="146.5"
+       y="130.0386"
+       id="text34">enfocado</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="60"
+       x="146.5"
+       y="142.8433"
+       id="text36">operandos</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="51"
+       x="146.5"
+       y="155.6479"
+       id="text38">incognita</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="59"
+       x="146.5"
+       y="168.4526"
+       id="text40">multiplo10</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="66"
+       x="146.5"
+       y="181.2573"
+       id="text42">multiplo100</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="93"
+       x="146.5"
+       y="194.062"
+       id="text44">complementario</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="104"
+       x="146.5"
+       y="206.8667"
+       id="text46">resultadoNegativo</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="59"
+       x="146.5"
+       y="219.6714"
+       id="text48">decimales</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="103"
+       x="146.5"
+       y="232.4761"
+       id="text50">decimalesMaximo</text>
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="71"
+       x="146.5"
+       y="245.2808"
+       id="text52">forzarSignos</text>
+    <line
+       style="stroke:#A80036;stroke-width:1.5;"
+       x1="141.5"
+       x2="261.5"
+       y1="251.875"
+       y2="251.875"
+       id="line54" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="11"
+       lengthAdjust="spacing"
+       textLength="70"
+       x="146.5"
+       y="266.0854"
+       id="text56">constructor()</text>
+    <!--MD5=[c72ac06ef54da24a6c7e3921a1ca40be]
+class Suma-->
+    <rect
+       codeLine="21"
+       fill="#FEFECE"
+       filter="url(#f1gjd3jyqmrapv)"
+       height="48"
+       id="Suma"
+       style="stroke:#A80036;stroke-width:1.5;"
+       width="65"
+       x="7"
+       y="333" />
+    <ellipse
+       cx="22"
+       cy="349"
+       fill="#ADD1B2"
+       rx="11"
+       ry="11"
+       style="stroke:#A80036;stroke-width:1.0;"
+       id="ellipse59" />
+    <path
+       d="M24.3438,344.6719 C23.4063,344.2344 22.8125,344.0938 21.9375,344.0938 C19.3125,344.0938 17.3125,346.1719 17.3125,348.8906 L17.3125,350.0156 C17.3125,352.5938 19.4219,354.4844 22.3125,354.4844 C23.5313,354.4844 24.6875,354.1875 25.4375,353.6406 C26.0156,353.2344 26.3438,352.7813 26.3438,352.3906 C26.3438,351.9375 25.9531,351.5469 25.4844,351.5469 C25.2656,351.5469 25.0625,351.625 24.875,351.8125 C24.4219,352.2969 24.4219,352.2969 24.2344,352.3906 C23.8125,352.6563 23.125,352.7813 22.3594,352.7813 C20.3125,352.7813 19.0156,351.6875 19.0156,349.9844 L19.0156,348.8906 C19.0156,347.1094 20.2656,345.7969 22,345.7969 C22.5781,345.7969 23.1875,345.9531 23.6563,346.2031 C24.1406,346.4844 24.3125,346.7031 24.4063,347.1094 C24.4688,347.5156 24.5,347.6406 24.6406,347.7656 C24.7813,347.9063 25.0156,348.0156 25.2344,348.0156 C25.5,348.0156 25.7656,347.875 25.9375,347.6563 C26.0469,347.5 26.0781,347.3125 26.0781,346.8906 L26.0781,345.4688 C26.0781,345.0313 26.0625,344.9063 25.9688,344.75 C25.8125,344.4844 25.5313,344.3438 25.2344,344.3438 C24.9375,344.3438 24.7344,344.4375 24.5156,344.75 L24.3438,344.6719 Z "
+       fill="#000000"
+       id="path61" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="12"
+       lengthAdjust="spacing"
+       textLength="33"
+       x="36"
+       y="353.1543"
+       id="text63">Suma</text>
+    <line
+       style="stroke:#A80036;stroke-width:1.5;"
+       x1="8"
+       x2="71"
+       y1="365"
+       y2="365"
+       id="line65" />
+    <line
+       style="stroke:#A80036;stroke-width:1.5;"
+       x1="8"
+       x2="71"
+       y1="373"
+       y2="373"
+       id="line67" />
+    <!--MD5=[d4a9fd9c25cabfdd4432027143099ea7]
+class Resta-->
+    <rect
+       codeLine="22"
+       fill="#FEFECE"
+       filter="url(#f1gjd3jyqmrapv)"
+       height="48"
+       id="Resta"
+       style="stroke:#A80036;stroke-width:1.5;"
+       width="65"
+       x="107"
+       y="333" />
+    <ellipse
+       cx="122"
+       cy="349"
+       fill="#ADD1B2"
+       rx="11"
+       ry="11"
+       style="stroke:#A80036;stroke-width:1.0;"
+       id="ellipse70" />
+    <path
+       d="M124.3438,344.6719 C123.4063,344.2344 122.8125,344.0938 121.9375,344.0938 C119.3125,344.0938 117.3125,346.1719 117.3125,348.8906 L117.3125,350.0156 C117.3125,352.5938 119.4219,354.4844 122.3125,354.4844 C123.5313,354.4844 124.6875,354.1875 125.4375,353.6406 C126.0156,353.2344 126.3438,352.7813 126.3438,352.3906 C126.3438,351.9375 125.9531,351.5469 125.4844,351.5469 C125.2656,351.5469 125.0625,351.625 124.875,351.8125 C124.4219,352.2969 124.4219,352.2969 124.2344,352.3906 C123.8125,352.6563 123.125,352.7813 122.3594,352.7813 C120.3125,352.7813 119.0156,351.6875 119.0156,349.9844 L119.0156,348.8906 C119.0156,347.1094 120.2656,345.7969 122,345.7969 C122.5781,345.7969 123.1875,345.9531 123.6563,346.2031 C124.1406,346.4844 124.3125,346.7031 124.4063,347.1094 C124.4688,347.5156 124.5,347.6406 124.6406,347.7656 C124.7813,347.9063 125.0156,348.0156 125.2344,348.0156 C125.5,348.0156 125.7656,347.875 125.9375,347.6563 C126.0469,347.5 126.0781,347.3125 126.0781,346.8906 L126.0781,345.4688 C126.0781,345.0313 126.0625,344.9063 125.9688,344.75 C125.8125,344.4844 125.5313,344.3438 125.2344,344.3438 C124.9375,344.3438 124.7344,344.4375 124.5156,344.75 L124.3438,344.6719 Z "
+       fill="#000000"
+       id="path72" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="12"
+       lengthAdjust="spacing"
+       textLength="33"
+       x="136"
+       y="353.1543"
+       id="text74">Resta</text>
+    <line
+       style="stroke:#A80036;stroke-width:1.5;"
+       x1="108"
+       x2="171"
+       y1="365"
+       y2="365"
+       id="line76" />
+    <line
+       style="stroke:#A80036;stroke-width:1.5;"
+       x1="108"
+       x2="171"
+       y1="373"
+       y2="373"
+       id="line78" />
+    <!--MD5=[201f9dfcf4faf429c201dbc0fddb000d]
+class Multiplicacion-->
+    <rect
+       codeLine="23"
+       fill="#FEFECE"
+       filter="url(#f1gjd3jyqmrapv)"
+       height="48"
+       id="Multiplicacion"
+       style="stroke:#A80036;stroke-width:1.5;"
+       width="112"
+       x="207.5"
+       y="333" />
+    <ellipse
+       cx="222.5"
+       cy="349"
+       fill="#ADD1B2"
+       rx="11"
+       ry="11"
+       style="stroke:#A80036;stroke-width:1.0;"
+       id="ellipse81" />
+    <path
+       d="M224.8438,344.6719 C223.9063,344.2344 223.3125,344.0938 222.4375,344.0938 C219.8125,344.0938 217.8125,346.1719 217.8125,348.8906 L217.8125,350.0156 C217.8125,352.5938 219.9219,354.4844 222.8125,354.4844 C224.0313,354.4844 225.1875,354.1875 225.9375,353.6406 C226.5156,353.2344 226.8438,352.7813 226.8438,352.3906 C226.8438,351.9375 226.4531,351.5469 225.9844,351.5469 C225.7656,351.5469 225.5625,351.625 225.375,351.8125 C224.9219,352.2969 224.9219,352.2969 224.7344,352.3906 C224.3125,352.6563 223.625,352.7813 222.8594,352.7813 C220.8125,352.7813 219.5156,351.6875 219.5156,349.9844 L219.5156,348.8906 C219.5156,347.1094 220.7656,345.7969 222.5,345.7969 C223.0781,345.7969 223.6875,345.9531 224.1563,346.2031 C224.6406,346.4844 224.8125,346.7031 224.9063,347.1094 C224.9688,347.5156 225,347.6406 225.1406,347.7656 C225.2813,347.9063 225.5156,348.0156 225.7344,348.0156 C226,348.0156 226.2656,347.875 226.4375,347.6563 C226.5469,347.5 226.5781,347.3125 226.5781,346.8906 L226.5781,345.4688 C226.5781,345.0313 226.5625,344.9063 226.4688,344.75 C226.3125,344.4844 226.0313,344.3438 225.7344,344.3438 C225.4375,344.3438 225.2344,344.4375 225.0156,344.75 L224.8438,344.6719 Z "
+       fill="#000000"
+       id="path83" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="12"
+       lengthAdjust="spacing"
+       textLength="80"
+       x="236.5"
+       y="353.1543"
+       id="text85">Multiplicacion</text>
+    <line
+       style="stroke:#A80036;stroke-width:1.5;"
+       x1="208.5"
+       x2="318.5"
+       y1="365"
+       y2="365"
+       id="line87" />
+    <line
+       style="stroke:#A80036;stroke-width:1.5;"
+       x1="208.5"
+       x2="318.5"
+       y1="373"
+       y2="373"
+       id="line89" />
+    <!--MD5=[57d14e59e859da943c04e0fd3eeefc40]
+class Division-->
+    <!--MD5=[18812377223106b3d34de7ff2ec2ea19]
+class DivisionEntera-->
+    <rect
+       codeLine="25"
+       fill="#FEFECE"
+       filter="url(#f1gjd3jyqmrapv)"
+       height="48"
+       id="DivisionEntera"
+       style="stroke:#A80036;stroke-width:1.5;"
+       width="117"
+       x="355"
+       y="333" />
+    <ellipse
+       cx="370"
+       cy="349"
+       fill="#ADD1B2"
+       rx="11"
+       ry="11"
+       style="stroke:#A80036;stroke-width:1.0;"
+       id="ellipse103" />
+    <path
+       d="M372.3438,344.6719 C371.4063,344.2344 370.8125,344.0938 369.9375,344.0938 C367.3125,344.0938 365.3125,346.1719 365.3125,348.8906 L365.3125,350.0156 C365.3125,352.5938 367.4219,354.4844 370.3125,354.4844 C371.5313,354.4844 372.6875,354.1875 373.4375,353.6406 C374.0156,353.2344 374.3438,352.7813 374.3438,352.3906 C374.3438,351.9375 373.9531,351.5469 373.4844,351.5469 C373.2656,351.5469 373.0625,351.625 372.875,351.8125 C372.4219,352.2969 372.4219,352.2969 372.2344,352.3906 C371.8125,352.6563 371.125,352.7813 370.3594,352.7813 C368.3125,352.7813 367.0156,351.6875 367.0156,349.9844 L367.0156,348.8906 C367.0156,347.1094 368.2656,345.7969 370,345.7969 C370.5781,345.7969 371.1875,345.9531 371.6563,346.2031 C372.1406,346.4844 372.3125,346.7031 372.4063,347.1094 C372.4688,347.5156 372.5,347.6406 372.6406,347.7656 C372.7813,347.9063 373.0156,348.0156 373.2344,348.0156 C373.5,348.0156 373.7656,347.875 373.9375,347.6563 C374.0469,347.5 374.0781,347.3125 374.0781,346.8906 L374.0781,345.4688 C374.0781,345.0313 374.0625,344.9063 373.9688,344.75 C373.8125,344.4844 373.5313,344.3438 373.2344,344.3438 C372.9375,344.3438 372.7344,344.4375 372.5156,344.75 L372.3438,344.6719 Z "
+       fill="#000000"
+       id="path105" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="12"
+       lengthAdjust="spacing"
+       textLength="85"
+       x="384"
+       y="353.1543"
+       id="text107">DivisionEntera</text>
+    <line
+       style="stroke:#A80036;stroke-width:1.5;"
+       x1="356"
+       x2="471"
+       y1="365"
+       y2="365"
+       id="line109" />
+    <line
+       style="stroke:#A80036;stroke-width:1.5;"
+       x1="356"
+       x2="471"
+       y1="373"
+       y2="373"
+       id="line111" />
+    <!--MD5=[8d5406c09654ce9e7b5b3be9cd5df83f]
+class DivisionDecimales-->
+    <rect
+       codeLine="26"
+       fill="#FEFECE"
+       filter="url(#f1gjd3jyqmrapv)"
+       height="48"
+       id="DivisionDecimales"
+       style="stroke:#A80036;stroke-width:1.5;"
+       width="142"
+       x="260.5"
+       y="441" />
+    <ellipse
+       cx="275.5"
+       cy="457"
+       fill="#ADD1B2"
+       rx="11"
+       ry="11"
+       style="stroke:#A80036;stroke-width:1.0;"
+       id="ellipse114" />
+    <path
+       d="M277.8438,452.6719 C276.9063,452.2344 276.3125,452.0938 275.4375,452.0938 C272.8125,452.0938 270.8125,454.1719 270.8125,456.8906 L270.8125,458.0156 C270.8125,460.5938 272.9219,462.4844 275.8125,462.4844 C277.0313,462.4844 278.1875,462.1875 278.9375,461.6406 C279.5156,461.2344 279.8438,460.7813 279.8438,460.3906 C279.8438,459.9375 279.4531,459.5469 278.9844,459.5469 C278.7656,459.5469 278.5625,459.625 278.375,459.8125 C277.9219,460.2969 277.9219,460.2969 277.7344,460.3906 C277.3125,460.6563 276.625,460.7813 275.8594,460.7813 C273.8125,460.7813 272.5156,459.6875 272.5156,457.9844 L272.5156,456.8906 C272.5156,455.1094 273.7656,453.7969 275.5,453.7969 C276.0781,453.7969 276.6875,453.9531 277.1563,454.2031 C277.6406,454.4844 277.8125,454.7031 277.9063,455.1094 C277.9688,455.5156 278,455.6406 278.1406,455.7656 C278.2813,455.9063 278.5156,456.0156 278.7344,456.0156 C279,456.0156 279.2656,455.875 279.4375,455.6563 C279.5469,455.5 279.5781,455.3125 279.5781,454.8906 L279.5781,453.4688 C279.5781,453.0313 279.5625,452.9063 279.4688,452.75 C279.3125,452.4844 279.0313,452.3438 278.7344,452.3438 C278.4375,452.3438 278.2344,452.4375 278.0156,452.75 L277.8438,452.6719 Z "
+       fill="#000000"
+       id="path116" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="12"
+       lengthAdjust="spacing"
+       textLength="110"
+       x="289.5"
+       y="461.1543"
+       id="text118">DivisionDecimales</text>
+    <line
+       style="stroke:#A80036;stroke-width:1.5;"
+       x1="261.5"
+       x2="401.5"
+       y1="473"
+       y2="473"
+       id="line120" />
+    <line
+       style="stroke:#A80036;stroke-width:1.5;"
+       x1="261.5"
+       x2="401.5"
+       y1="481"
+       y2="481"
+       id="line122" />
+    <!--MD5=[b9d24baa2b9655e97904fd6671470691]
+class DivisionResto-->
+    <rect
+       codeLine="27"
+       fill="#FEFECE"
+       filter="url(#f1gjd3jyqmrapv)"
+       height="48"
+       id="DivisionResto"
+       style="stroke:#A80036;stroke-width:1.5;"
+       width="113"
+       x="438"
+       y="441" />
+    <ellipse
+       cx="453"
+       cy="457"
+       fill="#ADD1B2"
+       rx="11"
+       ry="11"
+       style="stroke:#A80036;stroke-width:1.0;"
+       id="ellipse125" />
+    <path
+       d="M455.3438,452.6719 C454.4063,452.2344 453.8125,452.0938 452.9375,452.0938 C450.3125,452.0938 448.3125,454.1719 448.3125,456.8906 L448.3125,458.0156 C448.3125,460.5938 450.4219,462.4844 453.3125,462.4844 C454.5313,462.4844 455.6875,462.1875 456.4375,461.6406 C457.0156,461.2344 457.3438,460.7813 457.3438,460.3906 C457.3438,459.9375 456.9531,459.5469 456.4844,459.5469 C456.2656,459.5469 456.0625,459.625 455.875,459.8125 C455.4219,460.2969 455.4219,460.2969 455.2344,460.3906 C454.8125,460.6563 454.125,460.7813 453.3594,460.7813 C451.3125,460.7813 450.0156,459.6875 450.0156,457.9844 L450.0156,456.8906 C450.0156,455.1094 451.2656,453.7969 453,453.7969 C453.5781,453.7969 454.1875,453.9531 454.6563,454.2031 C455.1406,454.4844 455.3125,454.7031 455.4063,455.1094 C455.4688,455.5156 455.5,455.6406 455.6406,455.7656 C455.7813,455.9063 456.0156,456.0156 456.2344,456.0156 C456.5,456.0156 456.7656,455.875 456.9375,455.6563 C457.0469,455.5 457.0781,455.3125 457.0781,454.8906 L457.0781,453.4688 C457.0781,453.0313 457.0625,452.9063 456.9688,452.75 C456.8125,452.4844 456.5313,452.3438 456.2344,452.3438 C455.9375,452.3438 455.7344,452.4375 455.5156,452.75 L455.3438,452.6719 Z "
+       fill="#000000"
+       id="path127" />
+    <text
+       fill="#000000"
+       font-family="sans-serif"
+       font-size="12"
+       lengthAdjust="spacing"
+       textLength="81"
+       x="467"
+       y="461.1543"
+       id="text129">DivisionResto</text>
+    <line
+       style="stroke:#A80036;stroke-width:1.5;"
+       x1="439"
+       x2="550"
+       y1="473"
+       y2="473"
+       id="line131" />
+    <line
+       style="stroke:#A80036;stroke-width:1.5;"
+       x1="439"
+       x2="550"
+       y1="481"
+       y2="481"
+       id="line133" />
+    <!--MD5=[f57325d2c564e3becbcac75b78da3fe8]
+reverse link Operacion to Suma-->
+    <path
+       codeLine="30"
+       d="M137.331,226.162 C108.361,264.611 76.385,307.048 57.1271,332.606 "
+       fill="none"
+       id="Operacion-backto-Suma"
+       style="stroke:#A80036;stroke-width:1.0;" />
+    <polygon
+       fill="#A80036"
+       points="140.486,221.976,131.8753,226.7568,137.4771,225.9693,138.2646,231.5711,140.486,221.976"
+       style="stroke:#A80036;stroke-width:1.0;"
+       id="polygon136" />
+    <!--MD5=[06492b9db186b621f95745637c910b94]
+reverse link Operacion to Resta-->
+    <path
+       codeLine="31"
+       d="M161.987,278.021 C155.873,299.223 150.238,318.765 146.138,332.982 "
+       fill="none"
+       id="Operacion-backto-Resta"
+       style="stroke:#A80036;stroke-width:1.0;" />
+    <polygon
+       fill="#A80036"
+       points="163.382,273.183,157.0445,280.7219,161.9963,277.9872,164.7311,282.939,163.382,273.183"
+       style="stroke:#A80036;stroke-width:1.0;"
+       id="polygon139" />
+    <!--MD5=[7d8f918dbaf061c4c9b0a910760ef9e7]
+reverse link Operacion to Multiplicacion-->
+    <path
+       codeLine="32"
+       d="M241.013,278.021 C247.127,299.223 252.762,318.765 256.862,332.982 "
+       fill="none"
+       id="Operacion-backto-Multiplicacion"
+       style="stroke:#A80036;stroke-width:1.0;" />
+    <polygon
+       fill="#A80036"
+       points="239.618,273.183,238.2689,282.939,241.0037,277.9872,245.9555,280.7219,239.618,273.183"
+       style="stroke:#A80036;stroke-width:1.0;"
+       id="polygon142" />
+    <!--MD5=[eec3dadd51f04414627a2e7cada6ac67]
+reverse link Operacion to DivisionEntera-->
+    <path
+       codeLine="33"
+       d="M265.81,256.411 C270.505,262.235 275.408,267.812 280.5,273 C304.809,297.766 337.895,318.451 364.985,332.977 "
+       fill="none"
+       id="Operacion-backto-DivisionEntera"
+       style="stroke:#A80036;stroke-width:1.0;" />
+    <polygon
+       fill="#A80036"
+       points="262.593,252.34,265.0348,261.8814,265.6931,256.263,271.3115,256.9213,262.593,252.34"
+       style="stroke:#A80036;stroke-width:1.0;"
+       id="polygon145" />
+    <!--MD5=[3764e82bf0f06a18e3d80cf7ae531796]
+reverse link DivisionEntera to DivisionDecimales-->
+    <path
+       codeLine="34"
+       d="M392.417,385.254 C379.143,402.4126 362.191,424.3265 349.541,440.6784 "
+       fill="none"
+       id="DivisionEntera-backto-DivisionDecimales"
+       style="stroke:#A80036;stroke-width:1.0;" />
+    <polygon
+       fill="#A80036"
+       points="395.707,381,387.0356,385.6697,392.647,384.9543,393.3624,390.5657,395.707,381"
+       style="stroke:#A80036;stroke-width:1.0;"
+       id="polygon148" />
+    <!--MD5=[d3502f40ed9d1c22a00864f16147b9b4]
+reverse link DivisionEntera to DivisionResto-->
+    <path
+       codeLine="35"
+       d="M434.326,385.254 C447.438,402.4126 464.183,424.3265 476.679,440.6784 "
+       fill="none"
+       id="DivisionEntera-backto-DivisionResto"
+       style="stroke:#A80036;stroke-width:1.0;" />
+    <polygon
+       fill="#A80036"
+       points="431.076,381,433.362,390.5799,434.1118,384.9729,439.7187,385.7227,431.076,381"
+       style="stroke:#A80036;stroke-width:1.0;"
+       id="polygon151" />
+    <!--MD5=[48d119f8fa615ac0b60fffcb9f8b8410]
+@startuml
+class Operacion {
+    nivel
+    posicion_nivel
+    lower_bound
+    upper_bound
+    cantidadOperandos
+    permitirNegativos
+    enfocado
+    operandos
+    incognita
+    multiplo10
+    multiplo100
+    complementario
+    resultadoNegativo
+    decimales
+    decimalesMaximo
+    forzarSignos
+    constructor()
+}
+
+class Suma
+class Resta
+class Multiplicacion
+class Division
+class DivisionEntera
+class DivisionDecimales
+class DivisionResto
+
+
+Operacion <- - Suma
+Operacion <- - Resta
+Operacion <- - Multiplicacion
+Operacion <- - DivisionEntera
+DivisionEntera <- - DivisionDecimales
+DivisionEntera <- - DivisionResto
+@enduml
+
+PlantUML version 1.2021.2(Sun Mar 07 11:10:27 UTC 2021)
+(GPL source distribution)
+Java Runtime: Java(TM) SE Runtime Environment
+JVM: Java HotSpot(TM) 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: US
+-->
+  </g>
+</svg>

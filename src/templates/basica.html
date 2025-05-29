@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Plantilla</title>    
+</head>
+<body>
+    <!-- modal drawer -->
+
+    <div id="creditos" > </div>
+
+    <form style="max-width: 50em; border: 1px solid gray;margin: 1em auto;padding:1em">       
+        <h2>Silders con "marquers" parece que el maximo son 10</h2>
+        <div>Ratings: <span id="ratingsLabel" class="caption"></span></div><br>
+        <paper-slider 
+        showtips prefix="$"
+        id="ratings" pin snaps max="23" max-markers="5" step="1" value="5"></paper-slider>
+        
+        <h2>Slider con pasos de 1..20,50,100,500</h2>
+        <xy-slider pin showtips defaultvalue="5" min="1" max="23" > </xy-slider>
+        
+        <h2>MDC drawer</h2>
+        <a class="openCreditos" href="#">Mostrar/ocultar</a>
+        <br>
+        <aside class="mdc-drawer">
+            <div class="mdc-drawer__header">
+                <h3 class="mdc-drawer__title">Mail</h3>
+                <h6 class="mdc-drawer__subtitle">email@material.io</h6>
+            </div>
+            <div class="mdc-drawer__content">
+              <nav class="mdc-list">
+                <a class="mdc-list-item mdc-list-item--activated" href="#" aria-current="page">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">inbox</i>
+                  <span class="mdc-list-item__text">Inbox</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">send</i>
+                  <span class="mdc-list-item__text">Outgoing</span>
+                </a>
+                <a class="mdc-list-item" href="#">
+                  <i class="material-icons mdc-list-item__graphic" aria-hidden="true">drafts</i>
+                  <span class="mdc-list-item__text">Drafts</span>
+                </a>
+              </nav>
+            </div>
+        </aside>
+        
+        <h2>Radio buttons modificados para paracer botones</h2>
+        <p>basado en 
+            https://github.com/Protoss78/paper-button-group<br>
+            
+            https://github.com/NeilujD/paper-buttons-group<br></p>
+            <input type="range" name="range" id="range">
+            <input type="radio" name="radio" id="radio">
+            
+            
+            
+            <paper-radio-group selected="small">
+                <paper-radio-button hidden name="small">Small</paper-radio-button>
+                <paper-radio-button name="medium">Medium</paper-radio-button>
+                <paper-radio-button name="large">Large</paper-radio-button>
+            </paper-radio-group>         
+            
+            <h3>Papper radio button suelto</h3>
+            <paper-radio-button name="large">Large</paper-radio-button>
+            <hr>
+            
+            <div data-name="noperandos" class="ib-radio-group">
+                <span data-val="1" class="ib-radio un-char selected" >2</span>
+                <span data-val="2" class="ib-radio un-char" >3</span>
+                <span data-val="3" class="ib-radio un-char" >4</span>
+            </div>
+            
+            <div data-name="resultado" class="ib-radio-group">
+                <span data-val="1" class="ib-radio selected" >En el resultado</span>
+                <span data-val="2" class="ib-radio" >Al azar</span>
+            </div>
+            
+            <h2> Select </h2>
+            
+            <paper-dropdown-menu label="Dinosaurs">
+                <paper-listbox slot="dropdown-content" selected="1">
+                    <paper-item>allosaurus</paper-item>
+                    <paper-item>brontosaurus</paper-item>
+                    <paper-item>carcharodontosaurus</paper-item>
+                    <paper-item>diplodocus</paper-item>
+                </paper-listbox>
+            </paper-dropdown-menu>
+
+            <h2>paper dropdown menu</h2>
+
+            <paper-dropdown-menu label="Dinosaurs">
+                <paper-listbox slot="dropdown-content" class="dropdown-content">
+                    <paper-item>allosaurus</paper-item>
+                    <paper-item>brontosaurus</paper-item>
+                    <paper-item>carcharodontosaurus</paper-item>
+                    <paper-item>diplodocus</paper-item>
+                </paper-listbox>
+            </paper-dropdown-menu>
+
+            
+
+            <h2>mdc-select</h2>
+
+
+            <div class="mdc-select">
+                <div class="mdc-select__anchor demo-width-class">
+                    <i class="mdc-select__dropdown-icon"></i>
+                    <div class="mdc-select__selected-text"></div>
+                    <span class="mdc-floating-label">Pick a Food Group</span>
+                    <div class="mdc-line-ripple"></div>
+                </div>
+                
+                <div class="mdc-select__menu mdc-menu mdc-menu-surface demo-width-class">
+                    <ul class="mdc-list">
+                    <li class="mdc-list-item mdc-list-item--selected" data-value="" aria-selected="true"></li>
+                    <li class="mdc-list-item" data-value="grains">
+                        Bread, Cereal, Rice, and Pasta
+                    </li>
+                    <li class="mdc-list-item" data-value="vegetables">
+                        Vegetables
+                    </li>
+                    <li class="mdc-list-item" data-value="fruit">
+                        Fruit
+                    </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center" style="padding-top: 30em; width: 100%;"><i>espacio</i></div>
+            
+        </form>
+        
+        
+        <script>
+            // var ratings = document.querySelector('#ratings');
+            // ratings.addEventListener('value-change', function() {
+            //     document.querySelector('#ratingsLabel').textContent = ratings.value;
+            // });
+        </script>
+        </html>

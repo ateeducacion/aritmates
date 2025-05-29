@@ -1,0 +1,262 @@
+
+
+<!--
+  poner .openDrawer en el elemento que hay que picar para que se abra
+-->
+
+<aside id="ayuda" dir="rtl" class="mdc-drawer mdc-drawer--modal">
+  <div dir="ltr" class="mdc-drawer__content">
+    <div class="container d-flex justify-content-between align-items-center">
+      <h2>Ayuda</h2>
+      <i class="material-icons mdc-drawer-close" > close </i>
+    </div>
+    <hr class="mdc-list-divider">
+    <div class="container d-flex">
+      <div class="" style="width: 100%;">
+        <a class='hidefocus' href="#" rel="noopener noreferrer"> </a>
+
+        <paper-expansion-panel id="thisapp"  header="¿Qué es Aritmates?" icon="help-outline"  opened >
+          <paper-item>
+            <paper-item-body >
+              <div style="white-space: normal;">
+                <p>Esta aplicación es un generador online de actividades de cálculo para facilitar una práctica personalizada. Ofrece la posibilidad de seleccionar tanto el tamaño como el tipo de los número así como calcular cualquier elemento de la operación. En el apartado "Ayuda" se pueden encontrar indicaciones sobre cómo resolver, acordes con el currículo, las actividades propuestas.</p>
+                <p>Esta aplicación se debe utilizar después de haber trabajado adecuadamente los algoritmos de cálculo (siguiendo las fases de Bruner: manipulativa, gráfica y simbólica), que figura en el currículo, es decir, se ofrece un material para la práctica personal una vez comprendido el funcionamiento de dichos algoritmos.</p>
+              </div>
+            </paper-item-body>
+          </paper-item>
+        </paper-expansion-panel>
+
+
+				<nav>
+					<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-suma-tab" data-toggle="tab"
+                href="#nav-suma" role="tab" aria-controls="nav-suma" aria-selected="true">
+              <img class="operation tab-icon" src="./img/Ico_Suma.svg" /><br>
+              Suma</a>
+
+            <a class="nav-item nav-link" id="nav-resta-tab" data-toggle="tab"
+                href="#nav-resta" role="tab" aria-controls="nav-resta" aria-selected="false">
+              <img class="operation tab-icon" src="./img/Ico_Resta.svg" /><br>
+              Resta</a>
+
+            <a class="nav-item nav-link" id="nav-multiplicacion-tab" data-toggle="tab"
+                href="#nav-multiplicacion" role="tab" aria-controls="nav-multiplicacion" aria-selected="false">
+              <img class="operation tab-icon" src="./img/Ico_Multi.svg" /><br>
+              Multiplicación</a>
+
+            <a class="nav-item nav-link" id="nav-division-tab" data-toggle="tab"
+                href="#nav-division" role="tab" aria-controls="nav-division" aria-selected="false">
+              <img class="operation tab-icon" src="./img/Ico_Division.svg" /><br>
+              División</a>
+
+					</div>
+        </nav>
+
+				<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+					<div class="tab-pane fade show active" id="nav-suma" role="tabpanel" aria-labelledby="nav-suma-tab">
+            <!-- <h3>Vídeo</h3> -->
+            <!-- Video mediateca -->
+            <paper-expansion-panel  header="Video" >
+              <paper-item>
+                <paper-item-body >
+                  <br>
+                  <p>Algoritmo de de descomposición-composición y compensación</p>
+                  <div class="mediateca">
+                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/innsCmrO4K8?controls=0&disablekb=1&modestbranding=1&rel=0" title="video algoritmo" frameborder="0" allow="encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                    <!-- <video
+                        id="vid1"
+                        class="video-js vjs-default-skin"
+                        controls
+                        autoplay
+                        width="560" height="315"
+                        data-setup='{ "techOrder": ["youtube"], "sources": [{
+                          "type": "video/youtube", "src": "https://www.youtube.com/watch?v=innsCmrO4K8"
+                        }],
+                          "youtube": { "start": 10 }
+                       }'
+                        >
+                    </video>
+                    <hr>
+                    <video
+                    id="vid1"
+                    class="video-js vjs-default-skin"
+                    controls
+                    autoplay
+                    width="640" height="264"
+                    data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=xjS6SftYQaQ"}] }'
+                  >
+                  </video> -->
+
+
+                  </div>
+                </paper-item-body>
+              </paper-item>
+            </paper-expansion-panel>
+            <!-- <paper-expansion-panel  header="Compensación" >
+              <paper-item>
+                <paper-item-body >
+                  <div class="mediateca">
+                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/innsCmrO4K8"  frameborder="0" allow="encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                </paper-item-body>
+              </paper-item>
+            </paper-expansion-panel> -->
+
+            <h3>Infografías</h3>
+            <paper-expansion-panel  header="Descomposición y compensación" >
+              <paper-item>
+                <paper-item-body two-line>        
+                  <img class="zoom" src="img/algoritmos/suma.svg" >
+                </paper-item-body>
+              </paper-item>
+            </paper-expansion-panel>
+            <!-- <paper-expansion-panel  header="Compensación" >
+              <paper-item>
+                <paper-item-body two-line>
+                  
+                  <img class="zoom" src="img/murcielago.png" >
+                </paper-item-body>
+              </paper-item>
+            </paper-expansion-panel> -->
+          </div>
+
+					<div class="tab-pane fade" id="nav-resta" role="tabpanel" aria-labelledby="nav-resta-tab">
+            <h3>Vídeo</h3>
+
+            <paper-expansion-panel  header="Acción de quitar" >
+              <paper-item>
+                <paper-item-body>
+                  <div class="mediateca">
+
+                    <h3>Video 1</h3>
+                    <iframe width="560" height="315"
+                      src="https://www.youtube-nocookie.com/embed/ucTAvnKeLJg?controls=0&disablekb=1&modestbranding=1&rel=0&start=22&end=329"
+                      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+
+                    <h3>Video 2</h3>
+                    <iframe width="560" height="315"
+                      src="https://www.youtube-nocookie.com/embed/ucTAvnKeLJg?controls=0&disablekb=1&modestbranding=1&rel=0&start=329"
+                      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+
+                  </div>
+                </paper-item-body>
+              </paper-item>
+            </paper-expansion-panel>
+            <paper-expansion-panel  header="Acción de completar" >
+              <paper-item>
+                <paper-item-body two-line>
+                    <!-- <div secondary>Another secondary line</div>  -->
+
+                  <div class="mediateca">
+
+                    <h3>Video 1</h3>
+                    <iframe width="560" height="315"
+                      src="https://www.youtube-nocookie.com/embed/ucTAvnKeLJg?controls=0&disablekb=1&modestbranding=1&rel=0&start=207&end=528"
+                      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+
+                    <h3>Video 2</h3>
+                    <iframe width="560" height="315"
+                      src="https://www.youtube-nocookie.com/embed/ucTAvnKeLJg?controls=0&disablekb=1&modestbranding=1&rel=0&start=528"
+                      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+
+                  </div>
+                </paper-item-body>
+              </paper-item>
+            </paper-expansion-panel>
+
+            <h3>Infografías</h3>
+            <paper-expansion-panel  header="Acción de quitar" >
+              <!-- Acción de quitar (sin cambio de orden) -->
+              <paper-item>
+                <paper-item-body two-line>
+                  <img class="zoom" src="img/algoritmos/resta.svg" >
+                </paper-item-body>
+              </paper-item>
+            </paper-expansion-panel>
+          </div>
+
+					<div class="tab-pane fade" id="nav-multiplicacion" role="tabpanel" aria-labelledby="nav-multiplicacion-tab">
+            <!-- multiplicación -->
+            <h3>Vídeo</h3>
+            <paper-expansion-panel  header="Descomposición - composición" >
+              <paper-item>
+                <paper-item-body >
+                  <div class="mediateca">
+                    <iframe width="560" height="315"
+                      src="https://www.youtube-nocookie.com/embed/NY23gDhTq7c?controls=0&disablekb=1&modestbranding=1&rel=0&start=12"
+                      frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+                  </div>
+                </paper-item-body>
+              </paper-item>
+            </paper-expansion-panel>
+
+            <h3>Infografías</h3>
+            <paper-expansion-panel  header="Descomposición - composición" >
+              <paper-item>
+                <paper-item-body two-line>
+                  <img class="zoom" src="img/algoritmos/multiplicacion.svg" >
+                </paper-item-body>
+              </paper-item>
+            </paper-expansion-panel>
+
+            <!--
+              Ocultado, ver correo de Yanira 24 may
+              <paper-expansion-panel  header="Estrategias específicas" >
+              <paper-item>
+                <paper-item-body >
+                  <div class="mediateca">
+                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/NY23gDhTq7c?controls=0&disablekb=1&modestbranding=1&rel=0&start=50"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                </paper-item-body>
+              </paper-item>
+            </paper-expansion-panel>
+          -->
+
+
+          </div>
+
+          <div class="tab-pane fade" id="nav-division" role="tabpanel" aria-labelledby="nav-division-tab">
+            <!-- división -->
+            <h3>Vídeo</h3>
+            <paper-expansion-panel  header="Repartos sucesivos" >
+              <paper-item>
+                <paper-item-body >
+                  <div class="mediateca">
+                    <iframe width="560" height="315"
+                      src="https://www.youtube-nocookie.com/embed/NY23gDhTq7c?controls=0&disablekb=1&modestbranding=1&rel=0&start=179"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+                  </div>
+                </paper-item-body>
+              </paper-item>
+            </paper-expansion-panel>
+
+            <h3>Infografías</h3>
+            <paper-expansion-panel  header="División. Repartos sucesivos" >
+              <!-- División. Repartos sucesivos -->
+              <paper-item>
+                <paper-item-body two-line>
+                  <img class="zoom" src="img/algoritmos/division.svg" >
+                </paper-item-body>
+              </paper-item>
+            </paper-expansion-panel>
+
+            <!-- <paper-expansion-panel  header="Estrategias específicas" >
+              <paper-item>
+                <paper-item-body >
+                  <div class="mediateca">
+                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/NY23gDhTq7c?controls=0&disablekb=1&modestbranding=1&rel=0&start=190"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                </paper-item-body>
+              </paper-item>
+            </paper-expansion-panel> -->
+					</div>
+    </div>
+  </div>
+</aside>
+<div class="mdc-drawer-scrim"></div>

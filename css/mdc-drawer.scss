@@ -1,0 +1,37 @@
+.mdc-drawer-close {
+    cursor: pointer;
+}
+
+.mdc-drawer {
+    top:0;
+}
+
+.mdc-drawer {    
+    width: 55%;
+}
+
+.mdc-drawer .mdc-drawer__content h2 {
+    font: 500 20px/26px Roboto;
+    margin: 16.6px 0;
+}
+
+// el drawer hace focus al primer link que aparece
+// si no hay links no funciona, crear un link vacion con esto
+.hidefocus:focus {
+    border: transparent;
+    user-select: none;
+    cursor: none;
+    text-decoration: none;
+    outline: none;
+    border: none;
+}
+.hidefocus:focus-visible{
+    outline: none;
+    border: none;
+}
+
+@media (max-width: 768px) {
+    .mdc-drawer {    
+        width: 95%;
+    }
+}

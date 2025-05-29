@@ -1,0 +1,40 @@
+<div class="mdc-dialog"
+     role="alertdialog"
+     aria-modal="true"
+     aria-labelledby="modal-dialog-title"
+     aria-describedby="modal-dialog-content">
+  <div class="mdc-dialog__container">
+    <div class="mdc-dialog__surface">
+        <div class="d-flex justify-content-between align-items-center">
+            
+            <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+            <h2 class="mdc-dialog__title" id="modal-dialog-title"><!--
+            -->Dialog Title<!--
+        --></h2>
+        <i class="material-icons modal-close" style="margin-right: 24px;top: 2px"> close </i>
+            
+        </div>
+   
+      <div class="mdc-dialog__content" id="modal-dialog-content">
+        Dialog body text goes here.
+      </div>      
+      <footer class="mdc-dialog__actions " style="padding: 20px 24px;">
+        <div >
+            <a id="button_ok" class="button mini" data-mdc-dialog-action="ok"> 
+                <span class="mdc-button__label">Ok</span>
+            </a>
+            <a id="button_cancel" class="button mini" data-mdc-dialog-action="cancel"> 
+                <span class="mdc-button__label">Cancel</span>
+            </a>
+        </div>        
+        <!-- <button type="button" class="button mdc-button mdc-dialog__button" data-mdc-dialog-action="no">
+          <span class="mdc-button__label">No</span>
+        </button>
+        <button type="button" class="button  mdc-button mdc-dialog__button" data-mdc-dialog-action="yes">
+          <span class="mdc-button__label">Yes</span>
+        </button> -->
+      </footer>
+    </div>
+  </div>
+  <div class="mdc-dialog__scrim"></div>
+</div>

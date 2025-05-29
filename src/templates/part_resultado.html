@@ -1,0 +1,167 @@
+<div id="interior" class="part_resultado">
+    <div class="headbar row p-2">
+        <div class="col-12 barbox text-center">
+            <div class="title" >Tus Resultados</div>
+        </div>
+
+    </div>
+    <div class="operationZone row">
+        <div class="d-flex col-12 justify-content-around ">
+       
+            <div class="flex-grow-1 centrar-vertical">
+                <table id="tablaPuntuacion">
+                    <tr id="rowPuntuacion">
+                        <td class="label"> Puntuación </td>
+                        <td>
+                            <div class="circulo">
+                            <i class="material-icons"> star </i>
+                            </div>
+                        </td>
+                        <td class="puntos">
+                                <span id="puntuacion"> #</span>
+                        <td>
+                    </tr>
+                    <tr id="rowInsignia">
+                        <td class="label"> Tu Insignia </td>
+                        <td>
+                            <div class="circulo">
+                            <i class="fas fa-medal"></i>
+                            </div>
+                        </td>
+                        <td class="puntos">
+                            <div class="circulo mini bronze">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="circulo mini silver">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="circulo mini gold">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="circulo mini platinum">
+                                <i class="fas fa-medal"></i>
+                            </div> 
+                            <div class="circulo mini perfect">
+                                <i class="fas fa-medal"></i>
+                            </div> 
+                        <td>
+                    </tr>
+                    <tr id="rowVelocidad">
+                        <td class="label">
+                            Insignia Extra
+                        </td>
+                        <td>
+                            <div class="circulo">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                        </td>
+                        <td class="puntos">
+                            <span id="insigniaVelocidad">
+                            </span>
+                            <div class="circulo mini bronze">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="circulo mini silver">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="circulo mini gold">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="circulo mini platinum">
+                                <i class="fas fa-rocket"></i>
+                            </div>                        
+                        <td>
+                    </tr>
+                </table>
+            </div>
+            <div class="separadorVertical mx-3"></div>
+            <div class="flex-grow-1 text-center centrar-vertical">
+                <table id="tablaEstadisticas">
+                    <tr>
+                        <td> Ejercicios completados </td>
+                        <td> <i class="material-icons"> assignment </i> </td>
+                        <td> <span class="score"> 
+                            <span id="ejerciciosCompletados">10</span> / 
+                            <span id="ejerciciosTotal">10</span></span> <td>
+                    </tr>
+                    <tr>
+                        <td> Aciertos </td>
+                        <td> <i class="material-icons"> thumb_up </i> </td>
+                        <td> <span class="score"> <span id="aciertos">7</span> </span> <td>
+                    </tr>
+                    <tr>
+                        <td> Fallos </td>
+                        <td> <i class="material-icons"> thumb_down </i> </td>
+                        <td> <span class="score"> <span id="fallos">3</span> </span> <td>
+                    </tr>
+                    <tr>
+                        <td> Tiempo consumido </td>
+                        <td> <i class="material-icons"> alarm </i> </td>
+                        <td> 
+                            <span class="score">
+                                <span id="tiempoConsumido">--:--</span>
+                                <span id="tiempoSeparador"> | </span>
+                                <span id="tiempoTotal">--:--</span>
+                            </span> 
+                        <td>
+                    </tr>
+                    <tr>
+                        <td> Media por ejercicio </td>
+                        <td> <i class="material-icons"> alarm </i> </td>
+                        <td> <span class="score"> <span id="tiempoMedio">00:15</span> </span> <td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- fin operationzone -->
+
+    <div id="correciones" class="row justify-content-center ">
+        <div class="col-md-8 col-sm-12 d-flex flex-column sharpbox" >
+            <div class="title">
+                <i class="material-icons md-icon-fix"> create </i>
+                Correcciones
+            </div>
+            <table>
+                <tr>
+                    <th width="45%" > Tus Respuestas </th>
+                    <th width="45%" > solución </th>
+                </tr>                
+            </table>
+        </div>
+    </div>
+
+    <div id="comoTeHaIdo" class="row justify-content-center ">
+        <div class="col-md-11 caja clear">
+       
+            <div class="d-flex flex-row">
+                <div class="flex-shrink-1 groupTitle-icon"><img src="img/pencil.svg"></div>
+                <div class="container-fluid">
+                    <p class="groupTitle title">¿Cómo te ha ido?</p>
+                    <p class="description">Puedes reforzar tus conocimientos con el material de ayuda o intentarlo otra vez. ¡SIGUE PRACTICANDO!</p>
+                    <div class="row">
+                        <div id="btnMaterialAyuda" class="col-md openAyuda">
+                            <a class="button button-long clear" title="Material de Ayuda">
+                            <i class="material-icons md-icon-fix mr-1"> help_outline </i>
+                            <span class="txt">Material de Ayuda</span>
+                        </a> </div>
+                        <div class="col-md" title="Volver a empezar">
+                            <a class="button button-long clear" id="btnVolverEmpezar">
+                            <i class="material-icons md-icon-fix mr-1"> refresh </i>
+                       
+                            <span class="txt">Volver a empezar</span>
+                            </a>
+                        </div>
+                        <div class="col-md" title="Descargar Resultados">
+                            <a class="button button-long clear" id="btnDownloadScore">
+                            <i class="material-icons md-icon-fix mr-1"> get_app </i>                       
+                            <span class="txt">Descargar Resultados</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+        </div>
+    </div>
+</div>

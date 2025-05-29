@@ -1,0 +1,96 @@
+<!-- 
+  poner .openDrawer en el elemente que hay que picar para que se abra
+-->
+
+<div id="creditos">
+  <input type="checkbox" class="check" id="openCreditosCheck">
+  <label class="menu-btn" for="openCreditosCheck">
+    <span class="menu-btn__text">
+      <a target="_new" href="https://www.gobiernodecanarias.org/principal/avisolegal.html">Aviso Legal</a> | 
+      <a target="_new" href="https://www.gobiernodecanarias.org/eucd/politica_privacidad/">Politica de privacidad</a> | 
+      Créditos - © Gobierno de Canarias 2020-<span class="currentYear"></span>
+    </span>
+  </label>
+
+  <label class="close-menu" for="openCreditos"></label>
+
+  <label class="close-menu" for="openCreditosCheck"></label>
+  <aside class="drawer-menu">
+
+    <div dir="ltr" class="mdc-drawer__content">
+      <div class="container d-flex justify-content-between align-items-center">
+        <h2>Créditos</h2>
+        <label class="pull-right" for="openCreditosCheck">
+          <i style="cursor: pointer;" class="material-icons mdc-drawer-close" > close </i>
+        </label>
+      </div>
+      <hr class="mdc-list-divider">
+      <div class="bloqueCreditos">
+        <a class='hidefocus' href="#" rel="noopener noreferrer"></a>
+        <div>
+          <div>
+            <img class="logoCreditos nivel1" alt="Gobierno de canarias" id="logoConsejeria"
+              src="img/logo.svg"
+            >
+
+            <img class="logoCreditos nivel1" alt="Unión europea" id="logoUE"
+            src="img/UNION-EUROPEA.png" 
+              >
+          </div>
+          <p>
+            Los contenidos y programas que constituyen esta obra son propiedad del Gobierno de Canarias que ha promovido
+            su creación y desarrollo con el propósito de que la comunidad educativa haga libre uso de los mismos.
+          </p>
+
+          <div>
+
+            <img id="logoUcticee" class="logoCreditos nivel2"
+            src="img/creditos/UCTICEE.png"
+              alt="ucticee"
+              >
+          </div>
+
+          <div class="content">
+            <div class="logosSeparados row">
+              <div class="col">
+                <img class="logoCreditos nivel3" alt="ate"
+                  src="img/creditos/ATE.png"
+                >
+                <img class="logoCreditos nivel3" alt="canarias-avanza"
+                  src="img/creditos/canarias-avanza.png" 
+                >
+              </div>
+
+              <img class="col logoCreditos nivel3" alt="Fondo Europeo De Desarrollo Regional"
+              src="img/fondo-europeo.svg"
+                >
+            </div>
+          </div>
+
+          <div>
+            <p>
+              <strong>Empresas que han intervenido en el desarrollo de esta obra:</strong>
+            </p>
+          </div>
+
+          <p>
+            <img class="logoCreditos nivel4" alt="netex"
+              src="img/creditos/NETEX.png" 
+            >
+            <img id="logoAltia" class="logoCreditos nivel4" alt="altia"
+              src="img/creditos/ALTIA.png" 
+            >
+            <br>
+            <a target="_new" href="https://www.gobiernodecanarias.org/principal/avisolegal.html">Aviso Legal</a> 
+            <br>
+            <a target="_new" href="https://www.gobiernodecanarias.org/eucd/politica_privacidad/">Politica de privacidad</a>
+            <br>
+            <br>© Gobierno de Canarias 2020-<span class="currentYear"></span>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </aside>
+
+</div>

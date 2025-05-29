@@ -1,0 +1,52 @@
+
+
+$colorPrincipal : #0F4C81;
+$colorSecundary: #8AD8C3;
+$colorTertiary: #93B7BC;
+
+$resaltadoClaro: #E7EFFA;
+$interiorBoxButton: #fff;
+$bordeBox: #4C77B1;
+$bordeBoxSelected: #D0E0F6;
+$bordeBoxIconDisabled: #dfdfdf;
+$textColor: #000000;
+
+$bronze: #cd7f32;
+$silver: #c0c0c0;
+$gold: gold;
+$platinum: #00308F;
+
+// Typos var
+$medium: 500;
+$regular: 400;
+
+body {
+    // lo usa xy-slider
+    --themeColor: #0F4C81; // $colorPrincial
+    
+    --colorPrincipal: #0F4C81;
+    --mdc-theme-primary: #0F4C81;
+    
+    --colorSecundary: #8AD8C3;
+    --colorTertiary: #93B7BC;
+
+    --colorSecundaryHover: #59A693;
+
+    --resaltadoClaro: #E7EFFA;
+    --interiorBoxButton: #fff;
+    --bordeBox: #4C77B1;
+    --bordeBoxSelected: #D0E0F6;
+    --bordeBoxIconDisabled: #dfdfdf;
+    --textColor: #000000;
+
+    --bronze: #cd7f32;
+    --silver: #c0c0c0;    
+    --gold: #daa520; 
+    --platinum: #e5e4e2;
+
+    // Typos
+    --medium: 500;
+    --regular: 400;
+
+    
+}

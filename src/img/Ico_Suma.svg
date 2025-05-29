@@ -1,0 +1,18 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="80"
+    height="80"
+    viewBox="0 0 80 80">
+    <defs>
+        <style>
+            .a {
+                fill: #0f4c81;
+            }
+            .b {
+                fill: #fff;
+            }
+        </style>
+    </defs><circle class="a" cx="40" cy="40" r="40"/><path
+        class="b"
+        d="M17.932-70.6H5.414v-9.018H17.932v-12.35h9.052v12.35H39.5V-70.6H26.984v12.148H17.932Z"
+        transform="translate(17.586 114.964)"/></svg>

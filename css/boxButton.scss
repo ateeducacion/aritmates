@@ -1,0 +1,79 @@
+@import "color.scss";
+
+
+
+.boxButton {
+    display: inline-block;
+    // TODO: poner estas medidas en version tablet/movil
+    width: 8rem;
+    height: 10rem;
+    
+    //en >900
+    // width: 150px;
+    // height: 150px; ~ 10rem = 156 ;
+    width: 10rem;
+    height: 10rem;
+    margin: 0.6rem; // 10px ~ = 9.6
+
+    background: $interiorBoxButton 0% 0% no-repeat padding-box;
+    box-shadow: 1px 3px 0 $bordeBox;
+    border: 2px solid $bordeBox;
+    border-radius: 4px;
+    opacity: 1;
+    color: $textColor;
+    position: relative;
+
+    cursor: pointer;
+
+
+    .check {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        display: none;
+    }
+    .icon, .icon-disabled{
+        display: block;
+        margin: 18px auto 14px;
+        width: 80px;
+        height: 80px;
+        border-radius: 40px;
+    }
+    .icon-disabled{
+        display: none;
+        background-color: $bordeBoxIconDisabled;        
+        border: 1px solid $bordeBoxIconDisabled;
+    }
+    .icon{
+        background-color: $colorPrincipal;        
+        border: 1px solid $colorPrincipal;
+    }
+    span {
+        text-transform: uppercase;
+        font: $medium 14px/32px Roboto;
+    }
+}
+
+.boxButton:hover {
+    background: #F7FAFF 0% 0% no-repeat padding-box;
+}
+
+.boxButton.selected {
+    background: $bordeBoxSelected 0% 0% no-repeat padding-box;
+    .check {
+        display: block;
+        color: $colorPrincipal;
+    }
+    span {
+        text-transform: uppercase;
+        font: $medium 14px/32px Roboto;   
+    }
+}
+
+.boxButton[disabled] {
+    // background: var(--bordeBoxIconDisabled) 0% 0% no-repeat padding-box;
+    border: 1px solid white;
+    box-shadow: none;
+    .check { display: none;  }
+    span { color: var(--colorTertiary); }
+}

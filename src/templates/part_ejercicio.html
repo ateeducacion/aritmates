@@ -1,0 +1,98 @@
+  <div id="interior">
+    <div class="close-ejercicio"><i class="material-icons mdc-drawer-close"> close </i></div>
+    <div class="headbar row p-2">
+      <div class="col-md-2"></div>
+      <div id="boxNumEjerecicios" class="barbox col-md-4 text-right">
+        <i class="material-icons">assignment</i>
+        <span class="numEjercicios">1 / 10</span>
+      </div>
+      <div id="boxTime" class="barbox col-md-4 text-left ">
+        <i class="material-icons">alarm</i>
+        <span id="countdown" class="mx-1">-00:59 </span>
+        <span> | </span>
+        <span id="total" class="mx-1"> 01:00</span>
+      </div>
+      <div id="ayudaEjercicio" class="openAyuda ayudaEspecifica button clear col-2 text-center">
+        <i class="material-icons md-icon-fix">help_outline</i>
+        <span class="txt">Ayuda</span>
+      </div>
+    </div>
+    <div class="pantalla">
+      <div class="operationZone row">
+        <div class="col-12" id="mensaje">
+          <p>Realiza la siguiente operación:</p>
+        </div>
+        <div class="d-flex justify-content-center col-12">
+          <div class="operacion">
+            # + # =
+          </div>
+          <div class="resultado">
+            <input type="number" size="3" ></div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="">
+          <div id="btnEnviarRespuesta" class="button nodisabled mb-3">
+            <i class="material-icons md-icon-fix">send</i>
+            Enviar Respuesta</div>
+        </div>
+        <div id="enviarTerminar" class="d-none">
+          <div id="btnEnviarTerminar" class="button nodisabled ml-3 mb-3">
+            <i class="material-icons md-icon-fix">send</i>
+            Enviar y terminar</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modalEjercicio reintentar container-fluid align-content-between">
+      <div class="cara col-md-3">
+        <img src="img/IMG_Error_1.png" />
+      </div>
+      <div class="mensaje container-fluid col-md-9">
+        <div class="row">
+          <div class="title col-12">Lo siento, Respuesta Incorrecta</div>
+          <p class="description col-12">
+            Prueba de nuevo con otro intento.
+          </p>
+        </div>
+        <div>
+          <div class="py-3" style="width: max-content">
+            <div style="width: max-content" class="button mini">
+              Entendido
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modalEjercicio incorrecta container-fluid align-content-between">
+      <div class="cara col-md-3">
+        <img src="img/IMG_Error_1.png" />
+      </div>
+      <div class="mensaje container-fluid col-md-9">
+        <div class="row">
+          <div class="title col-12">Lo siento, Respuesta Incorrecta</div>
+          <p class="description col-12">
+            Puedes consultar la ayuda y continuar con la siguiente operación.
+          </p>
+        </div>
+        <div>
+          <div class="py-3">
+            <div class="button mini">Entendido</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modalEjercicio correcta container-fluid autoclose align-content-between">
+      <div class="cara col-md-3">
+        <img src="img/IMG_Acierto_1.png" />
+      </div>
+      <div class="mensaje container-fluid col-md-9">
+        <div class="row">
+          <div class="title">¡Buen trabajo! Respuesta Correcta</div>
+        </div>
+      </div>
+    </div>
+
+  </div>

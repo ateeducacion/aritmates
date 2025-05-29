@@ -1,0 +1,138 @@
+
+#ejercicios {
+    min-height: 534px;
+    .barbox {
+
+        .material-icons {
+            color: var(--colorPrincipal);
+            line-height: 38px;
+            font-size: 38px;
+            margin-right: 10px;
+        }
+    }
+
+
+    #mensaje,
+    #mensaje h2 {
+        font: 500 20px/30px Roboto;
+        letter-spacing: 0;
+        text-align: center;
+    }
+
+    .operacion,
+    .resultado {
+        // text-align: right;
+        font: var(--medium, 500) 56px/90px Roboto;
+        letter-spacing: 0;
+        color: #000000DD;
+        text-transform: uppercase;
+        opacity: 1;
+    }
+
+    .resultado {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        // border: 1px solid #5F5F5F;
+        border-radius: 4px;
+        opacity: 1;
+
+        input {
+            border: 1px solid #5F5F5F;
+            border-radius: 4px;
+            text-align: center;
+            margin-left: 0.5em;
+        }
+    }
+}
+
+#ejercicios .pantalla {
+    display: block;
+}
+
+.modalEjercicio{
+    display: flex;
+    width: 70%;
+    margin: 90px auto;
+    .mensaje {
+        text-align: left;
+    }
+    .cara{
+        --cara-lado: 140px;
+        // width: var(--cara-lado);
+        height: var(--cara-lado);
+        text-align: left;
+        padding: 0;
+        margin-right: 40px;
+        // img {
+
+        //     width: 100%;
+        // }
+
+        
+    }
+    .row {
+        margin-left: 15px;
+    }
+}
+
+.modalEjercicio {
+    display: none;
+}
+
+// .modalEjercicio.incorrecta{
+//     display: flex;
+// }
+
+#btnEnviarRespuesta {
+    margin-bottom: 50px;
+}
+
+@media (max-width: 768px) {
+
+    #ejercicios {
+        padding: 1.5rem;
+        .close-ejercicio {
+            display: none;
+        }
+    }
+    
+    #ejercicios #interior .headbar {
+        height: 5.6rem;
+        .barbox {
+            justify-content: left;
+            height: 2.5rem;            
+            font-size: 1.2rem !important;
+            .material-icons {
+                font-size: 1.4rem !important;
+            }
+        }
+        #ayudaEjercicio {
+            position: absolute;
+            top: 0;
+            right: 00;
+            width: 4rem;
+            padding: 0;
+            max-width: none;
+            margin: 1rem;
+            .txt {
+                display:none;
+            }
+        }
+    }
+
+    .modalEjercicio {
+        width: auto;
+        margin: 4rem auto;
+        .cara {
+            text-align: center;
+            margin-right: 0;
+        }
+        .cara img{
+            width: 100%;
+        }
+    }
+
+    #newContent.container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

@@ -1,0 +1,37 @@
+<div id="faltanOpciones" class="mdc-dialog"
+     role="alertdialog"
+     aria-modal="true"
+     aria-labelledby="modal-dialog-title"
+     aria-describedby="modal-dialog-content">
+  <div class="mdc-dialog__container">
+    <div class="mdc-dialog__surface">
+        <div class="d-flex justify-content-between align-items-center">
+            <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+            <h2 class="mdc-dialog__title"><!--
+            -->Faltan datos<!--
+        --></h2>
+        <i class="material-icons modal-close" style="margin-right: 24px;top: 2px"> close </i>
+            
+        </div>
+   
+      <div class="mdc-dialog__content" >
+        <p>No has seleccionado ningún tipo de operación o tipo de numero.</p>
+        <p>
+          Si continuas las operaciones se tomaran los valores predeterminados para cada uno,          
+           para tipo de operación, sumas y para tipo de numero, números enteros
+        </p>
+      </div>      
+      <footer class="mdc-dialog__actions " style="padding: 20px 24px;">
+        <div >
+            <a class="button mini button_ok" data-mdc-dialog-action="ok"> 
+                <span class="mdc-button__label">Continuar</span>
+            </a>
+            <a class="button mini button_cancel" data-mdc-dialog-action="cancel"> 
+                <span class="mdc-button__label">Atras</span>
+            </a>
+        </div>        
+      </footer>
+    </div>
+  </div>
+  <div class="mdc-dialog__scrim"></div>
+</div>
