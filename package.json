@@ -69,11 +69,18 @@
     "webpack-dev-server": "^5.2.0"
   },
   "scripts": {
-    "dev": "webpack serve --open --mode development",
-    "build": "rm -rf dist/* && webpack --mode production",
-    "start": "webpack serve --mode production",
+    "dev": "webpack-dev-server --open --hot --mode development",
+    "start": "webpack-dev-server --progress --hide-modules --mode production",
+    "build": "rm -Rf `pwd`/dist/* ; webpack --progress --mode production",
     "lint": "eslint './src/**/*.js'",
-    "test": "mocha"
+    "test": "webpack --config ./webpack-test.config.js",
+    "testwatch": "webpack -w --config webpack-test.config.js",
+    "testbundle": "webpack --entry ./all-tests.js --output ./dist/testBundle.js",
+    "test1": "webpack --entry ./testConcreto.js --output ./dist/testBundle.js",
+    "mochaweb": "cp dist/testBundle.js webtest/testBundle.js; http-server ./webtest/",
+    "mocha": "mocha dist/testBundle.js",
+    "seleTest": "webpack --config webpack-seletest.config.js && echo '\n\nEjecuta npx mocha ./testSeleniumBundle.js\n\n' ",
+    "docs": "jsdoc -c conf.js"
   },
   "author": "Área de Tecnología Educativa",
   "license": "UNLICENSED",
