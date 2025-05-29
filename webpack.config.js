@@ -54,9 +54,9 @@ module.exports = (env, argv) => {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].[contenthash].bundle.js',
       clean: true, // Webpack 5's built-in cleaning feature
-      publicPath: '/'
+      publicPath: isDevelopment ? '/' : './'
     },
-    devtool: 'cheap-source-map',
+    devtool: isDevelopment ? 'eval-source-map' : 'source-map',
     devServer: {
       static: {
         directory: path.join(__dirname, 'dist'),
