@@ -122,7 +122,6 @@ test: check-docker check-env
 	@echo "Stopping test environment..."
 	@docker compose --profile e2e down > /dev/null 2>&1
 
-
 # Run just unit tests with PHPUnit
 test-unit: check-docker check-env
 	@echo "Starting unit test environment..."
@@ -285,7 +284,6 @@ export-elp-epub3:
 export-elp-ims:
 	@$(MAKE) export-elp FORMAT=ims INPUT="$(INPUT)" OUTPUT="$(OUTPUT)" DEBUG="$(DEBUG)" BASE_URL="$(BASE_URL)"
 
-
 # Install nativephp/php-bin package temporarily without modifying composer.json
 install-php-bin:
 	@echo "Installing nativephp/php-bin temporarily..."
@@ -379,7 +377,7 @@ help:
 	@echo ""
 	@echo "Data:"
 	@echo ""
-	@echo "  create-user           - Ask for data and create user in Symonfy"
+	@echo "  create-user           - Ask for data and create user in Symfony"
 	@echo "  make-migration        - Generate a new Symfony migration (make:migration)"
 	@echo "  migrate               - Run pending Symfony migrations (doctrine:migrations:migrate)"
 	@echo ""
@@ -408,3 +406,13 @@ help:
 
 # Set help as the default goal if no target is specified
 .DEFAULT_GOAL := help
+
+# Comandos para facilitar el uso de package.json
+dev:
+	yarn dev
+
+build:
+	yarn build
+
+test:
+	yarn test
