@@ -73,7 +73,9 @@
     "build": "rm -rf dist/* && webpack --mode production",
     "start": "webpack serve --mode production",
     "lint": "eslint './src/**/*.js'",
-    "test": "mocha"
+    "test": "mocha dist/testBundle.js",
+    "testwatch": "webpack --config webpack-test.config.js --watch",
+    "testbuild": "webpack --config webpack-test.config.js"
   },
   "author": "Área de Tecnología Educativa",
   "license": "UNLICENSED",

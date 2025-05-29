@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
-const WebpackShellPlugin = require('webpack-shell-plugin');
+// WebpackShellPlugin no se está utilizando, así que lo comentamos
+// const WebpackShellPlugin = require('webpack-shell-plugin');
 
 const config = {
   mode: 'development',
