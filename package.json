@@ -66,7 +66,8 @@
     "webpack": "^5.97.1",
     "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^6.0.0",
-    "webpack-dev-server": "^5.2.0"
+    "webpack-dev-server": "^5.2.0",
+    "webpack-node-externals": "^3.0.0"
   },
   "scripts": {
     "dev": "webpack serve --open --mode development",
