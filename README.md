@@ -14,26 +14,3 @@ Este proyecto está licenciado bajo la Licencia GNU Affero General Public Licens
 
 Puedes encontrar el repositorio en [GitHub](https://github.com/ateeducacion/aritmates/).
 
-## Empezando
-
-A continuación se describe el proceso de instalación, así como los requisitos previos necesarios para su correcto funcionamiento
-
-### Requisitos previos
-
-* Servidor web, p. ej. Nginx, Apache...
-* Instalación local de git
-* PHP >= 7.1.3 con las siguientes extensiones: 
-   - BCMath PHP Extension
-   - Ctype PHP Extension
-   - JSON PHP Extension
-   - Mbstring PHP Extension
-   - OpenSSL PHP Extension
-   - PDO PHP Extension
-   - Tokenizer PHP Extension
-   - XML PHP Extension   
-   - DOM extension
-   - GD extension
-
-## Instalación
-
-### 1.  Clonar el proyecto
