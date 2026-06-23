@@ -30,6 +30,7 @@ jobs:
       run: make build
 
     - name: Deploy to GitHub Pages
+      if: github.event_name == 'push'
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         folder: dist
