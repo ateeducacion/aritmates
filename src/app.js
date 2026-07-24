@@ -26,9 +26,10 @@ import $ from 'jquery';
 import './components/mwc-switch.js';
 // Slider vendored (antes xy-ui)
 import './components/xy-slider.js';
-import '@polymer/paper-dropdown-menu/paper-dropdown-menu.js';
+// Dropdown nativo (antes @polymer/paper-dropdown-menu)
+import './components/paper-dropdown-menu.js';
+// paper-item / listbox: solo markup contenedor; listbox ya no es CE Polymer
 import '@polymer/paper-item/paper-item.js';
-import '@polymer/paper-listbox/paper-listbox.js';
 // Checkbox nativo compatible (sustituye @polymer/paper-checkbox)
 import './components/paper-checkbox.js';
 // eslint-disable-next-line no-unused-vars

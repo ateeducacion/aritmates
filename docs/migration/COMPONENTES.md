@@ -8,7 +8,8 @@ Prioridad: **equivalencia** de apariencia, valores, eventos, foco y teclado.
 |------------|-----|--------|
 | `paper-checkbox` | Resto división, paréntesis | **Sustituido** por CE nativo (`src/components/paper-checkbox.js`) |
 | `paper-expansion-panel` | Paneles config + ayuda | **Sustituido** por CE nativo (`src/widgets/paper-expansion-panel.js`) |
-| `paper-dropdown-menu` + listbox/item | Resultado igual a… | Mantener |
+| `paper-dropdown-menu` | Resultado igual a… | **Sustituido** por CE nativo (`src/components/paper-dropdown-menu.js`) |
+| `paper-item` (+ body) | Layout en paneles | Mantener (Polymer) |
 | `mwc-switch` | Enfocado, crono, límite, negativos | **Sustituido** por CE nativo (`src/components/mwc-switch.js`) |
 | `xy-slider` | Nivel, crono, cantidad ops | **Vendored** en `src/components/xy-slider.js` (+ xy-tips) |
 | MDC Dialog / TextField / Drawer | Código, ayuda | Mantener |
@@ -48,9 +49,16 @@ Prioridad: **equivalencia** de apariencia, valores, eventos, foco y teclado.
 - Misma API: `.value`, `.disabled`, `.slider`, `.sliderCon` (tips/show)
 - Dependencia npm `xy-ui` eliminada (evita traer todo el kit de componentes)
 
+## paper-dropdown-menu (completado)
+
+- CE nativo con `<select>` interno; lee opciones de `<paper-item>` en light DOM
+- API: `.value`, `.disabled`, `label`, eventos `value-changed` y `change`
+- Eliminados: `@polymer/paper-dropdown-menu`, `@polymer/paper-listbox`
+- `paper-item` se mantiene como markup de opciones y layout de paneles
+
 ## Siguiente candidato sugerido
 
-1. `paper-dropdown-menu` + listbox/item.
+1. `paper-item` / layout de paneles → HTML nativo.
 2. MDC Dialog / TextField / Drawer.
 
 ## Limpieza post-simplificación (v1.1.0)
