@@ -418,6 +418,8 @@ async function main() {
   await buildJs();
   await buildHtml();
   await copyVendor(join(dist, 'vendor'));
+  // GitHub Pages: evitar que Jekyll ignore rutas con _
+  await writeFile(join(dist, '.nojekyll'), '', 'utf8');
   const ok = await checkAssets();
   console.log(`\nBuild ${ok ? 'OK' : 'CON AVISOS'} en ${Date.now() - t0}ms → dist/`);
   if (!ok) process.exit(1);
