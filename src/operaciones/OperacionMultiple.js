@@ -1321,7 +1321,7 @@ class OperacionMultiple extends Operacion {
     //   return;
     // }
 
-    operacion = operacion.replace('∙', '*');
+    operacion = operacion.replace(/∙/g, '*');
     // console.log( operacion.toString() );
     const resultado = eval(operacion);
     this.resultado = resultado.toFixed(3);
