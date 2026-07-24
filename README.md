@@ -2,12 +2,34 @@
 
 ![Node.js](https://img.shields.io/badge/Node.js-18%2B-green)
 ![License: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)
+[![Deploy GitHub Pages](https://github.com/ateeducacion/aritmates/actions/workflows/pages.yml/badge.svg)](https://github.com/ateeducacion/aritmates/actions/workflows/pages.yml)
 
 Aplicación del **Área de Tecnología Educativa** para generar y practicar ejercicios de matemáticas.  
 Se publica como **sitio web estático** (HTML, CSS, JavaScript y assets locales).
 
-**Versión simplificada 1.3** — basada en un desarrollo previo de Netex y Altia.  
-Misma funcionalidad y apariencia; arquitectura y dependencias reducidas.
+**Versión simplificada 1.3** — misma funcionalidad y apariencia; arquitectura y dependencias reducidas  
+(basada en un desarrollo previo de Netex y Altia).
+
+**Demo (GitHub Pages):** <https://ateeducacion.github.io/aritmates/>
+
+## Origen (upstream)
+
+Este repositorio es la **versión simplificada y mantenida** por el Área de Tecnología Educativa.
+
+El **código original** (antes de la simplificación a app estática) se conserva en el repositorio
+upstream del Gobierno de Canarias:
+
+```text
+https://www3.gobiernodecanarias.org/educacion/cau_ce/repositoriocodigo/UCTICEE/OperacionesMatematicas.git
+```
+
+Para compararlo en local:
+
+```bash
+git remote add upstream \
+  https://www3.gobiernodecanarias.org/educacion/cau_ce/repositoriocodigo/UCTICEE/OperacionesMatematicas.git
+git fetch upstream
+```
 
 ## Inicio rápido
 
@@ -64,6 +86,19 @@ Publique el contenido de **`dist/`** en cualquier servidor de archivos estático
   "baseurl": "https://ejemplo.org/ruta/a/aritmates/"
 }
 ```
+
+### GitHub Pages (automático)
+
+En cada push a `main`, el workflow [`.github/workflows/pages.yml`](.github/workflows/pages.yml):
+
+1. Instala dependencias y ejecuta `npm run build`
+2. Fija `baseurl` a la URL del project site (`https://<org>.github.io/<repo>/`)
+3. Publica `dist/` con **GitHub Actions → Pages**
+
+**Activación (una vez por repositorio):**  
+Settings → Pages → **Source: GitHub Actions**.
+
+También se puede lanzar a mano: Actions → *Deploy GitHub Pages* → *Run workflow*.
 
 ## Dependencias de runtime (resumen)
 
