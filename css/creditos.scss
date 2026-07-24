@@ -33,6 +33,21 @@
             padding: 0 5em;
         }
 
+        .enlace-codigo-fuente {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4em;
+            font-weight: 600;
+            text-decoration: none;
+
+            .fa-github {
+                font-size: 1.35em;
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
     }
 
     .logosSeparados{
