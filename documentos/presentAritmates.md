@@ -327,24 +327,7 @@ x.minus(0.1)          // '0.2'
 
 # Documentación
 
-La documentación se encuentra en la carpeta **docs**
-
-Se puede consultar abriendo directamente docs/index.html
-
----
-
-
-<style scoped >
-h1 {
-  bottom: 5%;
-  left: 3%;
-  position: absolute;
-}
-</style>
-<!-- solo se puede acceder descargando el codigo y en la carpeta /docs/ -->
-# jsDocs
-
-![bg width:980px ](./img/docs.png)
+La documentación está en la raíz y en **docs/** (`README.md`, `docs/SIMPLIFICACION.md`, etc.).
 
 ---
 
@@ -353,9 +336,9 @@ h1 {
 
 Readme: Información para la instalación de cero.
 
-Developers: Para montar el entrono de desarrollo.
+Developers: Para montar el entorno de desarrollo.
 
-Version: Cambios entre versiones y como actualizar entre estas.
+Changelog: Cambios entre versiones.
 
 ---
 
