@@ -51,17 +51,9 @@ module.exports = {
       'hideGenerator': false,
       'navLinks': [
         {
-          'label': 'DEV',
-          'href': 'http://omvs0006.medusa.gobiernodecanarias.net/aritmates/',
+          'label': 'Repositorio',
+          'href': 'https://github.com/ateeducacion/aritmates',
         },
-        {
-          'label': 'PRE',
-          'href': 'https://www3-pre.gobiernodecanarias.org/medusa/apps/aritmates/',
-        },
-        // {
-        //   'label': 'Example Application',
-        //   'href': 'https://admin-bro-example-app.herokuapp.com/admin',
-        // },
       ],
     },
   },
