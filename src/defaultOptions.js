@@ -10,7 +10,7 @@ import $ from 'jquery';
 
 /* eslint-disable max-len */
 export const DEFAULTS = {
-  version: '1.2.0',
+  version: '1.3.0',
   // DEV
   // baseurl: 'http://omvs0006.medusa.gobiernodecanarias.net/aritmates/',
   // PRE
@@ -77,7 +77,7 @@ $.ajax({
     if ( config.tiposNumero ) DEFAULTS.tiposNumero = config.tiposNumero;
 
     if ( config.baseurl ) DEFAULTS.baseurl = config.baseurl;
-    if ( config.version ) DEFAULTS.baseurl = config.version;
+    if ( config.version ) DEFAULTS.version = config.version;
 
     console.log( 'Nivel cargado: ', DEFAULTS.nivel );
   },

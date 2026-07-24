@@ -8,7 +8,7 @@
 
 **Aritmates** es una aplicación del Área de Tecnología Educativa (ATE) para configurar y realizar ejercicios de matemáticas. Se publica como **sitio web estático** (HTML, CSS, JavaScript y assets locales).
 
-Esta es una **versión simplificada** (v1.2) basada en un desarrollo previo de Netex y Altia: mismo comportamiento y apariencia, arquitectura estática (sin Webpack/Babel) y controles de UI nativos (sin Polymer/MDC/xy-ui).
+Esta es una **versión simplificada** (v1.3) basada en un desarrollo previo de Netex y Altia: mismo comportamiento y apariencia, arquitectura estática (sin Webpack/Babel), controles de UI nativos y utilidades propias (sin Polymer/MDC/xy-ui/shorthash/combinations externos).
 
 ## Comandos principales
 

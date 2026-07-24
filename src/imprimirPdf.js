@@ -2,7 +2,6 @@
 // import * as jsPDF from 'jspdf';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import $ from 'jquery';
 
 /**
  * Imrimir pdf , usa html2canvas para crear un archivo PDF
