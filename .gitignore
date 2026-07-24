@@ -33,3 +33,5 @@ yarn-error.log*
 
 # VSCode config (optional, remove if you want to share it)
 .vscode/
+dist-test/
+.playwright-mcp/

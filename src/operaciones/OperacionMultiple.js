@@ -12,7 +12,6 @@ import {TIPO_NUMERO} from './tipoNumero';
 import DivisionDecimales from './divisionDecimales';
 import Division from './division';
 import Decimal from 'decimal.js';
-import { cos } from 'mathjs';
 
 /**
  * Operaciones con mulitiples operaciones dentro, como una operacion de 3 cifras con una suma y multiplicacion 
