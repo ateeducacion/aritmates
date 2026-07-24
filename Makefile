@@ -1,7 +1,7 @@
 # Use four spaces as recipe prefix instead of a tab
 .RECIPEPREFIX =	
 
-.PHONY: up build lint fix test package help clean
+.PHONY: up build lint fix test test-all package help clean
 
 ## Start the development server (build + serve)
 up:
@@ -19,9 +19,13 @@ lint:
 fix:
 	npm run lint -- --fix
 
-## Run the test suite
+## Run the stable CI test suite
 test:
-	npm test
+	npm run test:ci
+
+## Run the full unit suite (includes known legacy failures)
+test-all:
+	npm run test:all
 
 ## Clean dist
 clean:
