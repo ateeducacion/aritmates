@@ -10,7 +10,7 @@ Prioridad: **equivalencia** de apariencia, valores, eventos, foco y teclado.
 | `paper-expansion-panel` | Paneles config + ayuda | **Sustituido** por CE nativo (`src/widgets/paper-expansion-panel.js`) |
 | `paper-dropdown-menu` + listbox/item | Resultado igual a… | Mantener |
 | `mwc-switch` | Enfocado, crono, límite, negativos | **Sustituido** por CE nativo (`src/components/mwc-switch.js`) |
-| `xy-slider` | Nivel, crono, cantidad ops | Mantener |
+| `xy-slider` | Nivel, crono, cantidad ops | **Vendored** en `src/components/xy-slider.js` (+ xy-tips) |
 | MDC Dialog / TextField / Drawer | Código, ayuda | Mantener |
 
 ## Reglas de sustitución
@@ -42,11 +42,16 @@ Prioridad: **equivalencia** de apariencia, valores, eventos, foco y teclado.
 - Eliminados: `@polymer/iron-collapse`, `@polymer/iron-icons`, `@polymer/paper-icon-button`
 - `paper-item` se mantiene en el contenido de las plantillas
 
+## xy-slider (completado)
+
+- Código local vendored desde xy-ui 1.10.7 (MIT): `xy-slider.js` + `xy-tips.js`
+- Misma API: `.value`, `.disabled`, `.slider`, `.sliderCon` (tips/show)
+- Dependencia npm `xy-ui` eliminada (evita traer todo el kit de componentes)
+
 ## Siguiente candidato sugerido
 
-1. `xy-slider` (alto acoplamiento a `.slider` / `.sliderCon`).
-2. `paper-dropdown-menu` + listbox/item.
-3. MDC Dialog / TextField / Drawer.
+1. `paper-dropdown-menu` + listbox/item.
+2. MDC Dialog / TextField / Drawer.
 
 ## Limpieza post-simplificación (v1.1.0)
 

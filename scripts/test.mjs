@@ -26,6 +26,7 @@ const CI_SPECS = [
   'paper-checkbox.spec.js',
   'mwc-switch.spec.js',
   'paper-expansion-panel.spec.js',
+  'xy-slider.spec.js',
 ];
 
 const args = new Set(process.argv.slice(2));

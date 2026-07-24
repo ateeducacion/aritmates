@@ -24,7 +24,8 @@ import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import $ from 'jquery';
 // Switch nativo compatible (sustituye @material/mwc-switch)
 import './components/mwc-switch.js';
-import 'xy-ui/components/xy-slider';
+// Slider vendored (antes xy-ui)
+import './components/xy-slider.js';
 import '@polymer/paper-dropdown-menu/paper-dropdown-menu.js';
 import '@polymer/paper-item/paper-item.js';
 import '@polymer/paper-listbox/paper-listbox.js';

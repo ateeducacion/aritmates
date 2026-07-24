@@ -40,8 +40,7 @@
     "roboto-fontface": "^0.10.0",
     "shallow-equal": "^3.1.0",
     "shorthash": "^0.0.2",
-    "webpack-material-design-icons": "^0.1.0",
-    "xy-ui": "^1.10.7"
+    "webpack-material-design-icons": "^0.1.0"
   },
   "devDependencies": {
     "chai": "^5.3.3",
