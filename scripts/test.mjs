@@ -133,7 +133,6 @@ async function bundleTests(specs) {
       'chai',
       'chai-match',
       'decimal.js',
-      'mathjs',
       'combinations',
       'shorthash',
       'shallow-equal',

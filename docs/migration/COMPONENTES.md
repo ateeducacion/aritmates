@@ -32,3 +32,9 @@ Prioridad: **equivalencia** de apariencia, valores, eventos, foco y teclado.
 1. `mwc-switch` → switch nativo estilizado (API `.checked` ya usada).
 2. `paper-expansion-panel` → details/summary o CE propio (más riesgo visual).
 3. `xy-slider` (alto acoplamiento a `.slider` / `.sliderCon`).
+
+## Limpieza post-simplificación (v1.1.0)
+
+- Eliminados de package/vendor: `mathjs`, `mustache`, `html2pdf.js`, `whatwg-fetch`.
+- Eliminados demos: `src/view/pruebas.js`, `pruebas_ini.js`, `ejercicio.js`, `resultado.js`.
+- Eliminados logos Netex/Altia de `src/img/`.

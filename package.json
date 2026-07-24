@@ -1,7 +1,7 @@
 {
   "name": "aritmates",
-  "version": "1.0.6",
-  "description": "Aplicación web estática de ejercicios de matemáticas (Aritmates)",
+  "version": "1.1.0",
+  "description": "Aplicación web estática de ejercicios de matemáticas (Aritmates) — versión simplificada",
   "private": true,
   "type": "module",
   "scripts": {
@@ -37,18 +37,14 @@
     "combinations": "^1.0.0",
     "decimal.js": "^10.6.0",
     "html2canvas": "^1.4.1",
-    "html2pdf.js": "^0.14.0",
     "iv-viewer": "^2.2.1",
     "jquery": "^3.7.1",
     "jspdf": "^3.0.0",
-    "mathjs": "^15.2.0",
-    "mustache": "^4.2.0",
     "placeholder-loading": "^0.7.0",
     "roboto-fontface": "^0.10.0",
     "shallow-equal": "^3.1.0",
     "shorthash": "^0.0.2",
     "webpack-material-design-icons": "^0.1.0",
-    "whatwg-fetch": "^3.6.20",
     "xy-ui": "^1.10.7"
   },
   "devDependencies": {

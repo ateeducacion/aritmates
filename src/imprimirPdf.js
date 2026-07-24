@@ -2,7 +2,6 @@
 // import * as jsPDF from 'jspdf';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-import 'whatwg-fetch'; // polyfill fetch para iexplorer
 import $ from 'jquery';
 
 /**

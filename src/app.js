@@ -29,7 +29,6 @@ import '@polymer/paper-item/paper-item.js';
 import '@polymer/paper-listbox/paper-listbox.js';
 // Checkbox nativo compatible (sustituye @polymer/paper-checkbox)
 import './components/paper-checkbox.js';
-import 'whatwg-fetch'; // polyfill fetch para iexplorer
 // eslint-disable-next-line no-unused-vars
 // // # Fonts,Css,Img FILES ------------------------
 

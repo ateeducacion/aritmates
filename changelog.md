@@ -1,5 +1,15 @@
 # Changelog
 
+## Aritmates 1.1.0 - Versión simplificada (estática)
+
+* Publicación como aplicación web estática (HTML/CSS/JS + `dist/vendor`), sin Webpack/Babel en producción.
+* Créditos: texto de versión simplificada basada en desarrollo previo de Netex y Altia (sin logos de ambas empresas).
+* Eliminación de dependencias no usadas: `whatwg-fetch`, `mustache`, `mathjs`, `html2pdf.js`.
+* Eliminación de entradas de prueba antiguas (`src/view/pruebas*`, etc.) y assets de logos Netex/Altia.
+* Build con scripts Node nativos + Sass + esbuild; jQuery, Bootstrap, html2canvas y jsPDF cargados desde `vendor/`.
+* `paper-checkbox` nativo en lugar de Polymer para ese control.
+* Versión de aplicación en UI: `1.1.0`.
+
 ## Aritmates 1.0.6 - Actualización y liberación de código
 
 Esta sección describe las tareas y mejoras planificadas para la versión 1.0.6:
