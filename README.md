@@ -24,6 +24,7 @@ npm run build
 | `npm run dev` | Build + servidor local en http://127.0.0.1:9012/ |
 | `npm run serve` | Sirve `dist/` sin recompilar |
 | `npm test` | Empaqueta y ejecuta pruebas unitarias (Mocha) |
+| `npm run visual` | Capturas multi-viewport de referencia (Playwright) |
 | `npm run vendor` | Copia librerías UMD a `dist/vendor/` |
 | `npm run clean` | Elimina `dist/` |
 | `npm run check` | Verifica recursos críticos en `dist/` |
@@ -167,6 +168,23 @@ npm test
 ```
 
 Tras actualizar, revise visualmente la portada, ejercicios, PDF y códigos de configuración.
+
+## Comparación visual
+
+```bash
+npm run build
+npx playwright install chromium   # solo la primera vez
+npm run visual
+```
+
+Genera capturas en `docs/migration/visual/` para:
+
+- 375×812 (móvil)
+- 768×1024 (tableta)
+- 1366×768 (escritorio HD)
+- 1440×900 (escritorio)
+
+Con DPR=1 y animaciones desactivadas. Índice: `docs/migration/visual/index.html`.
 
 ## Pruebas
 

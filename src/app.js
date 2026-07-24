@@ -27,7 +27,8 @@ import 'xy-ui/components/xy-slider';
 import '@polymer/paper-dropdown-menu/paper-dropdown-menu.js';
 import '@polymer/paper-item/paper-item.js';
 import '@polymer/paper-listbox/paper-listbox.js';
-import '@polymer/paper-checkbox/paper-checkbox.js';
+// Checkbox nativo compatible (sustituye @polymer/paper-checkbox)
+import './components/paper-checkbox.js';
 import 'whatwg-fetch'; // polyfill fetch para iexplorer
 // eslint-disable-next-line no-unused-vars
 // // # Fonts,Css,Img FILES ------------------------
