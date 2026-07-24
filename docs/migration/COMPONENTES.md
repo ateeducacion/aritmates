@@ -9,10 +9,10 @@ Prioridad: **equivalencia** de apariencia, valores, eventos, foco y teclado.
 | `paper-checkbox` | Resto división, paréntesis | **Sustituido** por CE nativo (`src/components/paper-checkbox.js`) |
 | `paper-expansion-panel` | Paneles config + ayuda | **Sustituido** por CE nativo (`src/widgets/paper-expansion-panel.js`) |
 | `paper-dropdown-menu` | Resultado igual a… | **Sustituido** por CE nativo (`src/components/paper-dropdown-menu.js`) |
-| `paper-item` (+ body) | Layout en paneles | Mantener (Polymer) |
+| `paper-item` (+ body) | Layout en paneles | **Sustituido** por CE nativo (`src/components/paper-item.js`) |
 | `mwc-switch` | Enfocado, crono, límite, negativos | **Sustituido** por CE nativo (`src/components/mwc-switch.js`) |
 | `xy-slider` | Nivel, crono, cantidad ops | **Vendored** en `src/components/xy-slider.js` (+ xy-tips) |
-| MDC Dialog / TextField / Drawer | Código, ayuda | Mantener |
+| MDC Dialog / TextField / Drawer | Código, ayuda | **Compat nativo** (`src/components/mdc-compat.js` + CSS MDC) |
 
 ## Reglas de sustitución
 
@@ -56,10 +56,23 @@ Prioridad: **equivalencia** de apariencia, valores, eventos, foco y teclado.
 - Eliminados: `@polymer/paper-dropdown-menu`, `@polymer/paper-listbox`
 - `paper-item` se mantiene como markup de opciones y layout de paneles
 
-## Siguiente candidato sugerido
+## paper-item (completado)
 
-1. `paper-item` / layout de paneles → HTML nativo.
-2. MDC Dialog / TextField / Drawer.
+- CE nativos `paper-item` y `paper-item-body` (solo layout/slot)
+- Eliminados: `@polymer/paper-item`, `@polymer/paper-styles`, `@polymer/polymer`,
+  `@polymer/iron-flex-layout`, `@polymer/iron-a11y-announcer`
+
+## MDC Dialog / Drawer / TextField (completado)
+
+- `src/components/mdc-compat.js`: `MDCDialog`, `MDCDrawer`, `MDCTextField`
+- Usa clases CSS MDC ya presentes (`mdc-dialog--open`, `mdc-drawer--open`)
+- Eliminados: `@material/dialog`, `@material/drawer`, `@material/textfield`
+- Floating label animada de MDC TextField no se emula (input nativo + CSS)
+
+## Polymer / MDC / xy-ui
+
+**Sustitución de controles de UI completada.** Solo quedan CSS MDC minificados
+locales y tipografías/iconos. Sin paquetes `@polymer/*` ni `@material/*` JS.
 
 ## Limpieza post-simplificación (v1.1.0)
 

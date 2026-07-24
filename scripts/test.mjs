@@ -28,6 +28,8 @@ const CI_SPECS = [
   'paper-expansion-panel.spec.js',
   'xy-slider.spec.js',
   'paper-dropdown-menu.spec.js',
+  'paper-item.spec.js',
+  'mdc-compat.spec.js',
 ];
 
 const args = new Set(process.argv.slice(2));

@@ -28,8 +28,8 @@ import './components/mwc-switch.js';
 import './components/xy-slider.js';
 // Dropdown nativo (antes @polymer/paper-dropdown-menu)
 import './components/paper-dropdown-menu.js';
-// paper-item / listbox: solo markup contenedor; listbox ya no es CE Polymer
-import '@polymer/paper-item/paper-item.js';
+// paper-item layout nativo
+import './components/paper-item.js';
 // Checkbox nativo compatible (sustituye @polymer/paper-checkbox)
 import './components/paper-checkbox.js';
 // eslint-disable-next-line no-unused-vars
@@ -66,8 +66,7 @@ import './widgets/boxButton';
 import IbRadio from './widgets/ibRadio';
 
 import GenerarExamen from './generarExamen';
-import {MDCDialog} from '@material/dialog';
-import {MDCTextField} from '@material/textfield';
+import {MDCDialog, MDCTextField} from './components/mdc-compat.js';
 import OptionsShortcode from './OptionsShortcode';
 
 import utils from './utils';
