@@ -12,6 +12,7 @@
     "serve": "node scripts/serve.mjs",
     "test": "node scripts/test.mjs",
     "check": "node scripts/check-assets.mjs",
+    "visual": "node scripts/visual-gallery.mjs",
     "lint": "eslint './src/**/*.js' || true"
   },
   "dependencies": {
@@ -56,6 +57,7 @@
     "eslint": "^8.57.1",
     "eslint-config-google": "^0.14.0",
     "mocha": "^11.7.5",
+    "playwright": "^1.51.0",
     "sass": "^1.99.0"
   },
   "author": "Área de Tecnología Educativa",
