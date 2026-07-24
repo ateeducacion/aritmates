@@ -7,7 +7,7 @@
 * Eliminados informes de migración y guías obsoletas (Selenium, instalar JSDoc).
 * Capturas de referencia en `docs/visual/`.
 * Sanitización de URLs de entornos internos (DEV/PRE) en fuente y docs.
-* README: referencia al repositorio **upstream** (código original) y demo en GitHub Pages.
+* README: código original en la rama `upstream`; demo en GitHub Pages.
 * Workflow `pages.yml`: build de `dist/` y despliegue automático a GitHub Pages en push a `main`.
 
 ## Aritmates 1.3.0 - Fase 2 (utilidades nativas y limpieza)

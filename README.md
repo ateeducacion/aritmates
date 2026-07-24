@@ -12,23 +12,16 @@ Se publica como **sitio web estático** (HTML, CSS, JavaScript y assets locales)
 
 **Demo (GitHub Pages):** <https://ateeducacion.github.io/aritmates/>
 
-## Origen (upstream)
+## Origen (rama `upstream`)
 
-Este repositorio es la **versión simplificada y mantenida** por el Área de Tecnología Educativa.
-
-El **código original** (antes de la simplificación a app estática) se conserva en el repositorio
-upstream del Gobierno de Canarias:
-
-```text
-https://www3.gobiernodecanarias.org/educacion/cau_ce/repositoriocodigo/UCTICEE/OperacionesMatematicas.git
-```
-
-Para compararlo en local:
+Este repositorio es la **versión simplificada y mantenida** por el Área de Tecnología Educativa  
+(`main`). El **código original** (antes de la simplificación a app estática) está en la rama
+[`upstream`](https://github.com/ateeducacion/aritmates/tree/upstream) del mismo repositorio.
 
 ```bash
-git remote add upstream \
-  https://www3.gobiernodecanarias.org/educacion/cau_ce/repositoriocodigo/UCTICEE/OperacionesMatematicas.git
-git fetch upstream
+git fetch origin
+git checkout upstream   # código original
+git checkout main       # versión simplificada
 ```
 
 ## Inicio rápido
