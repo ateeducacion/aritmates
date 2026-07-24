@@ -1,6 +1,7 @@
 /**
  * xy-tips vendored desde xy-ui 1.10.7 (XboxYan/xy-ui, MIT).
  * Dependencia de xy-slider (tooltips del valor).
+ * @author Área de Tecnología Educativa (adaptación versión simplificada 1.3+)
  */
 const ElementBase = typeof HTMLElement !== 'undefined' ? HTMLElement : class {};
 

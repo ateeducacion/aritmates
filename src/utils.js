@@ -8,6 +8,7 @@ import {shallowEqualArrays} from 'shallow-equal';
  * Distintas funciones que se pueden ser utilidad
  * 
  * @author Fernando Ramirez <fernando.ramirez@altia.es>
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  * @version 1.0.0-rc1
  *
  * @class Utils

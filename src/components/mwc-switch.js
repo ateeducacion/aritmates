@@ -7,6 +7,7 @@
  * Apariencia: switch Material (track + thumb), color activo vía
  * --mdc-theme-secondary / --colorPrincipal (#0F4C81 en Aritmates).
  *
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  * @see docs/migration/COMPONENTES.md
  */
 

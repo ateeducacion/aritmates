@@ -4,6 +4,7 @@ import $ from 'jquery';
 /**
  *  Aqui definimos las opciones predeterminadas que se cargan en la web
  *  @author Fernando Ramirez Perez <fernando.ramirez@altia.es>
+ *  @author Área de Tecnología Educativa (versión simplificada 1.3+)
  *  @version 1.0.0-rc1
  *  @class DEFAULTS
  */

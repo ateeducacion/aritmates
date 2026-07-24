@@ -5,6 +5,7 @@
  * Se apoya en el CSS MDC ya copiado en css/mdc.*.min.css y en las clases
  * mdc-dialog--open / mdc-drawer--open del markup existente.
  *
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  * @see docs/migration/COMPONENTES.md
  */
 

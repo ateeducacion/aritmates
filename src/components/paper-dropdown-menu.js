@@ -11,6 +11,7 @@
  *   <paper-listbox><paper-item>10</paper-item>…</paper-listbox>
  * o de <option> nativos.
  *
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  * @see docs/migration/COMPONENTES.md
  */
 

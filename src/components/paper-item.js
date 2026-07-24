@@ -2,6 +2,7 @@
  * Sustitutos nativos de paper-item y paper-item-body (Polymer).
  * Solo layout: contenedores de bloque usados dentro de paneles y dropdown.
  *
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  * @see docs/migration/COMPONENTES.md
  */
 

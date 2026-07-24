@@ -2,6 +2,7 @@
  * xy-slider vendored desde xy-ui 1.10.7 (XboxYan/xy-ui, MIT).
  * Se mantiene local para eliminar la dependencia npm `xy-ui` completa.
  * API usada por Aritmates: .value, .disabled, .slider, .sliderCon, .sliderCon.tips/.show
+ * @author Área de Tecnología Educativa (adaptación versión simplificada 1.3+)
  */
 import './xy-tips.js';
 

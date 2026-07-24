@@ -5,6 +5,7 @@ import '../../css/ibRadio.css';
  * Javascript radio button
  *
  * @author Fernando Ramírez Pérez
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  * @class IbRadio
  */
 class IbRadio {

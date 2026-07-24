@@ -17,6 +17,7 @@ import utils, {shuffle} from './utils';
  * web
  * 
  * @author Fernando Ramirez Perez <fernando.ramirez@altia.es>
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  * @version 1.0.0-rc1
  * @export
  * @class GenerarExamen

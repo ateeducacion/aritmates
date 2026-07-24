@@ -2,6 +2,7 @@
 /**
  * Dado el tiempo en formato 1:00 te devuelve el indice donde esta ese valor
  * @author Fernando Ramirez <fernando.ramirez@altia.es>
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  * @param {string} valorTexto
  * @return {number} Indice de el valor de cronometro
  */

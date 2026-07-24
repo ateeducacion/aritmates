@@ -16,6 +16,8 @@ global.listOptions = listOptions;
   *
   * @export
   * @class OptionsShortcode
+  * @author Fernando Ramírez Pérez
+  * @author Área de Tecnología Educativa (versión simplificada 1.3+)
   */
 export class OptionsShortcode {
   constructor() {

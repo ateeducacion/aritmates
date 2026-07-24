@@ -8,6 +8,7 @@
  * @param {number} [min=1]
  * @param {number} [max]
  * @return {Array<Array>}
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  */
 export default function combinations(a, min, max) {
   min = min || 1;
