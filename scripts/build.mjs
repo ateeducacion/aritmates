@@ -2,18 +2,15 @@
  * Build estático de Aritmates.
  *
  * 1. Limpia dist
- * 2. Compila SCSS → CSS
- * 3. Empaqueta JS (esbuild) — justificado por Polymer/MDC/xy-ui con bare imports
+ * 2. Compila SCSS → CSS (+ vendors.css con fuentes e iconos)
+ * 3. Empaqueta JS propio (esbuild IIFE, minificado)
  * 4. Copia HTML, plantillas, imágenes, config
  * 5. Copia fuentes
- * 6. Copia vendor UMD
+ * 6. Copia vendor UMD (jquery, bootstrap, html2canvas, jspdf, …)
  * 7. Verifica recursos
  *
- * Justificación técnica de esbuild:
- * Polymer 3, @material/*, @material/mwc-switch y xy-ui usan especificadores bare
- * (import 'lit', import '@polymer/...') que el navegador no resuelve sin import maps
- * exhaustivos de cientos de paquetes. Un único bundle IIFE es la opción más simple
- * y segura para preservar el 100 % del comportamiento sin Webpack/Babel.
+ * esbuild resuelve imports ES de src/ y produce un único app.js/plantilla.js
+ * sin Webpack/Babel. Las librerías UMD se cargan por <script> desde vendor/.
  */
 import { cp, mkdir, readFile, writeFile, readdir, rm } from 'node:fs/promises';
 import { join, resolve, dirname, extname } from 'node:path';
@@ -120,10 +117,11 @@ async function buildCss() {
   roboto = rewriteFontUrls(roboto);
   vendorParts.push('/* roboto-fontface */\n' + roboto);
 
-  // Material Icons
-  let mi = await readIfExists(join(nm, 'webpack-material-design-icons/material-design-icons.css'));
-  mi = rewriteFontUrls(mi);
-  vendorParts.push('/* material-icons */\n' + mi);
+  // Material Icons (CSS local con rutas a ../fonts/)
+  const miLocal = await readIfExists(join(root, 'css/material-icons.css'));
+  if (miLocal) {
+    vendorParts.push('/* material-icons */\n' + miLocal);
+  }
 
   // Font Awesome
   let fa = await readIfExists(join(nm, '@fortawesome/fontawesome-free/css/all.min.css'));
@@ -305,6 +303,7 @@ async function buildJs() {
 
   const common = {
     bundle: true,
+    minify: true,
     format: 'iife',
     platform: 'browser',
     target: ['es2018'],
@@ -345,7 +344,7 @@ async function buildJs() {
     sourcemap: true,
   });
 
-  console.log('✓ js (esbuild, vendor externos: jquery, bootstrap, html2canvas, jspdf)');
+  console.log('✓ js (esbuild minify, vendor: jquery, bootstrap, html2canvas, jspdf)');
 }
 
 /** Scripts vendor (sin defer entre ellos + app con defer mantiene orden) */

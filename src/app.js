@@ -41,15 +41,8 @@ import '../css/mdc.textfield.min.css';
 
 import '../css/main.scss';
 import '../css/widgets.css';
-
-import 'webpack-material-design-icons';
-
-// aqui estan los iconos de la medalla y el cohete
-import '@fortawesome/fontawesome-free';
-import '@fortawesome/fontawesome-free/css/all.css';
-// placeholder css
-import 'placeholder-loading/src/scss/placeholder-loading.scss';
-// habria que usar csspreload para cargarlos solo cuando fuera necesario
+// Iconos Material, Font Awesome y placeholder-loading se emiten en dist/css/vendors.css
+// (scripts/build.mjs). Estos imports CSS se ignoran en esbuild (css-stub).
 import '../css/ejercicio.scss';
 import '../css/resultado.scss';
 import '../css/print.scss';

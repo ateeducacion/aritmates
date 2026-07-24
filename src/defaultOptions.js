@@ -10,7 +10,7 @@ import $ from 'jquery';
 
 /* eslint-disable max-len */
 export const DEFAULTS = {
-  version: '1.1.0',
+  version: '1.2.0',
   // DEV
   // baseurl: 'http://omvs0006.medusa.gobiernodecanarias.net/aritmates/',
   // PRE
