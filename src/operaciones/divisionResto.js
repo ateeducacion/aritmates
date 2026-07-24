@@ -9,6 +9,8 @@ import OPERACIONES from './operaciones';
  * @export
  * @class DivisionResto
  * @extends {DivisionEntera}
+ * @author Fernando Ramírez Pérez
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  */
 export default class DivisionResto extends DivisionEntera {
   /**

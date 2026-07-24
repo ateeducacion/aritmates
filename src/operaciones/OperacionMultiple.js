@@ -17,6 +17,7 @@ import Decimal from 'decimal.js';
  * Operaciones con mulitiples operaciones dentro, como una operacion de 3 cifras con una suma y multiplicacion 
  *
  * @author Fernando Ramírez Pérez
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  * @class OperacionMultiple
  * @extends {Operacion}
  */

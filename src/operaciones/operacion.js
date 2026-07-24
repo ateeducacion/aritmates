@@ -12,6 +12,7 @@ import {DEFAULTS} from '../defaultOptions';
  * sin necesidad de poner los campos anteriores
  *
  * @author Fernando Ramírez Pérez <fernando.ramirez@altia.es>
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  * @version 1.0.0-rc1
  * 
  * @param {number} [nivel=50] nivel de la operacion decide los numeros que se van a generar

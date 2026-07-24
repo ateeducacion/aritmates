@@ -6,6 +6,7 @@ import OPERACIONES from './operaciones';
  * Operacion division entera
  *
  * @author Fernando Ramírez Pérez
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  * @export
  * @class DivisionEntera
  * @extends {Operacion}

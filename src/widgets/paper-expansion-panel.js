@@ -9,6 +9,7 @@
  * Iconos de cabecera/toggle: fuente Material Icons (ya cargada en la app).
  * No usa iron-icons ni iron-collapse.
  *
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  * @see docs/migration/COMPONENTES.md
  */
 

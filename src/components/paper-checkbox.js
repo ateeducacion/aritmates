@@ -9,6 +9,7 @@
  * No incluye ripple completo de Polymer (cambio visual mínimo intencional;
  * validar con capturas visuales).
  *
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  * @see docs/migration/COMPONENTES.md
  */
 

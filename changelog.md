@@ -2,6 +2,7 @@
 
 ## Aritmates 1.3.0 - Fase 2 (utilidades nativas y limpieza)
 
+* Autoría de la versión simplificada: **Área de Tecnología Educativa**, manteniendo la autoría original de Fernando Ramírez Pérez en el código base.
 * `combinations` y `shorthash` implementados en `src/utils/` (misma semántica de códigos).
 * Corregido typo: `config.version` actualiza `DEFAULTS.version` (no `baseurl`).
 * Animación suave al expandir/colapsar paneles (`paper-expansion-panel`).

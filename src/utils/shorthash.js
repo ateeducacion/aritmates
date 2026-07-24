@@ -2,6 +2,7 @@
  * shorthash compatible con bibig/node-shorthash (MIT).
  * Misma API: unique(text) — usado para hashes de configuración.
  *
+ * @author Área de Tecnología Educativa (versión simplificada 1.3+)
  * @see https://github.com/bibig/node-shorthash
  */
 
