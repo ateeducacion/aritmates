@@ -1,0 +1,14 @@
+// Entrada SCSS consolidada (referenciada / documentada).
+// El build real usa scripts/build.mjs con compileString e imports absolutos.
+// Mantener este archivo como mapa de estilos de la aplicación.
+
+// Bootstrap + estilos principales
+@use "main";
+
+// Componentes y pantallas
+@use "boxButton";
+@use "mdc-drawer";
+@use "creditos";
+@use "ejercicio";
+@use "resultado";
+@use "print";

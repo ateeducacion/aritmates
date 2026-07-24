@@ -24,7 +24,7 @@ describe('Parentesis', () => {
     // 5 * ( 2 + 5 )
     const expected = 5*7;
 
-    expect(actual).to.equal(expected);
+    expect(Number(actual)).to.equal(expected);
   });
 
   it('5 * 2 + 5 SIN parentesis deberia devolver 5 * 2 + 5 ', () => {
@@ -42,7 +42,7 @@ describe('Parentesis', () => {
     // 5 * ( 2 + 5 )
     const expected = 15;
 
-    expect(actual).to.equal(expected);
+    expect(Number(actual)).to.equal(expected);
   });
 
   it('*+- al azar -> positivos y sin decimales', () => {

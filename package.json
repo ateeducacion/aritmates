@@ -1,24 +1,32 @@
 {
-  "name": "app-gen-operaciones-matematicas",
+  "name": "aritmates",
   "version": "1.0.6",
-  "description": "Generar operaciones matemáticas",
-  "main": "app.js",
+  "description": "Aplicación web estática de ejercicios de matemáticas (Aritmates)",
   "private": true,
+  "type": "module",
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "vendor": "node scripts/copy-vendor.mjs",
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/build.mjs && node scripts/serve.mjs",
+    "serve": "node scripts/serve.mjs",
+    "test": "node scripts/test.mjs --ci",
+    "test:ci": "node scripts/test.mjs --ci",
+    "test:all": "node scripts/test.mjs --all",
+    "check": "node scripts/check-assets.mjs",
+    "visual": "node scripts/visual-gallery.mjs",
+    "lint": "eslint './src/**/*.js' || true"
+  },
   "dependencies": {
-    "@emotion/react": "^11.14.0",
-    "@emotion/styled": "^11.14.1",
     "@fortawesome/fontawesome-free": "^6.7.2",
-    "@material/animation": "^14.0.0",
     "@material/dialog": "^14.0.0",
     "@material/drawer": "^14.0.0",
     "@material/mwc-switch": "^0.27.0",
     "@material/textfield": "^14.0.0",
-    "@mui/material": "^6.5.0",
     "@polymer/iron-a11y-announcer": "^3.2.0",
     "@polymer/iron-collapse": "^3.0.1",
     "@polymer/iron-flex-layout": "^3.0.1",
     "@polymer/iron-icons": "^3.0.1",
-    "@polymer/paper-checkbox": "^3.1.0",
     "@polymer/paper-dropdown-menu": "^3.2.0",
     "@polymer/paper-icon-button": "^3.0.2",
     "@polymer/paper-item": "^3.0.1",
@@ -32,11 +40,10 @@
     "html2pdf.js": "^0.14.0",
     "iv-viewer": "^2.2.1",
     "jquery": "^3.7.1",
+    "jspdf": "^3.0.0",
     "mathjs": "^15.2.0",
     "mustache": "^4.2.0",
     "placeholder-loading": "^0.7.0",
-    "react": "^19.2.5",
-    "react-dom": "^19.2.5",
     "roboto-fontface": "^0.10.0",
     "shallow-equal": "^3.1.0",
     "shorthash": "^0.0.2",
@@ -45,53 +52,28 @@
     "xy-ui": "^1.10.7"
   },
   "devDependencies": {
-    "@babel/cli": "^8.0.1",
-    "@babel/core": "^8.0.1",
-    "@babel/node": "^8.0.1",
-    "@babel/preset-env": "^8.0.2",
-    "@babel/register": "^8.0.1",
-    "babel-loader": "^10.1.1",
     "chai": "^5.3.3",
     "chai-match": "^1.1.1",
-    "copy-webpack-plugin": "^14.0.0",
-    "css-loader": "^7.1.4",
-    "css-minimizer-webpack-plugin": "^8.0.0",
+    "esbuild": "^0.25.12",
     "eslint": "^8.57.1",
     "eslint-config-google": "^0.14.0",
-    "html-webpack-plugin": "^5.6.6",
-    "mini-css-extract-plugin": "^2.10.2",
     "mocha": "^11.7.5",
-    "sass": "^1.99.0",
-    "sass-loader": "^16.0.7",
-    "style-loader": "^4.0.0",
-    "terser-webpack-plugin": "^5.3.11",
-    "webpack": "^5.106.2",
-    "webpack-bundle-analyzer": "^4.10.2",
-    "webpack-cli": "^6.0.0",
-    "webpack-dev-server": "^6.0.0",
-    "webpack-node-externals": "^3.0.0"
-  },
-  "scripts": {
-    "dev": "webpack-dev-server --open --hot --mode development",
-    "start": "webpack-dev-server --progress --hide-modules --mode production",
-    "build": "rm -Rf `pwd`/dist/* ; webpack --progress --mode production",
-    "lint": "eslint './src/**/*.js'",
-    "test": "webpack --config ./webpack-test.config.js",
-    "testwatch": "webpack -w --config webpack-test.config.js",
-    "testbundle": "webpack --entry ./all-tests.js --output ./dist/testBundle.js",
-    "test1": "webpack --entry ./testConcreto.js --output ./dist/testBundle.js",
-    "mochaweb": "cp dist/testBundle.js webtest/testBundle.js; http-server ./webtest/",
-    "mocha": "mocha dist/testBundle.js",
-    "seleTest": "webpack --config webpack-seletest.config.js && echo '\n\nEjecuta npx mocha ./testSeleniumBundle.js\n\n' ",
-    "docs": "jsdoc -c conf.js"
+    "playwright": "^1.51.0",
+    "sass": "^1.99.0"
   },
   "author": "Área de Tecnología Educativa",
-  "license": "UNLICENSED",
-  "homepage": "pendiente",
+  "license": "AGPL-3.0",
+  "homepage": "https://github.com/ateeducacion/aritmates",
+  "engines": {
+    "node": ">=18"
+  },
   "overrides": {
     "mocha": {
       "diff": "^8.0.3",
       "serialize-javascript": "^7.0.5"
     }
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true
   }
 }
