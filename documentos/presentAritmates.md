@@ -458,7 +458,7 @@ En **config.json** podemos definir las opciones que se cargaran al entrar en Ari
     "resultadoNegativo": false,
     "maximoOperandos": 3,
     "tiposNumero": [0],
-    "baseurl": "https://www.gobiernodecanarias.org/medusa/apps/aritmates/"
+    "baseurl": "https://ejemplo.org/ruta/a/aritmates/"
 }
 ```
 

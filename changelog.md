@@ -1,5 +1,12 @@
 # Changelog
 
+## Documentación (post 1.3)
+
+* README y `docs/` reescritos en torno a la versión simplificada.
+* Eliminados informes de migración y guías obsoletas (Selenium, instalar JSDoc).
+* Capturas de referencia en `docs/visual/`.
+* Sanitización de URLs de entornos internos (DEV/PRE) en fuente y docs.
+
 ## Aritmates 1.3.0 - Fase 2 (utilidades nativas y limpieza)
 
 * Autoría de la versión simplificada: **Área de Tecnología Educativa**, manteniendo la autoría original de Fernando Ramírez Pérez en el código base.
@@ -46,18 +53,13 @@ Esta sección describe las tareas y mejoras planificadas para la versión 1.0.6:
 * Actualizada la opción de imprimir ejercicios en PDF.
 * Cambio logos en creditos y pdf
 
-### notas para despligue:
+### Notas de despliegue
 
-Agregar o revisar que en config.json este configurada la url de la pagina en **baseurl**
+En `config.json`, revise `baseurl` (URL pública de la app en su entorno):
 
 ```json
 {
-    "nivel": 10,
-    "cuentaAtras": 0,
-    ...
-    "baseurl": "https://www3-pre.gobiernodecanarias.org/medusa/apps/aritmates/"
-        o
-    "baseurl": "https://www.gobiernodecanarias.org/medusa/apps/aritmates/"
+  "baseurl": "https://ejemplo.org/ruta/a/aritmates/"
 }
 ```
 
@@ -77,8 +79,8 @@ Agregar o revisar que en config.json este configurada la url de la pagina en **b
 
 ### Notas para instalación
 
-Seguir el proceso del readme.md, conservando los archivos **smtpconfig.php** y **config.json** actuales para no borrarlos con los que están en la carpeta **dist**
-Seguir el proceso del readme.md, conservando los archivos **smtpconfig.php** y **config.json** actuales para no borrarlos con los que están en la carpeta **dist**
+Seguir el proceso del README. En despliegues antiguos se pedía conservar
+`config.json` del entorno al sobrescribir `dist/`.
 
 ## Aritmates 1.0.1
 

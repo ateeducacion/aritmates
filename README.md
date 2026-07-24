@@ -1,235 +1,98 @@
 # Aritmates
 
-![Node.js Version](https://img.shields.io/badge/Node.js-18%2B-green)
-![Language](https://img.shields.io/badge/Language-JavaScript-yellow)
+![Node.js](https://img.shields.io/badge/Node.js-18%2B-green)
 ![License: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)
-![Last Commit](https://img.shields.io/github/last-commit/ateeducacion/aritmates)
-![Open Issues](https://img.shields.io/github/issues/ateeducacion/aritmates)
 
-**Aritmates** es una aplicación del Área de Tecnología Educativa (ATE) para configurar y realizar ejercicios de matemáticas. Se publica como **sitio web estático** (HTML, CSS, JavaScript y assets locales).
+Aplicación del **Área de Tecnología Educativa** para generar y practicar ejercicios de matemáticas.  
+Se publica como **sitio web estático** (HTML, CSS, JavaScript y assets locales).
 
-Esta es una **versión simplificada** (v1.3) basada en un desarrollo previo de Netex y Altia: mismo comportamiento y apariencia, arquitectura estática (sin Webpack/Babel), controles de UI nativos y utilidades propias (sin Polymer/MDC/xy-ui/shorthash/combinations externos).
+**Versión simplificada 1.3** — basada en un desarrollo previo de Netex y Altia.  
+Misma funcionalidad y apariencia; arquitectura y dependencias reducidas.
 
-## Comandos principales
+## Inicio rápido
 
 ```bash
 npm ci
-npm run dev
-npm test
-npm run build
+npm run build    # genera dist/
+npm run dev      # build + http://127.0.0.1:9012/
 ```
 
-| Comando | Descripción |
-|---------|-------------|
-| `npm ci` | Instala dependencias reproducibles (lockfile) |
-| `npm run build` | Genera la carpeta `dist/` lista para publicar |
-| `npm run dev` | Build + servidor local en http://127.0.0.1:9012/ |
-| `npm run serve` | Sirve `dist/` sin recompilar |
-| `npm test` | Empaqueta y ejecuta pruebas unitarias (Mocha) |
-| `npm run visual` | Capturas multi-viewport de referencia (Playwright) |
-| `npm run vendor` | Copia librerías UMD a `dist/vendor/` |
-| `npm run clean` | Elimina `dist/` |
-| `npm run check` | Verifica recursos críticos en `dist/` |
+| Comando | Uso |
+|---------|-----|
+| `npm ci` | Instala dependencias |
+| `npm run build` | Prepara `dist/` para publicar |
+| `npm run dev` | Desarrollo local |
+| `npm run serve` | Sirve `dist/` (sin recompilar) |
+| `npm test` | Pruebas estables (CI) |
+| `npm run test:all` | Suite completa (incluye tests legacy) |
+| `npm run visual` | Capturas multi-viewport (Playwright) |
+| `npm run check` | Verifica recursos en `dist/` |
 
-## Arquitectura
+## Qué es la versión simplificada
+
+| Antes | Ahora |
+|-------|--------|
+| Webpack, Babel, loaders | Scripts Node + Sass + esbuild |
+| Polymer, MDC JS, xy-ui | Componentes nativos en `src/components/` |
+| CDN / dependencias de UI pesadas | Todo local en `dist/` y `dist/vendor/` |
+| Node en producción | Solo hace falta Node para build y desarrollo |
+
+Documentación detallada: **[docs/SIMPLIFICACION.md](docs/SIMPLIFICACION.md)**.
+
+## Estructura
 
 ```text
-aritmates/
-├── package.json
-├── package-lock.json
-├── scripts/
-│   ├── build.mjs          # build estático completo
-│   ├── clean.mjs
-│   ├── copy-vendor.mjs    # node_modules → dist/vendor
-│   ├── serve.mjs          # HTTP estático nativo
-│   ├── test.mjs           # tests sin Webpack
-│   └── check-assets.mjs
-├── src/
-│   ├── app.js             # entrada principal
-│   ├── config.json
-│   ├── js (módulos propios)
-│   ├── img/
-│   └── templates/
-├── css/                   # SCSS/CSS fuente
-├── test/
-└── dist/                  # salida publicable (sin Node en producción)
-    ├── index.html
-    ├── plantilla/
-    ├── js/
-    ├── css/
-    ├── img/
-    ├── fonts/
-    ├── templates/
-    ├── vendor/
-    └── config.json
-```
-
-### Build
-
-El build **no usa Webpack ni Babel**. Usa:
-
-1. **Scripts Node nativos** para limpiar, copiar assets y servir.
-2. **Sass** solo para compilar SCSS → CSS.
-3. **esbuild** solo para empaquetar el JavaScript de la app.
-
-**Por qué esbuild:** Polymer 3, Material Components y xy-ui usan bare imports que el navegador no resuelve sin un grafo enorme de import maps. Un único bundle IIFE preserva el comportamiento y la apariencia sin una cadena compleja de loaders.
-
-Node.js **no es necesario en producción**. Solo se usa para instalar, construir, probar y desarrollar en local.
-
-## Dependencias de runtime (resumen)
-
-| Librería | Uso |
-|----------|-----|
-| jQuery | DOM, eventos, carga de `config.json` |
-| Bootstrap 5 | Layout y utilidades CSS/JS |
-| Decimal.js | Precisión en operaciones decimales |
-| jsPDF + html2canvas | Generación de PDF |
-| Polymer / paper-* | Paneles y controles legacy |
-| MDC / mwc-switch | Diálogos, drawer, switches |
-| xy-ui | Sliders |
-| combinations + shorthash | Códigos de configuración |
-| Font Awesome, Roboto, Material Icons | Tipografía e iconos |
-
-Las builds UMD se copian a `dist/vendor/` para inspección y uso futuro. El bundle de la app incluye las dependencias necesarias para el navegador (sin CDN).
-
-## Instalación
-
-```bash
-git clone https://github.com/ateeducacion/aritmates.git
-cd aritmates
-npm ci
-npm run build
-```
-
-## Desarrollo local
-
-```bash
-npm run dev
-# → http://127.0.0.1:9012/
-```
-
-Puerto por defecto: **9012**. Alternativa:
-
-```bash
-npm run build
-npm run serve 8080
+src/           código y plantillas de la app
+css/           estilos fuente (SCSS/CSS)
+scripts/       build, serve, tests, vendor
+test/          pruebas
+docs/          documentación de la simplificación
+dist/          salida publicable (generada; no requiere Node)
 ```
 
 ## Despliegue
 
-Publique el contenido de `dist/` en cualquier servidor de archivos estáticos:
+Publique el contenido de **`dist/`** en cualquier servidor de archivos estáticos  
+(Nginx, Apache, GitHub Pages, etc.).
 
-- Nginx / Apache
-- GitHub Pages
-- Cloudflare Pages / Netlify / similar
+- Rutas **relativas**: funciona en la raíz o en un subdirectorio (`/aritmates/`).
+- Ajuste `baseurl` en `src/config.json` si usa el envío de resultados a un backend  
+  (valor de ejemplo en el repositorio; cámbielo al de su entorno).
 
-Ejemplo Nginx:
-
-```nginx
-location /aritmates/ {
-  alias /var/www/aritmates/;
-  try_files $uri $uri/ /aritmates/index.html;
+```json
+{
+  "baseurl": "https://ejemplo.org/ruta/a/aritmates/"
 }
 ```
 
-### Subdirectorios
+## Dependencias de runtime (resumen)
 
-La app usa **rutas relativas** (`./js/…`, `./css/…`, `./templates/…`, `./config.json`).  
-Funciona en:
+| Paquete | Uso |
+|---------|-----|
+| jQuery | DOM y eventos |
+| Bootstrap 5 | Layout y utilidades |
+| Decimal.js | Precisión decimal |
+| jsPDF + html2canvas | PDF |
+| Font Awesome, Roboto, Material Icons | Tipografía e iconos |
+| combinations / shorthash | Reimplementados en `src/utils/` |
 
-- `https://example.org/`
-- `https://example.org/aritmates/`
-- `https://example.org/apps/aritmates/`
+jQuery y Bootstrap se mantienen a propósito: están muy acoplados a la UI actual;  
+retirarlos no aporta valor frente al riesgo de regresión.
 
-Configure `baseurl` en `src/config.json` (se copia a `dist/config.json`) si el envío de formularios/resultados lo requiere.
-
-## Estructura de `dist`
-
-```text
-dist/
-├── index.html
-├── plantilla/index.html
-├── js/app.js
-├── js/plantilla.js
-├── css/app.css
-├── css/vendors.css
-├── css/plantilla.css
-├── img/
-├── fonts/
-├── templates/
-├── vendor/          # jquery, bootstrap, jspdf, …
-└── config.json
-```
-
-## Actualización de dependencias
+## Pruebas y capturas
 
 ```bash
-npm update
-npm run build
 npm test
+npm run visual   # requiere: npx playwright install chromium
 ```
 
-Tras actualizar, revise visualmente la portada, ejercicios, PDF y códigos de configuración.
+Capturas de referencia: `docs/visual/`.
 
-## Comparación visual
+## Autoría
 
-```bash
-npm run build
-npx playwright install chromium   # solo la primera vez
-npm run visual
-```
-
-Genera capturas en `docs/migration/visual/` para:
-
-- 375×812 (móvil)
-- 768×1024 (tableta)
-- 1366×768 (escritorio HD)
-- 1440×900 (escritorio)
-
-Con DPR=1 y animaciones desactivadas. Índice: `docs/migration/visual/index.html`.
-
-## Pruebas
-
-```bash
-npm test          # suite CI estable (debe pasar en verde)
-npm run test:ci   # alias de npm test
-npm run test:all  # suite completa (incluye tests legacy conocidos)
-```
-
-La suite CI incluye:
-
-- Pruebas de **caracterización** (`test/characterization.spec.js`) — defaults, operaciones fijas, códigos, aleatoriedad controlada
-- Códigos de configuración (`test/OptionsShortcode.spec.js`)
-- Custom element `paper-checkbox` cuando está presente
-
-`npm run test:all` ejecuta también suites legacy con fallos documentados en `docs/migration/` (no bloquean el CI; se reportan como job `continue-on-error`).
-
-## Códigos de configuración
-
-Los códigos se generan y leen con `OptionsShortcode` (algoritmo sin cambios).  
-Compatibilidad: configuración antigua → mismo código; código antiguo → misma configuración.
-
-## PDF e impresión
-
-- Descarga de hojas y soluciones con **jsPDF** + **html2canvas** (`src/imprimirPdf.js`).
-- No se sustituye por `window.print()` como único flujo.
-- Plantilla: `dist/plantilla/`.
-
-## Navegadores compatibles
-
-Navegadores modernos con soporte de:
-
-- ES2018+
-- Custom Elements / Shadow DOM (Polymer, MWC, xy-ui)
-- `fetch`, CSS Grid/Flex
-
-Chrome, Firefox, Safari y Edge actuales. IE no es objetivo.
-
-## Documentación de migración
-
-- [Auditoría](docs/migration/AUDITORIA.md)
-- [Informe final](docs/migration/INFORME_FINAL.md)
+- Desarrollo original: Fernando Ramírez Pérez (Altia)
+- Versión simplificada y mantenimiento: **Área de Tecnología Educativa**
 
 ## Licencia
 
-GNU Affero General Public License. Consulte [LICENSE](./LICENSE).
+[GNU Affero General Public License](./LICENSE).

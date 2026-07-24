@@ -2,11 +2,11 @@
     "nivel": 10,
     "cuentaAtras": 0,
     "cantidadOperaciones": 10,
-    "tiposOperaciones": ["suma", "resta","multiplicacion", "division"],
+    "tiposOperaciones": ["suma", "resta", "multiplicacion", "division"],
     "cantidadOperandos": 2,
     "posicionIncognitaAlAzar": false,
     "resultadoNegativo": false,
     "maximoOperandos": 3,
     "tiposNumero": [0],
-    "baseurl": "https://aritmates.local/medusa/apps/aritmates/"
+    "baseurl": "./"
 }

@@ -12,10 +12,8 @@ import $ from 'jquery';
 /* eslint-disable max-len */
 export const DEFAULTS = {
   version: '1.3.0',
-  // DEV
-  // baseurl: 'http://omvs0006.medusa.gobiernodecanarias.net/aritmates/',
-  // PRE
-  baseurl: 'https://www3-pre.gobiernodecanarias.org/medusa/apps/aritmates/',
+  // URL pública de la app (sobrescribible con config.json → baseurl)
+  baseurl: './',
   nivel: 10,
   cuentaAtras: 0, // '10:00',
   // 0 = sin cronometro,'0:30', valores validos:
