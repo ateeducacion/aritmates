@@ -1,6 +1,6 @@
 
 import $ from 'jquery';
-import {MDCDrawer} from '@material/drawer';
+import {MDCDrawer} from '../components/mdc-compat.js';
 
 import '../../css/mdc.list.min.css';
 import '../../css/mdc.drawer.min.css';
@@ -12,13 +12,8 @@ import '../../css/mdc.drawer.min.css';
 
 // Panel de expansión nativo (sin iron-collapse / iron-icons)
 import '../widgets/paper-expansion-panel';
-
-import '@polymer/iron-a11y-announcer';
-// paper-item aún se usa dentro del HTML de ayuda y de la portada
-import '@polymer/paper-item';
-import '@polymer/paper-styles/paper-styles.js';
-import '@polymer/iron-flex-layout/iron-flex-layout.js';
-import '@polymer/polymer';
+// paper-item nativo (layout en ayuda y portada)
+import '../components/paper-item.js';
 
 import '../../css/widgets.css';
 import '../../css/mdc-drawer.scss';
