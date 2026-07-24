@@ -1,5 +1,14 @@
 # Changelog
 
+## Aritmates 1.3.0 - Fase 2 (utilidades nativas y limpieza)
+
+* `combinations` y `shorthash` implementados en `src/utils/` (misma semántica de códigos).
+* Corregido typo: `config.version` actualiza `DEFAULTS.version` (no `baseurl`).
+* Animación suave al expandir/colapsar paneles (`paper-expansion-panel`).
+* Eliminado import jQuery no usado en `imprimirPdf.js`.
+* Limpieza: CSS/plantillas de demos no usados (`pruebas.scss`, `basica.html`, etc.).
+* Versión UI: `1.3.0`.
+
 ## Aritmates 1.2.0 - UI nativa y build minificado
 
 * Sustitución completa de controles Polymer / MDC / xy-ui por componentes nativos o vendored en `src/components/`.

@@ -78,20 +78,26 @@ const STYLE = `
   background: rgba(0, 0, 0, 0.04);
 }
 .content {
-  overflow: hidden;
-  padding-top: 0.5em;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.2s ease;
   background: white;
   font-size: 14px;
   line-height: 20px;
 }
-.content[hidden] {
-  display: none !important;
+.content > .inner {
+  overflow: hidden;
+  min-height: 0;
+  padding-top: 0;
+}
+:host([opened]) .content {
+  grid-template-rows: 1fr;
+}
+:host([opened]) .content > .inner {
+  padding-top: 0.5em;
 }
 :host([no-animation]) .content {
   transition: none;
-}
-.content:not([hidden]) {
-  /* altura automática; sin animación compleja iron-collapse */
 }
 .mi {
   font-family: "Material Icons";
@@ -190,8 +196,10 @@ class PaperExpansionPanel extends ElementBase {
         <span class="summary" part="summary" hidden></span>
         <span class="toggle mi" part="toggle" aria-hidden="true">expand_more</span>
       </button>
-      <div class="content" part="content" hidden>
-        <slot></slot>
+      <div class="content" part="content">
+        <div class="inner">
+          <slot></slot>
+        </div>
       </div>
     `;
     this._syncDom();
@@ -232,7 +240,7 @@ class PaperExpansionPanel extends ElementBase {
     }
 
     toggleEl.textContent = this.opened ? 'expand_less' : 'expand_more';
-    contentEl.hidden = !this.opened;
+    contentEl.setAttribute('aria-hidden', this.opened ? 'false' : 'true');
     headerBtn.setAttribute('aria-expanded', this.opened ? 'true' : 'false');
   }
 

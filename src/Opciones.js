@@ -1,4 +1,4 @@
-import combinations from 'combinations';
+import combinations from './utils/combinations.js';
 
 // export const posibilidadPorOpcion = {
 //   cantidadOperaciones: 11,

@@ -30,6 +30,7 @@ const CI_SPECS = [
   'paper-dropdown-menu.spec.js',
   'paper-item.spec.js',
   'mdc-compat.spec.js',
+  'utils-native.spec.js',
 ];
 
 const args = new Set(process.argv.slice(2));
@@ -139,8 +140,6 @@ async function bundleTests(specs) {
       'chai',
       'chai-match',
       'decimal.js',
-      'combinations',
-      'shorthash',
       'shallow-equal',
     ],
     define: {
