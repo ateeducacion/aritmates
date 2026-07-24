@@ -237,6 +237,68 @@ const cssStubPlugin = {
   },
 };
 
+/**
+ * Librerías UMD cargadas vía <script> en HTML (no se empaquetan en app.js).
+ * El bundle solo las referencia como globales de window.
+ */
+const VENDOR_GLOBALS = {
+  // bare import → { filter, contents (ESM shim) }
+  'jquery': {
+    filter: /^jquery$/,
+    contents: `
+      const $ = window.jQuery || window.$;
+      if (!$) throw new Error('jQuery no cargado: incluya vendor/jquery/jquery.min.js antes de app.js');
+      export default $;
+    `,
+  },
+  'bootstrap-js': {
+    // side-effect import del bundle de Bootstrap
+    filter: /^bootstrap\/dist\/js\/bootstrap\.bundle(\.min)?\.js$/,
+    contents: `
+      // Bootstrap se carga desde vendor/bootstrap/bootstrap.bundle.min.js → window.bootstrap
+      if (typeof window.bootstrap === 'undefined') {
+        throw new Error('Bootstrap no cargado: incluya vendor/bootstrap/bootstrap.bundle.min.js');
+      }
+      export default window.bootstrap;
+    `,
+  },
+  'html2canvas': {
+    filter: /^html2canvas$/,
+    contents: `
+      const html2canvas = window.html2canvas;
+      if (!html2canvas) throw new Error('html2canvas no cargado desde vendor/');
+      export default html2canvas;
+    `,
+  },
+  'jspdf': {
+    filter: /^jspdf$/,
+    contents: `
+      const ns = window.jspdf || window.jsPDF;
+      const jsPDF = ns && (ns.jsPDF || ns);
+      if (!jsPDF) throw new Error('jsPDF no cargado desde vendor/jspdf/jspdf.umd.min.js');
+      export default jsPDF;
+      export { jsPDF };
+    `,
+  },
+};
+
+const vendorGlobalsPlugin = {
+  name: 'vendor-globals',
+  setup(build) {
+    for (const [, cfg] of Object.entries(VENDOR_GLOBALS)) {
+      const ns = 'vendor-global-' + cfg.filter.source;
+      build.onResolve({ filter: cfg.filter }, (args) => ({
+        path: args.path,
+        namespace: ns,
+      }));
+      build.onLoad({ filter: /.*/, namespace: ns }, () => ({
+        contents: cfg.contents,
+        loader: 'js',
+      }));
+    }
+  },
+};
+
 async function buildJs() {
   const jsDir = join(dist, 'js');
   await mkdir(jsDir, { recursive: true });
@@ -250,7 +312,7 @@ async function buildJs() {
       global: 'window',
       'process.env.NODE_ENV': '"production"',
     },
-    plugins: [cssStubPlugin],
+    plugins: [cssStubPlugin, vendorGlobalsPlugin],
     loader: {
       '.png': 'file',
       '.svg': 'file',
@@ -283,7 +345,17 @@ async function buildJs() {
     sourcemap: true,
   });
 
-  console.log('✓ js (esbuild)');
+  console.log('✓ js (esbuild, vendor externos: jquery, bootstrap, html2canvas, jspdf)');
+}
+
+/** Scripts vendor (sin defer entre ellos + app con defer mantiene orden) */
+function vendorScripts(prefix = './') {
+  return `
+    <script src="${prefix}vendor/jquery/jquery.min.js"></script>
+    <script src="${prefix}vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="${prefix}vendor/html2canvas/html2canvas.min.js"></script>
+    <script src="${prefix}vendor/jspdf/jspdf.umd.min.js"></script>
+`;
 }
 
 /** Genera index.html y plantilla/index.html con rutas fijas */
@@ -293,7 +365,9 @@ async function buildHtml() {
     <link rel="stylesheet" href="./css/vendors.css">
     <link rel="stylesheet" href="./css/app.css">
 `;
+  // Vendor sin defer: disponibles antes de app.js (defer)
   const bodyInject = `
+${vendorScripts('./')}
     <script src="./js/app.js" defer></script>
 `;
 
@@ -317,6 +391,7 @@ async function buildHtml() {
     <link rel="stylesheet" href="../css/plantilla.css">
 `;
   const pBody = `
+${vendorScripts('../')}
     <script src="../js/plantilla.js" defer></script>
 `;
   let plantillaHtml = plantillaTpl;
@@ -331,7 +406,7 @@ async function buildHtml() {
   await mkdir(join(dist, 'plantilla'), { recursive: true });
   await writeFile(join(dist, 'plantilla/index.html'), plantillaHtml, 'utf8');
 
-  console.log('✓ html');
+  console.log('✓ html (scripts vendor locales)');
 }
 
 async function main() {

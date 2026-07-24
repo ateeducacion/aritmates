@@ -67,6 +67,30 @@ export async function checkAssets() {
     missing.push('Referencia a node_modules en index.html');
   }
 
+  // Vendor scripts deben cargarse desde rutas locales
+  const vendorScripts = [
+    'vendor/jquery/jquery.min.js',
+    'vendor/bootstrap/bootstrap.bundle.min.js',
+    'vendor/html2canvas/html2canvas.min.js',
+    'vendor/jspdf/jspdf.umd.min.js',
+  ];
+  for (const src of vendorScripts) {
+    if (!html.includes(src)) {
+      missing.push(`index.html no referencia ${src}`);
+    }
+  }
+
+  // El bundle no debería re-empaquetar jQuery (señal de externalización rota)
+  try {
+    const appJs = await readFile(join(dist, 'js/app.js'), 'utf8');
+    // jQuery minificado suele incluir esta cadena característica si está bundlado
+    if (appJs.includes('jQuery JavaScript Library v') || appJs.includes('/*! jQuery v')) {
+      missing.push('js/app.js parece incluir jQuery empaquetado (debería ser externo)');
+    }
+  } catch {
+    /* ya cubierto por REQUIRED */
+  }
+
   if (missing.length) {
     console.error('✗ Recursos faltantes o inválidos:');
     missing.forEach((m) => console.error('  -', m));
