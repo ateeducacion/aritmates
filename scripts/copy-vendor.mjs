@@ -30,12 +30,6 @@ const VENDOR_MAP = [
     ],
   },
   {
-    name: 'mathjs',
-    files: [
-      { from: 'mathjs/lib/browser/math.js', to: 'mathjs/math.js' },
-    ],
-  },
-  {
     name: 'html2canvas',
     files: [
       { from: 'html2canvas/dist/html2canvas.min.js', to: 'html2canvas/html2canvas.min.js' },
@@ -45,18 +39,6 @@ const VENDOR_MAP = [
     name: 'jspdf',
     files: [
       { from: 'jspdf/dist/jspdf.umd.min.js', to: 'jspdf/jspdf.umd.min.js' },
-    ],
-  },
-  {
-    name: 'html2pdf.js',
-    files: [
-      { from: 'html2pdf.js/dist/html2pdf.bundle.min.js', to: 'html2pdf.js/html2pdf.bundle.min.js' },
-    ],
-  },
-  {
-    name: 'mustache',
-    files: [
-      { from: 'mustache/mustache.min.js', to: 'mustache/mustache.min.js' },
     ],
   },
   {

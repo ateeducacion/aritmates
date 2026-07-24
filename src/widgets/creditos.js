@@ -1,7 +1,6 @@
 
 import $ from 'jquery';
 // import {MDCDrawer} from '@material/drawer';
-import 'whatwg-fetch'; // polyfill fetch para iexplorer
 
 // estilos para MDC Drawer:
 // import '../../css/mdc.list.min.css';
