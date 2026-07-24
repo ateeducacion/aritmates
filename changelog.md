@@ -2,6 +2,7 @@
 
 ## Documentación (post 1.3)
 
+* Eliminado árbol HTML histórico de JSDoc y `conf.js` (no formaba parte del build).
 * README y `docs/` reescritos en torno a la versión simplificada.
 * Eliminados informes de migración y guías obsoletas (Selenium, instalar JSDoc).
 * Capturas de referencia en `docs/visual/`.
