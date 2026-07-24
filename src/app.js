@@ -66,8 +66,7 @@ import './widgets/boxButton';
 import IbRadio from './widgets/ibRadio';
 
 import GenerarExamen from './generarExamen';
-import {MDCDialog} from '@material/dialog';
-import {MDCTextField} from '@material/textfield';
+import {MDCDialog, MDCTextField} from './components/mdc-compat.js';
 import OptionsShortcode from './OptionsShortcode';
 
 import utils from './utils';

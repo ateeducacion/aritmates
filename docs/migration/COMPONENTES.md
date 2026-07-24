@@ -12,7 +12,7 @@ Prioridad: **equivalencia** de apariencia, valores, eventos, foco y teclado.
 | `paper-item` (+ body) | Layout en paneles | **Sustituido** por CE nativo (`src/components/paper-item.js`) |
 | `mwc-switch` | Enfocado, crono, límite, negativos | **Sustituido** por CE nativo (`src/components/mwc-switch.js`) |
 | `xy-slider` | Nivel, crono, cantidad ops | **Vendored** en `src/components/xy-slider.js` (+ xy-tips) |
-| MDC Dialog / TextField / Drawer | Código, ayuda | Mantener |
+| MDC Dialog / TextField / Drawer | Código, ayuda | **Compat nativo** (`src/components/mdc-compat.js` + CSS MDC) |
 
 ## Reglas de sustitución
 
@@ -62,9 +62,17 @@ Prioridad: **equivalencia** de apariencia, valores, eventos, foco y teclado.
 - Eliminados: `@polymer/paper-item`, `@polymer/paper-styles`, `@polymer/polymer`,
   `@polymer/iron-flex-layout`, `@polymer/iron-a11y-announcer`
 
-## Siguiente candidato sugerido
+## MDC Dialog / Drawer / TextField (completado)
 
-1. MDC Dialog / TextField / Drawer.
+- `src/components/mdc-compat.js`: `MDCDialog`, `MDCDrawer`, `MDCTextField`
+- Usa clases CSS MDC ya presentes (`mdc-dialog--open`, `mdc-drawer--open`)
+- Eliminados: `@material/dialog`, `@material/drawer`, `@material/textfield`
+- Floating label animada de MDC TextField no se emula (input nativo + CSS)
+
+## Polymer / MDC / xy-ui
+
+**Sustitución de controles de UI completada.** Solo quedan CSS MDC minificados
+locales y tipografías/iconos. Sin paquetes `@polymer/*` ni `@material/*` JS.
 
 ## Limpieza post-simplificación (v1.1.0)
 
