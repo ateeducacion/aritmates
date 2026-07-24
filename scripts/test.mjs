@@ -23,7 +23,8 @@ const dist = join(root, 'dist');
 const CI_SPECS = [
   'characterization.spec.js',
   'OptionsShortcode.spec.js',
-  'paper-checkbox.spec.js', // existe en ramas con el CE nativo
+  'paper-checkbox.spec.js',
+  'mwc-switch.spec.js',
 ];
 
 const args = new Set(process.argv.slice(2));

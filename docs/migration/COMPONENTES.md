@@ -9,7 +9,7 @@ Prioridad: **equivalencia** de apariencia, valores, eventos, foco y teclado.
 | `paper-checkbox` | Resto división, paréntesis | **Sustituido** por CE nativo (`src/components/paper-checkbox.js`) |
 | `paper-expansion-panel` | Paneles config + ayuda | Mantener (Polymer) |
 | `paper-dropdown-menu` + listbox/item | Resultado igual a… | Mantener |
-| `mwc-switch` | Enfocado, crono, límite, negativos | Mantener |
+| `mwc-switch` | Enfocado, crono, límite, negativos | **Sustituido** por CE nativo (`src/components/mwc-switch.js`) |
 | `xy-slider` | Nivel, crono, cantidad ops | Mantener |
 | MDC Dialog / TextField / Drawer | Código, ayuda | Mantener |
 
@@ -27,11 +27,18 @@ Prioridad: **equivalencia** de apariencia, valores, eventos, foco y teclado.
 - Estilos: caja 18×18 Material-like; sin ripple Polymer.
 - Dependencia npm `@polymer/paper-checkbox` eliminada.
 
+## mwc-switch (completado)
+
+- API: `.checked`, `.disabled`, atributos, `change` + burbujeo de `click` (app.js usa ambos).
+- Teclado Space/Enter.
+- Estilos: track/thumb Material; activo con `--mdc-theme-secondary` / `--colorPrincipal`.
+- Dependencia npm `@material/mwc-switch` eliminada.
+
 ## Siguiente candidato sugerido
 
-1. `mwc-switch` → switch nativo estilizado (API `.checked` ya usada).
-2. `paper-expansion-panel` → details/summary o CE propio (más riesgo visual).
-3. `xy-slider` (alto acoplamiento a `.slider` / `.sliderCon`).
+1. `paper-expansion-panel` → details/summary o CE propio (más riesgo visual).
+2. `xy-slider` (alto acoplamiento a `.slider` / `.sliderCon`).
+3. `paper-dropdown-menu` + listbox/item.
 
 ## Limpieza post-simplificación (v1.1.0)
 
