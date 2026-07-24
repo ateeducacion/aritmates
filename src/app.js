@@ -22,7 +22,8 @@ console.time('app.js');
 
 import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import $ from 'jquery';
-import '@material/mwc-switch';
+// Switch nativo compatible (sustituye @material/mwc-switch)
+import './components/mwc-switch.js';
 import 'xy-ui/components/xy-slider';
 import '@polymer/paper-dropdown-menu/paper-dropdown-menu.js';
 import '@polymer/paper-item/paper-item.js';

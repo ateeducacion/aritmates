@@ -10,18 +10,13 @@ import '../../css/mdc.drawer.min.css';
 // import mep from 'material-expansion-panel';
 
 
+// Panel de expansión nativo (sin iron-collapse / iron-icons)
 import '../widgets/paper-expansion-panel';
 
 import '@polymer/iron-a11y-announcer';
-// # esto deberia cargarlo dr-niels-paper-expansion-panel pero por algun motivo
-// no va si no lo pongo asi aqui:
-import '@polymer/iron-icons';
-import '@polymer/iron-collapse';
-import '@polymer/paper-icon-button';
+// paper-item aún se usa dentro del HTML de ayuda y de la portada
 import '@polymer/paper-item';
-// import '@polymer/paper-styles';
 import '@polymer/paper-styles/paper-styles.js';
-// import '@polymer/iron-flex-layout';
 import '@polymer/iron-flex-layout/iron-flex-layout.js';
 import '@polymer/polymer';
 
