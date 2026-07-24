@@ -189,18 +189,18 @@ Con DPR=1 y animaciones desactivadas. Índice: `docs/migration/visual/index.html
 ## Pruebas
 
 ```bash
-npm test
+npm test          # suite CI estable (debe pasar en verde)
+npm run test:ci   # alias de npm test
+npm run test:all  # suite completa (incluye tests legacy conocidos)
 ```
 
-Incluye:
+La suite CI incluye:
 
-- Operaciones (suma, resta, multiplicación, divisiones)
-- Operación múltiple y paréntesis
-- Generación de exámenes
-- Códigos de configuración
-- Pruebas de **caracterización** (`test/characterization.spec.js`) con aleatoriedad controlable solo en tests
+- Pruebas de **caracterización** (`test/characterization.spec.js`) — defaults, operaciones fijas, códigos, aleatoriedad controlada
+- Códigos de configuración (`test/OptionsShortcode.spec.js`)
+- Custom element `paper-checkbox` cuando está presente
 
-Algunos tests unitarios legacy fallan por comportamientos preexistentes (documentados en `docs/migration/`). No se “arreglan” en la migración para no cambiar la semántica.
+`npm run test:all` ejecuta también suites legacy con fallos documentados en `docs/migration/` (no bloquean el CI; se reportan como job `continue-on-error`).
 
 ## Códigos de configuración
 

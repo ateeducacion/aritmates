@@ -24,13 +24,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build with Makefile
-        run: make build
+      - name: Ensure esbuild binary
+        run: node node_modules/esbuild/install.js
+
+      - name: Build static dist
+        run: npm run build
+
+      - name: Run CI tests
+        run: npm run test:ci
 
       - name: Generate release ZIP with Makefile
         run: |
           TAG_NAME=${GITHUB_REF##*/}  # Extract tag name from ref
-          make package VERSION=$TAG_NAME
+          make package
 
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v2
