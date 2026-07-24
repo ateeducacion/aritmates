@@ -1,5 +1,12 @@
 # Changelog
 
+## Aritmates 1.2.0 - UI nativa y build minificado
+
+* Sustitución completa de controles Polymer / MDC / xy-ui por componentes nativos o vendored en `src/components/`.
+* Sin dependencias `@polymer/*`, `@material/*` ni `xy-ui`.
+* Build: esbuild con **minify**; Material Icons vía `material-design-icons` + `css/material-icons.css` (sin wrapper webpack).
+* Versión de aplicación en UI: `1.2.0`.
+
 ## Aritmates 1.1.0 - Versión simplificada (estática)
 
 * Publicación como aplicación web estática (HTML/CSS/JS + `dist/vendor`), sin Webpack/Babel en producción.

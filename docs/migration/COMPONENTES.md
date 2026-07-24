@@ -79,3 +79,9 @@ locales y tipografías/iconos. Sin paquetes `@polymer/*` ni `@material/*` JS.
 - Eliminados de package/vendor: `mathjs`, `mustache`, `html2pdf.js`, `whatwg-fetch`.
 - Eliminados demos: `src/view/pruebas.js`, `pruebas_ini.js`, `ejercicio.js`, `resultado.js`.
 - Eliminados logos Netex/Altia de `src/img/`.
+
+## v1.2.0
+
+- UI nativa completa (ver inventario arriba).
+- Build minificado (esbuild `minify: true`).
+- Material Icons: paquete `material-design-icons` + `css/material-icons.css` (sin `webpack-material-design-icons`).
