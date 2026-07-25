@@ -18,7 +18,7 @@
     "lint": "eslint './src/**/*.js' || true"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@fortawesome/fontawesome-free": "^7.3.1",
     "bootstrap": "^5.3.8",
     "decimal.js": "^10.6.0",
     "html2canvas": "^1.4.1",
