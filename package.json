@@ -34,7 +34,7 @@
     "chai": "^5.3.3",
     "chai-match": "^1.1.1",
     "esbuild": "^0.25.12",
-    "eslint": "^8.57.1",
+    "eslint": "^10.8.0",
     "eslint-config-google": "^0.14.0",
     "mocha": "^11.7.5",
     "playwright": "^1.51.0",
