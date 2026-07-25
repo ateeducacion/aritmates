@@ -23,7 +23,7 @@
     "decimal.js": "^10.6.0",
     "html2canvas": "^1.4.1",
     "iv-viewer": "^2.2.1",
-    "jquery": "^3.7.1",
+    "jquery": "^4.0.0",
     "jspdf": "^4.2.1",
     "material-design-icons": "^3.0.1",
     "placeholder-loading": "^0.7.0",
