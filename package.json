@@ -31,7 +31,7 @@
     "shallow-equal": "^3.1.0"
   },
   "devDependencies": {
-    "chai": "^5.3.3",
+    "chai": "^6.2.2",
     "chai-match": "^1.1.1",
     "esbuild": "^0.28.1",
     "eslint": "^10.8.0",
