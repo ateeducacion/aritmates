@@ -33,7 +33,7 @@
   "devDependencies": {
     "chai": "^5.3.3",
     "chai-match": "^1.1.1",
-    "esbuild": "^0.25.12",
+    "esbuild": "^0.28.1",
     "eslint": "^10.8.0",
     "eslint-config-google": "^0.14.0",
     "mocha": "^11.7.6",
