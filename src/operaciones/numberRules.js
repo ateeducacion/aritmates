@@ -54,3 +54,37 @@ export function countFollowingOperands(operands, position, operandCount) {
   }
   return count;
 }
+
+/**
+ * Número de decimales permitido por nivel.
+ *
+ * @param {number} level
+ * @return {number}
+ */
+export function decimalPlacesForLevel(level) {
+  if (level > 20) return 3;
+  if (level > 10) return 2;
+  return 1;
+}
+
+/**
+ * Cuenta operandos decimales siguiendo el límite histórico de cinco valores.
+ *
+ * @param {Array} operands
+ * @return {number}
+ */
+export function countDecimalOperands(operands) {
+  if (!Array.isArray(operands) || operands.length >= 5) return 0;
+  return operands.filter((value) => value !== undefined && value % 1 != 0).length;
+}
+
+/**
+ * Cuenta operandos negativos siguiendo el límite histórico de cinco valores.
+ *
+ * @param {Array} operands
+ * @return {number}
+ */
+export function countNegativeOperands(operands) {
+  if (!Array.isArray(operands) || operands.length >= 5) return 0;
+  return operands.filter((value) => value < 0).length;
+}
