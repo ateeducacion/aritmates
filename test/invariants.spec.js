@@ -2,6 +2,7 @@ import Suma from '../src/operaciones/suma';
 import Resta from '../src/operaciones/resta';
 import Multiplicacion from '../src/operaciones/multiplicacion';
 import DivisionEntera from '../src/operaciones/divisionEntera';
+import OperacionMultiple from '../src/operaciones/OperacionMultiple';
 import {asRandom, seededRandom, setDefaultRandom} from '../src/operaciones/random';
 import {evaluateArithmetic} from '../src/operaciones/evaluate';
 import {
@@ -360,5 +361,51 @@ describe('Estado de sesión de ejercicios', () => {
       currentIndex: 9,
       reloadEvery: 10,
     })).to.equal(false);
+  });
+});
+
+
+describe('Invariantes de OperacionMultiple', () => {
+  it('100 semillas producen expresiones evaluables con resultado coherente', () => {
+    for (let seed = 1; seed <= 100; seed++) {
+      const op = new OperacionMultiple({
+        nivel: 20,
+        cantidadOperandos: 3,
+        tiposOperacion: [
+          OPERACIONES.SUMA,
+          OPERACIONES.RESTA,
+          OPERACIONES.MULTIPLICACION,
+        ],
+        tiposOperacionAzar: true,
+        tiposNumero: [TIPO_NUMERO.NATURAL],
+        random: seededRandom(seed),
+      });
+
+      const expression = op.toString(false).replace(/∙/g, '*');
+      expect(evaluateArithmetic(expression)).to.equal(Number(op.resultado));
+      expect(op.operandos).to.have.length(3);
+    }
+  });
+
+  it('una semilla reproduce exactamente una operación múltiple', () => {
+    const options = {
+      nivel: 20,
+      cantidadOperandos: 4,
+      tiposOperacion: [
+        OPERACIONES.SUMA,
+        OPERACIONES.RESTA,
+        OPERACIONES.MULTIPLICACION,
+      ],
+      tiposOperacionAzar: true,
+      tiposNumero: [TIPO_NUMERO.NATURAL],
+    };
+
+    const first = new OperacionMultiple({...options, random: seededRandom(42)});
+    const second = new OperacionMultiple({...options, random: seededRandom(42)});
+
+    expect(second.operandos).to.deep.equal(first.operandos);
+    expect(second.tiposOperacion).to.deep.equal(first.tiposOperacion);
+    expect(second.resultado).to.equal(first.resultado);
+    expect(second.toString(false)).to.equal(first.toString(false));
   });
 });
