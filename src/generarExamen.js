@@ -263,7 +263,8 @@ export default class GenerarExamen {
       }
     }
 
-    // TODO: comprobar que existe una de cada
+    // Cuando hay varios tipos, las primeras operaciones cubren uno de cada
+    // tipo siempre que la cantidad solicitada sea al menos su número.
   }
 
   _addOperacionesPorTipo(nombre) {
