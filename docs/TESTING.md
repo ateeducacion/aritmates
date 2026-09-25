@@ -48,7 +48,9 @@ de `setDefaultRandom(seededRandom(1))`. El runner no modifica `Math.random`.
 | `generarExamen.spec.js` | la lista de un examen |
 | `e2e/critical.spec.js` | portada, 10 aciertos, vista previa del PDF, ancho móvil |
 
-La suite no conserva `it(...)` vacíos: esos marcadores históricos se sustituyeron por comentarios que explican los contratos no soportados o por los casos concretos que ya cubren ese comportamiento. Mocha no debe presentar tests `pending` como si fueran cobertura.
+La suite no conserva `it(...)` vacíos: esos marcadores históricos se sustituyeron por comentarios que explican los contratos no soportados o por los casos concretos que ya cubren ese comportamiento. Mocha se ejecuta con `--forbid-pending` y `--forbid-only`, por lo que un test pendiente o un `.only` falla CI.
+
+La salida `console.log` del bundle legacy se silencia por defecto para que CI muestre las aserciones y errores útiles. Para investigar un caso con el ruido histórico habilitado, usa `ARITMATES_TEST_VERBOSE=1 npm test`.
 
 ## Reproducir un fallo
 

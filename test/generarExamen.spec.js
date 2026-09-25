@@ -171,7 +171,8 @@ describe('Generar Examen', ()=>{
     }, actual );
   });
 
-  it('debería alguno de los operandos cumplir, nivel 100, tener entre 50 y 150 con las DIVISIONES CON DECIMALES'
+  // Historical disabled contract: level-100 decimal division operand range.
+  // The callback was commented out in upstream; keep it as documentation, not a pending test.
       // ()=>{
       //     const o = new GenerarExamen( {
       //         cantidadOperaciones: 6,
@@ -203,7 +204,6 @@ describe('Generar Examen', ()=>{
       //         return r;
       //     }, actual );
       // }
-  );
 
   it('al seleccionar números negativos: al menos un operando o el resultado ' +
       'debe ser negativo (en cada operacion)', ()=>{
@@ -320,7 +320,8 @@ describe('Generar Examen', ()=>{
     expect( actual ).be.eql(diezTreintas);
   });
 
-  it('Seleccionado complementario 30 se generan operaciones que den como resultado 30, division con resto'
+  // Historical disabled contract: complement 30 with division-with-remainder.
+  // The callback was commented out in upstream; keep it as documentation, not a pending test.
       // , ()=>{
       // const examen = new GenerarExamen( {
       //     cantidadOperaciones: 10,
@@ -338,7 +339,6 @@ describe('Generar Examen', ()=>{
 
       // expect( actual ).be.eql(diezTreintas);
       // }
-  );
 
   // it('Seleccionado complementario 30 se generan operaciones que den como resultado 30, division con decimales',()=>{
   //     const examen = new GenerarExamen( {
@@ -380,7 +380,8 @@ describe('Generar Examen', ()=>{
 
     expect( actual ).be.eql(diez90);
   });
-  it('Seleccionado complementario 90 se generan operaciones que den como resultado 90, division con resto'
+  // Historical disabled contract: complement 90 with division-with-remainder.
+  // The callback was commented out in upstream; keep it as documentation, not a pending test.
       // , ()=>{
       //     const examen = new GenerarExamen( {
       //         cantidadOperaciones: 10,
@@ -398,7 +399,6 @@ describe('Generar Examen', ()=>{
 
       //     expect( actual ).be.eql(diez90);
       // }
-  );
 
   // Por ejemplo, 3 +? = 10, 12 + ? = 20, para el 10 y el 20 podrían ser ejemplos.
 
