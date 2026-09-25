@@ -29,7 +29,6 @@ export default class Multiplicacion extends Operacion {
     decimalesMaximo,
     random,
   } = {}) {
-    // const debug = true;
     let operandosIniciales;
     if ( undefined !== operandos ) {
       operandosIniciales = operandos.slice();
@@ -66,14 +65,12 @@ export default class Multiplicacion extends Operacion {
       if (operandosIniciales) this.operandosIniciales = operandosIniciales;
       this.resultadoUsuario = true;
       this.resultado = resultado;
-      // this.generarNumerosOperandos();
       this.calcularResultado();
     }
   }
 
 
   calcularResultado() {
-    // const debug = true;
 
     if (this.complementario) {
       this.resultado = this.complementario;
@@ -91,9 +88,7 @@ export default class Multiplicacion extends Operacion {
       return;
     }
 
-    // if ( debug ) console.log(tag + '--------------------' );
     if (this.posicion_nivel-1 == this.operandos.length) {
-      // console.log('el resultado es el numero que define el nivel');
 
       // poner un numero que cumpla con el nivel como resultado y averiguar el
       // resto de operandos
@@ -117,7 +112,6 @@ export default class Multiplicacion extends Operacion {
   }
 
   _generarOperandosComplementario() {
-    // const debug = true;
 
     let opTmp;
     const resuFactorizado = this.factorizar(this.resultado);
@@ -187,7 +181,6 @@ export default class Multiplicacion extends Operacion {
   resolverIncognita() {}
 
   _generarOperandoPosicion(posicion) {
-    // const debug = true;
     const decimalesInicial = this.decimales;
     let cantOperandosDecimales = 0;
     const ultimaPosicion = this.cantidad_operandos-1;
@@ -215,7 +208,6 @@ export default class Multiplicacion extends Operacion {
     const cantidadNegativo = this.getCantidadOperandosNegativos();
     const ultimaPosicion = this.cantidad_operandos-1;
     let pasarANegativo = false;
-    // let operandosPar = (this.cantidad_operandos % 2 == 0 );
     const cantidadNegativoPar = (cantidadNegativo % 2 == 0) &&
         cantidadNegativo>0;
     const ultimoPositivo = this.operandos[posicion] >= 0;

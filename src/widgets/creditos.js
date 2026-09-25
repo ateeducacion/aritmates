@@ -1,13 +1,9 @@
 
 import $ from 'jquery';
-// import {MDCDrawer} from '@material/drawer';
 
 // estilos para MDC Drawer:
-// import '../../css/mdc.list.min.css';
-// import '../../css/mdc.drawer.min.css';
 
 import '../../css/widgets.css';
-// import '../../css/mdc-drawer.scss';
 import '../../css/creditos.scss';
 
 import {DEFAULTS} from '../defaultOptions';

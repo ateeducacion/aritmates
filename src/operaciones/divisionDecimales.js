@@ -20,7 +20,6 @@ export default class DivisionDecimales extends DivisionEntera {
     decimales = false, decimalesMaximo,
     random,
   } = {}) {
-    // const debug= true;
     if ( !lower_bound ) lower_bound = 0.1;
     if ( lower_bound==0 ) lower_bound = 0.1;
     super({
@@ -56,7 +55,6 @@ export default class DivisionDecimales extends DivisionEntera {
         this.posicion_incognita = this.cantidad_operandos+1;
       }
       this.generarNumerosOperandos();
-      // console.log('llamando calcular resultado desde cantOperandos>2');
       this.calcularResultado();
       this.comprobarResultado();
     }
@@ -67,9 +65,6 @@ export default class DivisionDecimales extends DivisionEntera {
   }
 
   calcularResultado() {
-    // const id = this.getRandomMinMax(1, 99999999);
-    // const tag = '[DivisionDecimales.calcularResultado]';
-    // const debug = true;
 
     this.intentos = 0;
 
@@ -105,7 +100,6 @@ export default class DivisionDecimales extends DivisionEntera {
       if ( this.enfocado ) {
         this.operandos[0] = this.operandos[0] / powDecimales;
         this.operandos[1] = this.operandos[1];
-        // this.resultado = this.resultado / powDecimales;
       } else if (this.complementario) {
         // sin decimales
         this.operandos[0] = this.operandos[0];
@@ -119,29 +113,18 @@ export default class DivisionDecimales extends DivisionEntera {
             // decimal en dividendo y resultado
             this.operandos[0] = new Decimal(this.operandos[0])
                 .div(powDecimales);
-            // this.operandos[0] = parseFloat( this.operandos[0].toString() );
             this.operandos[1] = this.operandos[1];
-            // this.resultado = this.resultado / powDecimales;
             break;
           case 1:
             // decimal en dividendo y divisor
             this.operandos[0] = new Decimal(this.operandos[0]).div(powDecimales);
-            // this.operandos[0] = parseFloat( this.operandos[0].toString() );
             this.operandos[1] = new Decimal(this.operandos[1]).div(powDecimales);
-            // this.operandos[1] = parseFloat( this.operandos[1].toString() );
-            // this.resultado = this.resultado;
             break;
           case 3:
             // 1 decimal en divisor
             this.operandos[0] = this.operandos[0];
             this.operandos[1] = new Decimal(this.operandos[1]).div(10);
-            // this.resultado = new Decimal(this.resultado).mul(10);
             break;
-          // case 5:
-          //     // 3 decimales
-          //     // this.operandos[0] = this.operandos[0] / 1000;
-          //     // this.operandos[1] = this.operandos[1]/10 ;
-          //     // this.resultado = this.resultado / 100;
           //     break
           default:
             break;
@@ -150,7 +133,6 @@ export default class DivisionDecimales extends DivisionEntera {
         this.resultado = new Decimal(this.operandos[0]).div(this.operandos[1]);
         // comprobar que van a dar números con decimales
         const listaNumeros = this.operandos.slice();
-        // listaNumeros.push(this.resultado);
         if ( ! this.comprobarDecimalesValidos( listaNumeros ) ) {
           this.intentos = this.intentos +1;
           this.deep++;
@@ -167,23 +149,15 @@ export default class DivisionDecimales extends DivisionEntera {
         // tiende a dar mas errores de num periodicos
       }
     } else {
-      // console.log( tag,
-      //     'operandosIniciales', this.operandosIniciales,
-      //     'operandos Actuales', this.operandos,
-      //     this.operandosInicialesLength(), 'this.operandosInicialesLength()',
-      //     this.cantidad_operandos, 'this.cantidad_operandos'
-      // );
       this.resultado = new Decimal(this.operandos[0]).div(this.operandos[1]);
     }
 
-    // this.resultado = this.operandos[0]/ this.operandos[1]
     // si haces esto puede darte resultados como este:
     // 601349 / 317 = 1897
     // 601.349 / 317 = [1.8970000000000002]
     // cuando debería dar 1.897
 
     // el resultado del numero entero viene de "generar operandos "
-    // this.resultado = this.resultado / 1000 ;
     this.operandosDecimalToFloat();
   }
 
@@ -200,7 +174,6 @@ export default class DivisionDecimales extends DivisionEntera {
   }
 
   comprobarDecimalesValidos(lista) {
-    // const debug = true;
     this.decimalToFloat(lista);
 
     let noHayDecimales = true;
@@ -244,13 +217,5 @@ export default class DivisionDecimales extends DivisionEntera {
     return OPERACIONES.DIVISION_DECIMAL;
   }
 
-  // toString() {
-  //   const txt = super.toString(false);
-  //   return txt;
-  // }
 
-  // toHtml() {
-  //   const html = super.toHtml(false);
-  //   return html;
-  // }
 }

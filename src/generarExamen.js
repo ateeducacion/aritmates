@@ -91,12 +91,8 @@ export default class GenerarExamen {
 
     this.errors = [];
 
-    // if (!posicionNivel) this.posicionNivel = 1;
-    // else this.posicionNivel = this.posicionNivel;
-    // console.log('---', tiposNumero, resultadoNegativo);
     if ( tiposNumero.indexOf(TIPO_NUMERO.NATURAL) !== -1 &&
         resultadoNegativo ) {
-      // console.log('----', this.tipos_operaciones);
       if (
         this.tipos_operaciones.indexOf(OPERACIONES.RESTA) == -1 &&
         tiposNumero.indexOf(TIPO_NUMERO.ENTERO) == -1
@@ -110,7 +106,6 @@ export default class GenerarExamen {
 
         // Muestra el error
         return;
-        // resultadoNegativo = false;
       }
     }
 
@@ -210,7 +205,6 @@ export default class GenerarExamen {
       if ( this.tipos_operaciones.length == 0 ) {
         this.tipos_operaciones[0]='suma';
       }
-      // console.log( tag, 'tipos operaciones', this.tipos_operaciones );
 
       for (let index = 0; index < cantidadOperaciones; index++) {
         nombre = this.tipos_operaciones[0];
@@ -252,7 +246,6 @@ export default class GenerarExamen {
       opciones.permitirNegativos=true;
     }
     let operacion;
-    // const tipo = this.TIPO_OPERACION();
     switch (nombre) {
       case 'suma':
       case OPERACIONES.SUMA:
@@ -289,7 +282,6 @@ export default class GenerarExamen {
   }
 
   toString(equal=true, verbose = false) {
-    // console.log( 'tostring', equal, verbose );
     let txt = 'Ejercicios de Matemáticas\n';
     txt += 'Nivel: ' + this.nivel + ' \n';
     txt += this.cantidad + ' ejercicios, ';
@@ -319,25 +311,17 @@ export default class GenerarExamen {
     txt += 'al azar?' + this.posicionIncognitaAlAzar;
     
 
-    // const nombrePluralOperaciones = this.TIPO_OPERACION().map(function(x){
-    //  return x.plural; }) ;
-    // txt += nombrePluralOperaciones.slice(0,-1).join(', ') +' y ';
-    // txt += nombrePluralOperaciones[nombrePluralOperaciones.length-1] + '.' ;
     txt += '\n\n';
 
     this.operacionesExamen.forEach((op) => {
-      // debug = true;
       txt += '['+op.id + '] '+ op.toString( equal, verbose ) + '\n';
-      // debug = false;
     });
     return txt;
   }
 
   toPrint( ) {
     // imprime las soluciones
-    // console.log( 'tostring', equal, verbose );
     let txt ='';
-    // txt += '<h2>Ejercicios de Matemáticas</h2>';
     txt += '<div class="solucionesEjercicio" >';
     txt += '<p>Nivel: ' + this.nivel + ' <br>';
     txt += this.cantidad + ' ejercicios, ';
@@ -353,8 +337,6 @@ export default class GenerarExamen {
     }
 
     txt += '<br>tipos numero: <br>';
-    // txt += this.tiposNumeroInicial;
-    // txt += '<br>';
     txt += TIPO_NUMERO.tiposNumeroToText(this.tiposNumeroInicial);
     if (this.resultadoNegativo) {
       txt += '<br>Resultado negativo<br>';
@@ -375,8 +357,6 @@ export default class GenerarExamen {
       const opSolve = oe.toString(true, true);
       data.push( opSolve );
     });
-    // txt += utils.organizeInLines( data, 'opSolucion' );
-    // txt += utils.organizeSimpleNum( data, 'opSolucion' );
     txt += utils.organizeInTables( data, 2, 'tableSolucion', 'opSolucion', 34, 50 );
 
     txt += '</div>';
@@ -406,13 +386,9 @@ export default class GenerarExamen {
   mostrarErrores() {
     let txt= '';
     const erroresExamen = [];
-    // console.log('operaciones examen:', this.operacionesExamen);
-    // console.log('miserrores:', this.errors);
 
     this.operacionesExamen.forEach((element, index) => {
-      // console.log('error:', element.errors );
       if ( element.errors.length>0 ) {
-        // console.log( 'errores en ', index );
         erroresExamen.push({
           'posicion': index,
           'id': element.id,
@@ -437,8 +413,6 @@ export default class GenerarExamen {
     });
 
     erroresExamen.forEach( (eo) => {
-      // console.log('recorriendo errores examen', eo.errors );
-      // txt += '\n' + 'posicion: ' + eo.posicion;
       txt += eo.id + ' ' + eo.operacion + '\n';
       eo.errors.forEach( (error) => {
         txt += '\t * ' + error.error+': ';
@@ -467,10 +441,6 @@ export default class GenerarExamen {
           opcionesCopy.tiposOperacion = tiposOperaciones;
           opRand = new OperacionMultiple( opcionesCopy );
           i++;
-          // console.log('operandos', opRand.operandos, 
-          //     'operandos has undefined', this.hasUndefined(opRand.operandos),
-          //     'operandos has NaN', this.hasNaN(opRand.operandos)
-          // );
         } while (
           (
             opRand.resultado == false ||
@@ -519,7 +489,6 @@ export default class GenerarExamen {
    * @param {*} opciones
    */
   crearMasOperaciones() {
-    // const debug = true;
     const opciones = Object.assign({}, this.opciones);
     const tiposOperaciones = this.tiposOperaciones;
     const cantidad = this.cantidadOperaciones;
@@ -541,9 +510,6 @@ export default class GenerarExamen {
       }
     }
     return undf;
-    // return array.some((val) => {
-    //   return (undefined === val);
-    // } );
   }
 
   hasNaN( array ) {

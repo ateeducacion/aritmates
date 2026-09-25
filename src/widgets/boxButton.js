@@ -3,7 +3,6 @@ import '../../css/boxButton.scss';
 
 export default class BoxButton {
   constructor() {
-    // this.debug = true;
     this.selected = false;
 
     $('.boxButton').on('click', (ev) => {

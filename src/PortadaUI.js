@@ -7,7 +7,6 @@
  * @return {number} Indice de el valor de cronometro
  */
 function keyCrono(valorTexto) {
-    // console.log('keyCrono', valorTexto, textoCrono.indexOf(valorTexto) );
     return textoCrono.indexOf(valorTexto);
 }
 

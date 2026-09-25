@@ -17,7 +17,6 @@
  */
 /** @global */
 window.debug = false;
-// const t0 = performance.now();
 
 import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import $ from 'jquery';
@@ -109,7 +108,6 @@ const opciones = {
    * @param {boolean} x definir como cierto o no 
    */
   set posicionIncognitaAlAzar(x) {
-    // console.log('set posicion incognita a', x );
     if (x) {
       $('#radioResultado .ib-radio[data-val=2]').click();
       $('#radioResultado_mv .ib-radio[data-val=2]').click();
@@ -138,14 +136,11 @@ const opciones = {
   },
   set nivel(x) {
     // converitr en value slider
-    // console.log('nivel set', x , 'keynivel', keyNivel[x], valoresNiveles(x) );
     sliderNivelEl.value = keyNivel[x];
     sliderNivelEl_mv.value = keyNivel[x];
     sliderNivelUpdate();
   },
   get nivel() {
-    // this.nivel = valoresNiveles(sliderNivel.value);
-    // sliderNivelUpdate();
     return valoresNiveles(sliderNivel.value);
   },
   set cuentaAtras(x) {
@@ -153,17 +148,14 @@ const opciones = {
     sliderCrono.value = val;
     sliderCrono_mv.value = val;
     if ( x == 0 ) {
-      // $('#switch-crono')[0].setAttribute('checked', '');
       $('#switch-crono')[0].checked = true;
       sliderCrono.disabled = true;
       sliderCrono.sliderCon.show = false;
-      // $('#switch-crono').trigger('change');
     } else {
       $('#switch-crono')[0].checked = false;
       sliderCrono.disabled = false;
       sliderCrono.sliderCon.show = true;
     }
-    // $('#switch-crono').trigger('change');
     sliderCronoUpdateMv(null);
     sliderCronoUpdateOr(null);
   },
@@ -183,7 +175,6 @@ const opciones = {
     const sinLimite = ( x == 0 );
     $('#switch-limiteOp')[0].checked = sinLimite;
     // Fuerza actualizar visibilidad sliderCantidadOp y tooltip
-    // console.log('set cantidad operaciones, sin limite ? ', sinLimite) ;
     // desactiva slider si esta marcada "SinLimite"
     sliderCantidadOp.disabled = sinLimite;
     sliderCantidadOp_mv.disabled = sinLimite;
@@ -245,13 +236,11 @@ const opciones = {
   },
 
   addTipoOperacion(tipo) {
-    // const debug = true;
     let el;
     let elName;
     if ( !(this.tiposOperaciones.includes(tipo)) ) {
       switch (tipo) {
         case OPERACIONES.SUMA:
-          // el = $('#btnSuma');
           elName = '#btnSuma';
           break;
         case OPERACIONES.RESTA:
@@ -262,8 +251,6 @@ const opciones = {
           break;
         case OPERACIONES.DIVISION_RESTO:
           elName = '#btnDiv';
-          // $('#cbDivResto')[0].checked = true;
-          // $('#cbDivResto').trigger('change');
           $('#cbDivResto').click();
           break;
         case OPERACIONES.MULTIPLICACION:
@@ -276,7 +263,6 @@ const opciones = {
   },
 
   addTipoNumero(tipo) {
-    // const debug = true;
     if ( !(this.tiposNumero.includes(tipo)) ) {
       switch (tipo) {
         case TIPO_NUMERO.NATURAL:
@@ -308,7 +294,6 @@ const SCENE = {
 let scene = SCENE.OPTIONS;
 
 window.opciones = opciones;
-// console.log('Opciones iniciales', opciones);
 
 
 const sliderNivel = $('xy-slider#sliderNivel')[0];
@@ -348,8 +333,6 @@ $('#nivelMax_mv').val(valoresNiveles(sliderNivel.value));
 const sliderCrono = $('#row-nivel-crono-noperaciones').find('#sliderCrono')[0];
 window.sliderCrono = sliderCrono;
 const sliderCrono_mv = $('#sliderCrono_mv')[0];
-// console.log('sliderCrono_mv');
-// console.log('sliderCrono_mv', sliderCrono_mv );
 
 if (DEFAULTS.cuentaAtras != 0) {
   sliderCrono.value = keyCrono(DEFAULTS.cuentaAtras);
@@ -360,13 +343,11 @@ if (DEFAULTS.cuentaAtras != 0) {
 }
 
 const sliderCronoUpdateMv = (ev) => {
-  // console.log( 'sliderCronoUpdateMv', ev );
   sliderCrono_mv.value = sliderCrono.value;
   sliderCrono_mv.sliderCon.tips = valoresCrono(sliderCrono.value);
   sliderCrono.sliderCon.tips = valoresCrono(sliderCrono.value);
 };
 const sliderCronoUpdateOr = (ev) => {
-  // console.log( 'sliderCronoUpdateMv', ev );
   sliderCrono.value = sliderCrono_mv.value;
   sliderCrono_mv.sliderCon.tips = valoresCrono(sliderCrono_mv.value);
   sliderCrono.sliderCon.tips = valoresCrono(sliderCrono_mv.value);
@@ -443,7 +424,6 @@ const cbCronoOnChange = (ev) => {
 };
 
 const cbLimiteOpOnChange = (ev) => {
-  // console.log('cb limite operaciones cambiado ', ev);
   sliderCantidadOp.disabled = ev.target.checked;
   sliderCantidadOp.sliderCon.show = !ev.target.checked;
   sliderCantidadOp_mv.disabled = ev.target.checked;
@@ -452,16 +432,7 @@ const cbLimiteOpOnChange = (ev) => {
   $('#switch-limiteOp_mv')[0].checked = ev.target.checked;
 
   // si esta sin limite activar cronometro y no permitir desactivarlo
-  // if ( $('#switch-limiteOp')[0].checked ) {
-  //   if ( $('#switch-crono')[0].checked ) {
-  //     $('#switch-crono').click();
-  //   }
-  //   sliderCrono.disabled = false;
-  //   $('#switch-crono').disabled = true;
-  // } else {
   //   // sliderCrono.disabled = true;
-  //   $('#switch-crono').disabled = false;
-  // }
 };
 
 $('#switch-crono').on('click', cbCronoOnChange );
@@ -526,7 +497,6 @@ $(document).on('selected:btnMulti', (ev) => {
 
 
 $(document).on('selected:btnDiv', (ev, clickOrigen) => {
-  // console.log('ev type:', ev.type, 'origen', clickOrigen );
   const id = '#' + clickOrigen;
   // NO-Quitar negativos si estan selecionado al selecionar division
   // Ya que lo que no sean divisiones pueden ser negativas
@@ -540,7 +510,6 @@ $(document).on('selected:btnDiv', (ev, clickOrigen) => {
     $('#divResto').addClass('d-block');
     $('#divResto_mv').addClass('d-block');
   } else {
-    // $('#btnNegativos')[0].removeAttribute('disabled');
     removeOption( opciones.tiposOperaciones, OPERACIONES.DIVISION_RESTO );
     // click checbox resto para restaurar numero de operandos al quitar
     // las divisiones
@@ -579,16 +548,13 @@ function restaurarOpcionMas2Operandos() {
 
 const cbDivRestoChange = (ev) => {
   // quita las divisiones "a secas" y pone division con resto ( o viceversa )
-  // console.log( ev.target, 'checked', ev.target.checked );
 
   if (ev.target.checked) {
-    // console.log( 'checked true');
     removeOption( opciones.tiposOperaciones, OPERACIONES.DIVISION );
     addOption( opciones.tiposOperaciones, OPERACIONES.DIVISION_RESTO );
 
     elimminarOpcionMas2Operandos();
   } else {
-    // console.log( 'checked false');
     addOption( opciones.tiposOperaciones, OPERACIONES.DIVISION );
     removeOption( opciones.tiposOperaciones, OPERACIONES.DIVISION_RESTO );
 
@@ -618,8 +584,6 @@ const changeOpParentesis = () => {
 };
 
 $('#selectNuOperandos').on('change', (ev) => {
-  // console.log('change!', ev.target );
-  // console.log('opciones.cantidadOperandos', opciones.cantidadOperandos);
   changeOpParentesis();
   ev.stopPropagation();
   ev.preventDefault();
@@ -638,7 +602,6 @@ $('#opConParentesis').on('change', opConParentesisChange );
 $('#opConParentesis_mv').on('change', opConParentesisChange );
 
 const resultadoIgualaChange = (ev) => {
-  // console.log('target value:', ev.target.value );
   $('#resultadoIgualA_mv')[0].value = ev.target.value;
   $('#resultadoIgualA')[0].value = ev.target.value;
 };
@@ -651,7 +614,6 @@ const deselect = (id, opcion) => {
   if ( $(hashId).hasClass('selected') ) {
     toogleOption( opciones.tiposNumero, opcion );
     // no te deja justar dos triggers
-    // $(document).trigger('selected:'+ id );
     $(hashId).removeClass('selected');
   }
 };
@@ -764,7 +726,6 @@ $(document).ready(function() {
 });
 
 // botones clear no cabe el texto en versino tablet, se pone como alt
-// $('.button.clear').attr('title', $(this).find('name') );
 $.each($('.button.button-long.clear'), (index, val)=> {
   const nameElement =$(val).find('.txt')[0];
   const txt = nameElement.innerHTML;
@@ -778,7 +739,6 @@ const tiempoPreguntas = [];
 let puedeReintentar = true;
 
 const enviarRespuesta = (ev) => {
-  // console.log( ev.target.id, 'clicked' );
   // guarda el tiempo de la pregunta recién respondida
   endPregunta = Date.now();
   tiempoPreguntas[currentOp] = endPregunta - startPregunta;
@@ -788,7 +748,6 @@ const enviarRespuesta = (ev) => {
       opcionesGuardadas.cantidadOperaciones,
   );
   startPregunta = Date.now();
-  // console.log( score.tiempoConsumido );
 
   // acierto o fallo?
   const op = examen.operacionesExamen[currentOp];
@@ -799,8 +758,6 @@ const enviarRespuesta = (ev) => {
       'resto': $('input.resto')[0].value,
     };
   }
-  // console.log( 'operación', op, 'respuesta', respuesta,
-  //     'op respuesta', op.respuesta() );
 
   // --- feedback
   // si falla
@@ -823,8 +780,6 @@ const enviarRespuesta = (ev) => {
     const modalCorrecta = $('.modalEjercicio.correcta')[0];
 
     setTimeout(function(t) {
-      // console.log('ha pasado 500 milisegundos');
-      // $(t).slideUp(750);
       $(t).removeClass('d-flex');
       $('.pantalla').show();
 
@@ -842,10 +797,8 @@ const enviarRespuesta = (ev) => {
     answer: respuesta,
     correct: op.esRespuesta(respuesta),
   });
-  // console.log('puntuación', score);
 
   // si hay operaciones infinitas carga nuevas cada x operaciones
-  // const tagOI = '[OperacionesInfinitas]';
   if (shouldReloadInfiniteOperations({
     configuredOperations: opcionesGuardadas.cantidadOperaciones,
     currentIndex: currentOp,
@@ -873,12 +826,9 @@ window.opActual = {};
 
 function mostrarOperacion(op) {
   // TODO: no desactiva la barra scroll en input number
-  // disableMouseWheelInputNumber();
   actualizarClaseAyuda( op.getTipo() );
   tagOperacion.innerHTML = op.toHtml();
-  // console.log('%cOp Actual: '+op, 'font-size:3rem', window.debugSelenium);
   if ( window.debugSelenium ) {
-    // console.log('%cOp debugSelenium: '+op, 'font-size:3rem');
     window.opActual = op;
   }
   actualizarClaseAyuda(op.getTipo() );
@@ -905,7 +855,6 @@ function guardarOpciones(opciones) {
 // al pulsar iniciar cargar ejercicios
 $('#btnComenzar').on('click', function() {
    
-  // console.log('btnComenzar clicked ');
 
   if ( opciones.tiposOperaciones.length == 0 ||
       opciones.tiposNumero.length == 0 ) {
@@ -919,13 +868,11 @@ $('#btnComenzar').on('click', function() {
   opcionesGuardadas = guardarOpciones(opciones);
 
   // visualizar opciones:
-  // console.log(JSON.stringify(opcionesGuardadas, null, 2));
   // generar operaciones con estos datos y cargar ejercicios
   // load template
   fetch('./templates/part_ejercicio.html')
       .then((response) => response.text() )
       .then((data) => {
-        // console.log('data ok');
         // ocultar cajas portada:
         $('#primeraCaja').hide();
         $('#hoja-ejercicios').hide();
@@ -937,7 +884,6 @@ $('#btnComenzar').on('click', function() {
         // renombrar hoja-opciones a ejericios
         $('#hoja-opciones').attr('id', 'ejercicios');
 
-        // console.log('append', data);
         // agregar nuevo contenido
         $('#newContent').hide();
         $('#newContent').append(data);
@@ -983,24 +929,17 @@ $('#btnComenzar').on('click', function() {
         examen = new GenerarExamen( opcionesGuardadas );
 
         if ( examen.errors.length > 0 ) {
-          // console.log(examen.toString( true, true ));
-          // console.log( 'errores:', examen.errors, examen.mostrarErrores() );
           $('#ejercicios').find('#newContent')
               .append(
                   examen.toHtml()
               );
         } else {
-          // console.log('%cDEBUG',
-          //   'background-color: red;font-size:5em;border');
-          // debugger;
           currentOp = 0;
           tagOperacion.innerHTML = examen.operacionesExamen[currentOp].toHtml();
 
           const opActual = examen.operacionesExamen[currentOp];
-          // window.opActual = opActual;
           actualizarClaseAyuda(opActual.getTipo() );
           mostrarOperacion(opActual);
-          // tagOperacion.innerHTML = opActual.toHtml();
           actualizarNumeroEjercicio(opcionesGuardadas.cantidadOperaciones);
 
           // cerrar pantalla modal al picar boton de continuar/reintentar
@@ -1032,11 +971,8 @@ $('#btnComenzar').on('click', function() {
             let min = timeArr[0];
             let sg = parseInt(timeArr[1])*6 | 0;
             min = utils.rellenaIzq(min, 2, '0');
-            // console.log('boxtime total', sg, timeArr[1] );
             sg = utils.rellenaIzq(sg, 2, '0');
             $('#boxTime #total')[0].innerHTML = min + ':' + sg;
-            // console.log('boxtime total', $('#boxTime #total')[0].toString() );
-            // console.log('boxtime total', sg );
             sessionTimer.startCountdown(document.getElementById('countdown'), opcionesGuardadas.cuentaAtras*1000);
           } else {
             const notime = '--:--'; // '――:――'
@@ -1051,23 +987,16 @@ $('#btnComenzar').on('click', function() {
 
           $('body').find('#btnEnviarRespuesta').on('click', (ev) => enviarRespuesta(ev) );
           $('#interior').on('keyup', '.incognita', function(ev) {
-            // console.log('key .incoginita', ev.keyCode);
             const op = examen.operacionesExamen[currentOp];
             if ( ev.keyCode == 13 ) {
               ev.stopPropagation();
               ev.preventDefault();
-              // console.log('pulsado enter', op.tipo );
               if ( op.getTipo() != OPERACIONES.DIVISION_RESTO ) {
-                // console.log('enviar respuesta');
                 enviarRespuesta(ev);
               } else {
                 document.getElementById('resto').focus( (ev) =>
                   $(this).select()
                 );
-                // inputResto.focus( function(ev) {
-                //   console.log(ev);
-                //
-                // });
               }
             }
           });
@@ -1080,8 +1009,6 @@ $('#btnComenzar').on('click', function() {
           });
 
           $('body').on('timeup', (ev) => {
-            // console.log('se acabo el tiempo');
-            // console.log('SCENE ES SCORE?', scene == SCENE.SCORE );
 
             // lanzar solo si no estas ya en resultados
             if ( scene != SCENE.SCORE ) {
@@ -1093,7 +1020,6 @@ $('#btnComenzar').on('click', function() {
           });
         }
       });
-  // console.log('fin btnComenzar click');
 } );
 
 
@@ -1123,10 +1049,7 @@ function actualizarNumeroEjercicio( total ) {
 }
 
 function actualizarClaseAyuda( operacion ) {
-  // console.log( examen.operacionesExamen[currentOp] );
-  // console.log('actualizar clase ayuda', operacion);
   $('#ayudaEjercicio')[0].dataset.operacion = operacion;
-  // console.log('data-operacion: ',$('#ayudaEjercicio')[0].dataset.operacion);
 }
 
 
@@ -1144,12 +1067,7 @@ function permitirResultadoNegativo() {
 
   const btnMultiSelected = $('#btnMulti')[0].classList.contains('selected');
   // si esta seleccionado numeros negativos o restas ( y solo restas )
-  // console.log('opciones operaciones:', opciones.tiposOperaciones );
-  // console.log('solo division', onlyBtnDivSelected );
 
-  // console.log('negativos y no solo divisiones', (btnNegativosSelected && !onlyBtnDivSelected) );
-  // console.log('resta y no divsion , no mul y no suma ', ( btnRestaSelected && !btnDivSelected && !btnMultiSelected && !btnSumSelected ) );
-  // console.log('resta y mas de 2 operadores', ( btnRestaSelected && opciones.cantidadOperandos>2) );
   if (canEnableNegativeResult({
     negativeNumbersSelected: btnNegativosSelected,
     sumSelected: btnSumSelected,
@@ -1253,7 +1171,6 @@ function changeOpTipoNumero() {
 
     removeOption( opciones.tiposNumero, TIPO_NUMERO.ENTERO );
   } else {
-    // $('#btnNegativos').show();
     $('#btnNegativos')[0].removeAttribute('disabled');
     $('#btnNegativos_mv')[0].removeAttribute('disabled');
   }
@@ -1313,7 +1230,6 @@ function cargarFaltaOpciones(dialog, pdf = false) {
           if ( ! pdf ) {
             $('#btnComenzar').click();
           } else {
-            // console.log('vista previa pdf');
             window.scrollTo(0, 0);
             vistaPreviaPdf();
           }
@@ -1325,7 +1241,6 @@ function cargarFaltaOpciones(dialog, pdf = false) {
  * Boton Cargar codigo ejercicio
 */
 $('#btnCodigoEjercicio').click((ev) => {
-  // console.log('btnCodigoEjercicio click');
   $('#modal-dialog-title')[0].innerHTML = 'Código de ejercicios';
   $('#modal-dialog-content')[0].innerHTML = `<p>
     Introduce el código o nombre de tu hoja de ejercicios. De esta manera se
@@ -1333,7 +1248,6 @@ $('#btnCodigoEjercicio').click((ev) => {
     </p>`;
 
   $('#button_cancel').hide();
-  // placeholder="Introduce o pega el código de ejercicios"
   inputField = `
   <div class="mdc-text-field mdc-text-field--fullwidth">
     <input id="userCode" class="mdc-text-field__input" >
@@ -1354,18 +1268,13 @@ $('#btnCodigoEjercicio').click((ev) => {
     $('#button_ok').unbind();
   });
   $('#button_ok').click( (ev) => {
-    // console.log('cargar opciones');
     const code = $('#userCode').val();
-    // console.log( code );
-    // opciones = OptionsShortcode.codigoDirectoToOptions(code);
     cargarOpcionesCodigo(code);
 
     dialogShare.close();
 
     ev.preventDefault();
     ev.stopPropagation();
-    // return false;
-    // dialog.close();
   });
 });
 
@@ -1374,7 +1283,6 @@ $('#btnCompartirHoja').click( (ev) => {
   const baseurl = DEFAULTS.baseurl;
   const code = OptionsShortcode.generateCodeDirecto(opciones);
   const urlcode = encodeURIComponent(OptionsShortcode.generateCodeDirecto(opciones));
-  // console.log(code);
 
   $('#modal-dialog-title')[0].innerHTML = 'Compartir Ejercicios';
   $('#modal-dialog-content')[0].innerHTML = `<p>
@@ -1403,7 +1311,6 @@ $('#btnCompartirHoja').click( (ev) => {
     <p><br>Comparte el enlace con la aplicación que prefieras:</p>
     `;
   $('#button_cancel').hide();
-  // $('#button_ok').hide();
   $('.mdc-dialog__container input:text').focus(function() {
     $(this).select();
   } );
@@ -1421,17 +1328,10 @@ $('#btnCompartirHoja').click( (ev) => {
 // --- fin dialogos modales
 
 $('body').on('keyup', function(ev) {
-  // console.log( 'ev charcode', ev.charCode);
   if ( ev.keyCode == 13 && scene == SCENE.OPERATIONS ) {
     showOperationAgain();
     return;
   }
-  // if ( ev.keyCode == 32 ) {
-  //   console.log('the last frontier');
-  // }
-  // if ( ev.charCode == 32 ) {
-  //   console.log('the last frontier -char');
-  // }
 });
 
 const showOperationAgain = () => {
@@ -1443,7 +1343,6 @@ const showOperationAgain = () => {
 // cerrar ejercicios: muestra modal de quieres salir o no y vuelve
 // a la pantala inicial de opciones
 $('body').on('click', '.close-ejercicio', (ev) => {
-  // console.log('cerrar ejercicio y volver, pendiente!');
   location.reload();
 } );
 
@@ -1452,9 +1351,7 @@ opciones.posicionIncognitaAlAzar = DEFAULTS.posicionIncognitaAlAzar;
 opciones.cantidadOperandos = DEFAULTS.cantidadOperandos;
 opciones.resultadoNegativo = DEFAULTS.resultadoNegativo;
 
-// console.log('tipos op defaults', DEFAULTS.tiposOperaciones );
 DEFAULTS.tiposOperaciones.forEach((x) => {
-  // console.log('tipos operacion', x);
   opciones.addTipoOperacion(x);
 });
 DEFAULTS.tiposNumero.forEach((x) => opciones.addTipoNumero(x) );
@@ -1476,8 +1373,6 @@ if (DEFAULTS.maximoOperandos) {
 
 
 const getPrintHtml = (operacionesExamen) => {
-  // const tag = '[getPrintHtml]';
-  // console.log(tag);
   let html='';
 
   const data = [];
@@ -1507,7 +1402,6 @@ function vistaPreviaPdf() {
   const soluciones = examen.toPrint();
 
   $('#main').hide();
-  // console.log('fetch print css:');
   css = '';
   let ejercicios = getPrintHtml(examen.operacionesExamen);
   ejercicios = `<div class="ejercicios">${ejercicios}</div>`;
@@ -1522,10 +1416,6 @@ function vistaPreviaPdf() {
 
 $('#preview #cancel').click((ev) => {
   location.reload();
-  // window.scrollTo(0, 0);
-  // $('#preview').hide();
-  // $('#paper').html('');
-  // $('#main').show();
 });
 
 $('#preview #print').click((ev) => {
@@ -1565,10 +1455,8 @@ $('#pdfdown').click( (ev) => {
     return;
   }
 
-  // console.log('vista previa');
   window.scrollTo(0, 0);
   vistaPreviaPdf();
-  // enviarAimprimirPdf();
 });
 
 // Desactivar caracteristicas
@@ -1579,8 +1467,6 @@ if ( !ENABLE.parentesis ) {
 if ( !ENABLE.resultadoIgualA ) {
   $('#resultadoIgualA')[0].disabled = true;
   $('#resultadoIgualA_mv')[0].disabled = true;
-  // $('#resultadoIgualA').hide();
-  // $('#resultadoNegativo').addClass('controles');
 }
 if ( !ENABLE.enfocado ) $('#switch-enfocado')[0].disabled = true;
 
@@ -1621,7 +1507,6 @@ function cargarOpcionesCodigo(code) {
           case 'tiposOperaciones':
             $('.operacionesMatematicas .boxButton').removeClass('selected');
             opcionesCargadas[x].forEach((tipoOp) => {
-              // console.log(tipoOp);
               opciones.addTipoOperacion(tipoOp);
             });
             break;

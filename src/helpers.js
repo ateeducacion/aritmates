@@ -1,5 +1,4 @@
 const valoresNiveles = (x) => {
-  // function valoresNiveles(x) {
   let r;
   switch (x) {
     case '21':
