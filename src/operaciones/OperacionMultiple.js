@@ -14,6 +14,7 @@ import {
   countAdjacent,
   onlySumSub,
   onlyMulDiv,
+  groupSimilarOperations,
   MUL_DIV,
   SUM_SUB,
 } from './expression';
@@ -801,47 +802,12 @@ class OperacionMultiple extends Operacion {
    *                  por el usuario
    * @return {Array} Operaciones con tipo y numero de operandos
    */
-  unirOperacionesSimilares( operaciones, operandos=[] ) {
-    const tag = '[OperacionMultiple.juntarOperaciones]';
-    if ( debug ) console.log(tag);
-
-    const mOperaciones = [];
-
-    let opAnterior = '';
-    let opPrimeraPorTipo=0;
-    operaciones.forEach((op, index) => {
-      if (index>0 && opAnterior == op) {
-        // guardas los operandos en la primera op de este tipo
-        if ( this.operandos_por_usuario ) {
-          mOperaciones[opPrimeraPorTipo].operandos.push(operandos[index+1]);
-          mOperaciones[opPrimeraPorTipo].posicionOperadores.push(index+1);
-        }
-        mOperaciones[opPrimeraPorTipo].cantidad_operandos++;
-      }
-      if (opAnterior != op) {
-        opPrimeraPorTipo = index;
-        opAnterior = op;
-
-        if ( debug ) {
-          console.log(tag, 'guardar op', index, 'en indice:', opPrimeraPorTipo);
-        }
-
-        mOperaciones[opPrimeraPorTipo] = {
-          'tipo': op,
-          'cantidadOperandos': 2,
-        };
-        if ( this.operandos_por_usuario ) {
-          mOperaciones[opPrimeraPorTipo].operandos = [
-            operandos[index], operandos[index+1],
-          ];
-          mOperaciones[opPrimeraPorTipo].posicionOperadores = [index, index+1];
-        }
-      }
-    });
-
-    if ( debug ) console.log(tag, 'return operaciones', mOperaciones );
-
-    return mOperaciones;
+  unirOperacionesSimilares(operaciones, operandos=[]) {
+    return groupSimilarOperations(
+        operaciones,
+        operandos,
+        this.operandos_por_usuario,
+    );
   }
 
   definirOperacionOperandosUsuario(operandos, index, numeroOperandos) {

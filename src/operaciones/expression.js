@@ -241,3 +241,46 @@ export function onlyMulDiv(operaciones) {
   const hayOtros = hasAny(operaciones, SUM_SUB);
   return hay && !hayOtros;
 }
+
+
+/**
+ * Group adjacent operators of the same type.
+ *
+ * When user operands are supplied, each group keeps the operand slice and the
+ * historical operator-position metadata expected by OperacionMultiple.
+ *
+ * @param {Array} operations
+ * @param {Array} operands
+ * @param {boolean} includeOperands
+ * @return {Array}
+ */
+export function groupSimilarOperations(operations, operands = [], includeOperands = false) {
+  const groups = [];
+  let previous = '';
+  let firstIndex = 0;
+
+  operations.forEach((operation, index) => {
+    if (index > 0 && previous == operation) {
+      if (includeOperands) {
+        groups[firstIndex].operandos.push(operands[index + 1]);
+        groups[firstIndex].posicionOperadores.push(index + 1);
+      }
+      groups[firstIndex].cantidadOperandos++;
+      return;
+    }
+
+    firstIndex = index;
+    previous = operation;
+    groups[firstIndex] = {
+      tipo: operation,
+      cantidadOperandos: 2,
+    };
+
+    if (includeOperands) {
+      groups[firstIndex].operandos = [operands[index], operands[index + 1]];
+      groups[firstIndex].posicionOperadores = [index, index + 1];
+    }
+  });
+
+  return groups;
+}
