@@ -23,7 +23,7 @@ El detalle del motor está en [docs/MATH-ENGINE.md](docs/MATH-ENGINE.md). Estas 
 - Los paréntesis y «resultado igual a» viven en el motor y en el código corto. En la portada `ENABLE.parentesis` y `ENABLE.resultadoIgualA` están apagados.
 - `cantidadOperaciones` en el código corto solo acepta `0` y múltiplos de 10, de 10 a 100.
 - Las divisiones no admiten operandos negativos.
-- `globalThis.debug` es un booleano y vale `false`. En una operación combinada, el bloque `if (debug)` llama a `crearDivisiones` y cambia la generación.
+- `globalThis.debug` es un booleano y vale `false`. Es estrictamente observacional: activarlo no puede cambiar operandos, operadores, resultado, errores ni representación de la operación.
 - No se añaden `it(...)` vacíos ni tests `pending` para representar ideas futuras. Un comportamiento soportado lleva una aserción; uno no soportado se documenta sin fingir cobertura.
 
 El correo de resultados no forma parte del producto. Se quitó en 1.0.4. En `upstream` el PHP sigue, con la llamada comentada.
