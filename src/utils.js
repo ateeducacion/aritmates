@@ -176,42 +176,7 @@ class Utils {
     return txt;
   }
 
-  organizeInLines( data, classLine ) {
-    let html = '';
-    for (let i = 0; i < data.length; i=i+2) {
-      const el = data[i];
-      let el2='';
-      if (i+1 < data.length) {
-        el2 = data[i+1];
-      }
-      const ihtml = `
-      <div class="${classLine}">
-        ${i+1}) ${el}
-        <span class="separator">&nbsp;</span>
-        ${i+2}) ${el2}
-      </div>`;
-
-      html = html + ihtml;
-    }
-    return html;
-  }
-
-  organizeSimpleNum( data, classLine ) {
-    let html = '';
-    for (let i = 0; i < data.length; i++) {
-      const el = data[i];
-      const ihtml = `
-      <div class="${classLine}">
-        ${i+1}) ${el}
-      </div>`;
-      html = html + ihtml;
-    }
-    return html;
-  }
 }
-
-// probe findArrayInArray de esta manera pero no va por que llama a this
-// supongo que tiene que haber una forma de que funcione
 
 export default new Utils();
 export const {shuffle} = new Utils();

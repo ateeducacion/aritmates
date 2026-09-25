@@ -18,7 +18,7 @@ aparte ni `continue-on-error` en el CI.
 
 GitHub Pages no se publica en paralelo con CI: el workflow de Pages se dispara tras un `CI` correcto sobre `main`. Los releases ejecutan lint, unit tests, build, comprobación de assets y E2E antes de empaquetar.
 
-La cobertura bloqueante (`npm run coverage:ci`) se aplica a los módulos ya saneados: las reglas puras de `src/operaciones/` (`arithmetic`, `evaluate`, `expression`, `random`, `numberRules`, `factorization`, `operationSelection`, `operandRules`) y `src/application/` salvo `badges.js` y `results.js`. Exige 90% en líneas, funciones y statements, y 85% en branches, sobre el conjunto. El legacy no tiene umbral para no premiar tests superficiales; un módulo que sale del legacy entra en el gate quitándolo de la lista de `--exclude`.
+La cobertura bloqueante (`npm run coverage:ci`) se aplica a los módulos ya saneados: las reglas puras de `src/operaciones/` (`arithmetic`, `evaluate`, `expression`, `random`, `numberRules`, `factorization`, `operationSelection`, `operandRules`) y `src/application/` salvo `results.js`, que depende del DOM. Exige 98% en líneas y statements, 95% en branches y 90% en funciones, sobre el conjunto. Las funciones se quedan en 90% porque el bundle de test duplica algunas y c8 cuenta la copia sin ejecutar. El legacy no tiene umbral para no premiar tests superficiales; un módulo que sale del legacy entra en el gate quitándolo de la lista de `--exclude`.
 
 El gate usa `--exclude` y no `--include`: el runner ejecuta un bundle de esbuild y c8 remapea después a `src/`. Con `--include` el bundle se descarta antes del remapeo y el informe da un 100% falso.
 

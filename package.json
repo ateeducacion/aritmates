@@ -17,7 +17,7 @@
     "visual": "node scripts/visual-gallery.mjs",
     "e2e": "playwright test",
     "coverage": "c8 --reporter=text-summary --reporter=lcovonly --exclude-after-remap --exclude='test/**' --exclude='dist/**' --exclude='scripts/**' node scripts/test.mjs",
-    "coverage:ci": "npm run coverage && c8 report --reporter=text-summary --check-coverage --lines 90 --functions 90 --branches 85 --statements 90 --exclude-after-remap --exclude='test/**' --exclude='dist/**' --exclude='scripts/**' --exclude='src/*.js' --exclude='src/components/**' --exclude='src/widgets/**' --exclude='src/utils/**' --exclude='src/application/{badges,results}.js' --exclude='src/operaciones/{operacion,OperacionMultiple,suma,resta,multiplicacion,division,divisionEntera,divisionResto,divisionDecimales,operaciones,tipoNumero}.js'",
+    "coverage:ci": "npm run coverage && c8 report --reporter=text-summary --check-coverage --lines 98 --functions 90 --branches 95 --statements 98 --exclude-after-remap --exclude='test/**' --exclude='dist/**' --exclude='scripts/**' --exclude='src/*.js' --exclude='src/components/**' --exclude='src/widgets/**' --exclude='src/utils/**' --exclude='src/application/results.js' --exclude='src/operaciones/{operacion,OperacionMultiple,suma,resta,multiplicacion,division,divisionEntera,divisionResto,divisionDecimales,operaciones,tipoNumero}.js'",
     "audit": "npm audit --audit-level=high",
     "lint": "eslint ."
   },
