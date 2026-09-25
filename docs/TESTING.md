@@ -9,7 +9,7 @@ npm run lint      # ESLint en flat config, bloqueante
 npm run build
 npm run check
 npm run e2e       # hace falta el dist/ ya construido y Chromium de Playwright
-npm run coverage      # resumen global de c8
+npm run coverage      # resumen global de c8 y coverage/lcov.info
 npm run coverage:ci   # gate de cobertura de los módulos matemáticos ya saneados
 ```
 
@@ -18,7 +18,11 @@ aparte ni `continue-on-error` en el CI.
 
 GitHub Pages no se publica en paralelo con CI: el workflow de Pages se dispara tras un `CI` correcto sobre `main`. Los releases ejecutan lint, unit tests, build, comprobación de assets y E2E antes de empaquetar.
 
-La cobertura bloqueante se aplica solo a `arithmetic.js`, `evaluate.js`, `expression.js` y `random.js`: 90% en líneas, funciones y statements, y 85% en branches. El legacy todavía no tiene un umbral global para evitar premiar tests superficiales; los módulos que salen del legacy deben entrar en este gate.
+La cobertura bloqueante (`npm run coverage:ci`) se aplica a los módulos ya saneados: las reglas puras de `src/operaciones/` (`arithmetic`, `evaluate`, `expression`, `random`, `numberRules`, `factorization`, `operationSelection`, `operandRules`) y `src/application/` salvo `badges.js` y `results.js`. Exige 90% en líneas, funciones y statements, y 85% en branches, sobre el conjunto. El legacy no tiene umbral para no premiar tests superficiales; un módulo que sale del legacy entra en el gate quitándolo de la lista de `--exclude`.
+
+El gate usa `--exclude` y no `--include`: el runner ejecuta un bundle de esbuild y c8 remapea después a `src/`. Con `--include` el bundle se descarta antes del remapeo y el informe da un 100% falso.
+
+El CI sube `coverage/lcov.info` a [Codecov](https://codecov.io/gh/ateeducacion/aritmates) con la cobertura de todo `src/`. La subida no usa token secreto: se autentica con OIDC (`id-token: write` solo en ese job). Un fallo de Codecov no rompe el CI y sus estados (`codecov/project`, `codecov/patch`) son informativos por `codecov.yml`: el gate lo decide `coverage:ci`.
 
 ESLint aplica reglas de corrección a todo `src/`. En los módulos ya saneados (`src/application`, reglas puras del motor y E2E), `no-unused-vars` también es bloqueante. El legacy restante, incluidos los scripts de build, se endurece de forma incremental para evitar cambios cosméticos masivos.
 

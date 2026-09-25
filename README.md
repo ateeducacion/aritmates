@@ -2,6 +2,7 @@
 
 ![Node.js](https://img.shields.io/badge/Node.js-24%2B-green)
 ![License: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)
+[![codecov](https://codecov.io/gh/ateeducacion/aritmates/graph/badge.svg)](https://codecov.io/gh/ateeducacion/aritmates)
 [![Deploy GitHub Pages](https://github.com/ateeducacion/aritmates/actions/workflows/pages.yml/badge.svg)](https://github.com/ateeducacion/aritmates/actions/workflows/pages.yml)
 
 Aplicación del **Área de Tecnología Educativa** para generar y practicar ejercicios de matemáticas.  
@@ -41,7 +42,7 @@ npm run dev      # build + http://127.0.0.1:9012/
 | `npm test` | Suite de pruebas (la misma que bloquea el CI) |
 | `npm run lint` | ESLint; falla si hay una infracción |
 | `npm run e2e` | Flujos de portada, ejercicio y PDF (Playwright) |
-| `npm run coverage` | Resumen de cobertura |
+| `npm run coverage` | Resumen de cobertura y `coverage/lcov.info` |
 | `npm run visual` | Capturas multi-viewport (Playwright) |
 | `npm run check` | Verifica recursos en `dist/` |
 
