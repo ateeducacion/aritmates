@@ -3,7 +3,6 @@ import {TIPO_NUMERO} from '../src/operaciones/tipoNumero';
 import OperacionMultiple from '../src/operaciones/OperacionMultiple';
 import {seededRandom} from '../src/operaciones/random';
 
-const chai = require('chai');
 const expect = require('chai').expect;
 
 describe('Operación Multiple N.NATURALES solo positivos', () => {

@@ -5,7 +5,6 @@ import {TIPO_NUMERO} from '../src/operaciones/tipoNumero';
 import {seededRandom} from '../src/operaciones/random';
 import {assertSolved} from './assertExercise';
 
-const chai = require('chai');
 const expect = require('chai').expect;
 
 describe('Operacion Multiple 4 operandos o mas', () => {
