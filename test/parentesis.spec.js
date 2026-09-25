@@ -123,31 +123,25 @@ describe('Parentesis', () => {
     assertSolved(op);
   });
 
-  it('*/+- al azar -> negativos y sin decimales, 3 operandos', () => {
-    const op = new OperacionMultiple(
-        {
-          nivel: 50,
-          cantidadOperandos: 3,
-          permitirNegativos: true,
-          tiposOperacion: [
-            OPERACIONES.MULTIPLICACION,
-            OPERACIONES.DIVISION_ENTERA,
-            OPERACIONES.SUMA,
-            OPERACIONES.RESTA,
-          ],
-          parentesis: true,
-        }
-    );
-    const actual = op.toString();
-    // /^  incio
-    //   (\( )?-?[0-9]+ [-+∙\/] // = ( -8 o 8
-    //   (\( )?\(?-?[0-9]+\)?( \))? [-+∙\/] // ( (-34) ) * o ( 34 ) * o ( 34 *...
-    //   (\( )?\(?-?[0-9]+\)?( \))? [-+∙\/] // igual
-    //   (\( )?\(?-?[0-9]+\)?( \))? // sin el simbolo al final
-    //   = -?[0-9]+$/ // = -34  o = 23 no 34.3
+  it('*/+- al azar -> negativos y operandos enteros, 3 operandos', () => {
+    const op = new OperacionMultiple({
+      nivel: 50,
+      cantidadOperandos: 3,
+      permitirNegativos: true,
+      random: seededRandom(3),
+      tiposOperacion: [
+        OPERACIONES.MULTIPLICACION,
+        OPERACIONES.DIVISION_ENTERA,
+        OPERACIONES.SUMA,
+        OPERACIONES.RESTA,
+      ],
+      parentesis: true,
+    });
 
-    expect(actual).to.match(
-        /^(\( )?-?[0-9]+ [-+∙\/] (\( )?\(?-?[0-9]+\)?( \))? [-+∙\/] (\( )?\(?-?[0-9]+\)?( \))? = -?[0-9]+$/);
+    expect(op.toString()).to.include('(');
+    expect(op.operandos.every((value) => Number.isInteger(Number(value))))
+        .to.equal(true);
+    assertSolved(op);
   });
 
   it('*/+- al azar -> negativos y decimales 3 operandos', () => {

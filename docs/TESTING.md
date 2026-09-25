@@ -45,9 +45,7 @@ sustitución solo existe dentro del proceso de test.
 | `generarExamen.spec.js` | la lista de un examen |
 | `e2e/critical.spec.js` | portada, 10 aciertos, vista previa del PDF, ancho móvil |
 
-Hay `it(...)` sin cuerpo en `resultadoNegativo.spec.js` y `operaciones.spec.js`.
-Mocha los cuenta como pending. Son huecos que el autor original dejó escritos
-(complementarios, negativos en producto y división) y no una suite en rojo.
+La suite no conserva `it(...)` vacíos: esos marcadores históricos se sustituyeron por comentarios que explican los contratos no soportados o por los casos concretos que ya cubren ese comportamiento. Mocha no debe presentar tests `pending` como si fueran cobertura.
 
 ## Reproducir un fallo
 
