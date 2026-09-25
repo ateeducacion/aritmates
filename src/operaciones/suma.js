@@ -112,29 +112,6 @@ export default class Suma extends Operacion {
   }
 
   /**
-   * Genera Operandos segun la configuracion
-   *
-   * @author Fernando Ramírez Pérez
-   * @memberof Suma
-   */
-  generarNumerosOperandos() {
-    super.generarNumerosOperandos();
-
-    if (this.complementario && this.complementario>0) {
-      return;
-    }
-
-
-    // aqui ya viene con unso operandos de
-
-    // TODO: si permite numeros negativos y el resultado es positivo
-
-    // solo puede ser negativo con numeros negativos
-    // TODO: revisar
-
-  }
-
-  /**
    * Generar operando para una posicion deterimnad teniendo en centa las distintas opciones
    *
    * @author Fernando Ramírez Pérez

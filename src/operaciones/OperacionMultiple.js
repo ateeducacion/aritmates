@@ -9,7 +9,6 @@ import {
   countAdjacent,
   onlyMulDiv,
   canAutoPlaceParentheses,
-  groupSimilarOperations,
   MUL_DIV,
   SUM_SUB,
   DIVISIONS,
@@ -23,7 +22,6 @@ import {TIPO_NUMERO} from './tipoNumero';
 import {selectExpressionOperations} from './operationSelection';
 import DivisionDecimales from './divisionDecimales';
 import Division from './division';
-import Decimal from 'decimal.js';
 
 /**
  * Operaciones con mulitiples operaciones dentro, como una operacion de 3 cifras con una suma y multiplicacion 
@@ -372,125 +370,6 @@ class OperacionMultiple extends Operacion {
     return html;
   }
 
-  toHtmlSolved() {
-    const html = '<p class="operacion">'+this.toString()+'</p>';
-    return html;
-  }
-
-  ordenarPrioridad(operaciones) {
-    const orden = [[], [], []];
-    let operandos;
-
-    // como tengo en cuenta los paréntesis?
-
-    if ( this.operandos_por_usuario ) {
-      operandos = this.operandos.slice();
-    }
-
-    operaciones = groupSimilarOperations(operaciones, operandos, this.operandos_por_usuario);
-
-    operaciones.forEach((element, index) => {
-
-
-      switch (element.tipo) {
-        case OPERACIONES.MULTIPLICACION:
-        case OPERACIONES.DIVISION_DECIMAL:
-        case OPERACIONES.DIVISION_ENTERA:
-        case OPERACIONES.DIVISION_RESTO:
-        case OPERACIONES.DIVISION:
-          orden[1].push(element);
-          break;
-
-        case OPERACIONES.SUMA:
-        case OPERACIONES.RESTA:
-          orden[2].push(element);
-          break;
-
-        default:
-          break;
-      }
-    });
-
-
-    // 1 + 2 * 5 debería devolver
-    // multiplicacion [2,5] y suma [1]
-    let posOperadoresMulti = orden[1].map((x)=>{
-      return x.posicionOperadores;
-    });
-    posOperadoresMulti = posOperadoresMulti.flat();
-
-    // elimina operandos usados por mul/div
-    orden[2].forEach( (operacionesUltimaPrioridad, indx) => {
-      const operadoresABorrar= [];
-      operacionesUltimaPrioridad.posicionOperadores.forEach(
-          (posOperador, i)=> {
-            if (posOperadoresMulti.indexOf( posOperador ) != -1) {
-              operadoresABorrar.push(i);
-            }
-          }
-      );
-      // los borra en orden descendente por que si no ya no existe el que se
-      // va a borrar
-      operadoresABorrar.sort().reverse();
-      operadoresABorrar.forEach((x)=>{
-        operacionesUltimaPrioridad.operandos.splice(x, 1);
-      });
-    });
-
-    const operacionesOrdenadas = orden.flat();
-
-    return operacionesOrdenadas;
-  }
-
-  addOperandoOperacionAnterior( posicionOperando, operandos, operacionesAnte,
-      resultadoAnterior) {
-
-
-    if (operandos.length == 0) {
-      operandos[0] = resultadoAnterior;
-    }
-
-    // Agrega el valor de operaciones anteriores con mas prioridad
-    if ( operandos.length == 1 ) {
-      if (operacionesAnte.length>0 ) {
-        if ( posicionOperando < operacionesAnte[0].posicionOperadores[0] ) {
-          if (resultadoAnterior) {
-            operandos[0] = resultadoAnterior;
-          }
-          operandos.push( operacionesAnte[0].resultado );
-        } else {
-          operandos.unshift( operacionesAnte[0].resultado );
-        }
-        // borramos al operacion calculada usada
-        operacionesAnte.splice(0, 1);
-      } else {
-        // ponemos el resultado operaciones anteriores como operando anterior
-        if ( posicionOperando > 0 ) operandos.unshift(resultadoAnterior);
-      }
-    } else {
-      if ( operandos.length >= 2 ) {
-
-        if ( operacionesAnte.length>0 ) {
-          if ( posicionOperando < operacionesAnte[0].posicionOperadores[0] ) {
-            if (resultadoAnterior) {
-              operandos[0] = resultadoAnterior;
-            }
-            operandos.push( operacionesAnte[0].resultado );
-          } else {
-            operandos.unshift( operacionesAnte[0].resultado );
-          }
-        } else {
-          // en caso multiplicacion anterior de dos operandos
-          if ( posicionOperando > 0 ) {
-            operandos[0] = resultadoAnterior;
-          }
-        }
-      }
-    }
-
-    return operandos;
-  }
-
   obtenerOperacionesAzar(operaciones) {
     return selectExpressionOperations({
       operations: operaciones,
@@ -506,72 +385,6 @@ class OperacionMultiple extends Operacion {
 
     if ( undefined === this.tiposOperacion ) return;
     this.generarOperaciones();
-  }
-
-  calcularResultadoComplejo() {
-    const operandos = this.operandos.slice();
-
-    // evita que entre desde el contructor de Operacion.js sin operaciones
-    if ( undefined === this.tiposOperacion ) return;
-
-    const tiposOperacion = this.tiposOperacion.slice();
-    // operadores tienen que venir ya definidos
-
-    this.toString(false); // also refreshes this.simbolo
-
-    let d = new Decimal(0);
-
-    // despejar parentesis
-    if (
-      this.parentesisInicial !== undefined &&
-        this.parentesisFinal !== undefined ) {
-      // si ya se creo  la operacion entre parenteis al genera la opMultiple
-      // solo hay que rescatar el resultado
-      if ( this.forzarParentesis ) {
-        // sustituir los operandos entre parentesis por el resultado
-        // elimina todos los operados enter parentesis menos el primero:
-        operandos.splice(
-            this.parentesisInicial,
-            this.operacionEnParentesis.cantidad_operandos-1);
-        // sustituye el primero por el resultado
-        operandos[this.parentesisInicial]=this.operacionEnParentesis.resultado;
-        // elimina las operaciones entren parentesis:
-        tiposOperacion.splice(
-            this.parentesisInicial,
-            this.operacionEnParentesis.cantidad_operandos-1
-        );
-      }
-    } else {
-    }
-
-
-    // despejar muli/divi
-    const despejadoMulDiv = this.despejarPrioridadMultiDivi(
-        operandos, tiposOperacion );
-
-    // sumar restar todo
-    despejadoMulDiv.operaciones.forEach((operacion, i)=> {
-      if ( i == 0 ) {
-        d = new Decimal(despejadoMulDiv.operandos[i]);
-      }
-      switch (operacion) {
-        case OPERACIONES.RESTA:
-          d = d.minus(despejadoMulDiv.operandos[i+1]);
-          break;
-        case OPERACIONES.SUMA:
-          d = d.plus(despejadoMulDiv.operandos[i+1]);
-          break;
-      }
-    });
-
-
-    if ( despejadoMulDiv.operaciones.length == 0 ) {
-      // si hay un solo operando y no hay operaciones?
-      d = d.plus(despejadoMulDiv.operandos[0]);
-    }
-
-
-    this.resultado = parseFloat( d.toString() );
   }
 
   /**
@@ -592,33 +405,6 @@ class OperacionMultiple extends Operacion {
     }
     this.resultado = resultado.toFixed(3);
     this.resultado = parseFloat(this.resultado).toString();
-  }
-
-  /**
-   * Actualiza las operaciones restantes y escribe los operadores resueltos
-   * este es para restas y sumas
-   * @param {number} operacionesRestantes
-   * @param {number} numOperacionesJuntas
-   * @param {number} posicion
-   * @param {Array} operandos
-   */
-  _escribeOperandosOperacionesJuntasHaciaDelante(
-      operacionesRestantes, numOperacionesJuntas,
-      posicion, operandos ) {
-
-    let j = 0;
-    for ( let i = posicion; i < posicion+numOperacionesJuntas; i++ ) {
-      if (this.operandos[i]===undefined) {
-        this.operandos[i] = operandos[j];
-      }
-      // si la operacion es la ultima habria que poner el operador siguiente
-      // tambien
-      if ( posicion == this.cantidad_operandos-2 ) {
-        this.operandos[i+1] = operandos[j+1];
-      }
-      operacionesRestantes[i] = null;
-      j++;
-    }
   }
 
   /**
@@ -701,10 +487,6 @@ class OperacionMultiple extends Operacion {
 
   guardaResultado(operacion, posicion) {
     this.resultados[posicion] = operacion.resultado;
-  }
-
-  obtenerResultado(posicion) {
-    return this.resultados[posicion];
   }
 
   obtenerResultadoOpAnteriores(posicion) {
@@ -791,43 +573,6 @@ class OperacionMultiple extends Operacion {
         }
       }
     }
-  }
-
-  _rellenarOperandosSumasLejosDeRestas( operandosRelleno ) {
-
-    const ultimaOperacion = this.cantidad_operandos-2;
-
-    for (let index = 0; index < this.cantidad_operandos; index++) {
-      if ( this.tiposOperacion[index] == OPERACIONES.SUMA ) {
-        // si la operacion anterior o posterior no son restas
-        const opPrev = this.tiposOperacion[index]-1;
-        const opPost = this.tiposOperacion[index]+1;
-        if (
-          ( index==0 || opPrev && opPrev!=OPERACIONES.RESTA ) &&
-          ( index==ultimaOperacion || opPost && opPrev!=OPERACIONES.RESTA )
-        ) {
-          // si esta undefined es por que no forma parte de una mul/div
-          if ( this.operandos[index] === undefined ) {
-            this.operandos[index] = operandosRelleno[index];
-          }
-        }
-      }
-    }
-  }
-
-  /**
-   * Comprobar resultado
-   * llama a super.comprorbarresultado()
-   * @return {boolean} devuelve verdadero si el resultado cumple como valido
-   */
-  comprobarResultado() {
-
-    // ignoramos esto si lo llama desde el constructor de Operacion
-    if ( this.getTipo() == '' ) return {resultado: true};
-
-    // llamamos a comprobar resultado de Operacion pero ya con los
-    // datos actualizados por OperacionMultiple
-    return super.comprobarResultado();
   }
 
   colocarParentesis() {
@@ -1661,57 +1406,6 @@ class OperacionMultiple extends Operacion {
   }
 
    
-  crearRestas(operacionesRestantes) {
-    let tries = 0;
-    while ( operacionesRestantes.indexOf(OPERACIONES.RESTA) != -1 && tries<5 ) {
-      const posicion = operacionesRestantes.indexOf(OPERACIONES.RESTA);
-      let restaOperandos = [];
-      const numOperacionesJuntas = countAdjacent(
-          operacionesRestantes, posicion, OPERACIONES.RESTA);
-
-      const anterior = this.obtenerResultadoOpAnteriores(posicion);
-      const posterior = this.obtenerResultadoOpPosteriores(
-          posicion, numOperacionesJuntas);
-
-      if ( ( anterior && anterior!=0 ) &&
-          ( !posterior || posterior==0) ) {
-        restaOperandos[0] = anterior;
-      }
-      if ( ( !anterior || anterior==0 ) &&
-          ( posterior && posterior!=0) ) {
-        restaOperandos[numOperacionesJuntas] = posterior;
-      }
-
-      let newOp;
-      // si la resta no tiene ningun operandos probablemente este entre dos mul/div
-      // y ya se hayan definido
-      // lo normal es que haya uno de los dos
-      if (restaOperandos.length>0) {
-        const opciones = {
-          nivel: this.nivel,
-          cantidadOperandos: numOperacionesJuntas+1,
-          permitirNegativos: this.permitir_negativos,
-          resultadoNegativo: this.resultadoNegativo,
-          operandos: restaOperandos.slice(),
-          decimales: this.decimales,
-        };
-        newOp = new Resta(Object.assign({random: this._rng}, opciones));
-        restaOperandos = newOp.operandos.slice();
-        this.operacionesGuardadas.push({
-          posicion: posicion,
-          tipo: OPERACIONES.RESTA,
-          operandos: newOp.operandos.slice(),
-          operacion: newOp,
-        });
-      }
-
-      this._escribeOperandosOperacionesJuntasHaciaDelante(
-          operacionesRestantes, numOperacionesJuntas, posicion,
-          restaOperandos );
-      tries++;
-    }
-  }
-
   getTipo() {
     return this.constructor.name;
   }

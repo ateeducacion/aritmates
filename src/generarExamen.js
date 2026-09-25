@@ -373,61 +373,6 @@ export default class GenerarExamen {
     return html;
   }
 
-  toHtmlSolved() {
-    let html='';
-
-    this.operacionesExamen.forEach((op) => {
-      html += op.toHtmlSolved() + '\n';
-    });
-
-    return html;
-  }
-
-  mostrarErrores() {
-    let txt= '';
-    const erroresExamen = [];
-
-    this.operacionesExamen.forEach((element, index) => {
-      if ( element.errors.length>0 ) {
-        erroresExamen.push({
-          'posicion': index,
-          'id': element.id,
-          'operacion': element.toString(),
-          'errors': element.errors,
-        });
-      }
-    });
-    if (this.errors.length > 0 || erroresExamen.length > 0 ) {
-      txt = 'Errores:\n';
-    } else {
-      return '';
-    }
-
-    this.errors.forEach((e) => {
-      txt += e.error+': ' + '\n';
-      txt += e.msg+'. \n';
-      this.operacionesExamen.forEach((e) => {
-        txt += 'Afecta a : ' + e.toString() +', ';
-      });
-      txt += '\n';
-    });
-
-    erroresExamen.forEach( (eo) => {
-      txt += eo.id + ' ' + eo.operacion + '\n';
-      eo.errors.forEach( (error) => {
-        txt += '\t * ' + error.error+': ';
-        txt += '\n\t   ' + error.msg+'. \n';
-      });
-    });
-
-    return txt;
-  }
-
-  mostrarErroresHtml() {
-    const txt = this.mostrarErrores();
-    return '<pre>'+txt+'</pre>';
-  }
-
   _crearOperacionesMultiples(tiposOperaciones, cantidadOperaciones, opciones) {
     let opRand;
     let i=0;
