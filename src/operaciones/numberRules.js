@@ -88,3 +88,37 @@ export function countNegativeOperands(operands) {
   if (!Array.isArray(operands) || operands.length >= 5) return 0;
   return operands.filter((value) => value < 0).length;
 }
+
+
+/**
+ * Indica si un operando no fue proporcionado.
+ *
+ * Cero es un operando válido y no debe confundirse con ausencia de valor.
+ *
+ * @param {*} value
+ * @return {boolean}
+ */
+export function isMissingOperand(value) {
+  return (
+    value === undefined ||
+    value === null ||
+    value === '' ||
+    value === false ||
+    Number.isNaN(value)
+  );
+}
+
+/**
+ * Decide si una posición debe regenerarse.
+ *
+ * El motor histórico regenera ceros producidos automáticamente, pero debe
+ * respetar un cero que venga explícitamente en los operandos iniciales.
+ *
+ * @param {*} value
+ * @param {*} initialValue
+ * @return {boolean}
+ */
+export function shouldGenerateOperand(value, initialValue) {
+  if (isMissingOperand(value)) return true;
+  return value === 0 && initialValue !== 0;
+}
