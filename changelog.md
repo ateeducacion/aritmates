@@ -1,5 +1,12 @@
 # Changelog
 
+## Imágenes más ligeras (post 1.3)
+
+No cambia la portada ni los ejercicios.
+
+* Los PNG y SVG de `src/img/` ocupan menos: se quitó metadata y se comprimieron. Las infografías de la ayuda siguen siendo vectoriales.
+* La ilustración de la hoja, los fondos de impresión y el póster del murciélago bajan de peso sin cambiar el dibujo.
+
 ## Portada más rápida (post 1.3)
 
 * La portada deja de quedarse en «Cargando...» hasta que terminan las imágenes.
