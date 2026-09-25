@@ -9,13 +9,16 @@ npm run lint      # ESLint en flat config, bloqueante
 npm run build
 npm run check
 npm run e2e       # hace falta el dist/ ya construido y Chromium de Playwright
-npm run coverage  # resumen de c8; no hay un porcentaje mínimo
+npm run coverage      # resumen global de c8
+npm run coverage:ci   # gate de cobertura de los módulos matemáticos ya saneados
 ```
 
 `npm test` y `npm run test:all` ejecutan lo mismo. No hay una suite «legacy»
 aparte ni `continue-on-error` en el CI.
 
 GitHub Pages no se publica en paralelo con CI: el workflow de Pages se dispara tras un `CI` correcto sobre `main`. Los releases ejecutan lint, unit tests, build, comprobación de assets y E2E antes de empaquetar.
+
+La cobertura bloqueante se aplica solo a `arithmetic.js`, `evaluate.js`, `expression.js` y `random.js`: 90% en líneas, funciones y statements, y 85% en branches. El legacy todavía no tiene un umbral global para evitar premiar tests superficiales; los módulos que salen del legacy deben entrar en este gate.
 
 ESLint aplica reglas de corrección a todo `src/`. En los módulos ya saneados (`src/application`, reglas puras del motor y E2E), `no-unused-vars` también es bloqueante. El legacy restante, incluidos los scripts de build, se endurece de forma incremental para evitar cambios cosméticos masivos.
 
