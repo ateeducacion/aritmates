@@ -31,6 +31,11 @@ test('portada, ejercicio, acierto y resultados', async ({page}) => {
 
   await expect(page.locator('text=Tus Resultados')).toBeVisible();
   await expect(page.locator('#puntuacion')).toContainText('10');
+
+  const downloadPromise = page.waitForEvent('download');
+  await page.locator('#btnDownloadScore').click();
+  const download = await downloadPromise;
+  expect(download.suggestedFilename()).toBe('Aritmates-Resultados.pdf');
 });
 
 test('la hoja de ejercicios abre la vista previa', async ({page}) => {
