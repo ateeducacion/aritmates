@@ -7,7 +7,6 @@ import Resta from '../src/operaciones/resta';
 import {seededRandom} from '../src/operaciones/random';
 
 
-const chai = require('chai');
 const expect = require('chai').expect;
 
 describe( 'resultadoNegativo ', ()=> {

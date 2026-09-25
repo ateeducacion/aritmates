@@ -1,5 +1,4 @@
 
-const chai = require('chai');
 const expect = require('chai').expect;
 
 import GenerarExamen from '../src/generarExamen';
