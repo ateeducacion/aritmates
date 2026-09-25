@@ -366,7 +366,10 @@ describe('Estado de sesión de ejercicios', () => {
 
 
 describe('Invariantes de OperacionMultiple', () => {
-  it('100 semillas producen expresiones evaluables con resultado coherente', () => {
+  it('100 semillas mantienen coherencia matemática también cuando se rechaza una generación', () => {
+    let accepted = 0;
+    let rejected = 0;
+
     for (let seed = 1; seed <= 100; seed++) {
       const op = new OperacionMultiple({
         nivel: 20,
@@ -382,12 +385,28 @@ describe('Invariantes de OperacionMultiple', () => {
       });
 
       const expression = op.toString(false).replace(/∙/g, '*');
-      expect(
-          evaluateArithmetic(expression),
-          `seed=${seed}; expression=${expression}; resultado=${op.resultado}`,
-      ).to.equal(Number(op.resultado));
+      const evaluated = evaluateArithmetic(expression);
+
+      if (op.resultado === false) {
+        rejected++;
+        expect(
+            evaluated,
+            `seed=${seed}; expression=${expression}; resultadoPre=${op.resultadoPre}`,
+        ).to.equal(Number(op.resultadoPre));
+      } else {
+        accepted++;
+        expect(
+            evaluated,
+            `seed=${seed}; expression=${expression}; resultado=${op.resultado}`,
+        ).to.equal(Number(op.resultado));
+      }
+
       expect(op.operandos).to.have.length(3);
     }
+
+    expect(accepted).to.be.greaterThan(0);
+    expect(rejected).to.be.greaterThan(0);
+    expect(accepted + rejected).to.equal(100);
   });
 
   it('una semilla reproduce exactamente una operación múltiple', () => {
