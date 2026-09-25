@@ -50,3 +50,29 @@ export function resetDefaultRandom() {
 export function asRandom(random) {
   return typeof random === 'function' ? random : defaultRandom;
 }
+
+
+/**
+ * Devuelve un entero entre min y max con el redondeo histórico del motor.
+ *
+ * Se conserva Math.round de forma deliberada: cambiar a una distribución
+ * uniforme alteraría la secuencia de ejercicios de todas las semillas.
+ *
+ * @param {() => number} random
+ * @param {number} min
+ * @param {number} max
+ * @return {number}
+ */
+export function roundedBetween(random, min, max) {
+  return Math.round(random() * (max - min) + min);
+}
+
+/**
+ * Devuelve -1 o 1 usando exactamente la regla histórica del motor.
+ *
+ * @param {() => number} random
+ * @return {-1|1}
+ */
+export function randomSign(random) {
+  return Math.round(random()) === 0 ? -1 : 1;
+}
