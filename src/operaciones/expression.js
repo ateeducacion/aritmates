@@ -249,6 +249,15 @@ export function onlyMulDiv(operaciones) {
   return hay && !hayOtros;
 }
 
+/**
+ * La colocación automática de paréntesis solo tiene sentido a partir de
+ * tres operandos y cuando existe al menos un operador de precedencia alta.
+ * Las posiciones explícitas se gestionan aparte y siempre se respetan.
+ */
+export function canAutoPlaceParentheses(operandCount, operations) {
+  return operandCount >= 3 && hasAny(operations, MUL_DIV);
+}
+
 
 /**
  * Group adjacent operators of the same type.
