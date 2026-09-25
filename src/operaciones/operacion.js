@@ -552,7 +552,7 @@ export default class Operacion {
       for (let index = 0; index < this.cantidad_operandos; index++) {
         // si no esta definido de antes lo genera
         // estos operandos son this.operandosInicales.slice();
-        if (shouldGenerateOperand(this.operandos[index], this.operandosIniciales[index])) {
+        if (!this.operandos[index]) {
           this._generarOperandoPosicion(index);
         }
       }
