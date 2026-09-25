@@ -263,18 +263,22 @@ const VENDOR_GLOBALS = {
   'html2canvas': {
     filter: /^html2canvas$/,
     contents: `
-      const html2canvas = window.html2canvas;
-      if (!html2canvas) throw new Error('html2canvas no cargado desde vendor/');
-      export default html2canvas;
+      export default function html2canvas(...args) {
+        const fn = window.html2canvas;
+        if (!fn) throw new Error('html2canvas no cargado desde vendor/');
+        return fn(...args);
+      }
     `,
   },
   'jspdf': {
     filter: /^jspdf$/,
     contents: `
-      const ns = window.jspdf || window.jsPDF;
-      const jsPDF = ns && (ns.jsPDF || ns);
-      if (!jsPDF) throw new Error('jsPDF no cargado desde vendor/jspdf/jspdf.umd.min.js');
-      export default jsPDF;
+      export default function jsPDF(...args) {
+        const ns = window.jspdf || window.jsPDF;
+        const Ctor = ns && (ns.jsPDF || ns);
+        if (!Ctor) throw new Error('jsPDF no cargado desde vendor/jspdf/jspdf.umd.min.js');
+        return new Ctor(...args);
+      }
       export { jsPDF };
     `,
   },
@@ -347,7 +351,7 @@ async function buildJs() {
   console.log('✓ js (esbuild minify, vendor: jquery, bootstrap, html2canvas, jspdf)');
 }
 
-/** Scripts vendor (sin defer entre ellos + app con defer mantiene orden) */
+/** Scripts de la plantilla de impresión. La portada no los incluye. */
 function vendorScripts(prefix = './') {
   return `
     <script src="${prefix}vendor/jquery/jquery.min.js"></script>
@@ -360,15 +364,16 @@ function vendorScripts(prefix = './') {
 /** Genera index.html y plantilla/index.html con rutas fijas */
 async function buildHtml() {
   const indexTpl = await readFile(join(root, 'src/templates/index.html'), 'utf8');
+  // defer en el <head>: la descarga empieza con el HTML y no bloquea
+  // el análisis. html2canvas y jsPDF se piden al imprimir.
   const headInject = `
     <link rel="stylesheet" href="./css/vendors.css">
     <link rel="stylesheet" href="./css/app.css">
+    <script defer src="./vendor/jquery/jquery.min.js"></script>
+    <script defer src="./vendor/bootstrap/bootstrap.bundle.min.js"></script>
+    <script defer src="./js/app.js"></script>
 `;
-  // Vendor sin defer: disponibles antes de app.js (defer)
-  const bodyInject = `
-${vendorScripts('./')}
-    <script src="./js/app.js" defer></script>
-`;
+  const bodyInject = '';
 
   let indexHtml = indexTpl;
   if (indexHtml.includes('</head>')) {

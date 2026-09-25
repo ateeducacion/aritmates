@@ -17,8 +17,10 @@ precedencia tienen los operadores.
 ## Entrada
 
 `src/templates/index.html` es la portada. `scripts/build.mjs` la copia a
-`dist/index.html` y le añade el CSS y los scripts de `dist/vendor/`. El
-JavaScript propio sale de `src/app.js` empaquetado con esbuild.
+`dist/index.html` y le añade el CSS, jQuery y Bootstrap. El JavaScript propio
+sale de `src/app.js` empaquetado con esbuild. La portada se muestra al
+arrancar ese script: no espera a las imágenes. html2canvas y jsPDF se piden
+cuando se imprime.
 
 ## UI
 

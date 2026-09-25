@@ -1,5 +1,10 @@
 # Changelog
 
+## Portada más rápida (post 1.3)
+
+* La portada deja de quedarse en «Cargando...» hasta que terminan las imágenes.
+* html2canvas y jsPDF solo se descargan al imprimir. La vista previa del PDF no los necesita.
+
 ## Skills de pruebas (post 1.3)
 
 No cambia la aplicación.

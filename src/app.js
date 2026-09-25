@@ -66,10 +66,9 @@ import OptionsShortcode from './OptionsShortcode';
 
 import utils from './utils';
 import ImprimirPdf from './imprimirPdf';
+import {whenPdfLibraries} from './pdfLibs';
 
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-
-import html2canvas from 'html2canvas';
 
 import {valoresNiveles} from './helpers';
 
@@ -1726,7 +1725,6 @@ let solucionesHtml;
 
 
 function vistaPreviaPdf() {
-  const printpdf = new ImprimirPdf();
   const tag = '[app.js.function vistaPreviaPdf()]';
   if ( debug ) console.log( tag );
   const opcionesGuardadas = guardarOpciones(opciones);
@@ -1756,23 +1754,30 @@ $('#preview #cancel').click((ev) => {
 });
 
 $('#preview #print').click((ev) => {
-  const printpdf = new ImprimirPdf();
+  whenPdfLibraries().then(() => {
+    const printpdf = new ImprimirPdf();
 
-  // console.log('print click', ev);
-  window.scrollTo(0, 0);
-  $('.ejercicios').show();
-  $('.soluciones').removeClass('d-block');
+    window.scrollTo(0, 0);
+    $('.ejercicios').show();
+    $('.soluciones').removeClass('d-block');
 
-  printpdf.printImgPages();
+    printpdf.printImgPages();
+  }).catch((error) => {
+    console.error(error);
+  });
 });
 
 $('#preview #printSolu').click((ev) => {
-  const printpdf = new ImprimirPdf('OperacionesMatematicas-Soluciones.pdf');
+  whenPdfLibraries().then(() => {
+    const printpdf = new ImprimirPdf('OperacionesMatematicas-Soluciones.pdf');
 
-  window.scrollTo(0, 0);
-  $('.ejercicios').hide();
-  $('.soluciones').addClass('d-block');
-  printpdf.printImgPages();
+    window.scrollTo(0, 0);
+    $('.ejercicios').hide();
+    $('.soluciones').addClass('d-block');
+    printpdf.printImgPages();
+  }).catch((error) => {
+    console.error(error);
+  });
 });
 
 
@@ -1907,12 +1912,10 @@ function cargarOpcionesCodigo(code) {
 
 
 /**
- * * Cuando esta todo listo muestra el body y carga las opciones con
- * el codigo corto si viene con parametro
- * @name OnloadApp
- *
+ * The cover is in the HTML. This script is deferred, so the DOM is already
+ * parsed. Showing it here avoids waiting for images and for window.onload.
  */
-window.onload = function() {
+function mostrarPortada() {
   $('#load').hide();
   $('#main').show();
 
@@ -1922,7 +1925,8 @@ window.onload = function() {
     console.log('Cargando shortcode', code );
     cargarOpcionesCodigo(code);
   }
-};
+}
+mostrarPortada();
 
 console.timeEnd('app.js');
 console.log('fin.');
