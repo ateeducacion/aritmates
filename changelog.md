@@ -1,5 +1,9 @@
 # Changelog
 
+## Sumas con «resultado igual a» (post 1.3)
+
+* Con «resultado igual a» (activable desde el código corto), las sumas mostraban igualdades falsas como `12 + (-18) = 30`, incluso con los negativos desactivados. Ahora los operandos suman el valor pedido, sin negativos si no se permiten y en múltiplos de 10 cuando el valor es 100. Restas, multiplicaciones y divisiones ya cuadraban y no cambian.
+
 ## Hoja de la portada (post 1.3)
 
 * La ilustración de la portada vuelve a ocupar la columna derecha y a apoyar el borde inferior en la caja, como en la versión de Medusa. En Bootstrap 5 la columna ya no era el punto de anclaje.
