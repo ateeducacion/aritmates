@@ -37,33 +37,14 @@ class Utils {
   }
 
   /**
-   * Rellena el str con tantos caracteres sean necesarios parar completar el
-   * numero de caracteres
-   *
-   * @param {str} str
-   * @param {number} numCaracteres
-   * @param {str} relleno
-   * @return {str}
-   */
-  rellenaIzq(str, numCaracteres, relleno) {
-    str = str.toString();
-    const cfalta = numCaracteres - str.length;
-    if (cfalta >0) {
-      return relleno.repeat(cfalta) + str;
-    }
-    return str;
-  }
-
-  /**
    * Convierte milisegundos en string de estilo: "01:03"
    * @param {int} milis Milisegundos
    * @return {str} del tipo '01:30'
    */
   milisToMinSg(milis) {
-    let seconds = Math.floor( (milis/1000) % 60 );
-    let minutes = Math.floor( (milis/1000/60) % 60 );
-    seconds = this.rellenaIzq(seconds.toString(), 2, '0');
-    minutes = this.rellenaIzq(minutes.toString(), 2, '0');
+    // No `this`: the session timer receives this method detached.
+    const seconds = String(Math.floor((milis/1000) % 60)).padStart(2, '0');
+    const minutes = String(Math.floor((milis/1000/60) % 60)).padStart(2, '0');
     return minutes + ':' + seconds;
   }
 
@@ -73,9 +54,8 @@ class Utils {
    * @return {str} del tipo '1:30'
    */
   sgToMinSg(sg) {
-    let seconds = Math.floor( (sg) % 60 );
-    const minutes = Math.floor( (sg/60) % 60 );
-    seconds = this.rellenaIzq(seconds.toString(), 2, '0');
+    const seconds = String(Math.floor(sg % 60)).padStart(2, '0');
+    const minutes = Math.floor((sg/60) % 60);
     return minutes + ':' + seconds;
   }
 

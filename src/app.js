@@ -966,13 +966,8 @@ $('#btnComenzar').on('click', function() {
             ayudaDrawer.refreshEvents();
           }
           if ( opcionesGuardadas.cuentaAtras > 0 ) {
-            const timeArr = (opcionesGuardadas.cuentaAtras/60)
-                .toString().split('.');
-            let min = timeArr[0];
-            let sg = parseInt(timeArr[1])*6 | 0;
-            min = utils.rellenaIzq(min, 2, '0');
-            sg = utils.rellenaIzq(sg, 2, '0');
-            $('#boxTime #total')[0].innerHTML = min + ':' + sg;
+            $('#boxTime #total')[0].innerHTML =
+                utils.milisToMinSg(opcionesGuardadas.cuentaAtras * 1000);
             sessionTimer.startCountdown(document.getElementById('countdown'), opcionesGuardadas.cuentaAtras*1000);
           } else {
             const notime = '--:--'; // '――:――'
