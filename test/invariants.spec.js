@@ -13,7 +13,8 @@ import {TIPO_NUMERO} from '../src/operaciones/tipoNumero';
 import {scoreBadges, speedBadges} from '../src/application/badges';
 import {createSessionTimer} from '../src/application/timer';
 import {canEnableNegativeResult, operationAvailability, requiresTwoOperands} from '../src/application/optionAvailability';
-import {countFollowingOperands, decimalPlaces, multiplesUntil} from '../src/operaciones/numberRules';
+import {countDecimalOperands, countFollowingOperands, countNegativeOperands, decimalPlaces, decimalPlacesForLevel, multiplesUntil} from '../src/operaciones/numberRules';
+import {factorize} from '../src/operaciones/factorization';
 
 const expect = require('chai').expect;
 
@@ -291,5 +292,30 @@ describe('Disponibilidad de opciones', () => {
       onlyDivision: true,
       operandCount: 2,
     })).to.equal(false);
+  });
+});
+
+
+describe('Factorización y reglas numéricas extraídas', () => {
+  it('factoriza enteros positivos conservando el orden histórico', () => {
+    expect(factorize(5000)).to.deep.equal([2, 2, 2, 5, 5, 5, 5]);
+    expect(factorize(120)).to.deep.equal([2, 2, 2, 3, 5]);
+  });
+
+  it('conserva signo, primos y tratamiento histórico de decimales', () => {
+    expect(factorize(-30)).to.deep.equal([2, 3, 5, -1]);
+    expect(factorize(97)).to.deep.equal([97]);
+    expect(factorize(12.4)).to.deep.equal([2, 2, 3]);
+    expect(factorize(Infinity)).to.deep.equal([]);
+  });
+
+  it('calcula decimales y recuentos sin depender de Operacion', () => {
+    expect(decimalPlacesForLevel(10)).to.equal(1);
+    expect(decimalPlacesForLevel(11)).to.equal(2);
+    expect(decimalPlacesForLevel(21)).to.equal(3);
+    expect(countDecimalOperands([1, 2.5, 3.25])).to.equal(2);
+    expect(countNegativeOperands([-1, 2, -3])).to.equal(2);
+    expect(countDecimalOperands([1, 2, 3, 4, 5])).to.equal(0);
+    expect(countNegativeOperands([1, -2, 3, -4, 5])).to.equal(0);
   });
 });
