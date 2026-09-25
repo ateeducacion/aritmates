@@ -9,6 +9,7 @@ import {
   foldMulDiv,
   countAdjacent,
   onlyMulDiv,
+  canAutoPlaceParentheses,
   groupSimilarOperations,
   MUL_DIV,
   SUM_SUB,
@@ -1362,16 +1363,14 @@ class OperacionMultiple extends Operacion {
       }
       return;
     }
-    // mayor de 3 y tiene que tener multiplicacione o divisiones
-    if (this.cantidad_operandos<3) return;
-    if (
-      !(
-        this.tiposOperacion.indexOf(OPERACIONES.MULTIPLICACION) ||
-        this.tiposOperacion.indexOf(OPERACIONES.DIVISION_ENTERA) ||
-        this.tiposOperacion.indexOf(OPERACIONES.DIVISION_RESTO) ||
-        this.tiposOperacion.indexOf(OPERACIONES.DIVISION_DECIMAL)
-      )
-    ) return;
+    // Sin una posición explícita, los paréntesis solo se colocan cuando
+    // existe un operador de precedencia alta. El código anterior usaba
+    // indexOf() como booleano (-1 es truthy y 0 falsy), por lo que esta
+    // condición prácticamente nunca filtraba nada.
+    if (!canAutoPlaceParentheses(this.cantidad_operandos, this.tiposOperacion)) {
+      this.forzarParentesis = false;
+      return;
+    }
 
     let operacionInvalida = true;
     const posicionMin = 0;
