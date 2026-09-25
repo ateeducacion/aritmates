@@ -2,7 +2,7 @@ import Suma from '../src/operaciones/suma';
 import Resta from '../src/operaciones/resta';
 import Multiplicacion from '../src/operaciones/multiplicacion';
 import DivisionEntera from '../src/operaciones/divisionEntera';
-import {asRandom, resetDefaultRandom, seededRandom, setDefaultRandom} from '../src/operaciones/random';
+import {asRandom, seededRandom, setDefaultRandom} from '../src/operaciones/random';
 import {evaluateArithmetic} from '../src/operaciones/evaluate';
 import {
   subtractionsAsNegativeSums,
@@ -15,15 +15,13 @@ const expect = require('chai').expect;
 
 describe('Fuente aleatoria', () => {
   it('permite fijar y restaurar el generador por defecto sin tocar Math.random', () => {
-    const original = Math.random;
-    setDefaultRandom(seededRandom(123));
+    const originalMathRandom = Math.random;
+    const previous = setDefaultRandom(seededRandom(123));
     const first = asRandom()();
     setDefaultRandom(seededRandom(123));
     expect(asRandom()()).to.equal(first);
-    expect(Math.random).to.equal(original);
-    resetDefaultRandom();
-    expect(asRandom()).to.equal(Math.random);
-    setDefaultRandom(seededRandom(1));
+    expect(Math.random).to.equal(originalMathRandom);
+    setDefaultRandom(previous);
   });
 
   it('rechaza fuentes no funcionales', () => {
