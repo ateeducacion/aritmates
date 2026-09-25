@@ -9,7 +9,7 @@ import {
   sumValues,
   subtractValues,
 } from './arithmetic';
-import {countDecimalOperands, countFollowingOperands, countNegativeOperands, decimalPlaces, decimalPlacesForLevel, isMissingOperand, multiplesUntil} from './numberRules';
+import {countDecimalOperands, countFollowingOperands, countNegativeOperands, decimalPlaces, decimalPlacesForLevel, isMissingOperand, multiplesUntil, shouldGenerateOperand} from './numberRules';
 import {factorize} from './factorization';
 import {countDefinedOperands, hasOperandValue, invertAllOperandSigns, invertOperandSign, sortOperandsDescending} from './operandRules';
 /**
@@ -552,7 +552,7 @@ export default class Operacion {
       for (let index = 0; index < this.cantidad_operandos; index++) {
         // si no esta definido de antes lo genera
         // estos operandos son this.operandosInicales.slice();
-        if (isMissingOperand(this.operandos[index])) {
+        if (shouldGenerateOperand(this.operandos[index], this.operandosIniciales[index])) {
           this._generarOperandoPosicion(index);
         }
       }
@@ -1273,7 +1273,7 @@ export default class Operacion {
     let operandosVacios = 0;
     let operandosLlenos = 0;
     for (let idx = 0; idx < this.cantidad_operandos; idx++) {
-      if (isMissingOperand(this.operandos[idx])) {
+      if (shouldGenerateOperand(this.operandos[idx], this.operandosIniciales[idx])) {
         operandosVacios++;
       } else {
         operandosLlenos++;
@@ -1294,7 +1294,7 @@ export default class Operacion {
       for (let idx = 0; idx < this.cantidad_operandos; idx++) {
         if ( debug ) console.log(tag, 'rellenar operandos pendientes:');
         // if ( debug ) console.log(tag,'operando number', this.operandos[idx]);
-        if (isMissingOperand(this.operandos[idx])) {
+        if (shouldGenerateOperand(this.operandos[idx], this.operandosIniciales[idx])) {
           if ( debug ) {
             console.log(
                 this.id+tag, 'generar operando para ', idx );
