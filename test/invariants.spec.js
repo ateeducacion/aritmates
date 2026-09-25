@@ -9,6 +9,7 @@ import {
   groupSimilarOperations,
 } from '../src/operaciones/expression';
 import OPERACIONES from '../src/operaciones/operaciones';
+import {TIPO_NUMERO} from '../src/operaciones/tipoNumero';
 import {scoreBadges, speedBadges} from '../src/application/badges';
 import {createSessionTimer} from '../src/application/timer';
 import {canEnableNegativeResult, operationAvailability, requiresTwoOperands} from '../src/application/optionAvailability';
