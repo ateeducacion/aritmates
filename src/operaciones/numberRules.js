@@ -101,3 +101,18 @@ export function countNegativeOperands(operands) {
 export function isMissingOperand(value) {
   return value === undefined || value === null || value === '';
 }
+
+/**
+ * Decide si una posición debe regenerarse.
+ *
+ * El motor histórico regenera ceros producidos automáticamente, pero debe
+ * respetar un cero que venga explícitamente en los operandos iniciales.
+ *
+ * @param {*} value
+ * @param {*} initialValue
+ * @return {boolean}
+ */
+export function shouldGenerateOperand(value, initialValue) {
+  if (isMissingOperand(value)) return true;
+  return value === 0 && initialValue !== 0;
+}
