@@ -61,7 +61,7 @@ Código y comentarios en inglés. La documentación para personas está en espa�
 
 ## Skills
 
-`.agents/skills/` es el árbol canónico. `.claude/skills/` es una copia completa, sin enlaces simbólicos. Al cambiar un skill, las dos copias quedan iguales en el mismo commit:
+`.agents/skills/` es el árbol canónico. `.claude/skills/` es una copia completa, sin enlaces simbólicos. **Esta duplicación es intencional** para dar compatibilidad a herramientas que descubren skills en rutas distintas; no se debe eliminar una copia, sustituirla por symlinks ni tratarla como código duplicado accidental. Al cambiar un skill, las dos copias quedan iguales en el mismo commit:
 
 ```bash
 rsync -a --delete --exclude .DS_Store --exclude .venv .agents/skills/ .claude/skills/
