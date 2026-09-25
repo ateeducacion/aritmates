@@ -859,8 +859,7 @@ $('#btnComenzar').on('click', function() {
   if ( opciones.tiposOperaciones.length == 0 ||
       opciones.tiposNumero.length == 0 ) {
     // mostra dialogo no ha selecionado operaciones o tipos de numero
-    const dialogMissingOptions = {};
-    cargarFaltaOpciones(dialogMissingOptions);
+    cargarFaltaOpciones();
     return;
   }
 
@@ -1193,33 +1192,43 @@ function changeOpTipoNumero() {
 
 // --- Diálogos modales
 // force webpack load
-let dialogShare;// = new MDCDialog();
+// Each dialog template is loaded and wired once; opening only toggles it.
+let dialogShare;
+let dialogShareMode = null; // 'codigo' loads the typed code on OK
 let inputField;
-// fetch html modal
 fetch('./templates/modal.html')
     .then((response) => response.text() )
     .then((data) => {
       $('body').append(data);
       const dialogEl = document.querySelector('.mdc-dialog');
       dialogShare = new MDCDialog(dialogEl);
+      $(dialogEl).find('.modal-close').on('click', () => dialogShare.close());
+      $('#button_ok').on('click', (ev) => {
+        ev.preventDefault();
+        ev.stopPropagation();
+        if (dialogShareMode === 'codigo') cargarOpcionesCodigo($('#userCode').val());
+        dialogShare.close();
+      });
     });
 
-function cargarFaltaOpciones(dialog, pdf = false) {
+let dialogFaltan;
+let dialogFaltanPdf = false;
+function cargarFaltaOpciones(pdf = false) {
+  dialogFaltanPdf = pdf;
+  if (dialogFaltan) {
+    dialogFaltan.open();
+    return;
+  }
   fetch('./templates/modalFaltaOpciones.html')
       .then((response) => response.text() )
       .then((data) => {
         $('body').append(data);
         const dialogEl = document.querySelector('#faltanOpciones');
-        dialog = new MDCDialog(dialogEl);
-        dialog.open();
-        $('#faltanOpciones .button_ok').click( (ev) => {
-          dialog.close();
-        });
-        $('#faltanOpciones .modal-close').click( (ev) => {
-          dialog.close();
-        });
-
-        $('#faltanOpciones .button_ok').click( (ev) => {
+        dialogFaltan = new MDCDialog(dialogEl);
+        $(dialogEl).find('.modal-close, .button_cancel')
+            .on('click', () => dialogFaltan.close());
+        $(dialogEl).find('.button_ok').on('click', () => {
+          dialogFaltan.close();
           if (opciones.tiposOperaciones.length == 0) {
             opciones.addTipoOperacion(OPERACIONES.SUMA);
           }
@@ -1227,13 +1236,14 @@ function cargarFaltaOpciones(dialog, pdf = false) {
             opciones.addTipoNumero(TIPO_NUMERO.NATURAL);
           }
 
-          if ( ! pdf ) {
+          if ( ! dialogFaltanPdf ) {
             $('#btnComenzar').click();
           } else {
             window.scrollTo(0, 0);
             vistaPreviaPdf();
           }
         });
+        dialogFaltan.open();
       });
 }
 
@@ -1259,23 +1269,10 @@ $('#btnCodigoEjercicio').click((ev) => {
   `;
   $('#modal-dialog-content')[0].innerHTML += inputField;
   $('#button_ok').find('.mdc-button__label')[0].innerHTML = 'Cargar';
-  // const textField =
   new MDCTextField(document.querySelector('.mdc-text-field'));
 
+  dialogShareMode = 'codigo';
   dialogShare.open();
-  $('.modal-close').click( (ev) => {
-    dialogShare.close();
-    $('#button_ok').unbind();
-  });
-  $('#button_ok').click( (ev) => {
-    const code = $('#userCode').val();
-    cargarOpcionesCodigo(code);
-
-    dialogShare.close();
-
-    ev.preventDefault();
-    ev.stopPropagation();
-  });
 });
 
 $('#btnCompartirHoja').click( (ev) => {
@@ -1311,6 +1308,7 @@ $('#btnCompartirHoja').click( (ev) => {
     <p><br>Comparte el enlace con la aplicación que prefieras:</p>
     `;
   $('#button_cancel').hide();
+  $('#button_ok').find('.mdc-button__label')[0].innerHTML = 'Ok';
   $('.mdc-dialog__container input:text').focus(function() {
     $(this).select();
   } );
@@ -1318,11 +1316,8 @@ $('#btnCompartirHoja').click( (ev) => {
     $(this).select();
   } );
 
+  dialogShareMode = 'compartir';
   dialogShare.open();
-  $('.modal-close').click( (ev) => {
-    dialogShare.close();
-    $('#button_ok').unbind();
-  });
 });
 
 // --- fin dialogos modales
@@ -1450,8 +1445,7 @@ $('#pdfdown').click( (ev) => {
   if ( opciones.tiposOperaciones.length == 0 ||
       opciones.tiposNumero.length == 0 ) {
     // mostra dialogo no ha selecionado operaciones o tipos de numero
-    const dialogMissingOptions = {};
-    cargarFaltaOpciones(dialogMissingOptions, true);
+    cargarFaltaOpciones(true);
     return;
   }
 
