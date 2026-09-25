@@ -55,6 +55,7 @@ npm run e2e       # hace falta dist/ y Chromium
 
 El CI (`.github/workflows/ci.yml`) ejecuta esas comprobaciones en Node 24 y falla si alguna falla.
 GitHub Pages se despliega únicamente después de un CI correcto en `main`; no se debe volver a un workflow de despliegue paralelo al quality gate. Los releases ejecutan la misma validación esencial antes de publicar artefactos.
+Los workflows usan mínimo privilegio: CI solo necesita `contents: read`; un workflow no recibe permisos de escritura salvo para la acción concreta que los requiere (release, Pages o PR automático de skills).
 La configuración del repositorio debe exigir el check `CI` antes de fusionar en `main`; el workflow de Pages es una segunda barrera y no sustituye la protección de rama.
 
 Los módulos nuevos o ya saneados no pueden introducir variables sin usar: `no-unused-vars` es bloqueante en `src/application/`, las reglas puras del motor, `src/pdfLibs.js` y E2E. Los scripts legacy se endurecen cuando se refactorizan. No se desactiva la regla en módulos saneados para hacer pasar un cambio; se corrige el código.
