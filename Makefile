@@ -31,14 +31,11 @@ test-all:
 clean:
 	npm run clean
 
-## Build and zip the project using its version from package.json
+## Build and zip dist/ as dist/<name>-<version>.zip (from package.json)
+package: ZIP = $(shell node -p "p=require('./package.json');p.name+'-'+p.version").zip
 package:
-	VERSION=$(shell node -p "require('./package.json').version")
-	mkdir -p dist/package
 	npm run build
-	cp -R dist/* dist/package/
-	zip -r dist/$(shell basename $(CURDIR))-$$VERSION.zip dist/package
-	rm -rf dist/package
+	cd dist && zip -qr ../$(ZIP) . && mv ../$(ZIP) .
 
 ## Display this help
 help:

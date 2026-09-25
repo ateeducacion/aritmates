@@ -48,9 +48,7 @@ jobs:
         run: npm run e2e
 
       - name: Generate release ZIP with Makefile
-        run: |
-          TAG_NAME=${GITHUB_REF##*/}  # Extract tag name from ref
-          make package
+        run: make package
 
       - name: Upload Release Asset
         uses: softprops/action-gh-release@v3
