@@ -99,7 +99,13 @@ export function countNegativeOperands(operands) {
  * @return {boolean}
  */
 export function isMissingOperand(value) {
-  return value === undefined || value === null || value === '';
+  return (
+    value === undefined ||
+    value === null ||
+    value === '' ||
+    value === false ||
+    Number.isNaN(value)
+  );
 }
 
 /**
