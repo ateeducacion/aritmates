@@ -80,8 +80,14 @@ Ese comando escribe `metadata.github-repo`, `github-path`, `github-ref` y `githu
 | `github-actions-hardening` | Workflows de Actions | [`github/awesome-copilot`](https://github.com/github/awesome-copilot) `skills/github-actions-hardening` | MIT |
 | `security-audit` | Revisión de la aplicación cuando se pide una auditoría | [`cloudflare/security-audit-skill`](https://github.com/cloudflare/security-audit-skill) `skills/security-audit` | MIT |
 | `playwright-cli` | Explorar la portada y depurar Playwright | [`microsoft/playwright-cli`](https://github.com/microsoft/playwright-cli) `skills/playwright-cli` | Apache-2.0 |
+| `playwright-trace` | Leer una traza de un flujo que ha fallado | [`microsoft/playwright`](https://github.com/microsoft/playwright) `packages/playwright-core/src/tools/skills/playwright-trace` | Apache-2.0 |
+| `test-gap-audit` | Proponer pruebas que faltan, sin editar salvo que se pida | [`github/awesome-copilot`](https://github.com/github/awesome-copilot) `skills/test-gap-audit` | MIT |
 
 Esos skills no amplían el producto. El end-to-end del repositorio sigue siendo `npm run e2e`. No hace falta el paquete `@playwright/cli` ni reescribir los tests. Una auditoría no añade un sanitizador global si no hay un sumidero nuevo.
+
+`test-gap-audit` sigue esta guía: la suite es `npm test`, cada spec nuevo lleva semilla, no hay umbral de cobertura y los `it` vacíos se quedan. `scripts/coverage_map.py` solo da pistas. Un archivo sin coincidencia de nombre no es un hueco confirmado.
+
+`playwright-trace` lee un `.zip` con `npx playwright trace`, el paquete que ya está en el proyecto. No añade otro runner. El aviso de esa licencia está en [`.agents/licenses/microsoft-playwright-NOTICE.txt`](.agents/licenses/microsoft-playwright-NOTICE.txt).
 
 [`.github/workflows/update-agent-skills.yml`](.github/workflows/update-agent-skills.yml) corre cada lunes a las 06:17 UTC y también a mano. Actualiza `.agents/skills` con `gh skill update --all`, copia el árbol a `.claude/skills/` y abre un pull request contra `main` en la rama `feature/update-agent-skills`. No empuja a `main`. Un pull request abierto con el token por defecto no dispara el resto de workflows. Los skills sin `metadata.github-*` los omite el actualizador. Hoy no hay skills locales.
 
