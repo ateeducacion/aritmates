@@ -17,6 +17,7 @@
     "visual": "node scripts/visual-gallery.mjs",
     "e2e": "playwright test",
     "coverage": "c8 --reporter=text-summary node scripts/test.mjs",
+    "audit": "npm audit --audit-level=high",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -52,12 +53,15 @@
     "node": ">=24"
   },
   "overrides": {
+    "brace-expansion": "5.0.9",
     "mocha": {
       "diff": "^8.0.3",
       "serialize-javascript": "^7.0.5"
     }
   },
   "allowScripts": {
-    "esbuild@0.25.12": true
+    "@parcel/watcher@2.5.1": false,
+    "core-js@3.49.0": false,
+    "esbuild@0.28.2": true
   }
 }
