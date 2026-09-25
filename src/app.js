@@ -281,26 +281,6 @@ const opciones = {
     }
   },
 
-  removeTipoOperacion(tipo) {
-    if (this.tiposOperaciones.includes(tipo)) {
-      switch (tipo) {
-        case OPERACIONES.MULTIPLICACION:
-          $('#btnMulti').click();
-          break;
-        case OPERACIONES.SUMA:
-          $('#btnSuma').click();
-          break;
-        case OPERACIONES.RESTA:
-          $('#btnResta').click();
-          break;
-        case OPERACIONES.DIVISION:
-        case OPERACIONES.DIVISION_RESTO:
-          $('#btnDiv').click();
-          break;
-      }
-    }
-  },
-
   addTipoNumero(tipo) {
     // const debug = true;
     if (debug) console.log('addTipoNumero called', 'tipo', tipo);

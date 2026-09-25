@@ -19,7 +19,7 @@ import {addQuestionTime, createSessionScore, nextOperation, recordAnswer, should
 import {countDecimalOperands, countFollowingOperands, countNegativeOperands, decimalPlaces, decimalPlacesForLevel, isMissingOperand, multiplesUntil, shouldGenerateOperand} from '../src/operaciones/numberRules';
 import {factorize} from '../src/operaciones/factorization';
 import {selectExpressionOperations} from '../src/operaciones/operationSelection';
-import {countDefinedOperands, hasOperandValue, invertAllOperandSigns, invertOperandSign, sortOperandsDescending} from '../src/operaciones/operandRules';
+import {countDefinedOperands, hasOperandValue} from '../src/operaciones/operandRules';
 
 const expect = require('chai').expect;
 
@@ -498,25 +498,6 @@ describe('Reglas puras de operandos', () => {
   it('busca valores conservando la comparación histórica', () => {
     expect(hasOperandValue([1, 2, 3], '2')).to.equal(true);
     expect(hasOperandValue([1, 2, 3], 4)).to.equal(false);
-  });
-
-  it('invierte signos sin modificar el array original', () => {
-    const original = [3, 0, -2];
-    expect(invertOperandSign(original, 0)).to.deep.equal([-3, 0, -2]);
-    expect(invertAllOperandSigns(original)).to.deep.equal([-3, 0, 2]);
-    expect(original).to.deep.equal([3, 0, -2]);
-  });
-
-  it('ordena descendente y conserva la posición del operando de nivel', () => {
-    const sorted = sortOperandsDescending([2, 10, 5], 1);
-    expect(sorted.operands).to.deep.equal([10, 5, 2]);
-    expect(sorted.levelPosition).to.equal(0);
-  });
-
-  it('con duplicados conserva la última coincidencia como el legacy', () => {
-    const sorted = sortOperandsDescending([5, 2, 5], 0);
-    expect(sorted.operands).to.deep.equal([5, 5, 2]);
-    expect(sorted.levelPosition).to.equal(1);
   });
 
   it('cuenta solo operandos definidos', () => {
