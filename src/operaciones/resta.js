@@ -97,7 +97,7 @@ export default class Resta extends Operacion {
     this.tipo = OPERACIONES.RESTA;
     // esta en super
     // this.operandosIniciales = operandos.slice();
-    if ( resultado ) {
+    if (resultado !== null && resultado !== undefined) {
       this.resultadoPorUsuario = true;
       this.resultado = resultado;
       this.generarNumerosOperandos();

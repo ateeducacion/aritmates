@@ -639,3 +639,19 @@ describe('Resta', ()=>{
   });
 });
 
+
+
+describe('Resultado cero impuesto en resta', () => {
+  it('resuelve 5 - ? = 0 conservando el resultado solicitado', () => {
+    const op = new Resta({
+      cantidadOperandos: 2,
+      operandos: [5],
+      resultado: 0,
+      random: seededRandom(31),
+    });
+
+    expect(op.resultado).to.equal(0);
+    expect(op.operandos).to.deep.equal([5, 5]);
+    expect(op.operandos[0] - op.operandos[1]).to.equal(0);
+  });
+});
