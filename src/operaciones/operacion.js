@@ -2,7 +2,7 @@
 import '../debug.js';
 import {Decimal} from 'decimal.js';
 import {DEFAULTS} from '../defaultOptions';
-import {asRandom} from './random';
+import {asRandom, randomSign, roundedBetween} from './random';
 import {
   multiplyValues,
   divideValues,
@@ -1018,10 +1018,8 @@ export default class Operacion {
    * @return {number} signo
    * @memberof Operacion
    */
-  getSigno() { // 0 negativo; 1 positivo
-    let signo = Math.round(this.rng());
-    if (signo == 0) signo = -1;
-    return signo;
+  getSigno() {
+    return randomSign(() => this.rng());
   }
   /**
      * Se cambio la manera de calcular los números y ya no se usa
@@ -1053,8 +1051,11 @@ export default class Operacion {
     }
     if ( debug ) console.log( this.id+tag, 'limiteSuperior', limiteSuperior );
     if ( debug ) console.log( this.id+tag, 'limiteInferior', limiteInferior );
-    const desvio = Math.round(
-        this.rng()*(limiteSuperior-limiteInferior)+limiteInferior);
+    const desvio = roundedBetween(
+        () => this.rng(),
+        limiteInferior,
+        limiteSuperior,
+    );
 
     if ( debug ) console.log( this.id+tag, 'desvio', desvio );
     return desvio;
@@ -1070,9 +1071,7 @@ export default class Operacion {
    * @memberof Operacion
    */
   getRandomMinMax(min, max) {
-    // const tag = '[Operacion.getRandomMinMax(min, max)]';
-    // if ( debug ) console.log( this.id+tag, min, max );
-    return Math.round(this.rng()*(max-min)+min);
+    return roundedBetween(() => this.rng(), min, max);
   }
 
   /**
