@@ -1238,20 +1238,13 @@ export default class Operacion {
   }
 
   /**
-   * Divide un numero en sus multiplos primos
-   * @example <caption>Factorizar 120 devuelve 2*2*2*3*5 </caption>
-   * //returns [2,2,2,3,5]
-   * factorizar(120);
+   * Divide un número en sus factores primos.
    *
-   * @aut  factorizar(numero) {
+   * @param {*} numero
+   * @return {Array} factores
+   */
+  factorizar(numero) {
     return factorize(numero, this._MAXIMO_PRIMO);
-  }e {
-        primo_n++;
-      }
-      i++;
-    }
-    if ( numero<0 ) factores.push(-1);
-    return factores;
   }
 
   /**
