@@ -2,7 +2,7 @@ import Suma from '../src/operaciones/suma';
 import Resta from '../src/operaciones/resta';
 import Multiplicacion from '../src/operaciones/multiplicacion';
 import DivisionEntera from '../src/operaciones/divisionEntera';
-import {seededRandom} from '../src/operaciones/random';
+import {asRandom, seededRandom, setDefaultRandom} from '../src/operaciones/random';
 import {evaluateArithmetic} from '../src/operaciones/evaluate';
 import {
   subtractionsAsNegativeSums,
@@ -12,6 +12,22 @@ import OPERACIONES from '../src/operaciones/operaciones';
 import {scoreBadges, speedBadges} from '../src/application/badges';
 
 const expect = require('chai').expect;
+
+describe('Fuente aleatoria', () => {
+  it('permite fijar y restaurar el generador por defecto sin tocar Math.random', () => {
+    const originalMathRandom = Math.random;
+    const previous = setDefaultRandom(seededRandom(123));
+    const first = asRandom()();
+    setDefaultRandom(seededRandom(123));
+    expect(asRandom()()).to.equal(first);
+    expect(Math.random).to.equal(originalMathRandom);
+    setDefaultRandom(previous);
+  });
+
+  it('rechaza fuentes no funcionales', () => {
+    expect(() => setDefaultRandom(null)).to.throw(TypeError);
+  });
+});
 
 describe('Invariantes del motor', () => {
   const seeds = [];

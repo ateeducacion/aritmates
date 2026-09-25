@@ -32,9 +32,9 @@ import {seededRandom} from '../src/operaciones/random.js';
 const op = new Suma({nivel: 10, random: seededRandom(12345)});
 ```
 
-El arranque de `scripts/test.mjs` también deja `Math.random` en una secuencia
-fija (semilla 1) para los spec que todavía no inyectan generador. Esa
-sustitución solo existe dentro del proceso de test.
+Los specs nuevos inyectan su propia fuente. Para los casos legacy que todavía
+no pasan `random`, `scripts/test.mjs` configura una fuente determinista a través
+de `setDefaultRandom(seededRandom(1))`. El runner no modifica `Math.random`.
 
 ## Qué cubre cada grupo
 

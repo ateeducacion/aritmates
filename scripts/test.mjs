@@ -88,18 +88,11 @@ async function bundleTests(specs) {
   const entry = [
     'global.debug = false;',
     'global.window = global;',
-    // Legacy specs that do not pass `random` still call Math.random.
-    // One seeded source keeps that suite reproducible. Specs that pass
-    // their own generator are unaffected.
-    'Math.random = (function mulberry32(seed) {',
-    '  let state = seed >>> 0;',
-    '  return function() {',
-    '    state = (state + 0x6d2b79f5) | 0;',
-    '    let t = Math.imul(state ^ (state >>> 15), 1 | state);',
-    '    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;',
-    '    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;',
-    '  };',
-    '})(1);',
+    // Legacy specs that do not inject `random` still need deterministic
+    // generation. Configure the domain abstraction instead of monkey-patching
+    // the runtime global Math.random.
+    `const {seededRandom, setDefaultRandom} = require(${JSON.stringify(join(root, 'src/operaciones/random.js'))});`,
+    'setDefaultRandom(seededRandom(1));',
     ...specs.map((s) => `require(${JSON.stringify(join(root, s.slice(2)))});`),
   ].join('\n');
 

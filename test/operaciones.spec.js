@@ -1787,7 +1787,7 @@ describe('Multiplicación', ()=> {
     //     .to.match(/^-?[0-9]+(\.[0-9]+)? \* -?[0-9]+(\.[0-9]+)? = 100$/);
   });
   it('Dado el resultado con decimales, operandos con decimales', ()=>{
-    const resul = (Math.random()*100).toFixed(3);
+    const resul = '42.375';
     const input = {
       cantidadOperandos: 2,
       resultado: resul,
@@ -2329,7 +2329,7 @@ describe('Division Resto', ()=>{
     const msg = 'debería mostrar 2 operandos si se pasan 3 o mas operando a division';
     if ( debug )console.log('algo pasa en ', msg);
     // se pasa un numero entre 3 y 6
-    const input = {cantidadOperandos: Math.floor(Math.random()*4+3)};
+    const input = {cantidadOperandos: 5};
     const actual = new objetos.DivisionResto(input);
     // let actual = s.cantidad_operandos;
     const expected = 2;
@@ -2758,7 +2758,7 @@ describe('Division con decimales', ()=>{
     if ( debug )console.log('algo pasa en ', msg);
     // se pasa un numero entre 3 y 5 ( con 6 falla el test )
     // ahora falla con el 5 tambien! lo dejo del 2 as 4
-    const input = {cantidadOperandos: Math.floor((Math.random()*3)+2)};
+    const input = {cantidadOperandos: 4};
     const actual = new objetos.DivisionDecimales(input);
     // let actual = s.cantidad_operandos;
     const expected = 2;
