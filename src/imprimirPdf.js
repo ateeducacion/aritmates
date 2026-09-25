@@ -44,11 +44,17 @@ class ImprimirPdf {
     });
   }
 
-  printImgPages( ) {
+  printImgPages(selector = '#paper') {
     const quality = 1;
-    html2canvas(document.querySelector('#paper'),
-        {scale: quality}
-    ).then( (canvas) => {
+    const target = document.querySelector(selector);
+    if (!target) {
+      throw new Error('PDF target not found: ' + selector);
+    }
+
+    html2canvas(target, {
+      scale: quality,
+      ignoreElements: (element) => element.classList?.contains('pdf-ignore'),
+    }).then( (canvas) => {
       const imgData = canvas.toDataURL('image/png');
       const imgWidth = 210;
       const pageHeight = 297;
