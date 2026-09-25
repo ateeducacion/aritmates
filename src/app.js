@@ -51,6 +51,7 @@ import '../css/print.scss';
 
 import {DEFAULTS, ENABLE} from './defaultOptions';
 import {renderResults} from './application/results';
+import {createSessionTimer} from './application/timer';
 import OPERACIONES from './operaciones/operaciones';
 import {TIPO_NUMERO} from './operaciones/tipoNumero';
 
@@ -79,6 +80,10 @@ import { keyCrono, valoresCrono, keyNivel, textoCrono } from './PortadaUI';
 // opcines igual abria que movelo a otro archivo y en este meter imports a todo lo que llama 
 
 window.jQuery = $;
+const sessionTimer = createSessionTimer({
+  formatTime: utils.milisToMinSg,
+  onTimeUp: () => $('body').trigger('timeup'),
+});
 /**
  * Opciones actuales
  * @container Opciones
@@ -1100,12 +1105,12 @@ $('#btnComenzar').on('click', function() {
             $('#boxTime #total')[0].innerHTML = min + ':' + sg;
             // console.log('boxtime total', $('#boxTime #total')[0].toString() );
             // console.log('boxtime total', sg );
-            initializeCountDown('countdown', opcionesGuardadas.cuentaAtras*1000);
+            sessionTimer.startCountdown(document.getElementById('countdown'), opcionesGuardadas.cuentaAtras*1000);
           } else {
             const notime = '--:--'; // '――:――'
             $('#boxTime #total')[0].innerHTML = notime;
             $('#boxTime #countdown')[0].innerHTML = notime;
-            initializeCountUp('countdown');
+            sessionTimer.startCountUp(document.getElementById('countdown'));
           }
 
           // tiempo primera respuesta
@@ -1151,7 +1156,7 @@ $('#btnComenzar').on('click', function() {
               score.tiempoConsumido = opciones.cuentaAtras * 1000;
               $('body').trigger('finEjercicios');
               // ya deberia estar parado pero...
-              clearInterval(timeinterval);
+              sessionTimer.stop();
             }
           });
         }
@@ -1195,39 +1200,7 @@ function actualizarClaseAyuda( operacion ) {
   // console.log('data-operacion: ',$('#ayudaEjercicio')[0].dataset.operacion);
 }
 
-// --- cuenta atras
-let timeinterval;
 
-
-function updateCountdown(end, clock) {
-  const t = end - Date.now();
-  clock.innerHTML = utils.milisToMinSg(t);
-  if ( t <=0 ) {
-    clearInterval(timeinterval);
-    $('body').trigger('timeup');
-  }
-}
-
-function updateCount( start, clock ) {
-  const t = Date.now() - start;
-  clock.innerHTML = utils.milisToMinSg(t);
-}
-
-function initializeCountDown(id, milis) {
-  // console.log('initialize countdown llamado', id, milis);
-  const clock = document.getElementById(id);
-  const start = Date.now();
-  const end = start + milis;
-  timeinterval = setInterval( updateCountdown, 500, end, clock );
-}
-
-function initializeCountUp(id) {
-  // console.log('initialize countdown llamado', id, milis);
-  const clock = document.getElementById(id);
-  const start = Date.now();
-  timeinterval = setInterval( updateCount, 500, start, clock );
-}
-// --- Fin cuenta atras
 
 // --- desactivar checkbox resultado negativo
 /**
