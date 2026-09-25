@@ -878,6 +878,7 @@ describe('Operacion Multiple', () => {
             {nivel: 50,
               cantidadOperandos: 3,
               permitirNegativos: false,
+              random: seededRandom(1),
               tiposOperacion: [
                 OPERACIONES.SUMA,
                 OPERACIONES.RESTA,
