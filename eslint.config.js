@@ -144,7 +144,6 @@ export default [
       'src/operaciones/random.js',
       'src/pdfLibs.js',
       'e2e/**/*.js',
-      'scripts/**/*.mjs',
     ],
     rules: {
       'no-unused-vars': ['error', {argsIgnorePattern: '^_', varsIgnorePattern: '^_'}],
