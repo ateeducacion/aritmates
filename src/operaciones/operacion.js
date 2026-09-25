@@ -9,6 +9,7 @@ import {
   sumValues,
   subtractValues,
 } from './arithmetic';
+import {countFollowingOperands, decimalPlaces, multiplesUntil} from './numberRules';
 /**
  * Clase base para las distintas operaciones ( ver Suma, Resta, Multiplicacion, Division )
  * 
@@ -1232,16 +1233,7 @@ export default class Operacion {
    * @memberof Operacion
    */
   obtenerMultiplosHasta(num, limite=10) {
-    // obtener lol multiplos de num:5 hasta limite:100
-    const multiplos = [];
-    let ultimoMul=1;
-    let i = 2;
-    while (ultimoMul<limite) {
-      ultimoMul = num * i;
-      multiplos.push(ultimoMul);
-      i++;
-    }
-    return multiplos;
+    return multiplesUntil(num, limite);
   }
 
   /**
@@ -1311,22 +1303,8 @@ export default class Operacion {
    * @return {number}
    * @memberof Operacion
    */
-  obtenerNumeroDecimales( num ) {
-    const tag = '[obetenerNumeroDecimales(numero)]';
-    let nDecimales;
-    if ( debug ) console.log( this.id+tag, num );
-
-    const match = (''+num).match(/(?:\.(\d+))?(?:[eE]([+-]?\d+))?$/);
-    if (match) {
-      nDecimales = Math.max( 0,
-          (match[1] ? match[1].length : 0) -
-        (match[2] ? +match[2] : 0)
-      );
-    } else nDecimales = 0;
-
-    if ( debug ) console.log( this.id+tag, 'return numero decimales', nDecimales );
-
-    return nDecimales;
+  obtenerNumeroDecimales(num) {
+    return decimalPlaces(num);
   }
 
   /**
@@ -1392,16 +1370,7 @@ export default class Operacion {
    * @memberof Operacion
    */
   numOperandosPosteriores(posicion) {
-    const tag = '[Operacion.numOperandosPosteriores]';
-    if ( debug ) console.log( tag );
-    let numOperandos = 0;
-    for (let index = posicion+1; index < this.cantidad_operandos; index++) {
-      const operando = this.operandos[index];
-      if (operando !== undefined && operando !== null ) {
-        numOperandos++;
-      }
-    }
-    return numOperandos;
+    return countFollowingOperands(this.operandos, posicion, this.cantidad_operandos);
   }
 
   /**

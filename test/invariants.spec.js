@@ -10,6 +10,7 @@ import {
 } from '../src/operaciones/expression';
 import OPERACIONES from '../src/operaciones/operaciones';
 import {scoreBadges, speedBadges} from '../src/application/badges';
+import {countFollowingOperands, decimalPlaces, multiplesUntil} from '../src/operaciones/numberRules';
 
 const expect = require('chai').expect;
 
@@ -138,5 +139,23 @@ describe('Insignias de resultados', () => {
 
   it('gastar menos del 20% da platino', () => {
     expect(speedBadges(10000, 60).platinum).to.equal(true);
+  });
+});
+
+
+describe('Reglas numéricas puras', () => {
+  it('genera múltiplos hasta alcanzar el límite', () => {
+    expect(multiplesUntil(5, 16)).to.deep.equal([10, 15, 20]);
+  });
+
+  it('cuenta decimales incluyendo notación exponencial', () => {
+    expect(decimalPlaces(22.111)).to.equal(3);
+    expect(decimalPlaces('1.23e-2')).to.equal(4);
+    expect(decimalPlaces(10)).to.equal(0);
+  });
+
+  it('cuenta operandos definidos después de una posición', () => {
+    expect(countFollowingOperands([1, undefined, 3, null, 5], 0, 5)).to.equal(2);
+    expect(countFollowingOperands([1, 2, 3], 1, 3)).to.equal(1);
   });
 });
