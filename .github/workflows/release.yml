@@ -27,11 +27,23 @@ jobs:
       - name: Ensure esbuild binary
         run: node node_modules/esbuild/install.js
 
+      - name: Lint
+        run: npm run lint
+
+      - name: Unit tests
+        run: npm test
+
       - name: Build static dist
         run: npm run build
 
-      - name: Run CI tests
-        run: npm run test:ci
+      - name: Verify dist assets
+        run: npm run check
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: End-to-end tests
+        run: npm run e2e
 
       - name: Generate release ZIP with Makefile
         run: |
