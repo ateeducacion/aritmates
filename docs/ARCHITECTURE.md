@@ -40,6 +40,7 @@ está en [COMPONENTES.md](./COMPONENTES.md).
 no necesitan el DOM viven aparte:
 
 - `src/application/badges.js` — qué insignias corresponden a una puntuación o a un tiempo
+- `src/application/results.js` — renderiza la pantalla final y gestiona su descarga PDF
 - `src/generarExamen.js` — arma la lista de ejercicios a partir de las opciones
 - `src/OptionsShortcode.js` — código `#A0B1…` para compartir una configuración
 

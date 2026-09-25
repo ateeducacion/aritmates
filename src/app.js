@@ -50,7 +50,7 @@ import '../css/print.scss';
 
 
 import {DEFAULTS, ENABLE} from './defaultOptions';
-import {scoreBadges, speedBadges} from './application/badges';
+import {renderResults} from './application/results';
 import OPERACIONES from './operaciones/operaciones';
 import {TIPO_NUMERO} from './operaciones/tipoNumero';
 
@@ -1164,132 +1164,24 @@ $('#btnComenzar').on('click', function() {
 
 
 /**
- * Cuando terminan los ejerecicios se carga la parte de resultados
- * Obtine la platilla de part_resultado.html
- * Muestra insignias, puntuacion y operaciones con errores corregidas
- *
- * @event finEjecricios
- * @property event ev
- *
-*/
-$('body').on('finEjercicios', (ev) => {
-  console.time('resultados');
-  // console.log('finEjercicios', ev);
-  $('#ejercicios > div').hide();
-
-  fetch('./templates/part_resultado.html')
-      .then((response) => response.text() )
-      .then((data) => {
-        $('#ejercicios').hide();
-        // agregar nuevo contenido
-        $('#newContent').remove();
-        $('#ejercicios').append('<div class="container" id="newContent"></div>');
-        // console.log('append data', data);
-        $('#newContent').append(data);
-        ocultarInsignias();
-
-        // console.log(score);
-        // --- Actualizar datos score
-        $('#ejercicios .score #aciertos')[0].innerHTML = score.aciertos;
-        $('#ejercicios .score #fallos')[0].innerHTML = score.fallos;
-        const tiempoConsumido = utils.milisToMinSg(score.tiempoConsumido);
-        console.log('tiempoconsumido to milistominsg', tiempoConsumido);
-        $('#ejercicios .score #tiempoConsumido')[0]
-            .innerHTML = tiempoConsumido;
-        let ttotal;
-        if (opcionesGuardadas.cuentaAtras != 0 ) {
-          ttotal = utils.milisToMinSg(
-              opcionesGuardadas.cuentaAtras*1000);
-          $('#ejercicios .score #tiempoTotal')[0]
-              .innerHTML = ttotal;
-          mostrarInsigniasTiempo(
-              score.tiempoConsumido, opcionesGuardadas.cuentaAtras );
-        } else {
-          $('#ejercicios .score #tiempoTotal').hide();
-          $('#ejercicios .score #tiempoSeparador').hide();
-          $('#ejercicios #rowVelocidad').css('visibility', 'hidden');
-        }
-
-        $('#ejercicios .score #tiempoMedio')[0]
-            .innerHTML = utils.milisToMinSg(score.tiempoMedioEjercicio);
-        $('#ejercicios .score #ejerciciosCompletados')[0]
-            .innerHTML = score.completados;
-        $('#ejercicios .score #ejerciciosTotal')[0]
-            .innerHTML = opcionesGuardadas.cantidadOperaciones;
-
-        const puntuacion = score.aciertos / opcionesGuardadas
-            .cantidadOperaciones * 10;
-        $('#ejercicios #puntuacion')[0]
-            .innerHTML = puntuacion;
-        mostrarInsignias(puntuacion);
-        // fin Actualizar datos score
-
-        // const soluciones = [];
-        score.operacionesMal.forEach((val, key) => {
-          const curOperacion = examen.operacionesExamen[key];
-          const solucion = curOperacion.respuesta();
-          const line = $('<tr>')
-              .append('<td>'+
-                curOperacion.toStringUserInput(val) +'</td>')
-              .append('<td>'+ curOperacion.toStringUserInput(solucion) +
-                '</td>');
-          // soluciones.push(line);
-
-          $('#correciones tbody').append(line);
-        });
-
-
-        $('#btnVolverEmpezar').click( (ev) => {
-          location.reload();
-        });
-
-        $('#btnDownloadScore').click(() => {
-          whenPdfLibraries().then(() => {
-            const printpdf = new ImprimirPdf('Aritmates-Resultados.pdf');
-            window.scrollTo(0, 0);
-            printpdf.printImgPages('#interior');
-          }).catch((error) => {
-            console.error(error);
-          });
-        });
-
-        $('#ejercicios').show();
-        scene = SCENE.SCORE;
-        if (typeof ayudaDrawer !== 'undefined') {
-          ayudaDrawer.refreshEvents();
-        }
-        console.timeEnd('resultados');
-      });
-
+ * Render the result screen after the exercise session ends.
+ */
+$('body').on('finEjercicios', () => {
+  renderResults({
+    score,
+    options: opcionesGuardadas,
+    exam: examen,
+    helpDrawer: ayudaDrawer,
+  }).then(() => {
+    scene = SCENE.SCORE;
+  }).catch((error) => {
+    console.error('Could not render results', error);
+  });
 });
-
-function ocultarInsignias() {
-  $('.part_resultado #rowInsignia .puntos .circulo.mini').hide();
-}
-
-function mostrarInsignias( puntuacion ) {
-  const badges = scoreBadges(puntuacion, 10);
-  const row = '.part_resultado #rowInsignia';
-  for (const name of ['bronze', 'silver', 'gold', 'platinum', 'perfect']) {
-    if (badges[name]) $(`${row} .${name}`).show();
-  }
-}
-function mostrarInsigniasTiempo( tiempoGastado, maximo ) {
-  const row = '.part_resultado #rowVelocidad';
-  for (const name of ['bronze', 'silver', 'gold', 'platinum']) {
-    $(`${row} .${name}`).css('visibility', 'hidden');
-  }
-  const badges = speedBadges(tiempoGastado, maximo);
-  for (const name of ['bronze', 'silver', 'gold', 'platinum']) {
-    if (badges[name]) $(`${row} .${name}`).css('visibility', 'visible');
-  }
-}
 
 window.finEjercicios = () => {
   $('body').trigger('finEjercicios');
 };
-window.ocultarInsignias = ocultarInsignias;
-window.mostrarInsignias = mostrarInsignias;
 
 function actualizarNumeroEjercicio( total ) {
   $('.numEjercicios')[0]
