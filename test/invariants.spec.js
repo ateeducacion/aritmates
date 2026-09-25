@@ -382,7 +382,10 @@ describe('Invariantes de OperacionMultiple', () => {
       });
 
       const expression = op.toString(false).replace(/∙/g, '*');
-      expect(evaluateArithmetic(expression)).to.equal(Number(op.resultado));
+      expect(
+          evaluateArithmetic(expression),
+          `seed=${seed}; expression=${expression}; resultado=${op.resultado}`,
+      ).to.equal(Number(op.resultado));
       expect(op.operandos).to.have.length(3);
     }
   });
