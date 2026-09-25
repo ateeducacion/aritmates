@@ -6,7 +6,6 @@ import {
   symbolsFor,
   hasAny,
   sameOperatorMultiset,
-  foldMulDiv,
   countAdjacent,
   onlyMulDiv,
   canAutoPlaceParentheses,
@@ -50,7 +49,6 @@ class OperacionMultiple extends Operacion {
     enfocado = false,
     random,
   } = {}) {
-    let tag = '[OperacionMultiple]';
      
 
     // si no pongo esto me cambia los operandos el super
@@ -76,7 +74,6 @@ class OperacionMultiple extends Operacion {
       });
       return this.errors;
     }
-    tag = this.id + tag;
     this.operandos_por_usuario =
       (operandosEnviados.length == this.cantidad_operandos );
     this.operandosEnviados = operandosEnviados;
@@ -390,8 +387,6 @@ class OperacionMultiple extends Operacion {
       operandos = this.operandos.slice();
     }
 
-    let opAnterior;
-
     operaciones = groupSimilarOperations(operaciones, operandos, this.operandos_por_usuario);
 
     operaciones.forEach((element, index) => {
@@ -414,7 +409,6 @@ class OperacionMultiple extends Operacion {
         default:
           break;
       }
-      opAnterior=element;
     });
 
 
@@ -521,10 +515,9 @@ class OperacionMultiple extends Operacion {
     if ( undefined === this.tiposOperacion ) return;
 
     const tiposOperacion = this.tiposOperacion.slice();
-    const cantidadOperaciones = this.cantidad_operandos-1;
     // operadores tienen que venir ya definidos
 
-    const ejercicioTxt = this.toString(false); // algo como 343 * 43 = 0
+    this.toString(false); // also refreshes this.simbolo
 
     let d = new Decimal(0);
 
@@ -532,15 +525,6 @@ class OperacionMultiple extends Operacion {
     if (
       this.parentesisInicial !== undefined &&
         this.parentesisFinal !== undefined ) {
-      const opParentesis = {
-        operandos: operandos.slice(
-            this.parentesisInicial, this.parentesisFinal+1),
-        tiposOperacion: tiposOperacion.slice(
-            this.parentesisInicial, this.parentesisFinal+1),
-        tiposOperacionAzar: false,
-        tiposNumero: this.tiposNumero,
-      };
-
       // si ya se creo  la operacion entre parenteis al genera la opMultiple
       // solo hay que rescatar el resultado
       if ( this.forzarParentesis ) {
@@ -965,18 +949,6 @@ class OperacionMultiple extends Operacion {
    * anterior
    */
   resolverOperacionParentesisResultado() {
-    let tipoDivision;
-    if (this.tiposOperacion.indexOf(OPERACIONES.DIVISION_ENTERA) != -1) {
-      tipoDivision = OPERACIONES.DIVISION_ENTERA;
-    }
-    if (this.tiposOperacion.indexOf(OPERACIONES.DIVISION) != -1) {
-      tipoDivision = OPERACIONES.DIVISION;
-    }
-    if (this.tiposOperacion.indexOf(OPERACIONES.DIVISION_DECIMAL) != -1) {
-      tipoDivision = OPERACIONES.DIVISION_DECIMAL;
-    }
-    
-    const posiciondiv = this.tiposOperacion.indexOf( tipoDivision );
     let resultado;
 
     // el resultado de la operacion tiene que ser el operando correspondiente de 
@@ -1000,7 +972,6 @@ class OperacionMultiple extends Operacion {
     }
     const cantidadOperandosEnParentesis = tiposOperacionEnParentesis.length+1;
     let operacionEnParentesis;
-    let tries=20;
     if (cantidadOperandosEnParentesis==2) {
       const opciones = {
         nivel: this.nivel,
@@ -1159,7 +1130,6 @@ class OperacionMultiple extends Operacion {
           operacionesRestantes, posicion, tipoDivision);
 
       const cantidadOperandos = numOperacionesJuntas+1;
-      const posicionFin = posicion+numOperacionesJuntas;
       const opciones = {
         nivel: this.nivel,
         cantidadOperandos: cantidadOperandos,
@@ -1509,7 +1479,6 @@ class OperacionMultiple extends Operacion {
    */
   crearSumasParaMultiplicacionSuma(operacionesRestantes) {
     let tries = 0;
-    const operacionesRestantesOriginal = operacionesRestantes.slice();
     const forzarSigno = [];
 
     // A previous draft negated the first operand of a sum that sits next to
@@ -1635,7 +1604,6 @@ class OperacionMultiple extends Operacion {
       else mudivsigno *= -1;
     });
     let rand;
-    let cambiado = false;
 
     // Cambia un operando de signo para forzar a que el resultado sea negativo
     if ( mudivsigno > 0 && this.resultadoNegativo ) {
@@ -1643,7 +1611,6 @@ class OperacionMultiple extends Operacion {
           this.getRandomMinMax(0, operandosMulDiv.length-1)
       ];
       this.operandos[rand] = this.operandos[rand] * -1;
-      cambiado = rand;
 
       this.errors.push({
         error: 'Se cambio el signo',

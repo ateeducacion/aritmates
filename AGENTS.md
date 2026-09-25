@@ -58,7 +58,7 @@ GitHub Pages se despliega únicamente después de un CI correcto en `main`; no s
 Los workflows usan mínimo privilegio: CI solo necesita `contents: read` e `id-token: write` para subir la cobertura a Codecov por OIDC; un workflow no recibe permisos de escritura salvo para la acción concreta que los requiere (release, Pages o PR automático de skills).
 La configuración del repositorio debe exigir el check `CI` antes de fusionar en `main`; el workflow de Pages es una segunda barrera y no sustituye la protección de rama.
 
-Los módulos nuevos o ya saneados no pueden introducir variables sin usar: `no-unused-vars` es bloqueante en `src/application/`, las reglas puras del motor, `src/pdfLibs.js` y E2E. Los scripts legacy se endurecen cuando se refactorizan. No se desactiva la regla en módulos saneados para hacer pasar un cambio; se corrige el código.
+`no-unused-vars` es bloqueante en todo el repositorio. En el código legacy se permiten argumentos sin usar (el `ev` de un manejador); en `src/application/`, las reglas puras del motor, las operaciones, `src/pdfLibs.js` y E2E también los argumentos, salvo los que empiezan por `_`. No se desactiva la regla para hacer pasar un cambio; se corrige el código.
 
 ## Documentación
 

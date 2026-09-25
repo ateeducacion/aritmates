@@ -9,7 +9,7 @@ import {
   sumValues,
   subtractValues,
 } from './arithmetic';
-import {countDecimalOperands, countFollowingOperands, countNegativeOperands, decimalPlaces, decimalPlacesForLevel, isMissingOperand, multiplesUntil, shouldGenerateOperand} from './numberRules';
+import {countDecimalOperands, countFollowingOperands, countNegativeOperands, decimalPlaces, decimalPlacesForLevel, multiplesUntil, shouldGenerateOperand} from './numberRules';
 import {factorize} from './factorization';
 import {countDefinedOperands, hasOperandValue} from './operandRules';
 /**
@@ -272,8 +272,6 @@ export default class Operacion {
 
     const resu = this.resultado;
     if (this.deep > 2 ) {
-      const errormsg = 'Tardo demasiados intentos en generar una operación'+
-        'correcta';
       return {resultado: false};
     }
 
@@ -858,26 +856,10 @@ export default class Operacion {
       esPosicionNivel = false, desvioNegativo = false,
       lowerBound=this.lower_bound, upperBound=this.upper_bound ) {
     // porcentaje de desvio del número al azar depende del nivel
-    let offset = 0;
     let signo = 1; // Inicializamos el signo a Positivo
 
     if (this.permitir_negativos) {
       signo = this.getSigno();
-    }
-
-    switch (this.nivel) {
-      case 50:
-        offset = this.nivel;
-        break;
-      case 100:
-        offset = this.nivel;
-        break;
-      case 500:
-        offset = this.nivel;
-        break;
-      default: // del 1 al 20
-        offset = this.nivel - 1;
-        break;
     }
 
     if (desvioNegativo) {

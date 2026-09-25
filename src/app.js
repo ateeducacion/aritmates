@@ -715,7 +715,7 @@ $(document).on('selected:btnMul100', (ev) => {
 // inicializar tooltips
 $(document).ready(function() {
   const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-  const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  tooltipTriggerList.forEach(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl, {
       placement: 'bottom',
       template: '<div class="tooltip" role="tooltip">'+

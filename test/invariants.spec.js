@@ -16,7 +16,7 @@ import {scoreBadges, speedBadges} from '../src/application/badges';
 import {createSessionTimer} from '../src/application/timer';
 import {canEnableNegativeResult, operationAvailability, requiresTwoOperands} from '../src/application/optionAvailability';
 import {addQuestionTime, createSessionScore, nextOperation, recordAnswer, shouldReloadInfiniteOperations} from '../src/application/exerciseSession';
-import {countDecimalOperands, countFollowingOperands, countNegativeOperands, decimalPlaces, decimalPlacesForLevel, isMissingOperand, multiplesUntil, shouldGenerateOperand} from '../src/operaciones/numberRules';
+import {countDecimalOperands, countFollowingOperands, countNegativeOperands, decimalPlaces, decimalPlacesForLevel, multiplesUntil} from '../src/operaciones/numberRules';
 import {factorize} from '../src/operaciones/factorization';
 import {selectExpressionOperations} from '../src/operaciones/operationSelection';
 import {countDefinedOperands, hasOperandValue} from '../src/operaciones/operandRules';

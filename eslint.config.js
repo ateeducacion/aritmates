@@ -90,7 +90,8 @@ const correctness = {
   'valid-typeof': 'error',
   'no-redeclare': 'error',
   'no-constant-binary-expression': 'error',
-  'no-unused-vars': 'off',
+  // Unused handler arguments (ev, index…) stay allowed in legacy code.
+  'no-unused-vars': ['error', {args: 'none', caughtErrors: 'none'}],
   'eqeqeq': 'off',
 };
 

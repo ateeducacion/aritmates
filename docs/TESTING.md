@@ -24,7 +24,7 @@ El gate usa `--exclude` y no `--include`: el runner ejecuta un bundle de esbuild
 
 El CI sube `coverage/lcov.info` a [Codecov](https://codecov.io/gh/ateeducacion/aritmates) con la cobertura de todo `src/`. La subida no usa token secreto: se autentica con OIDC (`id-token: write` solo en ese job). Un fallo de Codecov no rompe el CI y sus estados (`codecov/project`, `codecov/patch`) son informativos por `codecov.yml`: el gate lo decide `coverage:ci`.
 
-ESLint aplica reglas de corrección a todo `src/`. En los módulos ya saneados (`src/application`, reglas puras del motor y E2E), `no-unused-vars` también es bloqueante. El legacy restante, incluidos los scripts de build, se endurece de forma incremental para evitar cambios cosméticos masivos.
+ESLint aplica reglas de corrección a todo el repositorio, `no-unused-vars` incluido. En el legacy se toleran argumentos sin usar; en los módulos ya saneados (`src/application`, reglas puras del motor y E2E) tampoco se permiten, y `no-console` es bloqueante.
 
 ## Semilla
 

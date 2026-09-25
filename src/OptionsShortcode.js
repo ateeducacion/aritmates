@@ -1,8 +1,7 @@
 
 import combinations from './utils/combinations.js';
 import sh from './utils/shorthash.js';
-import {listOptions, selectOptions, gTipoOpcion,
-  opcionesPosibilidades} from './Opciones';
+import {listOptions, selectOptions, gTipoOpcion} from './Opciones';
 
 import {OPERACIONES} from './operaciones/operaciones';
 import {TIPO_NUMERO} from './operaciones/tipoNumero';
