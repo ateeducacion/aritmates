@@ -19,7 +19,6 @@
 window.debug = false;
 const debug = false;
 // const t0 = performance.now();
-console.time('app.js');
 
 import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import $ from 'jquery';
@@ -150,7 +149,6 @@ const opciones = {
     return valoresNiveles(sliderNivel.value);
   },
   set cuentaAtras(x) {
-    console.log('set cuenta atras', x);
     const val = textoCrono.indexOf(utils.sgToMinSg(x));
     sliderCrono.value = val;
     sliderCrono_mv.value = val;
@@ -456,12 +454,10 @@ sliderCantidadOp_mv.sliderCon.show = !$('#switch-limiteOp')[0].checked;
 // Checkboxes
 
 const cbCronoOnChange = (ev) => {
-  console.log( 'cronometro cambiado ', ev);
   //  en teoria si ya se ha cambiado deberia estar en estado correcto , pero ahora esto funciona como un click
   //  asi que tienes que tener en cuenta que esta al contrario de com va estar al final
 
   sliderCrono.disabled = !ev.target.checked; // desactiva el silder si el cronometro esta checkeado
-  console.log('sildercrono disabled', sliderCrono.disabled, ev.target.checked)
   sliderCrono.sliderCon.show = ev.target.checked;
 
   sliderCrono_mv.disabled = !ev.target.checked;
@@ -726,7 +722,7 @@ function disableEnfocadoSiTipoNumero() {
  */
 function updateOperasdosOnDivisionChange() {
   const tag = '[app.js.updateOperasdosOnDivisionChange]';
-  const debug = true;
+  const debug = false;
   if ( debug ) console.log( tag );
   // Si hay en tipos numero decimal y esta seleciondo solo la opoeracion de diviision:
   // o si esta seleciondo division con resto
@@ -785,7 +781,6 @@ $(document).on('selected:btnMul100', (ev) => {
 
 // inicializar tooltips
 $(document).ready(function() {
-  console.log('document ready');
   const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
   const tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl, {
@@ -965,7 +960,6 @@ function guardarOpciones(opciones) {
 // al pulsar iniciar cargar ejercicios
 $('#btnComenzar').on('click', function() {
    
-  const dontstop = console.time('btnComenzar');
   // console.log('btnComenzar clicked ');
 
   if ( opciones.tiposOperaciones.length == 0 ||
@@ -973,7 +967,6 @@ $('#btnComenzar').on('click', function() {
     // mostra dialogo no ha selecionado operaciones o tipos de numero
     const dialogMissingOptions = {};
     cargarFaltaOpciones(dialogMissingOptions);
-    console.timeEnd('btnComenzar');
     return;
   }
 
@@ -1157,7 +1150,6 @@ $('#btnComenzar').on('click', function() {
         }
       });
   // console.log('fin btnComenzar click');
-  console.timeEnd('btnComenzar');
 } );
 
 
@@ -1727,7 +1719,7 @@ function cargarOpcionesCodigo(code) {
       }
     });    
   } catch (error) {
-    console.log('[cargarOpcionesCodigo]', 'error', error);
+    console.error('[cargarOpcionesCodigo]', error);
     throw error;
   }
 
@@ -1766,11 +1758,8 @@ function mostrarPortada() {
   const urlParams = new URLSearchParams(window.location.search);
   if ( urlParams.has('c') ) {
     const code = urlParams.get('c');
-    console.log('Cargando shortcode', code );
     cargarOpcionesCodigo(code);
   }
 }
 mostrarPortada();
 
-console.timeEnd('app.js');
-console.log('fin.');
