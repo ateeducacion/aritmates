@@ -2464,7 +2464,6 @@ class OperacionMultiple extends Operacion {
           'error': 'Resultado negativo con numeros naturales sin restas',
           'msg': 'no puede darse este resultado',
         };
-        console.log('guardando error', error);
         // no se puede realizar esta operacion
         this.errors.push(error);
 

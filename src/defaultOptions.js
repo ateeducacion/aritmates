@@ -58,9 +58,7 @@ $.ajax({
   dataType: 'json',
   async: false,
   success: function(data) {
-    console.log( 'config cargado success: ', data );
     config = data;
-    console.log( 'config cargado en "config": ', config );
 
     if ( config.nivel ) DEFAULTS.nivel = config.nivel;
     if ( config.cuentaAtras ) DEFAULTS.cuentaAtras = config.cuentaAtras;
@@ -77,12 +75,6 @@ $.ajax({
 
     if ( config.baseurl ) DEFAULTS.baseurl = config.baseurl;
     if ( config.version ) DEFAULTS.version = config.version;
-
-    console.log( 'Nivel cargado: ', DEFAULTS.nivel );
   },
 });
-console.log( 'config fuera de ajax cargado: ', config );
-
-console.log( 'DEFAULTS: ', DEFAULTS );
-console.log( 'ENABLED: ', ENABLE );
 
