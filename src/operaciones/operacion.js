@@ -455,15 +455,13 @@ export default class Operacion {
    * @memberof Operacion
    */
   resolverIncognita() {
-    // comprobar si la operacion es correcta
-    if (this.comprobarResultado()) {
-      // resorvel incognita si no lo es
-      // this.operando[this.posicion_incognita] = 0;
-      if ( this.resolver_deep < 10 ) {
-        this.calcularResultado();
-      }
-      this.resolver_deep++;
+    const comprobacion = this.comprobarResultado();
+    if (comprobacion.resultado === false) return;
+
+    if (this.resolver_deep < 10) {
+      this.calcularResultado();
     }
+    this.resolver_deep++;
   }
 
   /**
