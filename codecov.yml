@@ -1,0 +1,9 @@
+# The blocking gate is `npm run coverage:ci`; Codecov only reports.
+coverage:
+  status:
+    project:
+      default:
+        informational: true
+    patch:
+      default:
+        informational: true
