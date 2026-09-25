@@ -55,6 +55,8 @@ npm run e2e       # hace falta dist/ y Chromium
 
 El CI (`.github/workflows/ci.yml`) ejecuta esas comprobaciones en Node 24 y falla si alguna falla.
 
+Los módulos nuevos o ya saneados no pueden introducir variables sin usar: `no-unused-vars` es bloqueante en `src/application/`, las reglas puras del motor, `src/pdfLibs.js`, scripts y E2E. No se desactiva esa regla para hacer pasar un cambio; se corrige el código.
+
 ## Documentación
 
 Código y comentarios en inglés. La documentación para personas está en español: `README.md`, `developers.md`, `changelog.md`, `docs/ARCHITECTURE.md`, `docs/MATH-ENGINE.md`, `docs/TESTING.md`, `docs/SIMPLIFICACION.md` y `docs/COMPONENTES.md`.
