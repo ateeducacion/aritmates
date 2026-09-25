@@ -10,6 +10,7 @@ import {
 } from '../src/operaciones/expression';
 import OPERACIONES from '../src/operaciones/operaciones';
 import {scoreBadges, speedBadges} from '../src/application/badges';
+import {createSessionTimer} from '../src/application/timer';
 import {countFollowingOperands, decimalPlaces, multiplesUntil} from '../src/operaciones/numberRules';
 
 const expect = require('chai').expect;
@@ -157,5 +158,73 @@ describe('Reglas numéricas puras', () => {
   it('cuenta operandos definidos después de una posición', () => {
     expect(countFollowingOperands([1, undefined, 3, null, 5], 0, 5)).to.equal(2);
     expect(countFollowingOperands([1, 2, 3], 1, 3)).to.equal(1);
+  });
+});
+
+
+describe('Temporizador de sesión', () => {
+  it('actualiza la cuenta atrás y dispara timeup una sola vez', () => {
+    let current = 1000;
+    let callback;
+    let cancelled = 0;
+    let timedOut = 0;
+    const clock = {innerHTML: ''};
+
+    const timer = createSessionTimer({
+      formatTime: (value) => String(value),
+      onTimeUp: () => timedOut++,
+      now: () => current,
+      schedule: (fn) => {
+        callback = fn;
+        return 7;
+      },
+      cancel: (id) => {
+        expect(id).to.equal(7);
+        cancelled++;
+      },
+    });
+
+    timer.startCountdown(clock, 500);
+    current = 1250;
+    callback();
+    expect(clock.innerHTML).to.equal('250');
+    expect(timedOut).to.equal(0);
+
+    current = 1500;
+    callback();
+    expect(clock.innerHTML).to.equal('0');
+    expect(timedOut).to.equal(1);
+    expect(cancelled).to.equal(1);
+
+    timer.stop();
+    expect(cancelled).to.equal(1);
+  });
+
+  it('actualiza el tiempo transcurrido y cancela un temporizador anterior', () => {
+    let current = 2000;
+    const callbacks = [];
+    const cancelled = [];
+    const clock = {innerHTML: ''};
+
+    const timer = createSessionTimer({
+      formatTime: (value) => String(value),
+      onTimeUp: () => {},
+      now: () => current,
+      schedule: (fn) => {
+        callbacks.push(fn);
+        return callbacks.length;
+      },
+      cancel: (id) => cancelled.push(id),
+    });
+
+    timer.startCountUp(clock);
+    current = 2750;
+    callbacks[0]();
+    expect(clock.innerHTML).to.equal('750');
+
+    timer.startCountUp(clock);
+    expect(cancelled).to.deep.equal([1]);
+    timer.stop();
+    expect(cancelled).to.deep.equal([1, 2]);
   });
 });
