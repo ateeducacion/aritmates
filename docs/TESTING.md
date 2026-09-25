@@ -22,7 +22,7 @@ La cobertura bloqueante (`npm run coverage:ci`) se aplica a los módulos ya sane
 
 El gate usa `--exclude` y no `--include`: el runner ejecuta un bundle de esbuild y c8 remapea después a `src/`. Con `--include` el bundle se descarta antes del remapeo y el informe da un 100% falso.
 
-El CI sube `coverage/lcov.info` a [Codecov](https://codecov.io/gh/ateeducacion/aritmates) con la cobertura de todo `src/`. La subida no usa token (el repositorio es público y de organización) y un fallo de Codecov no rompe el CI: el gate lo decide `coverage:ci`.
+El CI sube `coverage/lcov.info` a [Codecov](https://codecov.io/gh/ateeducacion/aritmates) con la cobertura de todo `src/`. La subida no usa token secreto: se autentica con OIDC (`id-token: write` solo en ese job). Un fallo de Codecov no rompe el CI: el gate lo decide `coverage:ci`.
 
 ESLint aplica reglas de corrección a todo `src/`. En los módulos ya saneados (`src/application`, reglas puras del motor y E2E), `no-unused-vars` también es bloqueante. El legacy restante, incluidos los scripts de build, se endurece de forma incremental para evitar cambios cosméticos masivos.
 
