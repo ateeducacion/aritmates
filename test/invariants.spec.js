@@ -17,6 +17,7 @@ import {canEnableNegativeResult, operationAvailability, requiresTwoOperands} fro
 import {addQuestionTime, createSessionScore, nextOperation, recordAnswer, shouldReloadInfiniteOperations} from '../src/application/exerciseSession';
 import {countDecimalOperands, countFollowingOperands, countNegativeOperands, decimalPlaces, decimalPlacesForLevel, multiplesUntil} from '../src/operaciones/numberRules';
 import {factorize} from '../src/operaciones/factorization';
+import {selectExpressionOperations} from '../src/operaciones/operationSelection';
 
 const expect = require('chai').expect;
 
@@ -429,5 +430,63 @@ describe('Invariantes de OperacionMultiple', () => {
     expect(second.tiposOperacion).to.deep.equal(first.tiposOperacion);
     expect(second.resultado).to.equal(first.resultado);
     expect(second.toString(false)).to.equal(first.toString(false));
+  });
+});
+
+
+describe('Selección de operadores', () => {
+  it('incluye al menos una vez cada tipo cuando caben en la expresión', () => {
+    const selected = selectExpressionOperations({
+      operations: [
+        OPERACIONES.SUMA,
+        OPERACIONES.RESTA,
+        OPERACIONES.MULTIPLICACION,
+      ],
+      operandCount: 4,
+      numberTypes: [TIPO_NUMERO.NATURAL],
+      random: seededRandom(7),
+    });
+
+    expect(selected).to.have.length(3);
+    expect(selected).to.include(OPERACIONES.SUMA);
+    expect(selected).to.include(OPERACIONES.RESTA);
+    expect(selected).to.include(OPERACIONES.MULTIPLICACION);
+  });
+
+  it('rellena operadores adicionales de forma determinista', () => {
+    const options = {
+      operations: [OPERACIONES.SUMA, OPERACIONES.MULTIPLICACION],
+      operandCount: 5,
+      numberTypes: [TIPO_NUMERO.NATURAL],
+    };
+    const first = selectExpressionOperations({...options, random: seededRandom(9)});
+    const second = selectExpressionOperations({...options, random: seededRandom(9)});
+
+    expect(second).to.deep.equal(first);
+    expect(first).to.have.length(4);
+  });
+
+  it('fuerza una resta cuando se exige resultado negativo con naturales', () => {
+    const selected = selectExpressionOperations({
+      operations: [OPERACIONES.SUMA, OPERACIONES.MULTIPLICACION],
+      operandCount: 4,
+      negativeResult: true,
+      numberTypes: [TIPO_NUMERO.NATURAL],
+      random: seededRandom(12),
+    });
+
+    expect(selected).to.include(OPERACIONES.RESTA);
+  });
+
+  it('no fuerza resta si los enteros ya permiten operandos negativos', () => {
+    const selected = selectExpressionOperations({
+      operations: [OPERACIONES.SUMA, OPERACIONES.MULTIPLICACION],
+      operandCount: 4,
+      negativeResult: true,
+      numberTypes: [TIPO_NUMERO.ENTERO],
+      random: seededRandom(12),
+    });
+
+    expect(selected).to.not.include(OPERACIONES.RESTA);
   });
 });

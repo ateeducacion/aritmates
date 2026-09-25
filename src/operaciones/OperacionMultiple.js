@@ -23,6 +23,7 @@ import DivisionEntera from './divisionEntera';
 import OPERACIONES from './operaciones';
 // import {Decimal} from 'decimal.js';
 import {TIPO_NUMERO} from './tipoNumero';
+import {selectExpressionOperations} from './operationSelection';
 import DivisionDecimales from './divisionDecimales';
 import Division from './division';
 import Decimal from 'decimal.js';
@@ -747,66 +748,13 @@ class OperacionMultiple extends Operacion {
   }
 
   obtenerOperacionesAzar(operaciones) {
-    // const debug = true;
-    const tag = this.id+'[OperacionMultiple.obtenerOperacionesAzar]';
-    if ( debug ) console.log( this.id+tag, operaciones );
-    const opers = operaciones.slice();
-    const mOperaciones = [];
-
-    const maxOperaciones = this.cantidad_operandos-1;
-
-    // al menos una de cada al azar
-    for (
-      let index = 0;
-      index < operaciones.length && index < maxOperaciones;
-      index++
-    ) {
-      if ( debug ) {
-        console.log( this.id+tag, 'i', index, 'length',
-            operaciones.length, 'maxOperaciones', maxOperaciones );
-      }
-      const r = Math.floor( this.rng()*opers.length );
-      mOperaciones.push( opers[r] );
-      opers.splice(r, 1);
-    }
-    if ( debug ) console.log( this.id+tag, 'opers', opers );
-    // rellena con el resto de operaciones al azar
-    while ( this.cantidad_operandos-1 > mOperaciones.length ) {
-      const r = Math.floor(this.rng()*operaciones.length);
-      mOperaciones.push(operaciones[r]);
-    }
-
-    // si el resultado es negativo con numeros positivos y sin resta
-    // sustituye una operacion al azar por la resta
-    // solo se puede llegar a aqui si en generar examen se escogio generar
-    // una operacion de varios operandos incuyendo la resta y otras
-    if ( debug ) {
-      console.log( tag, '\n\t',
-          'relutado negativo:', this.resultadoNegativo, '\n\t',
-          'condiciones para que no salga negativo',
-          !(
-            this.tiposNumero.includes(TIPO_NUMERO.ENTERO) ||
-          mOperaciones.includes(OPERACIONES.RESTA)
-          ), '\n\t',
-          'tipo de numero incluye negativos?',
-          this.tiposNumero.includes(TIPO_NUMERO.ENTERO), '\n\t',
-          'tipo de operaciones incluye resta?',
-          mOperaciones.includes(OPERACIONES.RESTA)
-      );
-    }
-    if ( this.resultadoNegativo &&
-      !(
-        this.tiposNumero.includes(TIPO_NUMERO.ENTERO) ||
-        mOperaciones.includes(OPERACIONES.RESTA)
-      )
-    ) {
-      const r = Math.floor(this.rng()*mOperaciones.length);
-      mOperaciones[r] = OPERACIONES.RESTA;
-      console.log('nuevso tipos operaciones:', mOperaciones);
-    }
-
-    if ( debug ) console.log( this.id+tag, 'devuelve mOperaciones', mOperaciones );
-    return mOperaciones;
+    return selectExpressionOperations({
+      operations: operaciones,
+      operandCount: this.cantidad_operandos,
+      negativeResult: this.resultadoNegativo,
+      numberTypes: this.tiposNumero,
+      random: this._rng,
+    });
   }
 
   generarNumerosOperandos() {
