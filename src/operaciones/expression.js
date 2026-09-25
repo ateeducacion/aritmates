@@ -138,76 +138,60 @@ export function foldMulDiv(operandos, operaciones, evalAt) {
 /**
  * Rewrite a − b as a + (−b) so a later sum can solve the chain.
  *
- * The guard below is intentionally the historical expression
- * `indexOf(RESTA != -1)`. `RESTA != -1` is always true, `indexOf(true)` is
- * -1, and `if (-1)` is true, so the branch always runs. Changing it to
- * `indexOf(RESTA) != -1` would share the caller's array when there is no
- * subtraction (the else branch assigns the same reference). Callers mutate
- * the result, so that would be a functional change. Kept as-is.
+ * Always returns fresh arrays. The historical implementation also copied
+ * every sum/subtraction chain because its indexOf guard was accidentally
+ * always true; preserving that copy semantics avoids aliasing callers.
  */
 export function subtractionsAsNegativeSums(operandos, operaciones) {
   if (hasAny(operaciones, MUL_DIV)) return {};
 
-  let mOperandos = [];
-  let mOperaciones = [];
+  const mOperandos = [operandos[0]];
+  const mOperaciones = [];
 
-  if (operaciones.indexOf(OPERACIONES.RESTA != -1)) {
-    mOperandos.push(operandos[0]);
-    for (let index = 1; index <= operaciones.length; index++) {
-      const operacion = operaciones[index - 1];
-      switch (operacion) {
-        case OPERACIONES.SUMA:
-          mOperandos.push(operandos[index]);
-          mOperaciones.push(operacion);
-          break;
-        case OPERACIONES.RESTA:
-          mOperandos.push(operandos[index] * -1);
-          mOperaciones.push(OPERACIONES.SUMA);
-          break;
-        default:
-          break;
-      }
+  for (let index = 1; index <= operaciones.length; index++) {
+    const operacion = operaciones[index - 1];
+    switch (operacion) {
+      case OPERACIONES.SUMA:
+        mOperandos.push(operandos[index]);
+        mOperaciones.push(operacion);
+        break;
+      case OPERACIONES.RESTA:
+        mOperandos.push(operandos[index] * -1);
+        mOperaciones.push(OPERACIONES.SUMA);
+        break;
+      default:
+        break;
     }
-  } else {
-    mOperandos = operandos;
-    mOperaciones = operaciones;
   }
 
   return {operandos: mOperandos, operaciones: mOperaciones};
 }
 
 /**
- * Rewrite a + b as a − (−b). Same always-true indexOf guard as
- * subtractionsAsNegativeSums; see that comment.
+ * Rewrite a + b as a − (−b), also returning fresh arrays.
  */
 export function additionsAsSubtractions(operandos, operaciones) {
   if (hasAny(operaciones, MUL_DIV)) return {};
 
-  let mOperandos = [];
-  let mOperaciones = [];
+  const mOperandos = [operandos[0]];
+  const mOperaciones = [];
   const cambios = [];
 
-  if (operaciones.indexOf(OPERACIONES.SUMA != -1)) {
-    mOperandos.push(operandos[0]);
-    for (let index = 1; index <= operaciones.length; index++) {
-      const operacion = operaciones[index - 1];
-      switch (operacion) {
-        case OPERACIONES.SUMA:
-          mOperandos.push(operandos[index] * -1);
-          mOperaciones.push(OPERACIONES.RESTA);
-          cambios.push(index);
-          break;
-        case OPERACIONES.RESTA:
-          mOperandos.push(operandos[index]);
-          mOperaciones.push(operacion);
-          break;
-        default:
-          break;
-      }
+  for (let index = 1; index <= operaciones.length; index++) {
+    const operacion = operaciones[index - 1];
+    switch (operacion) {
+      case OPERACIONES.SUMA:
+        mOperandos.push(operandos[index] * -1);
+        mOperaciones.push(OPERACIONES.RESTA);
+        cambios.push(index);
+        break;
+      case OPERACIONES.RESTA:
+        mOperandos.push(operandos[index]);
+        mOperaciones.push(operacion);
+        break;
+      default:
+        break;
     }
-  } else {
-    mOperandos = operandos;
-    mOperaciones = operaciones;
   }
 
   return {operandos: mOperandos, operaciones: mOperaciones, cambios};

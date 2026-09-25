@@ -7,6 +7,7 @@ import {asRandom, seededRandom, setDefaultRandom} from '../src/operaciones/rando
 import {evaluateArithmetic} from '../src/operaciones/evaluate';
 import {
   subtractionsAsNegativeSums,
+  additionsAsSubtractions,
   groupSimilarOperations,
 } from '../src/operaciones/expression';
 import OPERACIONES from '../src/operaciones/operaciones';
@@ -599,5 +600,34 @@ describe('Debug observacional del motor', () => {
     } finally {
       globalThis.debug = previousDebug;
     }
+  });
+});
+
+
+describe('Aislamiento de reescrituras suma/resta', () => {
+  it('devuelve copias nuevas aunque solo haya sumas', () => {
+    const operandos = [2, 3, 4];
+    const operaciones = [OPERACIONES.SUMA, OPERACIONES.SUMA];
+    const rewritten = subtractionsAsNegativeSums(operandos, operaciones);
+
+    expect(rewritten.operandos).to.deep.equal(operandos);
+    expect(rewritten.operaciones).to.deep.equal(operaciones);
+    expect(rewritten.operandos).to.not.equal(operandos);
+    expect(rewritten.operaciones).to.not.equal(operaciones);
+
+    rewritten.operandos[0] = 99;
+    expect(operandos[0]).to.equal(2);
+  });
+
+  it('devuelve copias nuevas aunque solo haya restas', () => {
+    const operandos = [10, 3, 2];
+    const operaciones = [OPERACIONES.RESTA, OPERACIONES.RESTA];
+    const rewritten = additionsAsSubtractions(operandos, operaciones);
+
+    expect(rewritten.operandos).to.deep.equal(operandos);
+    expect(rewritten.operaciones).to.deep.equal(operaciones);
+    expect(rewritten.cambios).to.deep.equal([]);
+    expect(rewritten.operandos).to.not.equal(operandos);
+    expect(rewritten.operaciones).to.not.equal(operaciones);
   });
 });
