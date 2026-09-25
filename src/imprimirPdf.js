@@ -16,7 +16,7 @@ class ImprimirPdf {
     const tag = '[ImprimirPdf.Testpdf]';
     if ( debug ) console.log( tag );
     global.html2canvas = html2canvas;
-    // eslint-disable-next-line new-cap
+     
     this.doc = new jsPDF();
     this.filename = filename;
     this.title = 'Hoja Ejercicios Aritmates';
@@ -101,7 +101,7 @@ class ImprimirPdf {
     contenido.innerHTML = html;
 
     this.doc.fromHTML(
-        htmldoc.body.innerHTML, 0, 0,
+        htmlDoc.body.innerHTML, 0, 0,
         {
           'width': 95,
           'elementHandlers': elementHandler,
@@ -139,7 +139,7 @@ class ImprimirPdf {
     // });
 
     // Supuestamente este esta deprecated pero se ve mejor
-    // eslint-disable-next-line new-cap
+     
     new jsPDF().addHTML( html, 0, 0, {}, (x) => {
       console.log( 'holaaddhtml');
       console.log(this.doc);
