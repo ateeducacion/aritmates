@@ -159,6 +159,10 @@ class PaperDropdownMenu extends ElementBase {
     if (!el) return;
     el.textContent = this.label;
     el.hidden = !this.label;
+    if (this._select) {
+      if (this.label) this._select.setAttribute('aria-label', this.label);
+      else this._select.removeAttribute('aria-label');
+    }
   }
 
   _collectOptions() {
