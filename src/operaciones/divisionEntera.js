@@ -31,22 +31,7 @@ export default class DivisionEntera extends Operacion {
     random,
   } = {}
   ) {
-    const tag = '[DivisionEntera.constructor]';
     // const debug = true;
-    if ( debug ) console.log( tag );
-    if ( debug ) {
-      console.log( tag, 'llamado con: \n\t',
-          'nivel', nivel, '\n\t',
-          'cantidadOperandos', cantidadOperandos, '\n\t',
-          'permitirNegativos', permitirNegativos, '\n\t',
-          'operandos', operandos, '\n\t',
-          'incognita', incognita, '\n\t',
-          'enfocado', enfocado, '\n\t',
-          'posicion_nivel', posicion_nivel, '\n\t',
-          'multiplo10', multiplo10, '\n\t',
-          'multiplo100', multiplo100, '\n\t',
-          'complementario', complementario, '\n\t');
-    }
     let err;
     if ( permitirNegativos ) {
       err = {
@@ -73,12 +58,6 @@ export default class DivisionEntera extends Operacion {
       random,
     });
 
-    if ( debug ) {
-      console.log( tag,
-          'operandos', this.operandos,
-          'operandosIniciales', operandosIniciales,
-          'deep', this.deep );
-    }
     if (err) this.errors.push(err);
     this.operandosIniciales = operandosIniciales;
     this.calcularResultado();
@@ -90,16 +69,10 @@ export default class DivisionEntera extends Operacion {
       this.calcularResultado();
     }
 
-    if ( debug ) {
-      console.log( tag,
-          'final constructor, operandos:', this.operandos, 'resultado', this.resultado );
-    }
   }
 
 
   generarNumerosOperandos() {
-    const tag = '[DivisionEntera.generarNumerosOperandos] ';
-    if ( debug ) console.log(tag);
 
     if (this.complementario && this.complementario>0) {
       super.generarNumerosOperandos();
@@ -126,14 +99,6 @@ export default class DivisionEntera extends Operacion {
 
   _generarDivisionPorMultiplicacionInvertida() {
     // const debug= true;
-    const tag = '[DivisionEntera._generarDivisionPorMultiplicacionInvertida]';
-    if ( debug ) console.log( tag );
-    if ( debug ) {
-      console.log(tag, 'div: operandos division: ', this.operandos );
-      console.log(tag, 'div: posicion incognita: ', this.posicion_incognita );
-      console.log(tag, 'div: posicion nivel: ', this.posicion_nivel );
-      console.log(tag, this.deep, 'deep' );
-    }
     const posIncognitaInvertida = this.cantidad_operandos+2 -
         this.posicion_incognita;
     const opciones = {
@@ -184,7 +149,6 @@ export default class DivisionEntera extends Operacion {
     mulOperandos.push(mul.resultado);
     // invierte una multiplicación para crear la division entera
     this.operandos = mulOperandos.reverse();
-    if ( debug ) console.log(tag, 'this.operandos (division):', this.operandos);
     this.resultado = mul.operandos[0];
     this.posicion_incognita = this.cantidad_operandos+2 -mul.posicion_incognita;
     this.posicion_nivel = this.cantidad_operandos+2 -mul.posicion_nivel;
@@ -225,11 +189,8 @@ export default class DivisionEntera extends Operacion {
     // const debug = true;
     // let id = '['+ this.getRandomMinMax(0,100000)+ ']';
     // const tag = '[DivisionEntera.calcularResultado] ';
-    const tag = this.id+'[DivisionEntera.calcularResultado] ';
-    if ( debug ) console.log( tag );
 
     if (this.complementario) {
-      if ( debug ) console.log(tag+ 'es complementario');
       this.resultado = this.complementario;
       this.resolverIncognita();
       return;
@@ -240,44 +201,18 @@ export default class DivisionEntera extends Operacion {
       this.operandos.sort().reverse();
     }
 
-    if ( debug ) {
-      console.log( tag,
-          'this.operandos_por_usuario', this.operandos_por_usuario );
-    }
 
     if (this.operandosIniciales &&
         this.operandosInicialesLength() !== this.cantidad_operandos
     ) {
-      if ( debug ) {
-        console.log( tag,
-            'operandos iniciales', this.operandosIniciales );
-      }
-      if ( debug ) {
-        console.log( tag,
-            'generar division con operandos iniciales',
-            this.operandosIniciales,
-            'this.operandos', this.operandos );
-      }
       this._generarDivisionPorMultiplicacionInvertida();
-      if ( debug ) {
-        console.log( tag, 'operandos generados por mulInvert',
-            'this.operandos', this.operandos );
-      }
       return;
     }
 
     if (!this.operandos_por_usuario) {
       // if (this.posicion_nivel-1 == this.operandos.length)
-      if ( debug ) {
-        console.log( tag,
-            'generar division', this.operandos );
-      }
       this._generarDivisionPorMultiplicacionInvertida();
     } else {
-      if ( debug ) {
-        console.log('operandos por usuario',
-            this.operandos_por_usuario);
-      }
       this.resultado = this.dividirValores(this.operandos);
 
       if ( this.resultado % 1 == 0) {
@@ -290,8 +225,6 @@ export default class DivisionEntera extends Operacion {
   }
 
   _generarOperandosComplementario() {
-    const tag = '[DivisionEntera._generarOperandosComplementarios]';
-    if ( debug ) console.log(tag);
 
     let maximo = 500;
     if (this.cantidad_operandos>2) {
@@ -311,10 +244,6 @@ export default class DivisionEntera extends Operacion {
     // ser un factor de 4 =>
     // 40 / [2]/[2] = 10
     const mulResultado= this.obtenerMultiplosHasta(this.complementario, maximo);
-    if ( debug ) {
-      console.log('obtener mul de', this.complementario,
-          ' hasta ', maximo, ' resultado:', mulResultado);
-    }
 
 
     // escojemos uno al azar como primer operador :
@@ -325,8 +254,6 @@ export default class DivisionEntera extends Operacion {
     const factoresRestantes = factores;
     let nFactoresRestantes = factores.length;
     const grupoFactores = [];
-
-    if ( debug ) console.log(tag, 'factores de '+ divisor, factores, 'rmul', rmul);
 
 
     if (this.cantidad_operandos == 2) {
@@ -352,7 +279,6 @@ export default class DivisionEntera extends Operacion {
       if ( nFactoresRestantes > 0) {
         for (let index = 0; index < groupSize; index++) {
           const r = Math.floor(this.rng()*nFactoresRestantes);
-          if ( debug ) console.log( tag, 'factor que se agrega a grupo:', factores[r] );
           grupoFactores[grupoN].push( factoresRestantes[r] );
           factoresRestantes.splice(r, 1);
           nFactoresRestantes--;
@@ -369,16 +295,10 @@ export default class DivisionEntera extends Operacion {
     // this.operandos = operandos_temp;
   }
 
-  resolverIncognita() {
-    const tag = '[DivisionEntera.resolverIncognita()] ';
-    if ( debug ) console.log(tag);
-    const posIncognita = this.posicion_incognita-1;
-    if ( debug ) {
-      console.log(tag,
-          (posIncognita !== this.cantidad_operandos),
-          'pos incognita', posIncognita);
-    }
-  }
+  /**
+   * Sin efecto: evita que se ejecute la versión de Operacion.
+   */
+  resolverIncognita() {}
 
   obtenerSimbolo() {
     return '/';
@@ -388,16 +308,8 @@ export default class DivisionEntera extends Operacion {
   }
 
   comprobarResultado() {
-    const tag = '[Division.comprobarResultado]';
-    if ( debug ) console.log( tag );
-    if ( debug ) {
-      console.log( tag,
-          'this.resultadoNegativo', this.resultadoNegativo,
-          'this.permitir_negativos', this.permitir_negativos );
-    }
 
     if ( this.resultadoNegativo || this.permitir_negativos ) {
-      console.log( tag, 'grabar error negativos divisiones', this.errors );
       this.errors.push({
         error: 'Division con negativos / resultado negativo',
         msg: 'no se puede permiten números negativos en las divisiones'});

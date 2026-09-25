@@ -18,16 +18,10 @@ import {DEFAULTS} from '../defaultOptions';
  */
 class Creditos {
   constructor() {
-    this.debug = false;
-    const debug = this.debug;
-    const tag = '[creditos.js.constructor]';
-    if ( debug ) console.log( tag );
-
     // load template in #creditos div
     fetch('templates/creditos.html')
         .then((response) => response.text())
         .then((data) => {
-          console.log('get creditos ok');
           const creditosHtml = data;
           $('body').append(creditosHtml);
 
@@ -36,14 +30,10 @@ class Creditos {
   }
 
   load() {
-    const debug = this.debug;
-    const tag = '[creditos.js.load]';
-    if ( debug ) console.log( tag );
 
     $('#creditos h2')[0].innerHTML = 'Créditos <span class="version small">Versión ' + DEFAULTS.version + '</span>';
     // Poner fecha en creditos
     const curYearElements = document.getElementsByClassName('currentYear');
-    console.log(curYearElements);
     const currentYear = new Date().getFullYear();
     for (let i = 0; i < curYearElements.length; i++) {
       curYearElements[i].innerHTML = currentYear;

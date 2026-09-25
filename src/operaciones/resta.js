@@ -32,25 +32,7 @@ export default class Resta extends Operacion {
     forzarSignos,
     random,
   } = {}) {
-    const tag = '[Resta.constructor]';
     // const debug = true;
-    if ( debug ) {
-      console.log( tag, 'llamado con: \n\t',
-          'nivel', nivel, '\n\t',
-          'cantidadOperandos', cantidadOperandos, '\n\t',
-          'permitirNegativos', permitirNegativos, '\n\t',
-          'operandos', operandos, '\n\t',
-          'incognita', incognita, '\n\t',
-          'enfocado', enfocado, '\n\t',
-          'posicion_nivel', posicion_nivel, '\n\t',
-          'multiplo10', multiplo10, '\n\t',
-          'multiplo100', multiplo100, '\n\t',
-          'complementario', complementario, '\n\t',
-          'resultadoNegativo', resultadoNegativo, '\n\t',
-          'decimales', decimales, '\n\t',
-          'decimalesMaximo', decimalesMaximo, '\n\t',
-          'forzarSignos', forzarSignos, '\n\t' );
-    }
     if ( !upper_bound ) {
       upper_bound = nivel;
     }
@@ -74,24 +56,6 @@ export default class Resta extends Operacion {
       random,
     });
 
-    if ( debug ) {
-      console.log( this.id+tag, 'llamado con: \n\t',
-          'nivel', nivel, '\n\t',
-          'cantidadOperandos', cantidadOperandos, '\n\t',
-          'permitirNegativos', permitirNegativos, '\n\t',
-          'operandos', operandos, '\n\t',
-          'incognita', incognita, '\n\t',
-          'enfocado', enfocado, '\n\t',
-          'posicion_nivel', posicion_nivel, '\n\t',
-          'multiplo10', multiplo10, '\n\t',
-          'multiplo100', multiplo100, '\n\t',
-          'complementario', complementario, '\n\t',
-          'resultadoNegativo', this.resultadoNegativo, '\n\t',
-          'decimales', decimales, '\n\t',
-          'decimalesMaximo', decimalesMaximo, '\n\t',
-          'forzarSignos', forzarSignos, '\n\t'
-      );
-    }
 
     this.simbolo = '-';
     this.tipo = OPERACIONES.RESTA;
@@ -121,16 +85,10 @@ export default class Resta extends Operacion {
       });
     }
 
-    if ( debug ) {
-      console.log( this.id+tag,
-          'final contructor, operandos:', this.operandos );
-    }
   }
 
 
   calcularResultado() {
-    const tag = '[Resta.calcularResultado]';
-    if ( debug ) console.log( this.id+tag );
 
     // TODO:
     // if (this.complementario) {
@@ -141,10 +99,6 @@ export default class Resta extends Operacion {
 
     if (this.resultadoPorUsuario) {
       this.resolverIncognita();
-      if ( debug ) {
-        console.log( this.id+tag, this.operandos, 'this.operandos',
-            this.operandosIniciales );
-      }
       return;
     }
 
@@ -158,7 +112,6 @@ export default class Resta extends Operacion {
       // re-calcula primer operando para que sea valido con el resultado
       let primerOperando=this.resultado;
       for (let i =1; i < this.operandos.length; i++) {
-        if ( debug ) console.log('primerop', primerOperando);
         // primerOperando += this.operandos[i];
         primerOperando = new Decimal(primerOperando).plus(this.operandos[i]);
         primerOperando = parseFloat(primerOperando.toString());
@@ -170,35 +123,17 @@ export default class Resta extends Operacion {
 
     this.comprobarResultado();
 
-    if ( debug ) {
-      console.log( this.id+tag,
-          'operandos', JSON.stringify(this.operandos),
-          'resultado', this.resultado );
-    }
   }
 
   generarNumerosOperandos() {
     // const debug = true;
     super.generarNumerosOperandos();
-    const tag = '[Resta.generarNumerosOperandos]';
 
-    if ( debug ) {
-      console.log( this.id+tag, '\n\t',
-          'this.permitir_negativos', this.permitir_negativos, '\n\t',
-          'this.resultadoNegativo', this.resultadoNegativo
-      );
-    }
 
     if (this.complementario && this.complementario>0) {
       return;
     }
 
-    if ( debug ) {
-      console.log(this.id+tag, 'no se permiten negativos', '\n\t',
-          'this.permitir_negativos', this.permitir_negativos, '\n\t',
-          'this.resultadoNegativo', this.resultadoNegativo
-      );
-    }
 
     // if ( !this.resultadoNegativo) {
     //   // ordenador de mayor a menor
@@ -259,16 +194,10 @@ export default class Resta extends Operacion {
     //   }
     // }
 
-    if ( debug ) {
-      console.log( this.id+tag,
-          'fin this.operandos', this.operandos );
-    }
   }
 
   _generarOperandoPosicion( posicion ) {
-    const tag = this.id+'[Resta._generarOperandoPosicion]';
     // const debug = true;
-    if ( debug ) console.log( tag, 'posicion', posicion );
 
     const limites = this.calcularLimitesOperando(posicion);
     let limiteInferior = limites.limiteInferior;
@@ -354,21 +283,11 @@ export default class Resta extends Operacion {
       // if ( limiteSuperior == 0 ) limiteSuperior = -1;
     }
 
-    if ( debug ) {
-      console.log( tag,
-          'posicion', posicion,
-          'limites finales', limiteInferior, limiteSuperior);
-    }
 
     this.operandos[posicion] = this.getRandomMinMax(
         limiteInferior, limiteSuperior);
 
-    if ( debug ) console.log( tag, opAnteriores, 'opAnteriores' );
     
-    if ( debug ) {
-      console.log( tag, 'this.operandos', this.operandos,
-          'nuevo op', this.operandos[posicion] );
-    }
 
     if ( this.decimales ) {
       // agregar decimales
@@ -376,16 +295,10 @@ export default class Resta extends Operacion {
           this.operandos[posicion]);
     }
 
-    if ( debug ) {
-      console.log( tag, 'this.operandos', this.operandos,
-          'nuevo op', this.operandos[posicion] );
-    }
   }
 
   // TODO: revisar, por ahora no voy a hacer los complementarios
   _generarOperandosComplementario() {
-    const tag = '[Resta._generarOperandosComplementarios] ';
-    if ( debug ) console.log(this.id+tag);
 
     const maximo = 150;
     let maximoActual = maximo;
@@ -397,17 +310,7 @@ export default class Resta extends Operacion {
     const ultimoOperando = this.cantidad_operandos-1;
     const posicionIncognita = this.posicion_incognita-1;
 
-    if ( debug ) console.log(this.id+tag, 'ultimoOperando', ultimoOperando);
-
-    let valorIncognita;
-    if (this.operandos[posicionIncognita] !== undefined ) {
-      valorIncognita = this.operandos[this.posicion_incognita];
-    }
-
-    if ( debug ) console.log(this.id+tag, 'valorIncognita', valorIncognita);
-
     for (let index = 0; index < this.cantidad_operandos; index++) {
-      if ( debug ) console.log(this.id+tag, 'index operando', index );
       let nuevoOperando;
       const op = this.operandos[index];
 
@@ -416,46 +319,24 @@ export default class Resta extends Operacion {
       // usuario
       if ( !this.operandos_por_usuario ||
           (this.operandos_por_usuario && op === undefined) ) {
-        if ( debug ) console.log(this.id+tag, 'operandos no definidos por usuario');
 
         if ( index == ultimoOperando) {
           // si la incognita ya se definió calcular el ultimo operando
-          if ( debug ) {
-            console.log(this.id+tag, 'ultimo operando con incognita definida ');
-          }
           // if (restaOperandosSinIncognita>0){
           nuevoOperando = restaOperandosSinIncognita - this.resultado;
           // } else {
           //     nuevoOperando = this.resultado+ ;
           // }
-          if ( debug ) {
-            console.log(this.id+tag, 'nuevo op', nuevoOperando, 'index', index );
-          }
 
           // pero esto no se va  a dar nunca con los complementarios!
           // ultimo operando con ingognita == resultado
           if ( posicionIncognita==this.cantidad_operandos ) {
-            if ( debug ) {
-              console.log(this.id+tag,
-                  'ultimo operando con incognita = resultado ');
-            }
             nuevoOperando = restaOperandosSinIncognita - this.resultado;
           }
-          if ( debug ) {
-            console.log(this.id+tag,
-                'nuevo op (ultimo operando)', nuevoOperando );
-          }
         } else {
-          if ( debug ) {
-            console.log(this.id+tag, 'mínimo', minimo);
-            console.log(this.id+tag, 'maximo actual', maximoActual);
-          }
 
           nuevoOperando = Math.round(
               this.rng()*(maximoActual-minimo))+minimo;
-          if ( debug ) {
-            console.log(this.id+tag, 'nuevo op (no ultimo operando)', nuevoOperando );
-          }
         }
       } else {
         // si esta definido por el usuario se queda como esta
@@ -469,10 +350,6 @@ export default class Resta extends Operacion {
       }
 
       this.operandos[index] = nuevoOperando;
-      if ( debug ) {
-        console.log(this.id+tag, 'op',
-            this.operandos[index], 'index', index);
-      }
 
 
       if (index == 0) {
@@ -492,21 +369,13 @@ export default class Resta extends Operacion {
 
       // }  // fi ( index !== posicionIncognita )
     }// fin for
-    if ( debug ) {
-      console.log(this.id+tag, 'restaOperandosSinIncognita',
-          restaOperandosSinIncognita );
-    }
     // this.restaOperandosSinIncognita = restaOperandosSinIncognita;
   }
 
   /**
-   * esto no hace nada
+   * Ajusta el último operando para que la resta dé el resultado.
    */
   resolverIncognita() {
-    // const debug = true;
-    const tag = '[Resta.resolverIncognita()]';
-    if ( debug ) console.log(this.id+tag);
-    const posicionIncognita = this.posicion_incognita-1;
     const lastOperando = this.cantidad_operandos-1;
     let valOpAnteriores;
     const opAnteriores = this.operandos.slice(0, lastOperando-1);
@@ -525,13 +394,10 @@ export default class Resta extends Operacion {
       }
     }
 
-    if ( debug ) console.log(this.id+tag, 'posicionIncognita: ', posicionIncognita);
   }
 
   operandoMultiploN(posicion, multiplo) {
     // const debug = true;
-    const tag = '[resta.js.operandoMultiploN(posicion, multiplo)]';
-    if ( debug ) console.log( tag, posicion, multiplo );
     // super.operandoMultiploN(posicion, multiplo);
     // const ultimoOperando = this.cantidad_operandos-1;
     const nivelOriginal = this.nivel;

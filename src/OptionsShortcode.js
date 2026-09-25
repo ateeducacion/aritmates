@@ -20,18 +20,6 @@ global.listOptions = listOptions;
   * @author Área de Tecnología Educativa (versión simplificada 1.3+)
   */
 export class OptionsShortcode {
-  constructor() {
-    const tag = '[OptionsShortcode.js.constructor]';
-  }
-
-  generateCode( ) {
-    const tag = '[generateCode]';
-    console.log(tag);
-
-    console.log('fin calcularnuopc:');
-    console.log( this._calcularNumOpciones(listOptions));
-  }
-
   jsonToHash(json) {
     return sh.unique(JSON.stringify(json));
   }
@@ -67,9 +55,6 @@ export class OptionsShortcode {
    * @return {string} codigo tipo #A0B1C2...
    */
   generateCodeDirecto( options ) {
-    const debug = false;
-    const tag = '[OptionsShortcode.js.generateCodeDirecto]';
-    if ( debug ) console.log( tag );
 
     const alphabet = utils.alphabetArray();
     let code = '';
@@ -78,18 +63,9 @@ export class OptionsShortcode {
       const letter = alphabet[indx];
       let posiblesOpciones;
       const opcionSeleccionada = options[o];
-      if ( debug ) {
-        console.log( tag,
-            'letter', letter,
-            'es', o,
-            'valor', opcionSeleccionada );
-      }
       let curOtn; // es un numero enviado como string p.e.:'42'
       const esNumber = typeof opcionSeleccionada === 'number';
       const esString = typeof opcionSeleccionada === 'string';
-      // Typo and a typeof compare against the value undefined (always false).
-      // The branch only logs. Left as a no-op so the code path stays the same.
-      const esUndef = false;
       if ( esNumber || esString ) {
         posiblesOpciones = selectOptions[o];
         curOtn = posiblesOpciones.indexOf( opcionSeleccionada );
@@ -108,11 +84,6 @@ export class OptionsShortcode {
       }
       // si es un array entonces es una opcion multiple:
       if ( Array.isArray(opcionSeleccionada) ) {
-        if ( debug ) {
-          console.log( tag,
-              'opcionSeleccionada', opcionSeleccionada,
-              'o', o);
-        };
         // Ordenamos el array de opciones selecionadas para que coicida siempre
         //  ['suma', 'resta'] es lo mismo que  ['resta','suma' ]
         opcionSeleccionada.sort();
@@ -129,46 +100,16 @@ export class OptionsShortcode {
             return 0;
           });
         }
-        if ( debug ) {
-          console.log( tag,
-              'opcionSeleccionada ordenanda:', opcionSeleccionada);
-        };
 
         const combinaciones = this._combinaciones(o);
         curOtn = utils.findArrayInArray(opcionSeleccionada, combinaciones);
         curOtn++; // + 1 para que la opcion 0 sea nada seleccionado
 
-        if ( debug ) {
-          console.log( tag,
-              'en array', '\n\t',
-              'valor combinación', opcionSeleccionada, '\n\t',
-              'indice de la combinación', curOtn
-          );
-          console.log( 'en combinaciones', combinaciones[curOtn] );
-          console.table( 'conbinaciones', combinaciones );
-        }
       }
       if ( undefined !== curOtn ) {
         curOtn = curOtn.toString();
         code = code + letter + curOtn;
-        if ( debug && esUndef ) {
-          console.log(
-              'opcion', o, '\n\t',
-              'typeof opcionSelecionada', typeof opcionSeleccionada, '\n\t',
-              'posibles opciones', posiblesOpciones, '\n\t',
-              'valor', opcionSeleccionada
-          );
-        }
       } else {
-        if ( debug ) {
-          console.log(
-              'undefined curOpt, en letter', letter, '\n\t',
-              'opcion', o, '\n\t',
-              'typeof opcionSelecionada', typeof opcionSeleccionada, '\n\t',
-              'posibles opciones', posiblesOpciones, '\n\t',
-              'valor', opcionSeleccionada
-          );
-        }
       }
     });
     return '#'+code;
@@ -180,9 +121,6 @@ export class OptionsShortcode {
    * @return {Object} Objecto con opciones para cargar
    */
   codigoDirectoToOptions( codigo ) {
-    const debug = false;
-    const tag = '[OptionsShortcode.js.codigoDirectoToOptions]';
-    if ( debug ) console.log( tag, codigo );
     if (codigo[0] != '#') return false;
     const alphabet = utils.alphabetArray();
     codigo = codigo.substr(1);
@@ -219,7 +157,6 @@ export class OptionsShortcode {
       if (opcionDefinida) {
         const valOpcion = objCodigoLetras[letraOpcion];
         const tipoOpcion = gTipoOpcion(optionKey);
-        if (debug) console.log( tag, optionKey, 'es', tipoOpcion );
 
         if ( tipoOpcion == 'bool') {
           // Parentesis no se guarda si no hay dos operandos
@@ -229,13 +166,6 @@ export class OptionsShortcode {
             // objOpciones.cantidadOperandos = 3;
             // console.log(tag, 'cantidad de operandos pasado a 3? ', objOpciones.cantidadOperandos );
             objOpciones[optionKey] = true;
-            if (debug) {
-              console.log( tag,
-                  'parentesis', objOpciones[optionKey],
-                  'objOpciones.parentesis', objOpciones.parentesis,
-                  'valOpcion', valOpcion
-              );
-            }
           }
 
           if (valOpcion == 1) objOpciones[optionKey] = true;
@@ -248,23 +178,9 @@ export class OptionsShortcode {
             objOpciones[optionKey] = utils
                 .strTiempoASegundos( objOpciones[optionKey]);
           }
-          if (debug) {
-            if (optionKey == 'cantidadOperaciones' && objOpciones[optionKey]==0) {
-              console.log(tag, 'catidad de operaciones sin limite');
-            }
-            if (optionKey == 'cantidadOperandos' ) {
-              console.log(tag, 'cantidad Operandos', objOpciones[optionKey]);
-            }
-          }
         }
         if ( tipoOpcion == 'multi') {
           const combinaciones = this._combinaciones(optionKey);
-          if ( debug ) {
-            console.log( tag,
-                'valopcion ', valOpcion,
-                'valor:', combinaciones[valOpcion]
-            );
-          }
           // si val opcion es 0 es que se enivo sin nada selecionado en este campo
           if ( valOpcion == 0 ) objOpciones[optionKey] = [];
           else {

@@ -72,7 +72,6 @@ class Ayuda {
 
           // al picar en nav o en tab-content cierra el desplegable de "que es aritmates?"
           const cierraQueEs = () => {
-            console.log('cierra "que es"');
             $('#thisapp').removeAttr('opened');
             // .attr('opened');
           };
@@ -117,14 +116,8 @@ class Ayuda {
     // });
     $('.openAyuda').on('click', (ev) => {
       this._drawer.open = true;
-      console.log('event target', ev.target );
       if (ev.target.classList.contains('ayudaEspecifica')) {
         // abrir la parte especifica de la ayuda
-
-        console.log(
-            'tipo op', $('#ayudaEjercicio')[0].dataset.operacion,
-            OPERACIONES.MULTIPLICACION
-        );
         const operacion = $('#ayudaEjercicio')[0].dataset.operacion;
         switch ( operacion ) {
           case OPERACIONES.SUMA:
@@ -142,11 +135,7 @@ class Ayuda {
           case OPERACIONES.MULTIPLICACION:
             $('#nav-multiplicacion-tab').click();
             break;
-          default:
-            console.log('operación es', operacion, 'pero no llega');
-            break;
         }
-        console.log('después del switch');
       }
     });
 

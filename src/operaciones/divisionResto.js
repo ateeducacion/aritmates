@@ -29,8 +29,6 @@ export default class DivisionResto extends DivisionEntera {
     multiplo10 = false, multiplo100 = false, complementario = false,
     random,
   } = {}) {
-    const tag = '[DivisionResto] ';
-    if ( debug ) console.log(tag);
     const cantidadOperandosEnviados = cantidadOperandos;
     if (cantidadOperandos>2 ) {
       operandos = operandos.slice(0, 2);
@@ -81,18 +79,11 @@ export default class DivisionResto extends DivisionEntera {
   }
 
   calcularResultado() {
-    const tag = '[DivisionResto.calcularResultado] ';
-    if ( debug ) console.log( tag );
     // calcula el resultado y buca operandos para resultado entero
     super.calcularResultado();
 
-    if ( debug ) {
-      console.log(tag, 'operandos post super.calcularResultado: ',
-          this.operandos, ', resultado: ', this.resultado );
-    }
 
     if (this.operandos_por_usuario) {
-      if ( debug ) console.log(tag, 'operandos por usuario');
     }
 
     const dividendo = this.operandos[0];
@@ -112,7 +103,6 @@ export default class DivisionResto extends DivisionEntera {
 
     // this.resto = dividendo % divisor;
     this.resto = new Decimal(dividendo).modulo(divisor);
-    if ( debug ) console.log(tag, 'resto: ', this.resto );
     const calcResultado = () => {
       return new Decimal(this.operandos[0]).div(divisor)
           .floor().toString();
@@ -129,16 +119,13 @@ export default class DivisionResto extends DivisionEntera {
           const factores = this.factorizar(this.resultado);
           // factores.push(1);// si no agrego un uno da infinito  el resto
           minMultiplo = Math.min(...factores);
-          if ( debug ) console.log(tag, 'mínimo multiplo: ', minMultiplo, factores );
         } else {
           minMultiplo = 1;
         }
 
         this.resto = Math.round(this.rng()*(minMultiplo-1))+1;
-        if ( debug ) console.log(tag, 'op por usuario, resto: ', this.resto );
       }
 
-      if ( debug ) console.log(tag, ' agregar resto: ', this.resto );
       if (this.operandos[0]<0) this.resto *= -1;
       this.operandos[0] += this.resto;
 
@@ -150,7 +137,6 @@ export default class DivisionResto extends DivisionEntera {
       this.resto = new Decimal(this.operandos[0]).modulo(divisor)
           .abs().toString();
 
-      if ( debug ) console.log(tag, 'resto: ', this.resto );
     }
   }
 
@@ -162,8 +148,6 @@ export default class DivisionResto extends DivisionEntera {
    * @return {string} Cadena con la operacion
    */
   toString(equal=true, verbose=false, show=true ) {
-    const tag = '[DivisionResto.toString]';
-    if ( debug ) console.log( tag, show );
     let txt = super.toString(equal, verbose);
     if (show) {
       txt += ' Resto: ' + this.resto;
@@ -175,8 +159,6 @@ export default class DivisionResto extends DivisionEntera {
   }
 
   toHtml(show=true) {
-    const tag = '[DivisionResto.toHtml]';
-    if ( debug ) console.log( tag );
     let html = super.toHtml();
     if (show) {
       html = html.substring(0, html.length-4);
@@ -195,8 +177,6 @@ export default class DivisionResto extends DivisionEntera {
   }
 
   formula() {
-    const tag = '[formula]';
-    if ( debug ) console.log( tag );
     const f = super.formula();
     const resto = this.resto;
     f.push(resto);
@@ -208,55 +188,36 @@ export default class DivisionResto extends DivisionEntera {
 
   generarNumerosOperandos() {
     // const debug = true;
-    const tag = '[DivisionResto.generarNumerosOperandos] ';
-    if ( debug ) console.log(tag);
 
     // let enfocado= this.enfocado;
     // //obtenemos operandos como si no fuera enfocado
     // if (this.enfocado)this.enfocado = false;
 
-    if ( debug ) console.log( tag, 'enfocado', this.enfocado );
     super.generarNumerosOperandos(); // genera operandos de division entera -
-    if ( debug ) console.log( tag, 'enfocado operandos antes', this.operandos );
 
     if (this.complementario && this.complementario>0) {
       return;
     }
 
-    if ( debug ) {
-      console.log(
-          tag, 'operandos de super division entera:',
-          this.operandos, '. resul: ', this.resultado );
-    }
 
     // si el numero que define el nivel es el resultado lo generamos primero
     // if ( debug ) console.log(tag,'posicion nivel en resultado',
     // this.cantidad_operandos, this.posicion_nivel);
     if ( this.cantidad_operandos+1 == this.posicion_nivel ) {
-      if ( debug ) console.log(tag, 'posicion nivel en resultado');
       // tambien generamos un resto para obligarle que sea distinto a cero
       this.resultado = this.numeroRandom(true, false, 1);
 
       this.resto = Math.abs(this.numeroRandom(true, false, 0, this.resultado));
-      if ( debug ) {
-        console.log(tag, 'resto al azar', this.resto,
-            'tiene que ser menor que', this.resultado);
-      }
     }
   }
 
   esRespuesta( respuestaUsuario ) {
-    const tag = '[divisionResto.js.esRespuesta( respuestaUsuario )]';
-    if ( debug ) console.log( tag, respuestaUsuario );
-    if ( debug ) console.log( this.respuesta() );
 
     return ( JSON.stringify(respuestaUsuario) === JSON
         .stringify(this.respuesta()) );
   }
 
   respuesta() {
-    const tag = '[divisionResto.js.respuesta()]';
-    if ( debug ) console.log( tag );
     let respuesta = {};
     if (this.posicion_incognita != this.cantidad_operandos+1) {
       respuesta = {
@@ -273,8 +234,6 @@ export default class DivisionResto extends DivisionEntera {
   }
 
   toStringUserInput( input ) {
-    const tag = '[divisionResto.js.toStringUserInput( input ) {]';
-    if ( debug ) console.log( tag, input );
 
     const txtini = this.toString(true, true);
     const regex = /\[-?[0-9]+(.[0-9]+)?\]/gi;

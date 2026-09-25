@@ -17,7 +17,6 @@
  */
 /** @global */
 window.debug = false;
-const debug = false;
 // const t0 = performance.now();
 
 import 'roboto-fontface/css/roboto/roboto-fontface.css';
@@ -247,10 +246,8 @@ const opciones = {
 
   addTipoOperacion(tipo) {
     // const debug = true;
-    const tag = '[app.js.addTipoOperacion(tipo)]';
     let el;
     let elName;
-    if ( debug ) console.log( tag, tipo );
     if ( !(this.tiposOperaciones.includes(tipo)) ) {
       switch (tipo) {
         case OPERACIONES.SUMA:
@@ -276,14 +273,10 @@ const opciones = {
       el = $(elName);
     }
     el.click();
-    if ( debug ) {
-      console.log( tag, 'clases el:', el[0].classList );
-    }
   },
 
   addTipoNumero(tipo) {
     // const debug = true;
-    if (debug) console.log('addTipoNumero called', 'tipo', tipo);
     if ( !(this.tiposNumero.includes(tipo)) ) {
       switch (tipo) {
         case TIPO_NUMERO.NATURAL:
@@ -702,9 +695,6 @@ function disableEnfocadoSiTipoNumero() {
  * @author Fernando Ramírez Pérez
  */
 function updateOperasdosOnDivisionChange() {
-  const tag = '[app.js.updateOperasdosOnDivisionChange]';
-  const debug = false;
-  if ( debug ) console.log( tag );
   // Si hay en tipos numero decimal y esta seleciondo solo la opoeracion de diviision:
   // o si esta seleciondo division con resto
   if (requiresTwoOperands(opciones.tiposOperaciones, opciones.tiposNumero)) {
@@ -903,7 +893,6 @@ let currentOp;
 let tagOperacion;
 
 
-
 function guardarOpciones(opciones) {
   let opcionesGuardadas = {};
   opcionesGuardadas = Object.assign(opcionesGuardadas, opciones);
@@ -992,7 +981,6 @@ $('#btnComenzar').on('click', function() {
 
         // generar examen con estos valores
         examen = new GenerarExamen( opcionesGuardadas );
-        if (debug) console.log(examen.toString( true, true ));
 
         if ( examen.errors.length > 0 ) {
           // console.log(examen.toString( true, true ));
@@ -1109,8 +1097,6 @@ $('#btnComenzar').on('click', function() {
 } );
 
 
-
-
 /**
  * Render the result screen after the exercise session ends.
  */
@@ -1142,7 +1128,6 @@ function actualizarClaseAyuda( operacion ) {
   $('#ayudaEjercicio')[0].dataset.operacion = operacion;
   // console.log('data-operacion: ',$('#ayudaEjercicio')[0].dataset.operacion);
 }
-
 
 
 // --- desactivar checkbox resultado negativo
@@ -1517,8 +1502,6 @@ let solucionesHtml;
 
 
 function vistaPreviaPdf() {
-  const tag = '[app.js.function vistaPreviaPdf()]';
-  if ( debug ) console.log( tag );
   const opcionesGuardadas = guardarOpciones(opciones);
   const examen = new GenerarExamen( opcionesGuardadas );
   const soluciones = examen.toPrint();
@@ -1618,23 +1601,14 @@ For more information, see {@tutorial create|Creating a Widget} and
  *
  */
 function cargarOpcionesCodigo(code) {
-  const debug = false;
   /**
  * @const {Options}
  */
   const opcionesCargadas = OptionsShortcode.codigoDirectoToOptions(code);
   try {
     Object.keys(opcionesCargadas).forEach( (x) => {
-      if ( debug ) {
-        console.log('cambiar', x, 'de', opciones[x],
-            'a', opcionesCargadas[x], x );
-      }
       // si es tipo multiple deselecionar lo actual y selecionar nuevo
       if (['tiposOperaciones', 'tiposNumero'].includes(x)) {
-        if ( debug ) {
-          console.log('cambiar multiselect', x, 'de', opciones[x],
-              'a', opcionesCargadas[x]);
-        }
         opciones[x] = [];
   
         switch (x) {
@@ -1657,21 +1631,13 @@ function cargarOpcionesCodigo(code) {
         opciones[x] = keyCrono(minsg);
       } else if ( x == 'parentesis' ) {
         // para activar los parentesis hace falta que la cantidad de operandos sea 3
-        if ( debug ) console.log( 'parentesis', opcionesCargadas[x] );
         if ( opcionesCargadas[x] ) {
-          if ( debug ) console.log('parentesis a true');
           opciones.cantidadOperandos = 3;
           opciones[x] = opcionesCargadas[x];
           opciones.parentesis = true;
         }
       } else {
         opciones[x] = opcionesCargadas[x];
-        if ( debug ) {
-          console.log(
-              'opcion cargada: -', x, '-',
-              'estado parentesis', opciones.parentesis
-          );
-        }
       }
     });    
   } catch (error) {
@@ -1679,25 +1645,11 @@ function cargarOpcionesCodigo(code) {
     throw error;
   }
 
-  if ( debug ) {
-    console.log(
-        'opciones cargadas',
-        'opciones.parentesis', opciones.parentesis,
-        'opciones.cantidadOperandos', opciones.cantidadOperandos
-    );
-  }
   // tengo que refrescar estas variables
   opciones.parentesis = opcionesCargadas.parentesis;
   opciones.resultadoNegativo = opcionesCargadas.resultadoNegativo;
   opciones.cuentaAtras = opcionesCargadas.cuentaAtras;
 
-  if ( debug ) {
-    console.log(
-        'opciones cargadas',
-        'opciones.parentesis', opciones.parentesis,
-        'opciones.cantidadOperandos', opciones.cantidadOperandos
-    );
-  }
   // actualiza textos tooltips:
   sliderNivelUpdate();
 }
