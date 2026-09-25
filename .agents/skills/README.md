@@ -13,8 +13,10 @@ Instalados con `gh skill add`. La revisión que usa `gh skill update` está en `
 | `github-actions-hardening` | Revisar o escribir workflows de GitHub Actions | [github/awesome-copilot](https://github.com/github/awesome-copilot) `skills/github-actions-hardening` | MIT |
 | `security-audit` | Revisar la aplicación estática cuando se pide una auditoría | [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill) `skills/security-audit` | MIT |
 | `playwright-cli` | Explorar la portada y depurar los flujos de Playwright | [microsoft/playwright-cli](https://github.com/microsoft/playwright-cli) `skills/playwright-cli` | Apache-2.0 |
+| `playwright-trace` | Inspeccionar una traza cuando falla un flujo | [microsoft/playwright](https://github.com/microsoft/playwright) `packages/playwright-core/src/tools/skills/playwright-trace` | Apache-2.0 |
+| `test-gap-audit` | Ver qué comportamiento no tiene una prueba que lo fije | [github/awesome-copilot](https://github.com/github/awesome-copilot) `skills/test-gap-audit` | MIT |
 
-Esos skills se mantienen verbatim: el cambio se hace aguas arriba y se vuelve a instalar.
+Esos skills se mantienen verbatim: el cambio se hace aguas arriba y se vuelve a instalar. El `NOTICE` de Playwright está en [`../licenses/microsoft-playwright-NOTICE.txt`](../licenses/microsoft-playwright-NOTICE.txt).
 
 ```bash
 gh skill add OWNER/REPO PATH --dir .agents/skills

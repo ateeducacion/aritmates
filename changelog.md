@@ -1,5 +1,12 @@
 # Changelog
 
+## Skills de pruebas (post 1.3)
+
+No cambia la aplicación.
+
+* `test-gap-audit` señala comportamiento sin una prueba que lo fije. No edita el código salvo que se pida, y sigue el estilo de `npm test`.
+* `playwright-trace` inspecciona la traza de un flujo de extremo a extremo que ha fallado, con el Playwright que ya está instalado.
+
 ## Guía de agentes y skills (post 1.3)
 
 No cambia la aplicación que ve el usuario.
