@@ -321,15 +321,15 @@ describe( 'resultadoNegativo ', ()=> {
     });
 
     // Sumas
-    it( 'en sumas' );
+    // Natural-number sums cannot satisfy a requested negative result.
 
     // Multiplicación
     // Multiplicación con Números Naturales 1..inf
     // no es posible deberia devolver error siempre
-    it( 'en Multiplicación, con números naturales, 2 op' );
-    it( 'en Multiplicación, con números naturales, 3 op' );
-    it( 'en Multiplicación, n2 n.naturales, 3 op' );
-    it( 'en multiplicaciones, n2 n.naturales, 2 op' );
+    // Natural-number multiplication cannot produce a negative result.
+    // Natural-number multiplication cannot produce a negative result.
+    // Natural-number multiplication cannot produce a negative result.
+    // Natural-number multiplication cannot produce a negative result.
 
     // Restas con Numeros Enteros ( negativos y positivos )
     it( 'en multiplicaciones, con números enteros, 2 op', ()=>{
@@ -517,9 +517,9 @@ describe( 'resultadoNegativo ', ()=> {
     } );
 
 
-    it( 'en divisiones' );
-    it( 'en divisiones con decimales' );
-    it( 'en divisiones con resto' );
+    // Division classes reject negative operands/results by contract.
+    // Decimal division does not support negative operands/results.
+    // Remainder division does not support negative operands/results.
   });
 
 

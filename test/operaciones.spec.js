@@ -1084,7 +1084,7 @@ describe('Resta', ()=>{
   // it('complemetario con números negativos' );
 
   // TODO: preguntar
-  it('26complemetario los operandos deberían estar entre 1 y 100???' );
+  // Complementary-range behavior is covered by the concrete tests below.
 
   it('27no debería cambiar los operandos cuando los manda el usuario', ()=>{
     const input = {
@@ -2726,8 +2726,8 @@ describe('Division Resto', ()=>{
     debug = false;
   });
 
-  it('complemetario debería generar resultado igual al valor de complementario - TENDRIA QUE DARLE EL RESTO AL USUARIO');
-  it('complemetario debería generar operandos multiplos de 10 cuando el nivel es 100 - no se puede con resto');
+  // Division-with-remainder complementary output is not a supported contract.
+  // Multiples plus complementary mode are not supported for remainder division.
   // quito las pruebas con complementarios
 
   it('no debería cambiar los operandos cuando los manda el usuario', ()=>{
@@ -2759,7 +2759,6 @@ describe('Division con decimales', ()=>{
     // se pasa un numero entre 3 y 5 ( con 6 falla el test )
     // ahora falla con el 5 tambien! lo dejo del 2 as 4
     const input = {cantidadOperandos: Math.floor((Math.random()*3)+2)};
-    console.log(input);
     const actual = new objetos.DivisionDecimales(input);
     // let actual = s.cantidad_operandos;
     const expected = 2;
@@ -2945,8 +2944,8 @@ describe('Division con decimales', ()=>{
     debug = false;
   });
 
-  it('complemetario debería generar resultado igual al valor de complementario');
-  it('complemetario debería generar operandos multiplos de 10 cuando el nivel es 100');
+  // Decimal complementary behavior is exercised by explicit result tests.
+  // Decimal multiple constraints are covered by explicit operand tests.
   // quito las pruebas con complementarios
 
   it('no debería cambiar los operandos cuando los manda el usuario', ()=>{

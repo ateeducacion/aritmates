@@ -24,7 +24,7 @@ El detalle del motor está en [docs/MATH-ENGINE.md](docs/MATH-ENGINE.md). Estas 
 - `cantidadOperaciones` en el código corto solo acepta `0` y múltiplos de 10, de 10 a 100.
 - Las divisiones no admiten operandos negativos.
 - `globalThis.debug` es un booleano y vale `false`. En una operación combinada, el bloque `if (debug)` llama a `crearDivisiones` y cambia la generación.
-- Los `it(...)` sin cuerpo quedan pending. No son fallos de la suite.
+- No se añaden `it(...)` vacíos ni tests `pending` para representar ideas futuras. Un comportamiento soportado lleva una aserción; uno no soportado se documenta sin fingir cobertura.
 
 El correo de resultados no forma parte del producto. Se quitó en 1.0.4. En `upstream` el PHP sigue, con la llamada comentada.
 
