@@ -23,10 +23,28 @@ export function seededRandom(seed) {
   };
 }
 
+let defaultRandom = Math.random;
+
+/**
+ * Override the default generator used when callers do not inject one.
+ * Intended for the test harness only; production never calls this.
+ *
+ * @param {() => number} random
+ */
+export function setDefaultRandom(random) {
+  if (typeof random !== 'function') throw new TypeError('random must be a function');
+  defaultRandom = random;
+}
+
+/** Reset the default generator to the browser/runtime source. */
+export function resetDefaultRandom() {
+  defaultRandom = Math.random;
+}
+
 /**
  * @param {unknown} random
  * @return {() => number}
  */
 export function asRandom(random) {
-  return typeof random === 'function' ? random : Math.random;
+  return typeof random === 'function' ? random : defaultRandom;
 }
