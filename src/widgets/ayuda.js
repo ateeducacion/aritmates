@@ -21,6 +21,13 @@ import '../../css/creditos.scss';
 import '../../css/ayuda.css';
 import OPERACIONES from '../operaciones/operaciones';
 
+const HELP_TABS = {
+  '#nav-suma': '#nav-suma-tab',
+  '#nav-resta': '#nav-resta-tab',
+  '#nav-multiplicacion': '#nav-multiplicacion-tab',
+  '#nav-division': '#nav-division-tab',
+};
+
 // youtbe videojs
 // import 'video.js/dist/video-js.min.css';
 // import 'video.js/dist/video.min.js';
@@ -71,7 +78,26 @@ class Ayuda {
           };
           $('nav').click( cierraQueEs );
           $('#nav-tabContent').click( cierraQueEs );
+
+          document.getElementById('nav-tab').addEventListener('shown.bs.tab', (event) => {
+            const href = event.target.getAttribute('href');
+            if (href && location.hash !== href) {
+              history.replaceState(null, '', href);
+            }
+          });
+
+          this.openFromHash();
+          window.addEventListener('hashchange', () => this.openFromHash());
         });
+  }
+
+  openFromHash() {
+    const tabSel = HELP_TABS[location.hash];
+    if (!tabSel || !this._drawer || !window.bootstrap) return;
+    const tab = document.querySelector(tabSel);
+    if (!tab) return;
+    this._drawer.open = true;
+    window.bootstrap.Tab.getOrCreateInstance(tab).show();
   }
 
   load() {
