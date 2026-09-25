@@ -33,7 +33,9 @@ let defaultRandom = Math.random;
  */
 export function setDefaultRandom(random) {
   if (typeof random !== 'function') throw new TypeError('random must be a function');
+  const previous = defaultRandom;
   defaultRandom = random;
+  return previous;
 }
 
 /** Reset the default generator to the browser/runtime source. */
