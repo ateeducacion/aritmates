@@ -20,13 +20,6 @@ const VENDOR_MAP = [
     name: 'bootstrap',
     files: [
       { from: 'bootstrap/dist/js/bootstrap.bundle.min.js', to: 'bootstrap/bootstrap.bundle.min.js' },
-      { from: 'bootstrap/dist/css/bootstrap.min.css', to: 'bootstrap/bootstrap.min.css' },
-    ],
-  },
-  {
-    name: 'decimal.js',
-    files: [
-      { from: 'decimal.js/decimal.js', to: 'decimal.js/decimal.js' },
     ],
   },
   {
@@ -39,13 +32,6 @@ const VENDOR_MAP = [
     name: 'jspdf',
     files: [
       { from: 'jspdf/dist/jspdf.umd.min.js', to: 'jspdf/jspdf.umd.min.js' },
-    ],
-  },
-  {
-    name: 'iv-viewer',
-    files: [
-      { from: 'iv-viewer/dist/iv-viewer.min.js', to: 'iv-viewer/iv-viewer.min.js' },
-      { from: 'iv-viewer/dist/iv-viewer.min.css', to: 'iv-viewer/iv-viewer.min.css' },
     ],
   },
 ];

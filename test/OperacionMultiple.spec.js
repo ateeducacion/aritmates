@@ -7,7 +7,6 @@ import {assertSolved} from './assertExercise';
 
 const chai = require('chai');
 const expect = require('chai').expect;
-chai.use(require('chai-match'));
 
 describe('Operacion Multiple 4 operandos o mas', () => {
   it('Multiplicación de 4 operandos expresada con solo un tipo de operacion', () => {
@@ -751,7 +750,7 @@ describe('Operacion Multiple', () => {
     expect(actual).to.equal(expected);
   });
 
-  // probar con chai-match los resultados cumplan regexp
+  // probar que los resultados cumplan una regexp
 
   it('Crear una operación de 3 operandos al azar solo divisiones',
       () => {

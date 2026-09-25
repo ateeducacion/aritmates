@@ -8,7 +8,6 @@ import {canAutoPlaceParentheses} from '../src/operaciones/expression';
 
 const chai = require('chai');
 const expect = require('chai').expect;
-chai.use(require('chai-match'));
 
 describe('Parentesis', () => {
   it('5 * 2 + 5 con parentesis deberia devolver 5 * ( 2 + 5 )', () => {

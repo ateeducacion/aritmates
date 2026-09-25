@@ -5,7 +5,6 @@ import {seededRandom} from '../src/operaciones/random';
 
 const chai = require('chai');
 const expect = require('chai').expect;
-chai.use(require('chai-match'));
 
 describe('Operación Multiple N.NATURALES solo positivos', () => {
   it('No negativos con números naturales', ()=>{

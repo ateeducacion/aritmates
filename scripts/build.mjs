@@ -37,7 +37,11 @@ async function copyDir(src, dest) {
 /** Copia assets estáticos sin transformar */
 async function copyStatic() {
   await copyDir(join(root, 'src/img'), join(dist, 'img'));
-  await copyDir(join(root, 'src/templates'), join(dist, 'templates'));
+  // templates/index.html is only the source of dist/index.html.
+  await cp(join(root, 'src/templates'), join(dist, 'templates'), {
+    recursive: true,
+    filter: (path) => !path.endsWith('/templates/index.html'),
+  });
   await cp(join(root, 'src/config.json'), join(dist, 'config.json'));
   console.log('✓ assets (img, templates, config)');
 }
@@ -207,20 +211,6 @@ async function buildCss() {
 
   await writeFile(join(cssDir, 'app.css'), appCss, 'utf8');
 
-  // plantilla print css
-  try {
-    const printResult = sass.compile(join(root, 'css/print.scss'), {
-      style: 'compressed',
-      loadPaths: [join(root, 'css'), nm],
-      quietDeps: true,
-      silenceDeprecations: ['import', 'global-builtin', 'color-functions', 'if-function'],
-    });
-    await writeFile(join(cssDir, 'plantilla.css'), printResult.css, 'utf8');
-  } catch (e) {
-    console.warn('⚠ plantilla.css:', e.message);
-    await writeFile(join(cssDir, 'plantilla.css'), '', 'utf8');
-  }
-
   console.log('✓ css');
 }
 
@@ -344,17 +334,7 @@ async function buildJs() {
   console.log('✓ js (esbuild minify, vendor: jquery, bootstrap, html2canvas, jspdf)');
 }
 
-/** Scripts de la plantilla de impresión. La portada no los incluye. */
-function vendorScripts(prefix = './') {
-  return `
-    <script src="${prefix}vendor/jquery/jquery.min.js"></script>
-    <script src="${prefix}vendor/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="${prefix}vendor/html2canvas/html2canvas.min.js"></script>
-    <script src="${prefix}vendor/jspdf/jspdf.umd.min.js"></script>
-`;
-}
-
-/** Genera index.html y plantilla/index.html con rutas fijas */
+/** Genera index.html con rutas fijas */
 async function buildHtml() {
   const indexTpl = await readFile(join(root, 'src/templates/index.html'), 'utf8');
   // defer en el <head>: la descarga empieza con el HTML y no bloquea
@@ -366,41 +346,10 @@ async function buildHtml() {
     <script defer src="./vendor/bootstrap/bootstrap.bundle.min.js"></script>
     <script defer src="./js/app.js"></script>
 `;
-  const bodyInject = '';
-
-  let indexHtml = indexTpl;
-  if (indexHtml.includes('</head>')) {
-    indexHtml = indexHtml.replace('</head>', headInject + '</head>');
-  } else {
-    indexHtml = headInject + indexHtml;
-  }
-  if (indexHtml.includes('</body>')) {
-    indexHtml = indexHtml.replace('</body>', bodyInject + '</body>');
-  } else {
-    indexHtml += bodyInject;
-  }
+  const indexHtml = indexTpl.includes('</head>') ?
+    indexTpl.replace('</head>', headInject + '</head>') :
+    headInject + indexTpl;
   await writeFile(join(dist, 'index.html'), indexHtml, 'utf8');
-
-  // Plantilla PDF
-  const plantillaTpl = await readFile(join(root, 'src/templates/plantillaPdf.html'), 'utf8');
-  const pHead = `
-    <link rel="stylesheet" href="../css/vendors.css">
-    <link rel="stylesheet" href="../css/plantilla.css">
-`;
-  const pBody = `
-${vendorScripts('../')}
-`;
-  let plantillaHtml = plantillaTpl;
-  if (plantillaHtml.includes('</head>')) {
-    plantillaHtml = plantillaHtml.replace('</head>', pHead + '</head>');
-  }
-  if (plantillaHtml.includes('</body>')) {
-    plantillaHtml = plantillaHtml.replace('</body>', pBody + '</body>');
-  } else {
-    plantillaHtml += pBody;
-  }
-  await mkdir(join(dist, 'plantilla'), { recursive: true });
-  await writeFile(join(dist, 'plantilla/index.html'), plantillaHtml, 'utf8');
 
   console.log('✓ html (scripts vendor locales)');
 }

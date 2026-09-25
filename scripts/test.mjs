@@ -102,7 +102,6 @@ async function bundleTests(specs) {
     plugins: [cssStubPlugin, jqueryStubPlugin],
     external: [
       'chai',
-      'chai-match',
       'decimal.js',
     ],
     define: {
