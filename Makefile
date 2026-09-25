@@ -19,13 +19,13 @@ lint:
 fix:
 	npm run lint -- --fix
 
-## Run the stable CI test suite
+## Run the unit suite
 test:
-	npm run test:ci
+	npm test
 
-## Run the full unit suite (includes known legacy failures)
+## Alias of test
 test-all:
-	npm run test:all
+	npm test
 
 ## Clean dist
 clean:

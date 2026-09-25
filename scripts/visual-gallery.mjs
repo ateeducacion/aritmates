@@ -22,6 +22,9 @@ import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 import { spawn } from 'node:child_process';
 
+// page.evaluate runs in the browser; document exists there.
+/* global document */
+
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
 const defaultOut = join(root, 'docs/migration/visual');
