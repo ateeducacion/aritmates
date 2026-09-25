@@ -1,13 +1,13 @@
 # Aritmates
 
-![Node.js](https://img.shields.io/badge/Node.js-18%2B-green)
+![Node.js](https://img.shields.io/badge/Node.js-24%2B-green)
 ![License: AGPL v3](https://img.shields.io/badge/License-AGPLv3-blue.svg)
 [![Deploy GitHub Pages](https://github.com/ateeducacion/aritmates/actions/workflows/pages.yml/badge.svg)](https://github.com/ateeducacion/aritmates/actions/workflows/pages.yml)
 
 Aplicación del **Área de Tecnología Educativa** para generar y practicar ejercicios de matemáticas.  
 Se publica como **sitio web estático** (HTML, CSS, JavaScript y assets locales).
 
-**Versión simplificada 1.3** — misma funcionalidad y apariencia; arquitectura y dependencias reducidas  
+**Versión simplificada 1.3** — la funcionalidad que el despliegue anterior ofrecía al usuario, con menos dependencias
 (basada en un desarrollo previo de Netex y Altia).
 
 **Demo (GitHub Pages):** <https://ateeducacion.github.io/aritmates/>
@@ -38,8 +38,10 @@ npm run dev      # build + http://127.0.0.1:9012/
 | `npm run build` | Prepara `dist/` para publicar |
 | `npm run dev` | Desarrollo local |
 | `npm run serve` | Sirve `dist/` (sin recompilar) |
-| `npm test` | Pruebas estables (CI) |
-| `npm run test:all` | Suite completa (incluye tests legacy) |
+| `npm test` | Suite de pruebas (la misma que bloquea el CI) |
+| `npm run lint` | ESLint; falla si hay una infracción |
+| `npm run e2e` | Flujos de portada, ejercicio y PDF (Playwright) |
+| `npm run coverage` | Resumen de cobertura |
 | `npm run visual` | Capturas multi-viewport (Playwright) |
 | `npm run check` | Verifica recursos en `dist/` |
 
@@ -52,7 +54,7 @@ npm run dev      # build + http://127.0.0.1:9012/
 | CDN / dependencias de UI pesadas | Todo local en `dist/` y `dist/vendor/` |
 | Node en producción | Solo hace falta Node para build y desarrollo |
 
-Documentación detallada: **[docs/SIMPLIFICACION.md](docs/SIMPLIFICACION.md)**.
+Documentación: **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**, **[docs/MATH-ENGINE.md](docs/MATH-ENGINE.md)**, **[docs/TESTING.md](docs/TESTING.md)**, **[docs/SIMPLIFICACION.md](docs/SIMPLIFICACION.md)**.
 
 ## Estructura
 
@@ -71,8 +73,7 @@ Publique el contenido de **`dist/`** en cualquier servidor de archivos estático
 (Nginx, Apache, GitHub Pages, etc.).
 
 - Rutas **relativas**: funciona en la raíz o en un subdirectorio (`/aritmates/`).
-- Ajuste `baseurl` en `src/config.json` si usa el envío de resultados a un backend  
-  (valor de ejemplo en el repositorio; cámbielo al de su entorno).
+- `baseurl` en `src/config.json` es la URL pública que se copia en el enlace para compartir ejercicios.
 
 ```json
 {
@@ -103,6 +104,8 @@ También se puede lanzar a mano: Actions → *Deploy GitHub Pages* → *Run work
 | jsPDF + html2canvas | PDF |
 | Font Awesome, Roboto, Material Icons | Tipografía e iconos |
 | combinations / shorthash | Reimplementados en `src/utils/` |
+
+`shallow-equal` ya no está: la comparación de arrays del código corto es una función de unas líneas.
 
 jQuery y Bootstrap se mantienen a propósito: están muy acoplados a la UI actual;  
 retirarlos no aporta valor frente al riesgo de regresión.

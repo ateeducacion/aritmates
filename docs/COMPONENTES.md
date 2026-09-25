@@ -3,6 +3,14 @@
 Referencia técnica de los custom elements propios.  
 Contexto general: [SIMPLIFICACION.md](./SIMPLIFICACION.md).
 
+Se mantienen. Cada uno es corto, cubre teclado y ARIA, y `app.js` y las
+plantillas hablan su API (`checked`, `value`, `change`). Sustituirlos por
+`<input>` o `<select>` nativos movería ese cableado y el CSS, no lo eliminaría.
+No se añade otra librería de componentes.
+
+`paper-item` es solo maquetación dentro de los paneles de ayuda. Sigue porque
+las plantillas de ayuda lo usan como bloque de texto.
+
 | Etiqueta | Fichero | Notas |
 |----------|---------|--------|
 | `paper-checkbox` | `src/components/paper-checkbox.js` | API `checked` / `disabled` / `change` |

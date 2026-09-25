@@ -32,9 +32,12 @@ internos de desarrollo.
 ## Pruebas
 
 ```bash
-npm test          # suite estable
-npm run test:all  # incluye tests legacy (pueden fallar)
+npm test
+npm run lint
+npm run e2e
 ```
+
+Node 24 o superior. El detalle está en [docs/TESTING.md](./docs/TESTING.md).
 
 ## Documentación de la simplificación
 
