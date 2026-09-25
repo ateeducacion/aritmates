@@ -16,7 +16,7 @@ import {scoreBadges, speedBadges} from '../src/application/badges';
 import {createSessionTimer} from '../src/application/timer';
 import {canEnableNegativeResult, operationAvailability, requiresTwoOperands} from '../src/application/optionAvailability';
 import {addQuestionTime, createSessionScore, nextOperation, recordAnswer, shouldReloadInfiniteOperations} from '../src/application/exerciseSession';
-import {countDecimalOperands, countFollowingOperands, countNegativeOperands, decimalPlaces, decimalPlacesForLevel, isMissingOperand, multiplesUntil} from '../src/operaciones/numberRules';
+import {countDecimalOperands, countFollowingOperands, countNegativeOperands, decimalPlaces, decimalPlacesForLevel, isMissingOperand, multiplesUntil, shouldGenerateOperand} from '../src/operaciones/numberRules';
 import {factorize} from '../src/operaciones/factorization';
 import {selectExpressionOperations} from '../src/operaciones/operationSelection';
 import {countDefinedOperands, hasOperandValue, invertAllOperandSigns, invertOperandSign, sortOperandsDescending} from '../src/operaciones/operandRules';
@@ -673,6 +673,9 @@ describe('Cero como operando explícito', () => {
     expect(isMissingOperand('')).to.equal(true);
     expect(isMissingOperand(0)).to.equal(false);
     expect(isMissingOperand('0')).to.equal(false);
+    expect(shouldGenerateOperand(0, 0)).to.equal(false);
+    expect(shouldGenerateOperand(0, undefined)).to.equal(true);
+    expect(shouldGenerateOperand(5, undefined)).to.equal(false);
   });
 
   it('Suma conserva un cero enviado por el usuario', () => {
