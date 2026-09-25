@@ -103,7 +103,9 @@ export class OptionsShortcode {
       let curOtn; // es un numero enviado como string p.e.:'42'
       const esNumber = typeof opcionSeleccionada === 'number';
       const esString = typeof opcionSeleccionada === 'string';
-      const esUndef = typeof opcionSelecionada === undefined;
+      // Typo and a typeof compare against the value undefined (always false).
+      // The branch only logs. Left as a no-op so the code path stays the same.
+      const esUndef = false;
       if ( esNumber || esString ) {
         posiblesOpciones = selectOptions[o];
         curOtn = posiblesOpciones.indexOf( opcionSeleccionada );

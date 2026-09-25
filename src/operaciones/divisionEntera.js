@@ -29,6 +29,7 @@ export default class DivisionEntera extends Operacion {
     resultadoNegativo,
     decimales,
     decimalesMaximo,
+    random,
   } = {}
   ) {
     const tag = '[DivisionEntera.constructor]';
@@ -70,6 +71,7 @@ export default class DivisionEntera extends Operacion {
       complementario: complementario,
       resultadoNegativo: resultadoNegativo,
       decimalesMaximo: decimalesMaximo,
+      random,
     });
 
     if ( debug ) {
@@ -167,7 +169,7 @@ export default class DivisionEntera extends Operacion {
       //       JSON.stringify(opciones, null, 2) );
       // }
     }
-    const mul = new Multiplicacion(Object.assign({}, opciones));
+    const mul = new Multiplicacion(Object.assign({random: this._rng}, opciones));
 
     // if ( debug ) {
     //   console.log(tag, 'pos incognita', mul.posicion_incognita );
@@ -244,27 +246,25 @@ export default class DivisionEntera extends Operacion {
           'this.operandos_por_usuario', this.operandos_por_usuario );
     }
 
-    if ( this.operandosIniciales && this.operandosIniciales!=[] ) {
+    if (this.operandosIniciales &&
+        this.operandosInicialesLength() !== this.cantidad_operandos
+    ) {
       if ( debug ) {
         console.log( tag,
             'operandos iniciales', this.operandosIniciales );
       }
-      if (this.operandosIniciales !== [] &&
-        this.operandosInicialesLength() !== this.cantidad_operandos
-      ) {
-        if ( debug ) {
-          console.log( tag,
-              'generar division con operandos iniciales',
-              this.operandosIniciales,
-              'this.operandos', this.operandos );
-        }
-        this._generarDivisionPorMultiplicacionInvertida();
-        if ( debug ) {
-          console.log( tag, 'operandos generados por mulInvert',
-              'this.operandos', this.operandos );
-        }
-        return;
+      if ( debug ) {
+        console.log( tag,
+            'generar division con operandos iniciales',
+            this.operandosIniciales,
+            'this.operandos', this.operandos );
       }
+      this._generarDivisionPorMultiplicacionInvertida();
+      if ( debug ) {
+        console.log( tag, 'operandos generados por mulInvert',
+            'this.operandos', this.operandos );
+      }
+      return;
     }
 
     if (!this.operandos_por_usuario) {
@@ -319,7 +319,7 @@ export default class DivisionEntera extends Operacion {
 
 
     // escojemos uno al azar como primer operador :
-    const rmul = Math.floor( Math.random()*(mulResultado.length-2)+2 );
+    const rmul = Math.floor( this.rng()*(mulResultado.length-2)+2 );
     this.operandos[0] = mulResultado[rmul];
     const divisor = rmul+2;
     const factores = this.factorizar(divisor);
@@ -343,7 +343,7 @@ export default class DivisionEntera extends Operacion {
 
       if ( maxSize>2 ) {
         // entre 1 y maxSize
-        groupSize = Math.round( Math.random()*(maxSize-1) ) +1;
+        groupSize = Math.round( this.rng()*(maxSize-1) ) +1;
       } else groupSize = 1;
       if ( operandosRestantes == 1 ) {
         groupSize = maxSize;
@@ -352,7 +352,7 @@ export default class DivisionEntera extends Operacion {
       let op;
       if ( nFactoresRestantes > 0) {
         for (let index = 0; index < groupSize; index++) {
-          const r = Math.floor(Math.random()*nFactoresRestantes);
+          const r = Math.floor(this.rng()*nFactoresRestantes);
           if ( debug ) console.log( tag, 'factor que se agrega a grupo:', factores[r] );
           grupoFactores[grupoN].push( factoresRestantes[r] );
           factoresRestantes.splice(r, 1);
@@ -407,9 +407,5 @@ export default class DivisionEntera extends Operacion {
     }
 
     return super.comprobarResultado();
-  }
-
-  getTipo() {
-    return OPERACIONES.DIVISION_ENTERA;
   }
 }

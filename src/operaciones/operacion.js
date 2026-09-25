@@ -1,6 +1,14 @@
-/* eslint-disable max-len */
+ 
+import '../debug.js';
 import {Decimal} from 'decimal.js';
 import {DEFAULTS} from '../defaultOptions';
+import {asRandom} from './random';
+import {
+  multiplyValues,
+  divideValues,
+  sumValues,
+  subtractValues,
+} from './arithmetic';
 /**
  * Clase base para las distintas operaciones ( ver Suma, Resta, Multiplicacion, Division )
  * 
@@ -58,7 +66,9 @@ export default class Operacion {
     decimales = false,
     decimalesMaximo,
     forzarSignos = [],
+    random,
   } = {}) {
+    this._rng = asRandom(random);
     const tag= '[Operacion]';
     if ( isNaN(cantidadOperandos) ) {
       cantidadOperandos = parseInt(cantidadOperandos);
@@ -215,6 +225,14 @@ export default class Operacion {
     }
   }
 
+  /**
+   * Next value from the injected generator (Math.random in production).
+   * @return {number}
+   */
+  rng() {
+    return this._rng();
+  }
+
   init() {
     const tag = this.id+'[operacion.js.init]';
     if ( debug ) {
@@ -262,7 +280,7 @@ export default class Operacion {
     const tag = '[Operacion._operandoUnidad]';
     if ( debug ) console.log(tag + ' index : '+ index );
     // numero al azar del 1-9
-    this.operandos[index] = Math.floor( (Math.random()*8)+1 );
+    this.operandos[index] = Math.floor( (this.rng()*8)+1 );
     if ( this.operandos[index] === 10 ) this.operandos[index]=9;
     if (this.permitir_negativos) this.operandos[index] *= this.getSigno();
 
@@ -695,7 +713,7 @@ export default class Operacion {
 
     // si no hay negativos cambia un operando al azar de signo
     if ( !negativos ) {
-      const opRand = Math.round(Math.random()*(this.cantidad_operandos-1));
+      const opRand = Math.round(this.rng()*(this.cantidad_operandos-1));
       this.operandos[opRand] *= -1;
     }
   }
@@ -984,13 +1002,13 @@ export default class Operacion {
     let posicion;
     if (incluirPosicionResultado) {
       // sale la mayoria de las veces la primera posicion
-      // posicion = Math.round( Math.random()*this.cantidad_operandos )+2
+      // posicion = Math.round( this.rng()*this.cantidad_operandos )+2
       posicion = this.getRandomMinMax(1, this.cantidad_operandos+1);
-      // Math.round( Math.random()*123412341234 ) %
+      // Math.round( this.rng()*123412341234 ) %
       // (this.cantidad_operandos+1) +1;
     } else {
       posicion = posicion = this.getRandomMinMax(1, this.cantidad_operandos);
-      // Math.round( Math.random()*123412341234 ) % this.cantidad_operandos + 1;
+      // Math.round( this.rng()*123412341234 ) % this.cantidad_operandos + 1;
     }
     if ( debug ) {
       console.log(
@@ -1009,7 +1027,7 @@ export default class Operacion {
    * @memberof Operacion
    */
   getSigno() { // 0 negativo; 1 positivo
-    let signo = Math.round(Math.random());
+    let signo = Math.round(this.rng());
     if (signo == 0) signo = -1;
     return signo;
   }
@@ -1044,7 +1062,7 @@ export default class Operacion {
     if ( debug ) console.log( this.id+tag, 'limiteSuperior', limiteSuperior );
     if ( debug ) console.log( this.id+tag, 'limiteInferior', limiteInferior );
     const desvio = Math.round(
-        Math.random()*(limiteSuperior-limiteInferior)+limiteInferior);
+        this.rng()*(limiteSuperior-limiteInferior)+limiteInferior);
 
     if ( debug ) console.log( this.id+tag, 'desvio', desvio );
     return desvio;
@@ -1062,7 +1080,7 @@ export default class Operacion {
   getRandomMinMax(min, max) {
     // const tag = '[Operacion.getRandomMinMax(min, max)]';
     // if ( debug ) console.log( this.id+tag, min, max );
-    return Math.round(Math.random()*(max-min)+min);
+    return Math.round(this.rng()*(max-min)+min);
   }
 
   /**
@@ -1157,20 +1175,7 @@ export default class Operacion {
   multiplicarValores(lista) {
     const tag = '[Operacion.multiplicarValores(lista)]';
     if ( debug ) console.log( this.id+tag, lista );
-    const decimales = lista.some( (x) => x%1 != 0 );
-    // multiplica los valores del array (para que este mas claro el código)
-    let r=1;
-    for (let index = 0; index < lista.length; index++) {
-      if ( undefined !== lista[index] && lista[index] !== null ) {
-        r = new Decimal(r).mul(lista[index]);
-      }
-    }
-    if (decimales) {
-      r = parseFloat( r.toFixed(4) );
-    } else {
-      r = parseInt(r);
-    }
-    return r;
+    return multiplyValues(lista);
   }
 
   /**
@@ -1182,17 +1187,7 @@ export default class Operacion {
   dividirValores(lista) {
     const tag = '[Operacion.dividirValores(lista)]';
     if ( debug ) console.log( this.id+tag, lista );
-    const decimales = lista.some( (x) => x%1 != 0 );
-    let r=lista[0];
-    for (let index = 1; index < lista.length; index++) {
-      r = new Decimal(r).div(lista[index]);
-    }
-    if (decimales) {
-      r = parseFloat( r.toFixed(4) );
-    } else {
-      r = parseInt(r);
-    }
-    return r;
+    return divideValues(lista);
   }
 
   /**
@@ -1204,20 +1199,7 @@ export default class Operacion {
   sumarValores(lista) {
     const tag = '[Operacion.sumarValores(lista)]';
     if ( debug ) console.log( this.id+tag, lista );
-    const decimales = lista.some( (x) => x%1 != 0 );
-    let r=0;
-    for (let index = 0; index < lista.length; index++) {
-      if ( undefined !== lista[index] && lista[index] !== null ) {
-        r = new Decimal(r).plus(lista[index]);
-      }
-    }
-
-    if (decimales) {
-      r = parseFloat( r.toFixed(4) );
-    } else {
-      r = parseInt(r);
-    }
-    return r;
+    return sumValues(lista);
   }
 
   /**
@@ -1229,24 +1211,10 @@ export default class Operacion {
   restarValores(lista) {
     const tag = '[Operacion.restarValores(lista)]';
     if ( debug ) console.log( this.id+tag, lista );
-    let r = lista[0] || 0;
-    if ( undefined === r ) {
-      // if ( debug ) {
+    if (lista[0] === undefined) {
       console.log( tag, 'r es undefined algo ha ido mal', lista );
-      // }
     }
-    const decimales = lista.some( (x) => x%1 != 0 );
-    for (let index = 1; index < lista.length; index++) {
-      if ( undefined !== lista[index] && lista[index] !== null ) {
-        r = new Decimal(r).minus(lista[index]);
-      }
-    }
-    if (decimales) {
-      r = parseFloat( r.toFixed(4) );
-    } else {
-      r = parseInt(r);
-    }
-    return r;
+    return subtractValues(lista);
   }
 
   /**
@@ -1291,10 +1259,15 @@ export default class Operacion {
     // console.log('factorizar llamado');
     const tag = '[operacion.js.factorizar]';
     if ( debug ) console.log( tag );
-    let num= Math.abs(numero);
+    let num = Math.abs(Number(numero));
     const factores = [];
-    let divisor=2;
-    let i=0; // para evitar que se cuelgue aqui
+    let divisor = 2;
+    let i = 0; // para evitar que se cuelgue aqui
+    // Non-integers never divide evenly by the prime table and used to walk
+    // off the end of it (Decimal received undefined). Round once; integers
+    // are unchanged.
+    if (!Number.isFinite(num)) return factores;
+    if (!Number.isInteger(num)) num = Math.round(num);
 
     // primos del 2 al 10 000 :
     const primos = [
@@ -1304,12 +1277,13 @@ export default class Operacion {
     while (num > 1 && i<this._MAXIMO_PRIMO) {
       // si es un numero primo lo agrega y sale del bucle :
       if (primos.indexOf(num) != -1) {
-        console.log(tag, 'es primo', num);
+        if ( debug ) console.log(tag, 'es primo', num);
         factores.push(num);
         break;
       }
 
       divisor = primos[primo_n];
+      if (divisor === undefined) break;
       // console.log('num:', num);
       // console.log('divisor:', divisor);
       const resto = new Decimal(num).modulo(divisor);
@@ -1512,7 +1486,7 @@ export default class Operacion {
       const maxSize = Math.ceil(nFactoresRestantes/operandosRestantes);
       let groupSize;
       if ( maxSize>1 ) {
-        groupSize = Math.round( Math.random()*(maxSize-1) ) +1;
+        groupSize = Math.round( this.rng()*(maxSize-1) ) +1;
       } else groupSize = 1;
       if ( debug ) {
         console.log( this.id+tag,
@@ -1526,7 +1500,7 @@ export default class Operacion {
       let op;
       if ( nFactoresRestantes > 0) {
         for (let index = 0; index < groupSize; index++) {
-          const r = Math.floor(Math.random()*nFactoresRestantes);
+          const r = Math.floor(this.rng()*nFactoresRestantes);
           if ( debug ) console.log( this.id+tag, 'factor que se agrega a grupo:', factores[r] );
           grupoFactores[grupoN].push( factoresRestantes[r] );
           factoresRestantes.splice(r, 1);

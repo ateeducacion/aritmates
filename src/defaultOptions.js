@@ -9,7 +9,7 @@ import $ from 'jquery';
  *  @class DEFAULTS
  */
 
-/* eslint-disable max-len */
+ 
 export const DEFAULTS = {
   version: '1.3.0',
   // URL pública de la app (sobrescribible con config.json → baseurl)

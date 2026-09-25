@@ -1,5 +1,13 @@
-/* eslint-disable no-extend-native */
-import {shallowEqualArrays} from 'shallow-equal';
+ 
+import './debug.js';
+
+function sameElements(array1, array2) {
+  if (array1.length !== array2.length) return false;
+  for (let i = 0; i < array1.length; i++) {
+    if (!Object.is(array1[i], array2[i])) return false;
+  }
+  return true;
+}
 /**
 * Funciones útiles
 */
@@ -89,7 +97,7 @@ class Utils {
     let flag = true;
 
     if (array1.length == array2.length) {
-      return shallowEqualArrays(array1, array2);
+      return sameElements(array1, array2);
     } else {
       return false;
     }
@@ -135,9 +143,10 @@ class Utils {
    * @param {Array} a items An array containing the items.
    * @return {Array}
    */
-  shuffle(a) {
+  shuffle(a, random = Math.random) {
+    const next = typeof random === 'function' ? random : Math.random;
     for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
+      const j = Math.floor(next() * (i + 1));
       [a[i], a[j]] = [a[j], a[i]];
     }
     return a;
@@ -232,31 +241,6 @@ class Utils {
     }
     return html;
   }
-
-  /**
-   * Comprueba si la cadena de texto enviada tiene el formato correcto para un 
-   * email
-   * @param {String} email
-   * @returns {bool} devuelve verdadero si es un email
-   */
-  isEmail(email) {
-    const regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    return regex.test(email);
-  }
-
-
-  // disable mousewheel on a input number field when in focus
-  // (to prevent Cromium browsers change the value when scrolling)
-  // function disableMouseWheelInputNumber() {
-  //   $('form').on('focus', 'input[type=number]', function(e) {
-  //     $(this).on('wheel.disableScroll', function(e) {
-  //       e.preventDefault();
-  //     });
-  //   });
-  //   $('form').on('blur', 'input[type=number]', function(e) {
-  //     $(this).off('wheel.disableScroll');
-  //   });
-  // }
 }
 
 // probe findArrayInArray de esta manera pero no va por que llama a this

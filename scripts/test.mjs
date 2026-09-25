@@ -2,9 +2,8 @@
  * Empaqueta y ejecuta las pruebas unitarias con Mocha (sin Webpack).
  *
  * Uso:
- *   node scripts/test.mjs           # suite CI (estable)
- *   node scripts/test.mjs --ci      # idem
- *   node scripts/test.mjs --all     # suite completa (incluye legacy flaky)
+ *   node scripts/test.mjs
+ *   node scripts/test.mjs --grep "suma"
  */
 import * as esbuild from 'esbuild';
 import { mkdir, writeFile, readdir, access } from 'node:fs/promises';
@@ -15,27 +14,7 @@ import { spawn } from 'node:child_process';
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
 
-/**
- * Specs que deben pasar siempre en CI.
- * No incluir operaciones.spec.js / OperacionMultiple / parentesis / etc.:
- * contienen casos legacy flaky o bugs documentados (docs/migration/).
- */
-const CI_SPECS = [
-  'characterization.spec.js',
-  'OptionsShortcode.spec.js',
-  'paper-checkbox.spec.js',
-  'mwc-switch.spec.js',
-  'paper-expansion-panel.spec.js',
-  'xy-slider.spec.js',
-  'paper-dropdown-menu.spec.js',
-  'paper-item.spec.js',
-  'mdc-compat.spec.js',
-  'utils-native.spec.js',
-];
-
-const args = new Set(process.argv.slice(2));
-const runAll = args.has('--all') || args.has('--legacy');
-const runCi = !runAll; // default = CI estable
+const args = process.argv.slice(2);
 
 async function exists(p) {
   try {
@@ -49,20 +28,7 @@ async function exists(p) {
 async function listSpecFiles() {
   const dir = join(root, 'test');
   const files = await readdir(dir);
-  const all = files.filter((f) => f.endsWith('.spec.js')).sort();
-
-  if (runAll) {
-    return all.map((f) => `./test/${f}`);
-  }
-
-  const selected = [];
-  for (const name of CI_SPECS) {
-    if (all.includes(name)) selected.push(`./test/${name}`);
-  }
-  if (selected.length === 0) {
-    throw new Error('No se encontró ninguna spec de CI en test/');
-  }
-  return selected;
+  return files.filter((f) => f.endsWith('.spec.js')).sort().map((f) => `./test/${f}`);
 }
 
 const cssStubPlugin = {
@@ -122,25 +88,37 @@ async function bundleTests(specs) {
   const entry = [
     'global.debug = false;',
     'global.window = global;',
+    // Legacy specs that do not pass `random` still call Math.random.
+    // One seeded source keeps that suite reproducible. Specs that pass
+    // their own generator are unaffected.
+    'Math.random = (function mulberry32(seed) {',
+    '  let state = seed >>> 0;',
+    '  return function() {',
+    '    state = (state + 0x6d2b79f5) | 0;',
+    '    let t = Math.imul(state ^ (state >>> 15), 1 | state);',
+    '    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;',
+    '    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;',
+    '  };',
+    '})(1);',
     ...specs.map((s) => `require(${JSON.stringify(join(root, s.slice(2)))});`),
   ].join('\n');
 
   const entryFile = join(dist, '_test-entry.js');
   await writeFile(entryFile, entry, 'utf8');
 
-  const outfile = join(dist, runAll ? 'testBundle.cjs' : 'testBundle.ci.cjs');
+  const outfile = join(dist, 'testBundle.cjs');
   await esbuild.build({
     entryPoints: [entryFile],
     bundle: true,
     platform: 'node',
     format: 'cjs',
     outfile,
+    sourcemap: true,
     plugins: [cssStubPlugin, jqueryStubPlugin],
     external: [
       'chai',
       'chai-match',
       'decimal.js',
-      'shallow-equal',
     ],
     define: {
       'process.env.NODE_ENV': '"test"',
@@ -155,7 +133,8 @@ async function bundleTests(specs) {
 function runMocha(bundlePath) {
   return new Promise((resolvePromise) => {
     const mocha = join(root, 'node_modules/mocha/bin/mocha.js');
-    const child = spawn(process.execPath, [mocha, bundlePath, '--timeout', '15000'], {
+    const extra = args.filter((a) => a !== '--coverage');
+    const child = spawn(process.execPath, [mocha, bundlePath, '--timeout', '15000', ...extra], {
       cwd: root,
       stdio: 'inherit',
     });
@@ -176,19 +155,15 @@ if (!(await exists(join(root, 'node_modules/esbuild/bin/esbuild')))) {
 }
 
 const specs = await listSpecFiles();
-const mode = runAll ? 'ALL (incluye legacy)' : 'CI (estable)';
-console.log(`Modo de pruebas: ${mode}\n`);
+console.log(`Modo de pruebas: suite única (${specs.length} ficheros)\n`);
 
 const bundlePath = await bundleTests(specs);
 const code = await runMocha(bundlePath);
 
 if (code === 0) {
-  console.log(`\n✓ tests OK (${mode})`);
-} else if (runAll) {
-  console.log('\nNota: la suite completa incluye fallos legacy documentados en docs/migration/.');
-  console.log('La suite CI (npm test / npm run test:ci) debe pasar en verde.');
+  console.log('\n✓ tests OK');
 } else {
-  console.error('\n✗ Falló la suite CI estable. No se deben mergear cambios que rompan characterization/operaciones.');
+  console.error('\n✗ Falló la suite.');
 }
 
 process.exit(code);

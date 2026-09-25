@@ -35,3 +35,6 @@ yarn-error.log*
 .vscode/
 dist-test/
 .playwright-mcp/
+test-results/
+playwright-report/
+coverage/

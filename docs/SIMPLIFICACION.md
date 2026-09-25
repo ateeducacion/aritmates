@@ -6,7 +6,7 @@ Resumen de la migración a aplicación web estática y la reducción de dependen
 ## Objetivos
 
 1. Publicar solo archivos estáticos (`dist/`), sin Node en producción.
-2. Mantener el **100 % de la funcionalidad** y la **misma apariencia**.
+2. Mantener la funcionalidad que el usuario tenía en el despliegue anterior.
 3. Eliminar Webpack/Babel y componentes de UI difíciles de mantener.
 4. Conservar códigos de configuración, PDF e impresión.
 
@@ -61,15 +61,16 @@ Los códigos de ejercicios/configuración son **compatibles** con versiones ante
 
 ## Qué no se ha hecho (a propósito)
 
-- **No** se elimina jQuery ni Bootstrap: alto acoplamiento y poco beneficio.
-- **No** se reescriben las reglas matemáticas ni se “arreglan” bugs de dominio en la migración.
-- La suite `npm run test:all` incluye tests legacy con fallos conocidos; el CI usa `npm test`.
+- **No** se elimina jQuery ni Bootstrap: siguen acoplados a la UI y quitarlos no la haría más simple.
+- El envío de resultados por correo se quitó en la versión 1.0.4, antes de esta simplificación. En `upstream` el PHP y el modal siguen en el código, pero la llamada está comentada y el despliegue de Medusa no muestra esa opción. No se ha reintroducido.
+- Los paréntesis y «resultado igual a» siguen en el motor y en el código corto. En la portada sus controles están desactivados (`ENABLE` en `defaultOptions.js`).
+- Hay una sola suite: `npm test`. El CI no ignora fallos.
 
 ## Despliegue y configuración
 
 1. `npm ci && npm run build`
 2. Publicar `dist/`
-3. Revisar `config.json` (sobre todo `baseurl` si hay backend de resultados)
+3. Revisar `config.json` (`baseurl` es la URL pública del enlace para compartir)
 
 En el repositorio, `baseurl` es `./` (rutas relativas). Cada entorno debe  
 poner su URL pública si el envío de resultados lo requiere. **No** commitear  

@@ -39,7 +39,7 @@ function calcPosibilidadesPorOpcion( opciones ) {
   });
 
   Object.keys(opciones.multi).forEach( (e) => {
-    // eslint-disable-next-line prefer-spread
+     
     const array = Array.apply(null, {length: opciones.multi[e]})
         .map(Number.call, Number);
     const combinaciones = combinations( array ).length;
@@ -50,11 +50,11 @@ function calcPosibilidadesPorOpcion( opciones ) {
   return posiciones;
 }
 
-// eslint-disable-next-line prefer-spread
+ 
 const array10al100 = Array.apply(null, {length: 10})
     .map(Number.call, Number).map( (x) => ((x+1)*10));
 
-// eslint-disable-next-line prefer-spread
+ 
 const array1al20 = Array.apply(null, {length: 20})
     .map(Number.call, Number).map( (x) => (x+1));
 

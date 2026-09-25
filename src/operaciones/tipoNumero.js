@@ -10,10 +10,8 @@ TIPO_NUMERO.getKey = function(value) {
   switch (value) {
     case TIPO_NUMERO.NATURAL:
       return 'NATURAL (positivos)';
-      break;
     case TIPO_NUMERO.ENTERO:
       return 'ENTERO (negativos)';
-      break;
   }
   for (const key in this) {
     if (this[key] == value) {

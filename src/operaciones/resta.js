@@ -30,6 +30,7 @@ export default class Resta extends Operacion {
     decimales = false,
     decimalesMaximo,
     forzarSignos,
+    random,
   } = {}) {
     const tag = '[Resta.constructor]';
     // const debug = true;
@@ -70,6 +71,7 @@ export default class Resta extends Operacion {
       decimales: decimales,
       decimalesMaximo: decimalesMaximo,
       forzarSignos: forzarSignos,
+      random,
     });
 
     if ( debug ) {
@@ -224,7 +226,7 @@ export default class Resta extends Operacion {
     //       // que ya lo hace en generarNumeroOperando
     //       // if ( resultadoAnterior < operando ) {
     //       //   this.operandos[index] = Math.round(
-    //       //       Math.random()*resultadoAnterior );
+    //       //       this.rng()*resultadoAnterior );
     //       // }
     //     }
     //   }
@@ -274,6 +276,14 @@ export default class Resta extends Operacion {
 
     const forzarOperandoNegativo = (this.forzarSignos[posicion]==-1);
     const ultimoOperando = this.cantidad_operandos-1;
+    // Sum of operands already placed after this position. The variable was
+    // read below without being declared (ReferenceError) whenever a forced
+    // negative sign met a negative result on the first operand.
+    let valOpPosteriores = 0;
+    const numOperandosPosteriores = this.numOperandosPosteriores(posicion);
+    if (numOperandosPosteriores > 0) {
+      valOpPosteriores = this.sumarValores(this.operandos);
+    }
     let opAnteriores;
     if (posicion>0) {
       opAnteriores = this.restarValores(
@@ -442,7 +452,7 @@ export default class Resta extends Operacion {
           }
 
           nuevoOperando = Math.round(
-              Math.random()*(maximoActual-minimo))+minimo;
+              this.rng()*(maximoActual-minimo))+minimo;
           if ( debug ) {
             console.log(this.id+tag, 'nuevo op (no ultimo operando)', nuevoOperando );
           }

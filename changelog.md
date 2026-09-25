@@ -1,5 +1,19 @@
 # Changelog
 
+## Refactorización del motor y calidad (post 1.3)
+
+No cambia la funcionalidad que el usuario tiene en la portada. Sigue siendo una aplicación estática, sin PHP.
+
+* El motor separa reglas y generación. `arithmetic.js`, `expression.js`, `evaluate.js` y `random.js` no dependen del DOM. Las operaciones combinadas ya no se evalúan con `eval`.
+* La generación acepta un generador inyectado (`seededRandom`). Sin él sigue usando `Math.random`.
+* Una sola suite: `npm test`. El CI ejecuta lint, tests, build, comprobación de `dist/` y tres flujos Playwright. Ya no hay `continue-on-error` ni `eslint … || true`.
+* Node soportado: 24 o superior, alineado con el workflow.
+* ESLint en `eslint.config.js`, solo reglas de corrección.
+* Correcciones que antes impedían construir el ejercicio o leer el resultado: variable `valOpPosteriores` sin declarar en la resta; `math.abs` tras quitar mathjs; factorización de no enteros; variable `resultado` inexistente en una multiplicación; constructor de operación combinada que devolvía un objeto plano; paréntesis de más de dos operandos; `opcionesGuardadas` invisible para la pantalla de resultados.
+* Eliminados `shallow-equal`, Babel, JSHint y los tests Selenium que ya no se ejecutaban.
+* El envío por correo no vuelve. Se quitó en 1.0.4 y en `upstream` la llamada estaba comentada.
+* Documentación: `docs/ARCHITECTURE.md`, `docs/MATH-ENGINE.md`, `docs/TESTING.md`.
+
 ## Documentación (post 1.3)
 
 * Eliminado árbol HTML histórico de JSDoc y `conf.js` (no formaba parte del build).

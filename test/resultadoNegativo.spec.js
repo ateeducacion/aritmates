@@ -4,6 +4,7 @@ import {TIPO_NUMERO} from '../src/operaciones/tipoNumero';
 import OperacionMultiple from '../src/operaciones/OperacionMultiple';
 
 import Resta from '../src/operaciones/resta';
+import {seededRandom} from '../src/operaciones/random';
 
 
 const chai = require('chai');
@@ -531,6 +532,7 @@ describe( 'resultadoNegativo ', ()=> {
             permitirNegativos: true,
             resultadoNegativo: true,
             parentesis: false,
+            random: seededRandom(1),
             tiposOperacion: [
               OPERACIONES.DIVISION,
               OPERACIONES.MULTIPLICACION,
@@ -554,6 +556,7 @@ describe( 'resultadoNegativo ', ()=> {
             permitirNegativos: true,
             resultadoNegativo: true,
             parentesis: false,
+            random: seededRandom(1),
             tiposOperacion: [
               OPERACIONES.SUMA,
               OPERACIONES.RESTA,
@@ -577,6 +580,7 @@ describe( 'resultadoNegativo ', ()=> {
             permitirNegativos: true,
             resultadoNegativo: true,
             parentesis: false,
+            random: seededRandom(1),
             tiposOperacion: [
               OPERACIONES.SUMA,
               OPERACIONES.RESTA,
@@ -605,6 +609,7 @@ describe( 'resultadoNegativo ', ()=> {
             permitirNegativos: true,
             resultadoNegativo: false,
             parentesis: false,
+            random: seededRandom(1),
             tiposOperacion: [
               OPERACIONES.DIVISION,
               OPERACIONES.MULTIPLICACION,
@@ -625,6 +630,7 @@ describe( 'resultadoNegativo ', ()=> {
             permitirNegativos: true,
             resultadoNegativo: false,
             parentesis: false,
+            random: seededRandom(1),
             tiposOperacion: [
               OPERACIONES.SUMA,
               OPERACIONES.RESTA,
@@ -657,6 +663,7 @@ describe( 'resultadoNegativo ', ()=> {
             permitirNegativos: true,
             resultadoNegativo: false,
             parentesis: false,
+            random: seededRandom(1),
             tiposOperacion: [
               OPERACIONES.SUMA,
               OPERACIONES.RESTA,

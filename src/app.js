@@ -1,6 +1,6 @@
 
-/* eslint-disable camelcase */
-/* eslint-disable no-invalid-this */
+ 
+ 
 /**
  *
  * Este es el js inicial que carga toda la aplicación, aqui 
@@ -33,7 +33,7 @@ import './components/paper-dropdown-menu.js';
 import './components/paper-item.js';
 // Checkbox nativo compatible (sustituye @polymer/paper-checkbox)
 import './components/paper-checkbox.js';
-// eslint-disable-next-line no-unused-vars
+ 
 // // # Fonts,Css,Img FILES ------------------------
 
 // no funcionaba con @material/..../mdc.dialog.css los he tenido que copiar
@@ -50,6 +50,7 @@ import '../css/print.scss';
 
 
 import {DEFAULTS, ENABLE} from './defaultOptions';
+import {scoreBadges, speedBadges} from './application/badges';
 import OPERACIONES from './operaciones/operaciones';
 import {TIPO_NUMERO} from './operaciones/tipoNumero';
 
@@ -936,6 +937,8 @@ function mostrarOperacion(op) {
   actualizarClaseAyuda(op.getTipo() );
 }
 
+let opcionesGuardadas;
+
 const score = {
   puntuacion: 0,
   completados: 0,
@@ -950,7 +953,7 @@ let examen;
 let currentOp;
 let tagOperacion;
 
-let modalCorreoHtml;
+
 
 function guardarOpciones(opciones) {
   let opcionesGuardadas = {};
@@ -963,7 +966,7 @@ function guardarOpciones(opciones) {
 
 // al pulsar iniciar cargar ejercicios
 $('#btnComenzar').on('click', function() {
-  // eslint-disable-next-line no-unused-vars
+   
   const dontstop = console.time('btnComenzar');
   // console.log('btnComenzar clicked ');
 
@@ -977,7 +980,7 @@ $('#btnComenzar').on('click', function() {
   }
 
   // copiar opciones en op
-  const opcionesGuardadas = guardarOpciones(opciones);
+  opcionesGuardadas = guardarOpciones(opciones);
 
   // visualizar opciones:
   // console.log(JSON.stringify(opcionesGuardadas, null, 2));
@@ -1272,12 +1275,6 @@ $('body').on('finEjercicios', (ev) => {
         console.timeEnd('resultados');
       });
 
-  // fetch('./templates/modal_envioCorreo.html')
-  //   .then((response) => response.text())
-  //   .then((template) => {
-  //     modalCorreoHtml = template;
-  //     console.log('cargado modal');
-  // });
 });
 
 function ocultarInsignias() {
@@ -1285,61 +1282,20 @@ function ocultarInsignias() {
 }
 
 function mostrarInsignias( puntuacion ) {
-  // console.log('puntuacion', puntuacion);
-  const maximo = 10;
-  // console.log('conciente', puntuacion/maximo );
-  if ( puntuacion == 0 ) return;
-  if ( puntuacion/maximo > 0) {
-    $('.part_resultado #rowInsignia .bronze').show();
-  }
-  if ( puntuacion/maximo > 0.25) {
-    $('.part_resultado #rowInsignia .silver').show();
-  }
-  if ( puntuacion/maximo > 0.5) {
-    $('.part_resultado #rowInsignia .gold').show();
-  }
-  if ( puntuacion/maximo > 0.75) {
-    $('.part_resultado #rowInsignia .platinum').show();
-  }
-  if ( puntuacion/maximo == 1) {
-    $('.part_resultado #rowInsignia .perfect').show();
+  const badges = scoreBadges(puntuacion, 10);
+  const row = '.part_resultado #rowInsignia';
+  for (const name of ['bronze', 'silver', 'gold', 'platinum', 'perfect']) {
+    if (badges[name]) $(`${row} .${name}`).show();
   }
 }
 function mostrarInsigniasTiempo( tiempoGastado, maximo ) {
-  // const tag = '[app.mostrarInsigniasTiempo]';
-  // console.log(tag, '(tiempoGastado,maximo)', tiempoGastado, maximo );
-  // Tiempo gastado viene como milisg y maximo como sg:
-  maximo = maximo * 1000;
-  // const cociente = tiempoGastado/maximo;
-  // console.log(
-  //     'tiempoGastado', tiempoGastado,
-  //     'maximo', maximo,
-  //     'cociente', cociente
-  // );
-  // 1 has gastado todo el tiempo
-  // .css('visibility', 'visible');
-  $('.part_resultado #rowVelocidad .bronze').css('visibility', 'hidden');
-  $('.part_resultado #rowVelocidad .silver').css('visibility', 'hidden');
-  $('.part_resultado #rowVelocidad .gold').css('visibility', 'hidden');
-  $('.part_resultado #rowVelocidad .platinum').css('visibility', 'hidden');
-
-  if ( tiempoGastado == maximo ) {
-    return;
+  const row = '.part_resultado #rowVelocidad';
+  for (const name of ['bronze', 'silver', 'gold', 'platinum']) {
+    $(`${row} .${name}`).css('visibility', 'hidden');
   }
-
-  // No ha gastado todo le tiempo
-  if ( tiempoGastado/maximo < 1 ) {
-    $('.part_resultado #rowVelocidad .bronze').css('visibility', 'visible');
-  }
-  // ha gastodo menos del 75%
-  if ( tiempoGastado/maximo < 0.75 ) {
-    $('.part_resultado #rowVelocidad .silver').css('visibility', 'visible');
-  }
-  if ( tiempoGastado/maximo < 0.5 ) {
-    $('.part_resultado #rowVelocidad .gold').css('visibility', 'visible');
-  }
-  if ( tiempoGastado/maximo < 0.20 ) {
-    $('.part_resultado #rowVelocidad .platinum').css('visibility', 'visible');
+  const badges = speedBadges(tiempoGastado, maximo);
+  for (const name of ['bronze', 'silver', 'gold', 'platinum']) {
+    if (badges[name]) $(`${row} .${name}`).css('visibility', 'visible');
   }
 }
 
@@ -1685,48 +1641,6 @@ $('#btnCompartirHoja').click( (ev) => {
     $('#button_ok').unbind();
   });
 });
-
-let textField;
-let textFieldComentario;
-
-/**
- * @desc -brir dialogo modal para con formulario para descargar resultados en pdf
- *        
- * @author Fernando Ramírez Pérez
- */
-function abrirModalCorreo() {
-  console.log('lanzado abrirModalCorreo()');
-  $('#button_ok').unbind();
-  console.log('unbind');
-  $('#modal-dialog-title')[0].innerHTML = 'Descargar Resultados';
-  $('#modal-dialog-content')[0].innerHTML = modalCorreoHtml;
-  console.log('cargado modal');
-
-  // $('.mdc-dialog__container input:text').focus(function() {
-  //   $(this).select();
-  // } );
-  // $('.mdc-dialog__container input:text').click(function() {
-  //   $(this).select();
-  // });
-
-  // textField = new MDCTextField(document.querySelector('.mdc-text-field'));
-  // se eliminaron estsos campos
-  // const textFieldCopia = new MDCTextField(document.querySelector('#tfCopia.mdc-text-field'));
-  // const textFieldAlumno = new MDCTextField(document.querySelector('#tfAlumno.mdc-text-field'));
-
-  // textFieldComentario = new MDCTextField(document.querySelector('.mdc-text-field.mdc-text-field--textarea'));
-  // console.log('text fields');
-
-
-  dialogShare.open();
-  // console.log('open dialogShare');
-
-  $('.modal-close').click( (ev) => {
-    dialogShare.close();
-    $('#button_ok').unbind();
-  });
-}
-
 
 // --- fin dialogos modales
 

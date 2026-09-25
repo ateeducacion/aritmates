@@ -2,6 +2,8 @@
 import OPERACIONES from '../src/operaciones/operaciones';
 import OperacionMultiple from '../src/operaciones/OperacionMultiple';
 import {TIPO_NUMERO} from '../src/operaciones/tipoNumero';
+import {seededRandom} from '../src/operaciones/random';
+import {assertSolved} from './assertExercise';
 
 const chai = require('chai');
 const expect = require('chai').expect;
@@ -331,32 +333,22 @@ describe('Operacion Multiple 4 operandos o mas', () => {
 
   it('4 operandos con +-/*',
       () => {
-        // debug = true;
-        const op = new OperacionMultiple(
-            {
-              nivel: 50,
-              cantidadOperandos: 4,
-              permitirNegativos: false,
-              tiposOperacion: [
-                OPERACIONES.SUMA,
-                OPERACIONES.RESTA,
-                OPERACIONES.MULTIPLICACION,
-                OPERACIONES.DIVISION_ENTERA,
-              ],
-            }
-        );
-        const actual = op.toString();
-
-        // que cumpla la regexp
-        // const expected = '/[0-9]+ [+*/-] [0-9]+ [+*/-] [0-9]+ [+*/-] [0-9]+ = [0-9]+/'; // => 5 - 5 = 0
-        // expect(actual).to.match(expected);
-        // let a = '1 + 3 + 34 / 12 = 34';
-        expect(actual).to.match(/^[0-9]+ [∙\/\-+] [0-9]+ [∙\/\-+] [0-9]+ [∙\/\-+] [0-9]+ = -?[0-9]+$/);
-        if ( debug ) console.log(actual);
-
-        // expect('some thing to test').to.match(/some (\w+) to test/).and.capture(0).equals('thing');
-        // 'Here in London'.should.match(/(here|there) in (\w+)/i).and.capture(1).equals('London');
-        debug = false;
+        const op = new OperacionMultiple({
+          nivel: 50,
+          cantidadOperandos: 4,
+          permitirNegativos: false,
+          random: seededRandom(1),
+          tiposOperacion: [
+            OPERACIONES.SUMA,
+            OPERACIONES.RESTA,
+            OPERACIONES.MULTIPLICACION,
+            OPERACIONES.DIVISION_ENTERA,
+          ],
+        });
+        assertSolved(op, {
+          operators: ['+', '∙', '/'],
+          allowNegativeResult: false,
+        });
       }
   );
 
@@ -390,24 +382,22 @@ describe('Operacion Multiple 4 operandos o mas', () => {
       () => {
         // debug = true;
 
-        const op = new OperacionMultiple(
-            {nivel: 50,
-              cantidadOperandos: 4,
-              tiposNumero: [TIPO_NUMERO.NATURAL],
-              tiposOperacion: [
-                OPERACIONES.SUMA,
-                OPERACIONES.RESTA,
-                OPERACIONES.MULTIPLICACION,
-                OPERACIONES.DIVISION_ENTERA,
-              ],
-            }
-        );
-        const actual = op.toString();
-        expect(actual).to.match(
-            /[0-9]+ [∙\/+\-] [0-9]+ [∙\/+\-] [0-9]+ [∙\/+\-] [0-9]+ = ([0-9])+$/
-        );
-        if ( debug ) console.log(actual);
-        debug = false;
+        const op = new OperacionMultiple({
+          nivel: 50,
+          cantidadOperandos: 4,
+          random: seededRandom(1),
+          tiposNumero: [TIPO_NUMERO.NATURAL],
+          tiposOperacion: [
+            OPERACIONES.SUMA,
+            OPERACIONES.RESTA,
+            OPERACIONES.MULTIPLICACION,
+            OPERACIONES.DIVISION_ENTERA,
+          ],
+        });
+        assertSolved(op, {
+          operators: ['+', '∙', '/'],
+          allowNegativeResult: false,
+        });
       }
   );
 
@@ -415,201 +405,175 @@ describe('Operacion Multiple 4 operandos o mas', () => {
       () => {
         // debug = true;
 
-        const op = new OperacionMultiple(
-            {nivel: 50,
-              cantidadOperandos: 5,
-              // permitirNegativos: false,
-              tiposOperacion: [
-                OPERACIONES.SUMA,
-                OPERACIONES.RESTA,
-                OPERACIONES.MULTIPLICACION,
-                OPERACIONES.DIVISION_ENTERA,
-              ],
-            }
-        );
-        const actual = op.toString();
-        expect(actual).to.match(
-            /[0-9]+ [∙\/+\-] [0-9]+ [∙\/+\-] [0-9]+ [∙\/+\-] [0-9]+ [∙\/+\-] [0-9]+ = ([0-9])+$/
-        );
-        console.log(actual);
-        debug = false;
+        const op = new OperacionMultiple({
+          nivel: 50,
+          cantidadOperandos: 5,
+          random: seededRandom(1),
+          tiposOperacion: [
+            OPERACIONES.SUMA,
+            OPERACIONES.RESTA,
+            OPERACIONES.MULTIPLICACION,
+            OPERACIONES.DIVISION_ENTERA,
+          ],
+        });
+        assertSolved(op, {operators: ['+', '∙', '/', '-']});
       }
   );
 
   it('A - B ∙ C - D / E',
       () => {
-        // FIXME: falla a veces, la op devuelve un resultado negativo!
-        // debug = true;
-        const op = new OperacionMultiple(
-            {nivel: 50,
-              cantidadOperandos: 5,
-              permitirNegativos: false,
-              tiposOperacion: [
-                OPERACIONES.RESTA,
-                OPERACIONES.MULTIPLICACION,
-                OPERACIONES.RESTA,
-                OPERACIONES.DIVISION_ENTERA,
-              ],
-              tiposOperacionAzar: false,
-            }
-        );
-        const actual = op.toString();
-        expect(actual).to.match(
-            /[0-9]+ \- [0-9]+ \* [0-9]+ \- [0-9]+ \/ [0-9]+ = [0-9]+$/);
-
-        // console.log('actual', actual);
-        debug = false;
+        const op = new OperacionMultiple({
+          nivel: 50,
+          cantidadOperandos: 5,
+          permitirNegativos: false,
+          random: seededRandom(175),
+          tiposOperacion: [
+            OPERACIONES.RESTA,
+            OPERACIONES.MULTIPLICACION,
+            OPERACIONES.RESTA,
+            OPERACIONES.DIVISION_ENTERA,
+          ],
+          tiposOperacionAzar: false,
+        });
+        assertSolved(op, {
+          operators: ['-', '∙', '-', '/'],
+          allowNegativeResult: false,
+        });
       }
   );
 
   it('A - B ∙ C / D',
       () => {
-        // FIXME: falla a veces, la op devuelve un resultado negativo!
-
-        // debug = true;
-        const op = new OperacionMultiple(
-            {nivel: 50,
-              cantidadOperandos: 4,
-              permitirNegativos: false,
-              tiposOperacion: [
-                OPERACIONES.RESTA,
-                OPERACIONES.MULTIPLICACION,
-                OPERACIONES.DIVISION_ENTERA,
-              ],
-              tiposOperacionAzar: false,
-            }
-        );
-        const actual = op.toString();
-        expect(actual).to.match(
-            /[0-9]+ \- [0-9]+ \* [0-9]+ \/ [0-9]+ = [0-9]+$/);
-
-        // console.log('actual', actual);
-        debug = false;
+        const op = new OperacionMultiple({
+          nivel: 50,
+          cantidadOperandos: 4,
+          permitirNegativos: false,
+          random: seededRandom(10),
+          tiposOperacion: [
+            OPERACIONES.RESTA,
+            OPERACIONES.MULTIPLICACION,
+            OPERACIONES.DIVISION_ENTERA,
+          ],
+          tiposOperacionAzar: false,
+        });
+        assertSolved(op, {
+          operators: ['-', '∙', '/'],
+          allowNegativeResult: false,
+        });
       }
   );
 
   it('A / B ∙ C / D - E',
       () => {
         // debug = true;
-        const op = new OperacionMultiple(
-            {nivel: 50,
-              cantidadOperandos: 5,
-              permitirNegativos: false,
-              tiposOperacion: [
-                OPERACIONES.DIVISION_ENTERA,
-                OPERACIONES.MULTIPLICACION,
-                OPERACIONES.DIVISION_ENTERA,
-                OPERACIONES.RESTA,
-              ],
-              tiposOperacionAzar: false,
-            }
-        );
-        const actual = op.toString();
-        expect(actual).to.match(
-            /[0-9]+ \/ [0-9]+ \* [0-9]+ \/ [0-9]+ \- [0-9]+ = [0-9]+$/);
-
-        // console.log('actual', actual);
-        debug = false;
+        const op = new OperacionMultiple({
+          nivel: 50,
+          cantidadOperandos: 5,
+          permitirNegativos: false,
+          random: seededRandom(1),
+          tiposOperacion: [
+            OPERACIONES.DIVISION_ENTERA,
+            OPERACIONES.MULTIPLICACION,
+            OPERACIONES.DIVISION_ENTERA,
+            OPERACIONES.RESTA,
+          ],
+          tiposOperacionAzar: false,
+        });
+        assertSolved(op, {
+          operators: ['/', '∙', '/', '-'],
+          allowNegativeResult: false,
+        });
       }
   );
 
   it('A - B - C ∙ D - E',
       () => {
         // debug = true;
-        const op = new OperacionMultiple(
-            {nivel: 50,
-              cantidadOperandos: 5,
-              permitirNegativos: false,
-              tiposOperacion: [
-                OPERACIONES.RESTA,
-                OPERACIONES.RESTA,
-                OPERACIONES.MULTIPLICACION,
-                OPERACIONES.RESTA,
-              ],
-              tiposOperacionAzar: false,
-            }
-        );
-        const actual = op.toString();
-        expect(actual).to.match(
-            /[0-9]+ \- [0-9]+ \- [0-9]+ [∙] [0-9]+ \- [0-9]+ = [0-9]+$/);
-
-        // console.log('actual', actual);
-        debug = false;
+        const op = new OperacionMultiple({
+          nivel: 50,
+          cantidadOperandos: 5,
+          permitirNegativos: false,
+          random: seededRandom(3),
+          tiposOperacion: [
+            OPERACIONES.RESTA,
+            OPERACIONES.RESTA,
+            OPERACIONES.MULTIPLICACION,
+            OPERACIONES.RESTA,
+          ],
+          tiposOperacionAzar: false,
+        });
+        assertSolved(op, {
+          operators: ['-', '-', '∙', '-'],
+          allowNegativeResult: false,
+        });
       }
   );
 
   it('A - B ∙ C - D',
       () => {
         // debug = true;
-        const op = new OperacionMultiple(
-            {nivel: 50,
-              cantidadOperandos: 4,
-              permitirNegativos: false,
-              tiposOperacion: [
-                OPERACIONES.RESTA,
-                OPERACIONES.MULTIPLICACION,
-                OPERACIONES.RESTA,
-              ],
-              tiposOperacionAzar: false,
-            }
-        );
-        const actual = op.toString();
-        expect(actual).to.match(
-            /[0-9]+ [-] [0-9]+ [∙] [0-9]+ [-] [0-9]+ = [0-9]+$/);
-
-        // console.log('actual', actual);
-        debug = false;
+        const op = new OperacionMultiple({
+          nivel: 50,
+          cantidadOperandos: 4,
+          permitirNegativos: false,
+          random: seededRandom(1),
+          tiposOperacion: [
+            OPERACIONES.RESTA,
+            OPERACIONES.MULTIPLICACION,
+            OPERACIONES.RESTA,
+          ],
+          tiposOperacionAzar: false,
+        });
+        assertSolved(op, {
+          operators: ['-', '∙', '-'],
+          allowNegativeResult: false,
+        });
       }
   );
 
   it('A - B - C / D - E',
       () => {
         debug = false;
-        const op = new OperacionMultiple(
-            {nivel: 50,
-              cantidadOperandos: 5,
-              // permitirNegativos: false,
-              tiposNumero: [TIPO_NUMERO.NATURAL],
-              tiposOperacion: [
-                OPERACIONES.RESTA,
-                OPERACIONES.RESTA,
-                OPERACIONES.DIVISION_ENTERA,
-                OPERACIONES.RESTA,
-              ],
-              tiposOperacionAzar: false,
-            }
-        );
-        const actual = op.toString();
-        expect(actual).to.match(
-            /[0-9]+ \- \( [0-9]+ \- [0-9]+ \/ [0-9]+ \- [0-9]+ = [0-9]+$/);
-
-        console.log('actual', actual);
-        debug = false;
+        const op = new OperacionMultiple({
+          nivel: 50,
+          cantidadOperandos: 5,
+          random: seededRandom(2),
+          tiposNumero: [TIPO_NUMERO.NATURAL],
+          tiposOperacion: [
+            OPERACIONES.RESTA,
+            OPERACIONES.RESTA,
+            OPERACIONES.DIVISION_ENTERA,
+            OPERACIONES.RESTA,
+          ],
+          tiposOperacionAzar: false,
+        });
+        assertSolved(op, {
+          operators: ['-', '-', '/', '-'],
+          allowNegativeResult: false,
+        });
       }
   );
   it('A ∙ B / C - D - E',
       () => {
         // debug = true;
 
-        const op = new OperacionMultiple(
-            {nivel: 50,
-              cantidadOperandos: 5,
-              permitirNegativos: false,
-              tiposOperacion: [
-                OPERACIONES.MULTIPLICACION,
-                OPERACIONES.DIVISION_ENTERA,
-                OPERACIONES.RESTA,
-                OPERACIONES.RESTA,
-              ],
-              tiposOperacionAzar: false,
-            }
-        );
-        const actual = op.toString();
-        expect(actual).to.match(
-            /[0-9]+ \* [0-9]+ [∙\/] [0-9]+ \- [0-9]+ \- [0-9]+ = [0-9]+$/);
-
-        // console.log('actual', actual);
-        debug = false;
+        const op = new OperacionMultiple({
+          nivel: 50,
+          cantidadOperandos: 5,
+          permitirNegativos: false,
+          random: seededRandom(1),
+          tiposOperacion: [
+            OPERACIONES.MULTIPLICACION,
+            OPERACIONES.DIVISION_ENTERA,
+            OPERACIONES.RESTA,
+            OPERACIONES.RESTA,
+          ],
+          tiposOperacionAzar: false,
+        });
+        assertSolved(op, {
+          operators: ['∙', '/', '-', '-'],
+          allowNegativeResult: false,
+        });
       }
   );
 
@@ -617,26 +581,20 @@ describe('Operacion Multiple 4 operandos o mas', () => {
       () => {
         // debug = true;
 
-        const op = new OperacionMultiple(
-            {
-              nivel: 50,
-              cantidadOperandos: 5,
-              tiposOperacionAzar: false,
-              tiposOperacion: [
-                OPERACIONES.RESTA,
-                OPERACIONES.RESTA,
-                OPERACIONES.MULTIPLICACION,
-                OPERACIONES.RESTA,
-              ],
-              permitirNegativos: true,
-            }
-        );
-        const actual = op.toString();
-
-        expect(actual).to.match(
-            /^-?[0-9]+ [-] \(?-?[0-9]+\)? [-] \(?-?[0-9]+\)? [∙] -?[0-9]+ [-] \(?-?[0-9]+\)? = -?[0-9]+$/);
-        // console.log('actual', actual);
-        debug = false;
+        const op = new OperacionMultiple({
+          nivel: 50,
+          cantidadOperandos: 5,
+          tiposOperacionAzar: false,
+          random: seededRandom(1),
+          tiposOperacion: [
+            OPERACIONES.RESTA,
+            OPERACIONES.RESTA,
+            OPERACIONES.MULTIPLICACION,
+            OPERACIONES.RESTA,
+          ],
+          permitirNegativos: true,
+        });
+        assertSolved(op, {operators: ['-', '-', '∙', '-']});
       }
   );
 
@@ -644,28 +602,20 @@ describe('Operacion Multiple 4 operandos o mas', () => {
       () => {
         // debug = true;
 
-        const op = new OperacionMultiple(
-            {
-              nivel: 50,
-              cantidadOperandos: 5,
-              tiposOperacionAzar: false,
-              tiposOperacion: [
-                OPERACIONES.RESTA,
-                OPERACIONES.RESTA,
-                OPERACIONES.DIVISION_ENTERA,
-                OPERACIONES.RESTA,
-              ],
-              permitirNegativos: true,
-            }
-        );
-        const actual = op.toString();
-
-        expect(actual).to.match(
-            /-?[0-9]+ [-] \(?-?[0-9]+\)? [-] \(?-?[0-9]+\)? [\/] -?[0-9]+ [-] \(?-?[0-9]+\)? = -?[0-9]+$/
-        );
-
-        // console.log('actual', actual);
-        debug = false;
+        const op = new OperacionMultiple({
+          nivel: 50,
+          cantidadOperandos: 5,
+          tiposOperacionAzar: false,
+          random: seededRandom(2),
+          tiposOperacion: [
+            OPERACIONES.RESTA,
+            OPERACIONES.RESTA,
+            OPERACIONES.DIVISION_ENTERA,
+            OPERACIONES.RESTA,
+          ],
+          permitirNegativos: true,
+        });
+        assertSolved(op, {operators: ['-', '-', '/', '-']});
       }
   );
 });
@@ -1154,27 +1104,21 @@ describe('Operacion Multiple', () => {
 
   it('!! suma y resta, con numeros negativos ', () => {
     debug = false;
-    const op = new OperacionMultiple(
-        {
-          nivel: 11,
-          cantidadOperandos: 3,
-          tiposOperacionAzar: false,
-          tiposOperacion: [
-            OPERACIONES.RESTA,
-            OPERACIONES.SUMA,
-          ],
-          tiposNumero: [
-            TIPO_NUMERO.ENTERO,
-          ],
-        }
-    );
-    const actual = op.operandos;
-    console.log('operandos', op.operandos);
-    expect( actual ).to.satisfy( (x)=>{
-      return x.some( (operando) => {
-        return operando < 0;
-      });
-    }, actual );
+    const op = new OperacionMultiple({
+      nivel: 11,
+      cantidadOperandos: 3,
+      tiposOperacionAzar: false,
+      random: seededRandom(1),
+      tiposOperacion: [
+        OPERACIONES.RESTA,
+        OPERACIONES.SUMA,
+      ],
+      tiposNumero: [
+        TIPO_NUMERO.ENTERO,
+      ],
+    });
+    expect(op.operandos.some((operando) => operando < 0)).to.equal(true);
+    assertSolved(op, {operators: ['-', '+']});
   });
 
   it('!! suma y resta, con x10', () => {

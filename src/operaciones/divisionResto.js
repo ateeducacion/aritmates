@@ -27,6 +27,7 @@ export default class DivisionResto extends DivisionEntera {
     nivel, lower_bound, upper_bound, cantidadOperandos, permitirNegativos,
     operandos=[], incognita, enfocado, posicion_nivel,
     multiplo10 = false, multiplo100 = false, complementario = false,
+    random,
   } = {}) {
     const tag = '[DivisionResto] ';
     if ( debug ) console.log(tag);
@@ -49,6 +50,7 @@ export default class DivisionResto extends DivisionEntera {
       operandos,
       incognita, enfocado, posicion_nivel,
       multiplo10, multiplo100, complementario,
+      random,
     });
 
     if ( cantidadOperandosEnviados>2 ) {
@@ -132,7 +134,7 @@ export default class DivisionResto extends DivisionEntera {
           minMultiplo = 1;
         }
 
-        this.resto = Math.round(Math.random()*(minMultiplo-1))+1;
+        this.resto = Math.round(this.rng()*(minMultiplo-1))+1;
         if ( debug ) console.log(tag, 'op por usuario, resto: ', this.resto );
       }
 
