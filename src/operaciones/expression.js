@@ -18,6 +18,13 @@ export const MUL_DIV = [
 
 export const SUM_SUB = [OPERACIONES.SUMA, OPERACIONES.RESTA];
 
+export const DIVISIONS = [
+  OPERACIONES.DIVISION,
+  OPERACIONES.DIVISION_ENTERA,
+  OPERACIONES.DIVISION_DECIMAL,
+  OPERACIONES.DIVISION_RESTO,
+];
+
 export function symbolFor(operacion) {
   switch (operacion) {
     case OPERACIONES.SUMA:

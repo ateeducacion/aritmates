@@ -78,7 +78,7 @@ eliminado. No cambia los ejercicios: no se ejecutaba.
 
 ## `indexOf(RESTA != -1)`
 
-`convertirSumarYRestarenSuma` y `convertirSumasEnResta` comprueban la resta o
+`subtractionsAsNegativeSums` y `additionsAsSubtractions` comprueban la resta o
 la suma con `indexOf(OPERACIONES.RESTA != -1)`. Esa comparación es siempre
 verdadera (`-1` es truthy), así que la rama alternativa no se usa. Corregirla
 haría que, cuando no hay restas, el resultado compartiera el array del
