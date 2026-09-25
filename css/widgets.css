@@ -45,6 +45,8 @@ paper-dropdown-menu paper-listbox paper-item.iron-selected{
 
 .button {
     display: block;
+    border: 0;
+    color: var(--textColor);
     position: relative;
     margin: 0 auto;
     min-width: var(--lado);
