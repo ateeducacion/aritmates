@@ -146,6 +146,7 @@ export default [
       'src/operaciones/expression.js',
       'src/operaciones/random.js',
       'src/operaciones/numberRules.js',
+      'src/operaciones/factorization.js',
       'src/operaciones/operaciones.js',
       'src/operaciones/tipoNumero.js',
       'src/pdfLibs.js',
@@ -154,6 +155,21 @@ export default [
     rules: {
       'no-unused-vars': ['error', {argsIgnorePattern: '^_', varsIgnorePattern: '^_'}],
       'no-console': ['error', {allow: ['warn', 'error']}],
+    },
+  },
+  {
+    files: [
+      'src/operaciones/suma.js',
+      'src/operaciones/resta.js',
+      'src/operaciones/multiplicacion.js',
+      'src/operaciones/division.js',
+      'src/operaciones/divisionEntera.js',
+      'src/operaciones/divisionResto.js',
+      'src/operaciones/divisionDecimales.js',
+      'src/generarExamen.js',
+    ],
+    rules: {
+      'no-unused-vars': ['error', {argsIgnorePattern: '^_', varsIgnorePattern: '^_'}],
     },
   },
   {

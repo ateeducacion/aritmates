@@ -190,7 +190,7 @@ export default class GenerarExamen {
 
     const tiposNumeroTxt = function() {
       const tipos = [];
-      tiposNumero.forEach((val, i) =>{
+      tiposNumero.forEach((val) =>{
         tipos.push( TIPO_NUMERO.getKey(val) );
       });
       return tipos;
@@ -263,7 +263,8 @@ export default class GenerarExamen {
       }
     }
 
-    // TODO: comprobar que existe una de cada
+    // Cuando hay varios tipos, las primeras operaciones cubren uno de cada
+    // tipo siempre que la cantidad solicitada sea al menos su número.
   }
 
   _addOperacionesPorTipo(nombre) {
@@ -480,7 +481,7 @@ export default class GenerarExamen {
     this.errors.forEach((e) => {
       txt += e.error+': ' + '\n';
       txt += e.msg+'. \n';
-      this.operacionesExamen.forEach((e, i) => {
+      this.operacionesExamen.forEach((e) => {
         txt += 'Afecta a : ' + e.toString() +', ';
       });
       txt += '\n';

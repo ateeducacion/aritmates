@@ -76,9 +76,9 @@ import {valoresNiveles} from './helpers';
 
 import { keyCrono, valoresCrono, keyNivel, textoCrono } from './PortadaUI';
 
-// TODO: refactor , la mayoria de las cosas de este fichero se deberian separar
-// en uno o varios archivos como por ejemplo portadaUi.js ejerciosUi.js y resultadosUi.js
-// opcines igual abria que movelo a otro archivo y en este meter imports a todo lo que llama 
+// La refactorización es incremental: resultados, temporizador, reglas de opciones
+// y estado de sesión viven en src/application. Este archivo conserva el cableado
+// con el DOM y los eventos mientras se extraen responsabilidades completas.
 
 window.jQuery = $;
 const sessionTimer = createSessionTimer({

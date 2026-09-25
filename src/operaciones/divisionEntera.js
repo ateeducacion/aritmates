@@ -27,7 +27,6 @@ export default class DivisionEntera extends Operacion {
     multiplo100 = false,
     complementario = false,
     resultadoNegativo,
-    decimales,
     decimalesMaximo,
     random,
   } = {}

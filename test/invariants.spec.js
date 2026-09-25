@@ -2,6 +2,7 @@ import Suma from '../src/operaciones/suma';
 import Resta from '../src/operaciones/resta';
 import Multiplicacion from '../src/operaciones/multiplicacion';
 import DivisionEntera from '../src/operaciones/divisionEntera';
+import OperacionMultiple from '../src/operaciones/OperacionMultiple';
 import {asRandom, seededRandom, setDefaultRandom} from '../src/operaciones/random';
 import {evaluateArithmetic} from '../src/operaciones/evaluate';
 import {
@@ -360,5 +361,73 @@ describe('Estado de sesión de ejercicios', () => {
       currentIndex: 9,
       reloadEvery: 10,
     })).to.equal(false);
+  });
+});
+
+
+describe('Invariantes de OperacionMultiple', () => {
+  it('100 semillas mantienen coherencia matemática también cuando se rechaza una generación', () => {
+    let accepted = 0;
+    let rejected = 0;
+
+    for (let seed = 1; seed <= 100; seed++) {
+      const op = new OperacionMultiple({
+        nivel: 20,
+        cantidadOperandos: 3,
+        tiposOperacion: [
+          OPERACIONES.SUMA,
+          OPERACIONES.RESTA,
+          OPERACIONES.MULTIPLICACION,
+        ],
+        tiposOperacionAzar: true,
+        tiposNumero: [TIPO_NUMERO.NATURAL],
+        random: seededRandom(seed),
+      });
+
+      const expression = op.toString(false).replace(/∙/g, '*');
+      const evaluated = evaluateArithmetic(expression);
+
+      if (op.resultado === false) {
+        rejected++;
+        expect(
+            evaluated,
+            `seed=${seed}; expression=${expression}; resultadoPre=${op.resultadoPre}`,
+        ).to.equal(Number(op.resultadoPre));
+      } else {
+        accepted++;
+        expect(
+            evaluated,
+            `seed=${seed}; expression=${expression}; resultado=${op.resultado}`,
+        ).to.equal(Number(op.resultado));
+      }
+
+      expect(op.operandos).to.have.length(3);
+    }
+
+    expect(accepted).to.be.greaterThan(0);
+    expect(rejected).to.be.greaterThan(0);
+    expect(accepted + rejected).to.equal(100);
+  });
+
+  it('una semilla reproduce exactamente una operación múltiple', () => {
+    const options = {
+      nivel: 20,
+      cantidadOperandos: 4,
+      tiposOperacion: [
+        OPERACIONES.SUMA,
+        OPERACIONES.RESTA,
+        OPERACIONES.MULTIPLICACION,
+      ],
+      tiposOperacionAzar: true,
+      tiposNumero: [TIPO_NUMERO.NATURAL],
+    };
+
+    const first = new OperacionMultiple({...options, random: seededRandom(42)});
+    const second = new OperacionMultiple({...options, random: seededRandom(42)});
+
+    expect(second.operandos).to.deep.equal(first.operandos);
+    expect(second.tiposOperacion).to.deep.equal(first.tiposOperacion);
+    expect(second.resultado).to.equal(first.resultado);
+    expect(second.toString(false)).to.equal(first.toString(false));
   });
 });

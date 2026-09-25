@@ -16,7 +16,7 @@ export default class Division {
     nivel, lower_bound, upper_bound, cantidadOperandos, permitirNegativos,
     operandos = [], incognita = cantidadOperandos + 1, enfocado, posicion_nivel,
     multiplo10 = false,
-    multiplo100 = false, complementario = false, resultado = null,
+    multiplo100 = false, complementario = false,
     resultadoNegativo, decimales = false, decimalesMaximo, random} = {}
   ) {
     const tag = '[Division]';
