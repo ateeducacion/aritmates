@@ -9,8 +9,10 @@ import {
   groupSimilarOperations,
 } from '../src/operaciones/expression';
 import OPERACIONES from '../src/operaciones/operaciones';
+import {TIPO_NUMERO} from '../src/operaciones/tipoNumero';
 import {scoreBadges, speedBadges} from '../src/application/badges';
 import {createSessionTimer} from '../src/application/timer';
+import {canEnableNegativeResult, operationAvailability, requiresTwoOperands} from '../src/application/optionAvailability';
 import {countFollowingOperands, decimalPlaces, multiplesUntil} from '../src/operaciones/numberRules';
 
 const expect = require('chai').expect;
@@ -226,5 +228,68 @@ describe('Temporizador de sesión', () => {
     expect(cancelled).to.deep.equal([1]);
     timer.stop();
     expect(cancelled).to.deep.equal([1, 2]);
+  });
+});
+
+
+describe('Disponibilidad de opciones', () => {
+  it('identifica las divisiones que restringen tipos de número', () => {
+    expect(operationAvailability([OPERACIONES.DIVISION])).to.deep.equal({
+      onlyDivision: true,
+      disableNegativeNumbers: true,
+      disableDecimals: false,
+    });
+    expect(operationAvailability([OPERACIONES.DIVISION_RESTO])).to.deep.equal({
+      onlyDivision: true,
+      disableNegativeNumbers: true,
+      disableDecimals: true,
+    });
+  });
+
+  it('limita a dos operandos en división decimal o con resto', () => {
+    expect(requiresTwoOperands(
+        [OPERACIONES.DIVISION],
+        [TIPO_NUMERO.DECIMAL],
+    )).to.equal(true);
+    expect(requiresTwoOperands(
+        [OPERACIONES.SUMA],
+        [TIPO_NUMERO.DECIMAL],
+    )).to.equal(false);
+    expect(requiresTwoOperands(
+        [OPERACIONES.DIVISION_RESTO],
+        [TIPO_NUMERO.NATURAL],
+    )).to.equal(true);
+  });
+
+  it('permite resultado negativo con las mismas reglas de la interfaz', () => {
+    expect(canEnableNegativeResult({
+      negativeNumbersSelected: true,
+      sumSelected: true,
+      subtractionSelected: false,
+      divisionSelected: false,
+      multiplicationSelected: false,
+      onlyDivision: false,
+      operandCount: 2,
+    })).to.equal(true);
+
+    expect(canEnableNegativeResult({
+      negativeNumbersSelected: false,
+      sumSelected: false,
+      subtractionSelected: true,
+      divisionSelected: false,
+      multiplicationSelected: false,
+      onlyDivision: false,
+      operandCount: 2,
+    })).to.equal(true);
+
+    expect(canEnableNegativeResult({
+      negativeNumbersSelected: true,
+      sumSelected: false,
+      subtractionSelected: false,
+      divisionSelected: true,
+      multiplicationSelected: false,
+      onlyDivision: true,
+      operandCount: 2,
+    })).to.equal(false);
   });
 });
