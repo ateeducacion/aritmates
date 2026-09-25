@@ -142,6 +142,7 @@ main {
         right: -2px;
         height: 40px;
         width: 40px;
+        padding: 0;
     }
 
     .fondo {
@@ -217,7 +218,8 @@ main {
     position: absolute;
     bottom: -2.5rem;
     right: 0;
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: auto;
     opacity: 1;
 }

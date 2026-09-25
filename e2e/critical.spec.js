@@ -46,6 +46,43 @@ test('la hoja de ejercicios abre la vista previa', async ({page}) => {
   await expect(page.locator('#preview #print')).toBeVisible();
 });
 
+
+test('la portada conserva el tamaño de la hoja y la esquina plegada', async ({page}) => {
+  await page.setViewportSize({width: 1366, height: 768});
+  await page.goto('/');
+
+  const sheet = page.locator('#primeraCaja .hoja');
+  await expect(sheet).toBeVisible();
+  const sheetLayout = await sheet.evaluate((image) => {
+    const rect = image.getBoundingClientRect();
+    const columnRect = image.parentElement.getBoundingClientRect();
+    return {
+      renderedWidth: rect.width,
+      naturalWidth: image.naturalWidth,
+      columnWidth: columnRect.width,
+    };
+  });
+  expect(sheetLayout.renderedWidth).toBeLessThanOrEqual(sheetLayout.naturalWidth + 1);
+  expect(sheetLayout.renderedWidth).toBeLessThan(sheetLayout.columnWidth);
+
+  const corner = page.locator('#hoja-opciones > .esquinaHoja');
+  await expect(corner).toBeVisible();
+  const cornerLayout = await corner.evaluate((image) => {
+    const style = getComputedStyle(image);
+    const rect = image.getBoundingClientRect();
+    return {
+      width: rect.width,
+      height: rect.height,
+      paddingLeft: style.paddingLeft,
+      paddingRight: style.paddingRight,
+    };
+  });
+  expect(cornerLayout.width).toBeCloseTo(40, 0);
+  expect(cornerLayout.height).toBeCloseTo(40, 0);
+  expect(cornerLayout.paddingLeft).toBe('0px');
+  expect(cornerLayout.paddingRight).toBe('0px');
+});
+
 test('portada usable en un móvil estrecho', async ({page}) => {
   await page.setViewportSize({width: 375, height: 812});
   await page.goto('/');
