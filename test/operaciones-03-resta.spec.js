@@ -269,6 +269,7 @@ describe('Resta', ()=>{
       cantidadOperandos: 3,
       permitirNegativos: true,
       multiplo10: true,
+      random: seededRandom(1),
     };
     const actual = new objetos.Resta(input);
     // console.log( actual );
