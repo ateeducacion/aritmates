@@ -11,6 +11,7 @@ import {
 } from './arithmetic';
 import {countDecimalOperands, countFollowingOperands, countNegativeOperands, decimalPlaces, decimalPlacesForLevel, multiplesUntil} from './numberRules';
 import {factorize} from './factorization';
+import {countDefinedOperands, hasOperandValue, invertAllOperandSigns, invertOperandSign, sortOperandsDescending} from './operandRules';
 /**
  * Clase base para las distintas operaciones ( ver Suma, Resta, Multiplicacion, Division )
  * 
@@ -1458,26 +1459,12 @@ export default class Operacion {
    *
    */
   ordenarOperandosMayorAMenor() {
-    const tag = '[operacion.js.ordenarOperandosMayorAMenor]';
-    if ( debug ) console.log( tag );
-
-    let operandosNivel;
-    if (undefined !== this.posicion_nivel) {
-      operandosNivel = this.operandos[this.posicion_nivel];
-    }
-
-    this.operandos.sort(function(a, b) {
-      return b-a;
-    });
-    if (undefined !== this.posicion_nivel) {
-      // cambia la posicion nivel al nuevo lugar:
-      for (let i = 0; i < this.operandos.length; i++) {
-        const o = this.operandos[i];
-        if (o == operandosNivel) {
-          this.posicion_nivel = i;
-        }
-      }
-    }
+    const sorted = sortOperandsDescending(
+        this.operandos,
+        this.posicion_nivel,
+    );
+    this.operandos = sorted.operandos;
+    this.posicion_nivel = sorted.levelPosition;
   }
 
   /**
@@ -1512,22 +1499,8 @@ export default class Operacion {
    * @author Fernando Ramírez Pérez
    * @memberof Operacion
    */
-  operandosHasValue( val ) {
-    const tag = '[operacion.js.operandosHasValue( val )]';
-    const debug = false;
-    if ( debug ) console.log( tag, val );
-    const operandos = this.operandos.slice();
-    if ( debug ) {
-      console.log( tag, 'operandos:', operandos );
-    }
-
-    const someOperandoHasValue = operandos.some((v, i) => {
-      return (v == val );
-    });
-    if ( debug ) {
-      console.log( tag, 'someOperandoHasValue', someOperandoHasValue);
-    }
-    return someOperandoHasValue;
+  operandosHasValue(val) {
+    return hasOperandValue(this.operandos, val);
   }
 
   /**
@@ -1537,12 +1510,8 @@ export default class Operacion {
    * @memberof Operacion
    */
   cambiarSignoOperandos() {
-    const operandos = this.operandos;
-    if (operandos) {
-      for (let i = 0; i < operandos.length; i++) {
-        this.cambiarSignoOperando(i);
-      }
-      this.operandos = operandos;
+    if (this.operandos) {
+      this.operandos = invertAllOperandSigns(this.operandos);
     }
   }
 
@@ -1554,16 +1523,7 @@ export default class Operacion {
    * @memberof Operacion
    */
   cambiarSignoOperando(i = 0) {
-    const tag = '[suma.js.cambiarSignoOperando(i = 0)]';
-    if ( debug ) console.log( tag );
-    const operando = this.operandos[i];
-    if (operando) {
-      this.operandos[i] = operando * -1;
-    }
-    if ( debug ) {
-      console.log( tag,
-          'this.operandos', this.operandos );
-    }
+    this.operandos = invertOperandSign(this.operandos, i);
   }
 
   /**
@@ -1680,13 +1640,7 @@ export default class Operacion {
    * @memberof Operacion
    */
   operandosInicialesLength() {
-    const tag = '[operacion.js.contarOperandosInicales()]';
-    if ( debug ) console.log( tag );
-    const cantOperandos = this.operandosIniciales.filter((value)=> {
-      return !(value === undefined || value=== null);
-    }).length;
-
-    return cantOperandos;
+    return countDefinedOperands(this.operandosIniciales);
   }
 
   /**
