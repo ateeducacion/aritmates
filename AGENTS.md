@@ -55,7 +55,7 @@ npm run e2e       # hace falta dist/ y Chromium
 
 El CI (`.github/workflows/ci.yml`) ejecuta esas comprobaciones en Node 24 y falla si alguna falla.
 
-Los módulos nuevos o ya saneados no pueden introducir variables sin usar: `no-unused-vars` es bloqueante en `src/application/`, las reglas puras del motor, `src/pdfLibs.js`, scripts y E2E. No se desactiva esa regla para hacer pasar un cambio; se corrige el código.
+Los módulos nuevos o ya saneados no pueden introducir variables sin usar: `no-unused-vars` es bloqueante en `src/application/`, las reglas puras del motor, `src/pdfLibs.js` y E2E. Los scripts legacy se endurecen cuando se refactorizan. No se desactiva la regla en módulos saneados para hacer pasar un cambio; se corrige el código.
 
 ## Documentación
 
