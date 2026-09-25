@@ -635,7 +635,7 @@ class OperacionMultiple extends Operacion {
     }
     const cantidadOperandosEnParentesis = tiposOperacionEnParentesis.length+1;
     let operacionEnParentesis;
-    let tries=20;
+    let tries = 0;
     do {
       if (cantidadOperandosEnParentesis==2) {
         const opciones = {
@@ -681,7 +681,15 @@ class OperacionMultiple extends Operacion {
         }
       }
       tries++;
-    } while ( operacionEnParentesis.resultado==0 || tries < 20 );
+      // Retry while the parenthesis evaluates to 0. `tries` used to start at
+      // 20, so the bound never applied and fixed user operands looped forever.
+    } while ( operacionEnParentesis.resultado==0 && tries < 20 );
+    if (operacionEnParentesis.resultado == 0) {
+      this.errors.push({
+        error: 'Paréntesis con resultado 0',
+        msg: 'No se encontró un paréntesis con resultado distinto de 0',
+      });
+    }
     // pasar el operandos parentesis a los operadores operacion final:
     operacionEnParentesis.operandos.forEach((operandoPrntss, index) => {
       this.operandos[this.parentesisInicial+index] = operandoPrntss;

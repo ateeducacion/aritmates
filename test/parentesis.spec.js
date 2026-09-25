@@ -213,3 +213,19 @@ describe('Regla de colocación automática de paréntesis', () => {
     )).to.equal(true);
   });
 });
+
+describe('Paréntesis con resultado 0', () => {
+  it('termina aunque los operandos del usuario den 0 dentro del paréntesis', () => {
+    const op = new OperacionMultiple({
+      cantidadOperandos: 3,
+      operandos: [3, 3, 4],
+      tiposOperacion: [OPERACIONES.RESTA, OPERACIONES.SUMA],
+      tiposOperacionAzar: false,
+      parentesis: true,
+      posicionParentesis: [0, 1],
+      random: seededRandom(1),
+    });
+
+    expect(op.errors.map((e) => e.error)).to.include('Paréntesis con resultado 0');
+  });
+});
