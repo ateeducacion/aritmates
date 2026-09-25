@@ -169,7 +169,7 @@ export default class XySlider extends ElementBase {
                 }
             }));
         })
-        this.slider.addEventListener('change',(ev) => {
+        this.slider.addEventListener('change',(_ev) => {
             this.value = this.slider.value;
             this._oninput = false;
             this.dispatchEvent(new CustomEvent('change',{
