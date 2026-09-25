@@ -126,6 +126,7 @@ export default class Operacion {
     this.operandosIniciales = operandos.slice();
 
     this.deep = 0;
+    this.resolver_deep = 0;
 
     // forzar signo de cada operando a positivo si no se permiten negativos
     // y el forzarsigno esta vacio
