@@ -240,9 +240,6 @@ class OperacionMultiple extends Operacion {
       console.log( this.id+tag,
           'operacionesRestantes inicial', operacionesRestantes
       );
-      // crear division
-      this.crearDivisiones(operacionesRestantes);
-      // this.crearOperacionesDivisionParentesis();
     }
     
     // separo esto para resolver el problema divisiones con parentesis
@@ -434,11 +431,6 @@ class OperacionMultiple extends Operacion {
       if (this.parentesisFinal == i) operan = operan+ ' )';
       txt = txt + operan + lastSymbol;
 
-      if ( debug ) {
-        if (this.posicion_nivel == this.operandos.length + 1) {
-          resultado = '_' + this.resultado + '_';
-        }
-      }
       if ( verbose ) {
         if ( debug ) {
           console.log( tag,

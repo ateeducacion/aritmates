@@ -102,3 +102,11 @@ La misma semilla repite operandos y resultado. Sin `random`, se usa
 La suite de tests, además, sustituye `Math.random` por una semilla fija al
 arrancar. Así los spec antiguos que no pasan `random` también se repiten.
 Un spec nuevo debe pasar su propia semilla si quiere aislarse del resto.
+
+
+## Debug y determinismo
+
+`globalThis.debug` solo controla trazas de diagnóstico. Con la misma configuración
+y la misma semilla, activar o desactivar debug produce los mismos operandos,
+operadores, resultado y texto. Los bloques de logging no ejecutan reglas del
+motor ni modifican `errors`.

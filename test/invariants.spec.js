@@ -522,3 +522,82 @@ describe('Reglas puras de operandos', () => {
     expect(countDefinedOperands([1, undefined, 2, null, 0])).to.equal(3);
   });
 });
+
+
+describe('Debug observacional del motor', () => {
+  it('la misma seed genera la misma operación múltiple con debug on/off', () => {
+    const options = {
+      nivel: 20,
+      cantidadOperandos: 3,
+      tiposOperacion: [
+        OPERACIONES.SUMA,
+        OPERACIONES.DIVISION_ENTERA,
+      ],
+      tiposOperacionAzar: false,
+      tiposNumero: [TIPO_NUMERO.NATURAL],
+    };
+
+    const previousDebug = globalThis.debug;
+    try {
+      globalThis.debug = false;
+      const withoutDebug = new OperacionMultiple({
+        ...options,
+        random: seededRandom(91),
+      });
+
+      globalThis.debug = true;
+      const withDebug = new OperacionMultiple({
+        ...options,
+        random: seededRandom(91),
+      });
+
+      expect(withDebug.operandos).to.deep.equal(withoutDebug.operandos);
+      expect(withDebug.tiposOperacion).to.deep.equal(withoutDebug.tiposOperacion);
+      expect(withDebug.resultado).to.equal(withoutDebug.resultado);
+      expect(withDebug.resultadoPre).to.equal(withoutDebug.resultadoPre);
+      expect(withDebug.toString(false)).to.equal(withoutDebug.toString(false));
+    } finally {
+      globalThis.debug = previousDebug;
+    }
+  });
+
+  it('debug no cambia la representación textual de una operación', () => {
+    const op = new Suma({nivel: 10, random: seededRandom(15)});
+    op.posicion_nivel = op.operandos.length + 1;
+
+    const previousDebug = globalThis.debug;
+    try {
+      globalThis.debug = false;
+      const normal = op.toString();
+
+      globalThis.debug = true;
+      const diagnostic = op.toString();
+
+      expect(diagnostic).to.equal(normal);
+    } finally {
+      globalThis.debug = previousDebug;
+    }
+  });
+
+  it('debug no añade errores que no existen en ejecución normal', () => {
+    const op = new Suma({nivel: 10, random: seededRandom(18)});
+    op.deep = 3;
+
+    const previousDebug = globalThis.debug;
+    try {
+      op.errors = [];
+      globalThis.debug = false;
+      op.comprobarResultado();
+      const normalErrors = op.errors.slice();
+
+      op.errors = [];
+      globalThis.debug = true;
+      op.comprobarResultado();
+      const debugErrors = op.errors.slice();
+
+      expect(debugErrors).to.deep.equal(normalErrors);
+    } finally {
+      globalThis.debug = previousDebug;
+    }
+  });
+});
