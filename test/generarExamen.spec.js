@@ -204,7 +204,6 @@ describe('Generar Examen', ()=>{
       //         return r;
       //     }, actual );
       // }
-  );
 
   it('al seleccionar números negativos: al menos un operando o el resultado ' +
       'debe ser negativo (en cada operacion)', ()=>{
@@ -340,7 +339,6 @@ describe('Generar Examen', ()=>{
 
       // expect( actual ).be.eql(diezTreintas);
       // }
-  );
 
   // it('Seleccionado complementario 30 se generan operaciones que den como resultado 30, division con decimales',()=>{
   //     const examen = new GenerarExamen( {
@@ -401,7 +399,6 @@ describe('Generar Examen', ()=>{
 
       //     expect( actual ).be.eql(diez90);
       // }
-  );
 
   // Por ejemplo, 3 +? = 10, 12 + ? = 20, para el 10 y el 20 podrían ser ejemplos.
 
