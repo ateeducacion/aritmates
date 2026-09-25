@@ -38,7 +38,7 @@ jQuery, Bootstrap y los custom elements de `src/components/` se quedan: la plant
 
 Se queda fuera TypeScript, React, Vue, Angular, Redux, Webpack, Polymer y un backend. Una dependencia nueva tiene que quitar más complejidad de la que añade.
 
-La cobertura (`npm run coverage`) es informativa. No hay un porcentaje mínimo. El end-to-end son los tres flujos de `e2e/critical.spec.js`. Importan `playwright/test`, el paquete que ya está en el proyecto. `npm run visual` genera la galería humana de `docs/visual/`. Esa galería no bloquea el CI.
+La cobertura global (`npm run coverage`) es informativa y se publica en Codecov. `npm run coverage:ci` exige un mínimo solo a los módulos ya saneados; el detalle está en [docs/TESTING.md](docs/TESTING.md). El end-to-end son los tres flujos de `e2e/critical.spec.js`. Importan `playwright/test`, el paquete que ya está en el proyecto. `npm run visual` genera la galería humana de `docs/visual/`. Esa galería no bloquea el CI.
 
 El HTML de un ejercicio sale de números del motor. El parámetro `c` de la URL es un código corto, no HTML. Un sanitizador nuevo solo entra si aparece un sumidero concreto. [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) lo resume en «Seguridad».
 
@@ -90,7 +90,7 @@ Ese comando escribe `metadata.github-repo`, `github-path`, `github-ref` y `githu
 
 Esos skills no amplían el producto. El end-to-end del repositorio sigue siendo `npm run e2e`. No hace falta el paquete `@playwright/cli` ni reescribir los tests. Una auditoría no añade un sanitizador global si no hay un sumidero nuevo.
 
-`test-gap-audit` sigue esta guía: la suite es `npm test`, cada spec nuevo lleva semilla, no hay umbral de cobertura y los `it` vacíos se quedan. `scripts/coverage_map.py` solo da pistas. Un archivo sin coincidencia de nombre no es un hueco confirmado.
+`test-gap-audit` sigue esta guía: la suite es `npm test`, cada spec nuevo lleva semilla, el umbral de cobertura solo cubre los módulos saneados y no se añaden `it` vacíos. `scripts/coverage_map.py` solo da pistas. Un archivo sin coincidencia de nombre no es un hueco confirmado.
 
 `playwright-trace` lee un `.zip` con `npx playwright trace`, el paquete que ya está en el proyecto. No añade otro runner. El aviso de esa licencia está en [`.agents/licenses/microsoft-playwright-NOTICE.txt`](.agents/licenses/microsoft-playwright-NOTICE.txt).
 

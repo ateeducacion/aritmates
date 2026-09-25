@@ -16,8 +16,8 @@
     "check": "node scripts/check-assets.mjs",
     "visual": "node scripts/visual-gallery.mjs",
     "e2e": "playwright test",
-    "coverage": "c8 --reporter=text-summary node scripts/test.mjs",
-    "coverage:ci": "c8 --all --exclude-after-remap --reporter=text-summary --check-coverage --lines 90 --functions 90 --branches 85 --statements 90 --include=src/operaciones/arithmetic.js --include=src/operaciones/evaluate.js --include=src/operaciones/expression.js --include=src/operaciones/random.js --include=src/operaciones/numberRules.js --include=src/operaciones/factorization.js --include=src/operaciones/operationSelection.js --include=src/operaciones/operandRules.js --include=src/application/timer.js --include=src/application/optionAvailability.js --include=src/application/exerciseSession.js node scripts/test.mjs",
+    "coverage": "c8 --reporter=text-summary --reporter=lcov --exclude-after-remap --exclude='test/**' --exclude='dist/**' --exclude='scripts/**' node scripts/test.mjs",
+    "coverage:ci": "npm run coverage && c8 report --reporter=text-summary --check-coverage --lines 90 --functions 90 --branches 85 --statements 90 --exclude-after-remap --exclude='test/**' --exclude='dist/**' --exclude='scripts/**' --exclude='src/*.js' --exclude='src/components/**' --exclude='src/widgets/**' --exclude='src/utils/**' --exclude='src/application/{badges,results}.js' --exclude='src/operaciones/{operacion,OperacionMultiple,suma,resta,multiplicacion,division,divisionEntera,divisionResto,divisionDecimales,operaciones,tipoNumero}.js'",
     "audit": "npm audit --audit-level=high",
     "lint": "eslint ."
   },
