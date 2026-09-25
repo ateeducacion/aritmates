@@ -1,5 +1,13 @@
 # Changelog
 
+## Guía de agentes y skills (post 1.3)
+
+No cambia la aplicación que ve el usuario.
+
+* `AGENTS.md` deja por escrito las reglas de mantenimiento: aplicación estática, motor sin DOM, tests con semilla y sin cambiar los ejercicios de paso.
+* Skills de terceros en `.agents/skills/`, con una copia en `.claude/skills/`: revisión de workflows, auditoría de seguridad y Playwright.
+* Cada lunes, `.github/workflows/update-agent-skills.yml` comprueba si hay actualización y abre un pull request. No empuja a `main`.
+
 ## Refactorización del motor y calidad (post 1.3)
 
 No cambia la funcionalidad que el usuario tiene en la portada. Sigue siendo una aplicación estática, sin PHP.

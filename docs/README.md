@@ -8,3 +8,4 @@ Guía principal del proyecto: **[README](../README.md)** en la raíz.
 | [COMPONENTES.md](./COMPONENTES.md) | Custom elements de la UI |
 | [visual/](./visual/) | Capturas de referencia multi-viewport |
 | [../developers.md](../developers.md) | Notas breves de desarrollo |
+| [../AGENTS.md](../AGENTS.md) | Reglas para quien mantiene el código, y skills |

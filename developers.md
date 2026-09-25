@@ -39,6 +39,10 @@ npm run e2e
 
 Node 24 o superior. El detalle está en [docs/TESTING.md](./docs/TESTING.md).
 
+## Agentes
+
+Quien modifica el repositorio sigue [AGENTS.md](./AGENTS.md): reglas del motor, comandos y actualización de los skills.
+
 ## Documentación de la simplificación
 
 - [docs/SIMPLIFICACION.md](./docs/SIMPLIFICACION.md)
