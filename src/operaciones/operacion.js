@@ -1405,47 +1405,6 @@ export default class Operacion {
   }
 
   /**
-   * Numero de operando anteriores a la posicion data
-   *
-   * @author Fernando Ramírez Pérez
-   * @param {*} posicion
-   * @return {number} numero de operandos
-   * @memberof Operacion
-   */
-  numOperandosAnteriores(posicion) {
-    const tag = '[Operacion.numOperandosPosteriores]';
-    if ( debug ) console.log( tag );
-    let numOperandos = 0;
-    for (let index = 0; index < posicion; index++) {
-      const operando = this.operandos[index];
-      if (operando !== undefined) {
-        numOperandos++;
-      }
-    }
-    return numOperandos;
-  }
-
-  /**
-   * Devuelve true si todos los operandos son positivos
-   *
-   * @author Fernando Ramírez Pérez
-   * @return {boolean}
-   * @memberof Operacion
-   */
-  operandosSonPositivos() {
-    const tag = '[Operacion.operandosSonPositivos]';
-    if ( debug ) console.log( tag );
-    let positivos = true;
-    for (let index = 0; index < this.cantidad_operandos; index++) {
-      const operando = this.operandos[index];
-      if (operando<0) {
-        positivos = false;
-      }
-    }
-    return positivos;
-  }
-
-  /**
    *  Obtener Grupo de factores
    * @todo revisar uso
    *
@@ -1515,29 +1474,6 @@ export default class Operacion {
       operandosRestantes -= 1;
     }
     return operandos;
-  }
-
-/**
- * convertirListaDecimalAEntero
- * @todo Borrar? no se usa en nigun sitio
- */
-  convertirListaDecimalAEntero(lista) {
-    const tag = '[Operacion.decimalesAEntero(lista)]';
-    if ( debug ) console.log( tag );
-    const tempOp = [];
-    // hayar mayor numero de decimales en operandos (maximo 3)
-    let nDecimalesMaximo=0;
-    lista.forEach((op)=>{
-      let nDecimales = this.obtenerNumeroDecimales(op);
-      if (nDecimales>3) {
-        nDecimales = 3;
-      }
-      if (nDecimalesMaximo < nDecimales) nDecimalesMaximo = nDecimales;
-    });
-    lista.forEach((op, i)=>{
-      tempOp[i]= op*Math.pow(10, nDecimalesMaximo);
-    });
-    return {números: tempOp, decimales: nDecimalesMaximo};
   }
 
   /**
@@ -1631,45 +1567,6 @@ export default class Operacion {
       console.log( this.id+tag, 'return cantidad', cantidad);
     }
     return cantidad;
-  }
-
-  /**
-   * Devuelve el numero de veces que aparace un valor ene el array
-   *
-   * @todo moverlo a utils (?)
-   *
-   * @author Fernando Ramírez Pérez
-   * @memberof Operacion
-   *
-   * @param {number} value numero a buscar
-   * @param {Array} array lista de numeros
-   * @return {number} numero de veces
-   */
-  getNumOccurrences(value, array) {
-    let tag = '[operacion.js.getNumOccurrences]';
-    if (this.id) tag = this.id+tag;
-    if ( debug ) {
-      console.log( tag,
-          'value', value,
-          'array', array );
-    }
-    if ( debug ) console.log( tag );
-    let count = 0;
-    // const idx = array.indexOf(value);
-    if (array.indexOf(value)!=-1) {
-      for (let i = 0; i < array.length; i++) {
-        if ( value == array[i]) {
-          count++;
-        }
-      }
-    } else {
-      count = 0;
-    }
-    if ( debug ) {
-      console.log( tag,
-          'return ', count );
-    }
-    return count;
   }
 
   /**
