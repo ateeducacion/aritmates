@@ -88,6 +88,7 @@ async function bundleTests(specs) {
   const entry = [
     'global.debug = false;',
     'global.window = global;',
+    "if (process.env.ARITMATES_TEST_VERBOSE !== '1') console.log = () => {};",
     // Legacy specs that do not inject `random` still need deterministic
     // generation. Configure the domain abstraction instead of monkey-patching
     // the runtime global Math.random.
@@ -127,7 +128,7 @@ function runMocha(bundlePath) {
   return new Promise((resolvePromise) => {
     const mocha = join(root, 'node_modules/mocha/bin/mocha.js');
     const extra = args.filter((a) => a !== '--coverage');
-    const child = spawn(process.execPath, [mocha, bundlePath, '--timeout', '15000', ...extra], {
+    const child = spawn(process.execPath, [mocha, bundlePath, '--timeout', '15000', '--forbid-pending', '--forbid-only', ...extra], {
       cwd: root,
       stdio: 'inherit',
     });
