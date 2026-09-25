@@ -52,6 +52,7 @@ import {DEFAULTS, ENABLE} from './defaultOptions';
 import {renderResults} from './application/results';
 import {createSessionTimer} from './application/timer';
 import {canEnableNegativeResult, operationAvailability, requiresTwoOperands} from './application/optionAvailability';
+import {addQuestionTime, createSessionScore, nextOperation, recordAnswer, shouldReloadInfiniteOperations} from './application/exerciseSession';
 import OPERACIONES from './operaciones/operaciones';
 import {TIPO_NUMERO} from './operaciones/tipoNumero';
 
@@ -811,12 +812,12 @@ const enviarRespuesta = (ev) => {
   // guarda el tiempo de la pregunta recién respondida
   endPregunta = Date.now();
   tiempoPreguntas[currentOp] = endPregunta - startPregunta;
-  score.tiempoConsumido += tiempoPreguntas[currentOp];
+  addQuestionTime(
+      score,
+      tiempoPreguntas[currentOp],
+      opcionesGuardadas.cantidadOperaciones,
+  );
   startPregunta = Date.now();
-
-  // Calcular media
-  score.tiempoMedioEjercicio = score
-      .tiempoConsumido / opcionesGuardadas.cantidadOperaciones;
   // console.log( score.tiempoConsumido );
 
   // acierto o fallo?
@@ -866,47 +867,30 @@ const enviarRespuesta = (ev) => {
   puedeReintentar = true;
 
   // guardar acierto o fallo
-  if ( respuesta != '' ) {
-    score.completados++;
-    if ( op.esRespuesta(respuesta) ) {
-      // respuesta correta
-      // console.log('respuesta ok');
-      score.aciertos++;
-    } else {
-      // console.log('respuesta ko');
-      score.fallos++;
-      score.operacionesMal[currentOp] = respuesta;
-    }
-  } else {
-    // console.log('considerando fallo la respuesta no contestada');
-    score.fallos++;
-    score.operacionesMal[currentOp] = respuesta;
-  }
+  recordAnswer(score, {
+    index: currentOp,
+    answer: respuesta,
+    correct: op.esRespuesta(respuesta),
+  });
   // console.log('puntuación', score);
 
   // si hay operaciones infinitas carga nuevas cada x operaciones
   // const tagOI = '[OperacionesInfinitas]';
-  if ( opcionesGuardadas.cantidadOperaciones == 0 ) {
-    // console.log( tagOI, 'operaciones infinitas',
-    //     DEFAULTS.recargarOperacionesInfinitas,
-    //     'current op:', currentOp );
-    // console.log( tagOI, 'resto current op / recargarOpInf',
-    //     (currentOp+1) % DEFAULTS.recargarOperacionesInfinitas);
-    if ( (currentOp+1) % DEFAULTS.recargarOperacionesInfinitas == 0 ) {
-      examen.crearMasOperaciones();
-      // console.log( tagOI, 'creadas mas operaciones',
-      //     examen.operacionesExamen.length
-      // );
-    }
+  if (shouldReloadInfiniteOperations({
+    configuredOperations: opcionesGuardadas.cantidadOperaciones,
+    currentIndex: currentOp,
+    reloadEvery: DEFAULTS.recargarOperacionesInfinitas,
+  })) {
+    examen.crearMasOperaciones();
   }
   // mostrar la proxima operacion
   // console.log( tagOI, 'mostrar la proxima op',
   //     '\n currentOp', currentOp,
   //     '\n examen.operacionesExamen.length', examen.operacionesExamen.length);
 
-  currentOp++;
-  if ( currentOp >= examen.operacionesExamen.length ) {
-    currentOp = 0;
+  const next = nextOperation(currentOp, examen.operacionesExamen.length);
+  currentOp = next.index;
+  if (next.finished) {
     $('body').trigger('finEjercicios');
     return;
   }
@@ -932,15 +916,7 @@ function mostrarOperacion(op) {
 
 let opcionesGuardadas;
 
-const score = {
-  puntuacion: 0,
-  completados: 0,
-  aciertos: 0,
-  fallos: 0,
-  tiempoConsumido: 0,
-  tiempoMedioEjercicio: 0,
-  operacionesMal: [],
-};
+const score = createSessionScore();
 
 let examen;
 let currentOp;
