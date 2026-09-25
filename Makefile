@@ -1,7 +1,7 @@
 # Use four spaces as recipe prefix instead of a tab
 .RECIPEPREFIX =	
 
-.PHONY: up build lint fix test test-all package help clean
+.PHONY: up build lint fix test package help clean
 
 ## Start the development server (build + serve)
 up:
@@ -23,9 +23,6 @@ fix:
 test:
 	npm test
 
-## Alias of test
-test-all:
-	npm test
 
 ## Clean dist
 clean:
@@ -39,5 +36,4 @@ package:
 
 ## Display this help
 help:
-	@grep -E '^[a-zA-Z_-]+:.*?##' Makefile \
-		| awk 'BEGIN {FS = ":.*?##"}; {printf "\033[36m%-15s\033[0m %s\n", $$1, $$2}'
+	@awk '/^## /{d=substr($$0,4);next} /^[a-z-]+:/{if(d)printf "\033[36m%-10s\033[0m %s\n",substr($$1,1,length($$1)-1),d;d=""}' Makefile

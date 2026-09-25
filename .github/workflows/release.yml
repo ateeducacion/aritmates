@@ -23,9 +23,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Ensure esbuild binary
-        run: node node_modules/esbuild/install.js
-
       - name: Audit dependencies
         run: npm run audit
 

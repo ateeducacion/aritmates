@@ -37,9 +37,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Ensure esbuild binary
-        run: node node_modules/esbuild/install.js
-
       - name: Public baseurl for share links (project Pages URL)
         run: |
           OWNER="${{ github.repository_owner }}"
