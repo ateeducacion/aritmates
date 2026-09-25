@@ -32,26 +32,10 @@ export class OptionsShortcode {
     console.log( this._calcularNumOpciones(listOptions));
   }
 
-  getOptions( code ) {
-    const list = this._getHashList();
-    return list[code];
-  }
-
   jsonToHash(json) {
     return sh.unique(JSON.stringify(json));
   }
 
-  _getHashList(hash) {
-    const list = {};
-    // guardar todas las opciones posibles
-    // generar opciones
-    //  json = tal;
-    // conevtir en hash
-    // const hash = this.jsonToHash(json);
-    // list[hash] = json;
-
-    return list;
-  }
   /**
    * Devuelve todas las opciones posibles para esa opcion, para usar con las
    * opciones en la que se puede elegir multiples opciones

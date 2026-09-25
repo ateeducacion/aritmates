@@ -11,7 +11,7 @@ import {
 } from './arithmetic';
 import {countDecimalOperands, countFollowingOperands, countNegativeOperands, decimalPlaces, decimalPlacesForLevel, isMissingOperand, multiplesUntil, shouldGenerateOperand} from './numberRules';
 import {factorize} from './factorization';
-import {countDefinedOperands, hasOperandValue, invertAllOperandSigns, invertOperandSign, sortOperandsDescending} from './operandRules';
+import {countDefinedOperands, hasOperandValue} from './operandRules';
 /**
  * Clase base para las distintas operaciones ( ver Suma, Resta, Multiplicacion, Division )
  * 
@@ -439,17 +439,6 @@ export default class Operacion {
   }
 
   /**
-   *
-   *
-   * @author Fernando Ramírez Pérez
-   * @return {boolean}
-   * @memberof Operacion
-   */
-  esResultadoNegativo() {
-    return ( this.resultado<0 );
-  }
-
-  /**
    * Comprueba que la operacion es correcta y revisa la incognita
    *
    * @author Fernando Ramírez Pérez
@@ -715,19 +704,6 @@ export default class Operacion {
   }
 
   /**
-   * Cambia todos los operandos a numeros positivos
-   *
-   * @author Fernando Ramírez Pérez
-   * @memberof Operacion
-   */
-  _forzarOperandosPositivos() {
-    // pasa todos los operandos a postivo
-    for (let index = 0; index < this.cantidad_operandos; index++) {
-      this.operandos[index] = Math.abs(this.operandos[index]);
-    }
-  }
-
-  /**
    * Recalcula el resultado , en esta clase solo lo coniverte en un 0 si no hay
    * resultado defiinido
    *
@@ -738,24 +714,6 @@ export default class Operacion {
     const tag = '[Operacion.calcularResultado()] ';
     if ( debug ) console.log( tag );
     if (this.resultado === undefined) this.resultado = 0;
-  }
-
-  /**
-   * En esta clase solo cambia el operando nivel por "?" y la incognita por "x"
-   * para poder saber cual seria cada operando en pruebas
-   *
-   * @deprecated   *
-   * @author Fernando Ramírez Pérez
-   * @memberof Operacion
-   */
-  calcularResultadoNivel() {
-    // calcula la incognita cuando no es el resultado y también cuando coincide
-    // con resultado otro numero para hacer posible que la operacion este
-    // correcta
-
-    this.operandos[this.posicion_nivel - 1] = '?';
-    this.operandos[this.posicion_incognita - 1] = 'x';
-    // this.calcularResultado();
   }
 
   /**
@@ -1146,18 +1104,6 @@ export default class Operacion {
   }
 
   /**
-   * Numero al azar teniendo en cuenta la posicion del operando, la posicion
-   * nivel
-   * @param {int} posicionOperando
-   * @return {number} posicion de un operador al azar
-   */
-  operandoRandom(posicionOperando) {
-    let esPosicionNivel=false;
-    if (posicionOperando==this.posicion_nivel) esPosicionNivel=true;
-    return this.numeroRandom( esPosicionNivel );
-  }
-
-  /**
    * Multiplica los numeros enviados en un array
    * @param {Array.number} lista de numeros
    * @return {number} resultado
@@ -1439,22 +1385,6 @@ export default class Operacion {
   }
 
   /**
-   * Ordena de mayor a menor los operandos
-   *
-   * @author Fernando Ramírez Pérez
-   * @memberof Operacion
-   *
-   */
-  ordenarOperandosMayorAMenor() {
-    const sorted = sortOperandsDescending(
-        this.operandos,
-        this.posicion_nivel,
-    );
-    this.operandos = sorted.operandos;
-    this.posicion_nivel = sorted.levelPosition;
-  }
-
-  /**
    * Devuelve una copia de los operandos ( no lo pasa por referencia para que no
    * se puedan modificar accidentalmente )
    *
@@ -1467,18 +1397,6 @@ export default class Operacion {
   }
 
   /**
-   * Cambia los operando a los valores enviados en el array
-   *
-   * @author Fernando Ramírez Pérez
-   * @memberof Operacion
-   * @param {Array.number} lista con operandos nuevos
-   * @return {number} cantidad de operandos negativos
-   */
-  setOperandos(lista) {
-    this.operandos = lista;
-  }
-
-  /**
    * Busca el valor entre los operadores actuales
    *
    * @param {number} val valor a buscar
@@ -1488,29 +1406,6 @@ export default class Operacion {
    */
   operandosHasValue(val) {
     return hasOperandValue(this.operandos, val);
-  }
-
-  /**
-   * Cambia el signo de todos los operandos
-   *
-   * @author Fernando Ramírez Pérez
-   * @memberof Operacion
-   */
-  cambiarSignoOperandos() {
-    if (this.operandos) {
-      this.operandos = invertAllOperandSigns(this.operandos);
-    }
-  }
-
-  /**
-   * Cambia el signo del operando en la posicion
-   *
-   * @param {integer} i posicion operando
-   * @author Fernando Ramírez Pérez
-   * @memberof Operacion
-   */
-  cambiarSignoOperando(i = 0) {
-    this.operandos = invertOperandSign(this.operandos, i);
   }
 
   /**

@@ -152,22 +152,6 @@ class Utils {
     return a;
   }
 
-  createAndDownloadTxtFile(filename, data) {
-    // Set up the link
-    const link = document.createElement('a');
-    link.setAttribute('target', '_blank');
-    if (Blob !== undefined) {
-      const blob = new Blob([data], {type: 'text/plain'});
-      link.setAttribute('href', URL.createObjectURL(blob));
-    } else {
-      link.setAttribute('href', 'data:text/plain,' + encodeURIComponent(data));
-    }
-    link.setAttribute('download', filename);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
-
   organizeInTables(data, columns, tableClass, celClass, maxRows, rows2=maxRows ) {
     let txt = '';
     const colunmnas = columns;
