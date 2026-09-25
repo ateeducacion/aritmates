@@ -1174,3 +1174,20 @@ describe('Operacion Multiple', () => {
     }, actual );
   });
 });
+
+
+describe('OperacionMultiple con cero parcial', () => {
+  it('conserva un cero proporcionado al completar los operandos restantes', () => {
+    const op = new OperacionMultiple({
+      nivel: 20,
+      cantidadOperandos: 3,
+      operandos: [0],
+      tiposOperacion: [OPERACIONES.SUMA, OPERACIONES.MULTIPLICACION],
+      tiposOperacionAzar: false,
+      random: seededRandom(21),
+    });
+
+    expect(op.operandos).to.include(0);
+    expect(op.operandos).to.have.length(3);
+  });
+});
