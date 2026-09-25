@@ -63,6 +63,7 @@ Los códigos de ejercicios/configuración son **compatibles** con versiones ante
 
 - **No** se elimina jQuery ni Bootstrap: siguen acoplados a la UI y quitarlos no la haría más simple.
 - El envío de resultados por correo se quitó en la versión 1.0.4, antes de esta simplificación. En `upstream` el PHP y el modal siguen en el código, pero la llamada está comentada y el despliegue de Medusa no muestra esa opción. No se ha reintroducido.
+- La descarga de resultados se genera en el navegador con jsPDF/html2canvas. `main` no llama a `pdf.php` ni necesita un endpoint para esa función.
 - Los paréntesis y «resultado igual a» siguen en el motor y en el código corto. En la portada sus controles están desactivados (`ENABLE` en `defaultOptions.js`).
 - Hay una sola suite: `npm test`. El CI no ignora fallos.
 
