@@ -1,5 +1,9 @@
 # Changelog
 
+## Ayuda: pestañas por ancla (post 1.3)
+
+* `#nav-resta`, `#nav-suma`, `#nav-multiplicacion` y `#nav-division` abren la ayuda en esa operación. Antes el enlace no cambiaba de pestaña.
+
 ## Imágenes más ligeras (post 1.3)
 
 No cambia la portada ni los ejercicios.
