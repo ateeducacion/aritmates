@@ -1019,7 +1019,7 @@ export default class Operacion {
    * @memberof Operacion
    */
   getSigno() {
-    return randomSign(this.rng);
+    return randomSign(() => this.rng());
   }
   /**
      * Se cambio la manera de calcular los números y ya no se usa
@@ -1052,7 +1052,7 @@ export default class Operacion {
     if ( debug ) console.log( this.id+tag, 'limiteSuperior', limiteSuperior );
     if ( debug ) console.log( this.id+tag, 'limiteInferior', limiteInferior );
     const desvio = roundedBetween(
-        this.rng,
+        () => this.rng(),
         limiteInferior,
         limiteSuperior,
     );
@@ -1071,7 +1071,7 @@ export default class Operacion {
    * @memberof Operacion
    */
   getRandomMinMax(min, max) {
-    return roundedBetween(this.rng, min, max);
+    return roundedBetween(() => this.rng(), min, max);
   }
 
   /**
