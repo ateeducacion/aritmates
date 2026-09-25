@@ -41,6 +41,7 @@ const browserGlobals = {
   MouseEvent: 'readonly',
   ResizeObserver: 'readonly',
   DOMParser: 'readonly',
+  CSS: 'readonly',
   global: 'readonly',
   sessionStorage: 'readonly',
   btoa: 'readonly',
@@ -152,7 +153,7 @@ export default [
     ],
     rules: {
       'no-unused-vars': ['error', {argsIgnorePattern: '^_', varsIgnorePattern: '^_'}],
-      'no-console': 'error',
+      'no-console': ['error', {allow: ['warn', 'error']}],
     },
   },
   {
