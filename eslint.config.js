@@ -136,6 +136,20 @@ export default [
     rules: correctness,
   },
   {
+    files: [
+      'src/application/**/*.js',
+      'src/operaciones/arithmetic.js',
+      'src/operaciones/evaluate.js',
+      'src/operaciones/expression.js',
+      'src/operaciones/random.js',
+      'src/pdfLibs.js',
+      'e2e/**/*.js',
+    ],
+    rules: {
+      'no-unused-vars': ['error', {argsIgnorePattern: '^_', varsIgnorePattern: '^_'}],
+    },
+  },
+  {
     files: ['playwright.config.js', 'eslint.config.js'],
     languageOptions: {
       ecmaVersion: 2022,

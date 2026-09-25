@@ -15,6 +15,8 @@ npm run coverage  # resumen de c8; no hay un porcentaje mínimo
 `npm test` y `npm run test:all` ejecutan lo mismo. No hay una suite «legacy»
 aparte ni `continue-on-error` en el CI.
 
+ESLint aplica reglas de corrección a todo `src/`. En los módulos ya saneados (`src/application`, reglas puras del motor y E2E), `no-unused-vars` también es bloqueante. El legacy restante, incluidos los scripts de build, se endurece de forma incremental para evitar cambios cosméticos masivos.
+
 ## Semilla
 
 Los tests nuevos pasan `random: seededRandom(n)` al constructor. Para repetir
