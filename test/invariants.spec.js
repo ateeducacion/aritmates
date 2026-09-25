@@ -23,6 +23,7 @@ describe('Fuente aleatoria', () => {
     expect(Math.random).to.equal(original);
     resetDefaultRandom();
     expect(asRandom()).to.equal(Math.random);
+    setDefaultRandom(seededRandom(1));
   });
 
   it('rechaza fuentes no funcionales', () => {
