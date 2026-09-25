@@ -19,28 +19,8 @@ export default class Division {
     multiplo100 = false, complementario = false,
     resultadoNegativo, decimales = false, decimalesMaximo, random} = {}
   ) {
-    const tag = '[Division]';
-    if ( debug ) console.log( tag );
-    if ( debug ) {
-      console.log( tag, '\n\t',
-          'nivel', nivel, '\n\t',
-          'lower_bound', lower_bound, '\n\t',
-          'upper_bound', upper_bound, '\n\t',
-          'cantidadOperandos', cantidadOperandos, '\n\t',
-          'permitirNegativos', permitirNegativos, '\n\t',
-          'operandos', operandos, '\n\t',
-          'incognita', incognita, '\n\t',
-          'enfocado', enfocado, '\n\t',
-          'posicion_nivel', posicion_nivel, '\n\t',
-          'multiplo10', multiplo10, '\n\t',
-          'multiplo100', multiplo100, '\n\t',
-          'complementario', complementario, '\n\t',
-          'decimales', decimales, '\n\t',
-          'decimalesMaximo', decimalesMaximo, '\n\t' );
-    }
 
     let division;
-    if ( debug ) console.log( tag, 'decimales', decimales );
     if (decimales) {
       division = new DivisionDecimal({
         nivel: nivel,

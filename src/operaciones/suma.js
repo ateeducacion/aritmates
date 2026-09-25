@@ -34,25 +34,6 @@ export default class Suma extends Operacion {
     decimalesMaximo,
     random,
   } = {}) {
-    const tag = '[Suma.constructor]';
-    const debug = false;
-    if ( debug ) {
-      console.log( tag, 'llamado con: \n\t',
-          'nivel', nivel, '\n\t',
-          'cantidadOperandos', cantidadOperandos, '\n\t',
-          'permitirNegativos', permitirNegativos, '\n\t',
-          'operandos', operandos, '\n\t',
-          'incognita', incognita, '\n\t',
-          'enfocado', enfocado, '\n\t',
-          'posicion_nivel', posicion_nivel, '\n\t',
-          'multiplo10', multiplo10, '\n\t',
-          'multiplo100', multiplo100, '\n\t',
-          'complementario', complementario, '\n\t',
-          'resultadoNegativo', resultadoNegativo, '\n\t',
-          'decimales', decimales, '\n\t',
-          'decimalesMaximo', decimalesMaximo, '\n\t'
-      );
-    }
     if ( !upper_bound ) {
       upper_bound = nivel;
     }
@@ -75,23 +56,6 @@ export default class Suma extends Operacion {
       random,
     });
 
-    if ( debug ) {
-      console.log( this.id+tag, 'llamado con: \n\t',
-          'nivel', nivel, '\n\t',
-          'cantidadOperandos', cantidadOperandos, '\n\t',
-          'permitirNegativos', permitirNegativos, '\n\t',
-          'operandos', operandos, '\n\t',
-          'incognita', incognita, '\n\t',
-          'enfocado', enfocado, '\n\t',
-          'posicion_nivel', posicion_nivel, '\n\t',
-          'multiplo10', multiplo10, '\n\t',
-          'multiplo100', multiplo100, '\n\t',
-          'complementario', complementario, '\n\t',
-          'resultadoNegativo', this.resultadoNegativo, '\n\t',
-          'decimales', decimales, '\n\t',
-          'decimalesMaximo', decimalesMaximo, '\n\t'
-      );
-    }
 
     this.simbolo = '+';
     this.tipo = OPERACIONES.SUMA;
@@ -105,7 +69,6 @@ export default class Suma extends Operacion {
       this.comprobarResultado();
     }
 
-    if ( debug ) console.log( this.id+tag, this.operandos, 'this.operandos' );
   }
 
   /**
@@ -116,9 +79,7 @@ export default class Suma extends Operacion {
    * @memberof Suma
    */
   calcularResultado() {
-    const tag = '[Suma.calcularResultado]';
     // const debug = true;
-    if ( debug ) console.log( this.id+tag );
 
     // TODO revisar complementario y resultado por usuario
     if (this.complementario) {
@@ -128,10 +89,6 @@ export default class Suma extends Operacion {
     }
     if (this.resultadoPorUsuario) {
       this.resolverIncognita();
-      if ( debug ) {
-        console.log( this.id+tag, this.operandos, 'this.operandos',
-            this.operandosIniciales );
-      }
       return;
     }
 
@@ -145,7 +102,6 @@ export default class Suma extends Operacion {
       // re-calcula primer operando para que sea valido con el resultado
       let primerOperando=this.resultado;
       for (let i =1; i < this.operandos.length; i++) {
-        if ( debug ) console.log('primerop', primerOperando);
         // primerOperando -= this.operandos[i];
         primerOperando = new Decimal(primerOperando).minus(this.operandos[i]);
         primerOperando = parseFloat(primerOperando.toString());
@@ -157,11 +113,6 @@ export default class Suma extends Operacion {
 
     // this.comprobarResultado();
 
-    if ( debug ) {
-      console.log( this.id+tag, 'Fin',
-          'operandos', JSON.stringify(this.operandos),
-          'resultado', this.resultado );
-    }
   }
 
   /**
@@ -173,23 +124,9 @@ export default class Suma extends Operacion {
   generarNumerosOperandos() {
     // const debug = true;
     super.generarNumerosOperandos();
-    const tag = '[Suma.generarNumerosOperandos]';
-    if ( debug ) {
-      console.log( this.id+tag, '\n\t',
-          'this.permitir_negativos', this.permitir_negativos, '\n\t',
-          'this.resultadoNegativo', this.resultadoNegativo
-      );
-    }
 
     if (this.complementario && this.complementario>0) {
       return;
-    }
-
-    if ( debug ) {
-      console.log(this.id+tag, 'no se permiten negativos', '\n\t',
-          'this.permitir_negativos', this.permitir_negativos, '\n\t',
-          'this.resultadoNegativo', this.resultadoNegativo
-      );
     }
 
 
@@ -227,10 +164,6 @@ export default class Suma extends Operacion {
     //   }
     // }
 
-    if ( debug ) {
-      console.log( this.id+tag,
-          'fin this.operandos', this.operandos );
-    }
   }
 
   /**
@@ -241,10 +174,7 @@ export default class Suma extends Operacion {
    * @memberof Suma
    */
   _generarOperandoPosicion( posicion ) {
-    const tag = this.id+'[Suma._generarOperandoPosicion]';
-    const debug = false;
 
-    if ( debug ) console.log( this.id+tag, 'posicion', posicion );
     const ultimoOperando = this.cantidad_operandos-1;
     let valOpPosteriores = 0;
     const numOperandosPosteriores = this.numOperandosPosteriores(posicion);
@@ -265,14 +195,6 @@ export default class Suma extends Operacion {
     }
     
 
-    if ( debug ) {
-      console.log( this.id+tag,
-          'this.resultadoNegativo', this.resultadoNegativo );
-      console.log( this.id+tag,
-          'limites iniciales', limiteInferior, limiteSuperior );
-      console.log( this.id+tag,
-          'val op poste', valOpPosteriores, numOperandosPosteriores );
-    }
 
     if (!this.resultadoNegativo ) {
       if ( posicion == 0 ) {
@@ -297,10 +219,6 @@ export default class Suma extends Operacion {
       // en otra posicion != 0
         // si no hay mas operandos pone el maximo la suma de los anteriores
         // 10 - [ del -nivel al 10]
-        if ( debug ) {
-          console.log( tag,
-              'posicion distinta a 0, n operandos posteriores ', numOperandosPosteriores );
-        }
         //Si no hay mas operaderes 
         if ( !(numOperandosPosteriores>0) ) {
           // limiteSuperior = opAnteriores; // comento para que el limite superiro sea el nivel          
@@ -317,19 +235,8 @@ export default class Suma extends Operacion {
           if (limiteSuperior<limiteInferior) limiteInferior = 0;
         }
       }
-      if ( debug ) {
-        console.log( this.id+tag + ' ' +
-            'resultado positivo: limites', limiteInferior, limiteSuperior);
-        console.log( this.id+tag,
-            'valor op posteriores', valOpPosteriores );
-      }
     }
     if ( this.resultadoNegativo ) {
-      if ( debug ) {
-        console.log( tag,
-            'ultimo opreando', ultimoOperando,
-            'posicion', posicion  );
-      }
       switch (posicion) {
         case 0:
           if (numOperandosPosteriores>0) {
@@ -354,30 +261,13 @@ export default class Suma extends Operacion {
             limiteInferior = - nivel;
           }
           
-          if ( debug ) {
-            console.log( tag,
-                'opAnteriores', opAnteriores,
-                'limiteInferior', limiteInferior,
-                'limiteSuperior', limiteSuperior,
-                'nivel', nivel
-            );
-          }
           break;
       }
 
-      if ( debug ) {
-        console.log( this.id+tag,
-            'resultado negativo: limites', limiteInferior, limiteSuperior);
-      }
     }
 
     this.operandos[posicion] = this.getRandomMinMax(
         limiteInferior, limiteSuperior);
-    if ( debug ) console.log( this.id+tag, opAnteriores, 'opAnteriores' );
-    if ( debug ) {
-      console.log( this.id+tag, 'this.operandos', this.operandos,
-          'nuevo op', this.operandos[posicion] );
-    }
 
     if ( this.decimales ) {
       // agregar decimales
@@ -385,10 +275,6 @@ export default class Suma extends Operacion {
           this.operandos[posicion]);
     }
 
-    if ( debug ) {
-      console.log( this.id+tag, 'this.operandos', this.operandos,
-          'nuevo op', this.operandos[posicion] );
-    }
   }
 
 
@@ -421,14 +307,9 @@ export default class Suma extends Operacion {
   }
 
   /**
-   * esto no hace nada!
+   * Sin efecto: evita que se ejecute la versión de Operacion.
    */
-  resolverIncognita() {
-    const tag = '[Resta.resolverIncognita()]';
-    if ( debug ) console.log(this.id+tag);
-    const posicionIncognita = this.posicion_incognita-1;
-    if ( debug ) console.log(this.id+tag, 'posicionIncognita: ', posicionIncognita);
-  }
+  resolverIncognita() {}
 
   /** @inheritdoc */
   obtenerSimbolo() {
@@ -448,8 +329,6 @@ export default class Suma extends Operacion {
    * @memberof Suma
    */
   comprobarResultado() {
-    const tag = '[suma.js.comprobarResultado]';
-    if ( debug ) console.log( tag );
     if ( this.resultadoNegativo && !this.permitir_negativos ) {
       this.errors.push({
         error: 'Resultado Negativo Imposible',
@@ -462,8 +341,6 @@ export default class Suma extends Operacion {
 
   operandoMultiploN(posicion, multiplo) {
     // const debug = true;
-    const tag = '[suma.js.operandoMultiploN(posicion, multiplo)]';
-    if ( debug ) console.log( tag );
     const ultimoOperando = this.cantidad_operandos-1;
     let valOpPosteriores = 0;
     const numOperandosPosteriores = this.numOperandosPosteriores(posicion);
@@ -492,18 +369,10 @@ export default class Suma extends Operacion {
           limiteSuperior = nivel+valOpPosteriores;
         } else {
           super.operandoMultiploN(posicion, multiplo);
-          if ( debug ) {
-            console.log( tag,
-                'llamado operandoMultipoN de operaciones y sale' );
-          }
           return;
         }
       } else {
 
-        if ( debug ) {
-          console.log( tag,
-              'posicion distinta a 0, n operandos posteriores ', numOperandosPosteriores );
-        }
 
         if ( !numOperandosPosteriores>0 ) {
           limiteSuperior = valOpAnteriores;
@@ -515,10 +384,6 @@ export default class Suma extends Operacion {
             }
           }
         } else {
-          if ( debug ) {
-            console.log( tag,
-                'ultimo operando',  );
-          }
           limiteSuperior = valOpAnteriores - valOpPosteriores;
           if (limiteSuperior<limiteInferior) limiteInferior = 0;
         }
@@ -567,10 +432,5 @@ export default class Suma extends Operacion {
       limiteInferior, limiteSuperior);
     this.operandos[posicion] *= multiplo;
 
-    if ( debug ) {
-      console.log( tag,
-          'nuevo operando', this.operandos[posicion],
-          'limites', limiteInferior, limiteSuperior );
-    }
   }
 }

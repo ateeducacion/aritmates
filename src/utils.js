@@ -89,9 +89,7 @@ class Utils {
    * @return {boolean}
    */
   isArraysCompareSimilar(array1, array2) {
-    const tag = '[utils.js.isArraysCompareSimilar(array1, array2)]';
     // const debug = true;
-    if ( debug ) console.log( tag, array1, array2 );
     if ( !(array1 instanceof Array && array2 instanceof Array) ) return false;
 
     let flag = true;
@@ -111,20 +109,11 @@ class Utils {
    * @return {integer} posicion de aguja en pajar o -1 si no lo encuentra
    */
   findArrayInArray(aguja, pajar) {
-    const tag = '[utils.js.findArrayInArray(aguja, pajar)]';
     // const debug = true;
-    if ( debug ) console.log( tag, aguja, pajar );
 
     let place = -1;
     pajar.some( (el, indx) => {
       if (this.isArraysCompareSimilar(el, aguja)) {
-        if ( debug ) {
-          console.log( tag,
-              'encontrado', el,
-              'posicion', indx, '\n\t',
-              'valor:', pajar[indx]
-          );
-        }
         place = indx;
         return true;
       }

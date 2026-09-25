@@ -12,8 +12,6 @@ import html2canvas from 'html2canvas';
  */
 class ImprimirPdf {
   constructor(filename='OperacionesMatematicas.pdf') {
-    const tag = '[ImprimirPdf.Testpdf]';
-    if ( debug ) console.log( tag );
 
     this.doc = new jsPDF();
     this.filename = filename;

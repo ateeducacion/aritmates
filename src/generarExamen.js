@@ -37,13 +37,11 @@ export default class GenerarExamen {
         permitirNegativos=false,
 
         enfocado=false,
-        curso=1,
         multiplo10=false,
         multiplo100=false,
 
         complementario=false,
         posicionIncognita,
-        posicionNivel,
 
         tiposNumero = [TIPO_NUMERO.NATURAL],
         decimales = false,
@@ -55,36 +53,6 @@ export default class GenerarExamen {
 
       } = {}) {
     this._rng = asRandom(random);
-    // const debug = true;
-    const tag = '[GenerarExamen] ';
-    const txtTiposNumero = TIPO_NUMERO.tiposNumeroToText(tiposNumero);
-    if ( debug ) {
-      console.log( tag,
-          'Llamado con: \n\t',
-          'cantidadOperaciones', cantidadOperaciones, '\n\t',
-          'tiposOperaciones', tiposOperaciones, '\n\t',
-          'cantidadOperandos', cantidadOperandos, '\n\t',
-          'posicionIncognitaAlAzar', posicionIncognitaAlAzar, '\n\t',
-          'nivel', nivel, '\n\t',
-          'permitirNegativos', permitirNegativos, '\n\t',
-          'enfocado', enfocado, '\n\t',
-          'curso', curso, '\n\t',
-          'multiplo10', multiplo10, '\n\t',
-          'multiplo100', multiplo100, '\n\t',
-          'complementario', complementario, '\n\t',
-          'posicionIncognita', posicionIncognita, '\n\t',
-          'posicionNivel', posicionNivel, '\n\t',
-          'tiposNumero', tiposNumero, '\n\t',
-          'tiposNumero', txtTiposNumero, '\n\t',
-          'decimales', decimales, '\n\t',
-          'decimalesMaximo', decimalesMaximo, '\n\t',
-          'operacionMultiple', operacionMultiple, '\n\t',
-          'parentesis', parentesis, '\n\t',
-          'resultadoNegativo', resultadoNegativo, '\n\t'
-      );
-    }
-     
-    if ( debug ) console.log( tag, arguments, arguments[0] );
     this.operacionesExamen = [];
     this.cantidad= cantidadOperaciones;
     this.nivel=nivel;
@@ -108,12 +76,6 @@ export default class GenerarExamen {
 
     if ( tiposNumero.indexOf(TIPO_NUMERO.ENTERO) != -1 ) {
       permitirNegativos = true;
-    }
-    if ( debug ) {
-      console.log( tag,
-          tiposNumero,
-          TIPO_NUMERO.DECIMAL,
-          'tipo numero decimal:', tiposNumero.indexOf(TIPO_NUMERO.DECIMAL) );
     }
     if ( tiposNumero.indexOf(TIPO_NUMERO.DECIMAL) != -1 ) {
       decimales = true;
@@ -175,7 +137,6 @@ export default class GenerarExamen {
 
     this.resultadoNegativo = resultadoNegativo;
 
-    if ( debug ) console.log( tag, 'opciones:', opciones );
     if (!tiposOperaciones) tiposOperaciones=[];
 
     this.nombreOperaciones = [
@@ -219,8 +180,6 @@ export default class GenerarExamen {
   }
 
   _crearOperacionesSimples(tiposOperaciones, cantidadOperaciones, opciones) {
-    const tag = '[GenerarExamen._crearOperacionesSimples]';
-    if ( debug ) console.log( tag );
     let nombre;
 
     if (tiposOperaciones.length>1) {
@@ -267,8 +226,6 @@ export default class GenerarExamen {
   }
 
   _addOperacionesPorTipo(nombre) {
-    const tag = '[GenerarExamen._addOperacionesPorTipo] ';
-    if ( debug ) console.log( tag, nombre );
     const tipo = this.nombreOperaciones.indexOf(nombre);
 
     if ( this.cantidadPorTipo[tipo] === undefined ) {
@@ -279,12 +236,6 @@ export default class GenerarExamen {
   }
 
   crearOperacionPorNombre(nombre, opciones={}) {
-    const tag = '[crearOperacionPorNombre] ';
-    if ( debug ) {
-      console.log( tag, nombre, opciones );
-      console.log( tag,
-          'decimales', opciones.decimales );
-    }
 
     if ( opciones.tiposNumero.indexOf(TIPO_NUMERO.DECIMAL) != -1 ) {
       opciones.decimales=true;
@@ -301,7 +252,6 @@ export default class GenerarExamen {
       opciones.permitirNegativos=true;
     }
     let operacion;
-    if ( debug ) console.log(nombre);
     // const tipo = this.TIPO_OPERACION();
     switch (nombre) {
       case 'suma':
@@ -505,10 +455,6 @@ export default class GenerarExamen {
   }
 
   _crearOperacionesMultiples(tiposOperaciones, cantidadOperaciones, opciones) {
-    const tag = '[generarExamen.js._crearOperacionesMultiples('+
-        'tiposOperaciones, cantidadOperaciones, opciones) {]';
-    if ( debug ) console.log( tag );
-    if ( debug ) console.log( tag, tiposOperaciones, cantidadOperaciones, opciones );
     let opRand;
     let i=0;
 
@@ -574,16 +520,9 @@ export default class GenerarExamen {
    */
   crearMasOperaciones() {
     // const debug = true;
-    const tag = '[generarExamen.js.crearMasOperaciones]';
-    if ( debug ) console.log( tag );
     const opciones = Object.assign({}, this.opciones);
     const tiposOperaciones = this.tiposOperaciones;
     const cantidad = this.cantidadOperaciones;
-
-    if ( debug ) {
-      console.log( tag,
-          'se van a crear '+ cantidad +' operaciones' );
-    }
 
 
     if ( !this.operacionMultiple ) {

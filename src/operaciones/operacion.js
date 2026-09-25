@@ -72,29 +72,11 @@ export default class Operacion {
     random,
   } = {}) {
     this._rng = asRandom(random);
-    const tag= '[Operacion]';
     if ( isNaN(cantidadOperandos) ) {
       cantidadOperandos = parseInt(cantidadOperandos);
       if (isNaN(cantidadOperandos)) cantidadOperandos = 2;
     }
     // const debug = true;
-    if ( debug ) {
-      console.log( tag, 'llamado con: \n\t',
-          'nivel', nivel, '\n\t',
-          'cantidadOperandos', cantidadOperandos, '\n\t',
-          'permitirNegativos', permitirNegativos, '\n\t',
-          'operandos', operandos, '\n\t',
-          'incognita', incognita, '\n\t',
-          'enfocado', enfocado, '\n\t',
-          'posicion_nivel', posicion_nivel, '\n\t',
-          'multiplo10', multiplo10, '\n\t',
-          'multiplo100', multiplo100, '\n\t',
-          'complementario', complementario, '\n\t',
-          'resultadoNegativo', resultadoNegativo, '\n\t',
-          'decimales', decimales, '\n\t',
-          'decimalesMaximo', decimalesMaximo, '\n\t'
-      );
-    }
     // CONFIG
     /**
      * Numero primo maximo que se usara al separa en factores para generar números multiplos 
@@ -161,18 +143,11 @@ export default class Operacion {
     if (this.complementario) {
       // posicion incognita no puede ser el resultado
       if ( this.posicion_incognita == this.cantidad_operandos+1 ) {
-        if ( debug ) {
-          console.log(tag,
-              'posicion incognita en complementario no puede ser resultado');
-        }
 
         this.errors.push({
           'error': 'posicion incognita en complementario',
           'msg': 'la posicion de la incognita no puede ser el resultado'});
         this.posicion_incognita = this.posicionAlAzar(false);
-        if ( debug ) {
-          console.log(tag, this.posicion_incognita);
-        }
       }
 
       if ((this.complementario>100 || this.complementario<10) ) {
@@ -224,9 +199,6 @@ export default class Operacion {
 
     // esto lo separe para hacer una prueba
     this.init();
-    if ( debug ) {
-      console.log( tag, 'FIN constructor' );
-    }
   }
 
   /**
@@ -238,13 +210,6 @@ export default class Operacion {
   }
 
   init() {
-    const tag = this.id+'[operacion.js.init]';
-    if ( debug ) {
-      console.log( tag,
-          'ante primer calcular resultado operandos',
-          'operandos', this.operandos,
-          'forzarSignos', this.forzarSignos );
-    }
     this.generarNumerosOperandos();
     this.calcularResultado();
     // **********************************************
@@ -281,16 +246,11 @@ export default class Operacion {
    */
   _operandoUnidad(index) {
     // const debug = true;
-    const tag = '[Operacion._operandoUnidad]';
-    if ( debug ) console.log(tag + ' index : '+ index );
     // numero al azar del 1-9
     this.operandos[index] = Math.floor( (this.rng()*8)+1 );
     if ( this.operandos[index] === 10 ) this.operandos[index]=9;
     if (this.permitir_negativos) this.operandos[index] *= this.getSigno();
 
-    if ( debug ) {
-      console.log(tag, 'this.operandos[index]', this.operandos[index] );
-    }
   }
 
   /**
@@ -300,8 +260,6 @@ export default class Operacion {
    * @memberof Operacion
    */
   _operandosUnidades() {
-    const tag = '[Operacion._operandosUnidades] ';
-    if ( debug ) console.log(tag+'generar operandos unidades');
     for (let index = 0; index < this.cantidad_operandos; index++) {
       // se ignora nivel y enfocado
       this._operandoUnidad(index);
@@ -318,12 +276,6 @@ export default class Operacion {
   comprobarResultado() {
     // const debug = true;
     // debugger;
-    const tag = this.id+'[Operacion.comprobarResultado()]';
-    if ( debug ) console.log(tag);
-    if ( debug ) {
-      console.log(tag, ' inicio comprobar resultado',
-          'this.deep', this.deep, 'this.operandos', this.operandos );
-    }
 
     if (this.deep > DEFAULTS.reCalcTries ) {
       return {resultado: false};
@@ -332,12 +284,10 @@ export default class Operacion {
     if ( this.getTipo() == '' ) return {resultado: false};
 
     const resu = this.resultado;
-    if ( debug ) console.log(tag, 'resu', resu );
     // if (this.deep > DEFAULTS.reCalcTries ) {
     if (this.deep > 2 ) {
       const errormsg = 'Tardo demasiados intentos en generar una operación'+
         'correcta';
-      if ( debug ) console.log( tag, errormsg);
       return {resultado: false};
     }
 
@@ -360,10 +310,6 @@ export default class Operacion {
     // pero si forzarSigno
     if ( this.forzarSignos == [] || !this.forzarSignos ) {
       if ( this.permitir_negativos && this.operandosSonPositivos() ) {
-        if ( debug ) {
-          console.log( tag,
-              'no hay números negativos' );
-        }
         this.errors.push({
           'error': 'Todos los operandos positivos',
           'msg': 'No hay números negativos' + this.toString(),
@@ -375,9 +321,6 @@ export default class Operacion {
         return this.comprobarResultado();
       }
       if ( !this.permitir_negativos && !this.operandosSonPositivos() ) {
-        if ( debug ) {
-          console.log( tag, 'hay numeros negativos' );
-        }
         this.errors.push({
           'error': 'Números negativos en operandos',
           'msg': 'No deberían haber números negativos' + this.toString(),
@@ -434,7 +377,6 @@ export default class Operacion {
       this.calcularResultado();
       return this.comprobarResultado();
     }
-    if ( debug ) console.log(tag, 'fin resu', resu );
     return {resultado: (resu == this.resultado)};
   }
 
@@ -461,13 +403,10 @@ export default class Operacion {
    * @memberof Operacion
    */
   _generarOperandosComplementario() {
-    const tag = '[Operacion._generarOperandosComplementario] ';
-    if ( debug ) console.log(tag);
     // respeta los operandos enviados y crea los faltantes
 
     for (let index = 0; index < this.cantidad_operandos; index++) {
       if ( this.operandos[index] === undefined ) {
-        if ( debug ) console.log(tag + 'index ' + index + ' undefined ');
 
         if (this.multiplo100) {
           this._operandoUnidad(index);
@@ -490,15 +429,11 @@ export default class Operacion {
    * @memberof Operacion
    */
   generarNumerosOperandos() {
-    const tag = this.id+'[Operacion.generarNumerosOperandos] ';
     // const debug = true;
-    if ( debug ) console.log(tag);
 
     this.operandos = this.operandosIniciales.slice();
-    if ( debug ) console.log(tag, 'operandos:', this.operandos);
 
     if (this.complementario && this.complementario>0) {
-      if ( debug ) console.log(tag+ ' es complementario');
       if (this.complementario==100) this.multiplo10 = true;
       if (this.posicion_incognita == this.cantidad_operandos) {
         // error no puede ser el resultado la incognita
@@ -506,7 +441,6 @@ export default class Operacion {
       }
       this.nivel = this.cantidad_operandos;
       this.resultado = this.complementario;
-      if ( debug ) console.log(tag +'', this );
 
       if (this.complementario==100) {
         this.multiplo10 = true;
@@ -525,18 +459,11 @@ export default class Operacion {
       for (let index = 0; index < this.cantidad_operandos; index++) {
         this.operandoMultiplo10(index);
       }
-      if ( debug ) console.log(tag+' x10 operandos ', this.operandos );
     } else if ( this.multiplo100 ) {
       for (let j = 0; j < this.cantidad_operandos; j++) {
         this.operandoMultiplo100(j);
       }
-      if ( debug ) console.log(tag+' x100 operandos ', this.operandos );
     } else {
-      if ( debug ) {
-        console.log( tag,
-            'operandos antes _generarOperandoPosicion',
-            JSON.stringify(this.operandos) );
-      }
       for (let index = 0; index < this.cantidad_operandos; index++) {
         // si no esta definido de antes lo genera
         // estos operandos son this.operandosInicales.slice();
@@ -555,11 +482,6 @@ export default class Operacion {
       const cantidadOpDecimales = this.getCantidadOperandosDecimales();
       if (cantidadOpDecimales==0) {
         this.deep++;
-        if ( debug ) {
-          console.log( tag, 'this.operandos', this.operandos );
-          console.log( tag, this.toString(),
-              'No hay decimales, generando nuevos números:');
-        }
         this.operandos = [];
         this.generarNumerosOperandos();
       }
@@ -576,10 +498,7 @@ export default class Operacion {
   _generarOperandoPosicion(posicion) {
     // let debug;
     // const debug = true;
-    const tag = this.id+'[Operacion._generarOperandoPosicion(posicion)]';
 
-    if ( debug ) console.log( tag, posicion );
-    if ( debug ) console.log( tag, 'decimales', this.decimales );
     // if ( debug ) console.log( tag, this.operandos,'this.operandos' );
     // if ( debug ) console.log( tag, this.operandos[posicion],
     //     'this.operandos[posicion]' );
@@ -625,7 +544,6 @@ export default class Operacion {
     };
 
     if (this.posicion_nivel-1 == posicion) {
-      if ( debug ) console.log( tag, this.posicion_nivel-1, 'this.posicion_nivel-1 == posicion' );
       if (this.enfocado) {
         const numero = this.nivel;
         this.operandos[posicion] = numero;
@@ -643,7 +561,6 @@ export default class Operacion {
       // limite superior = nivel ahora
       if (this.decimales && cantidadDecimales>0) {
         genOperandoDecimal();
-        if ( debug ) console.log(tag, 'decimales', this.operandos[posicion]);
       } else {
         genOperandoNoDecimal();
       }
@@ -669,15 +586,6 @@ export default class Operacion {
     // if ( this.operandos[posicion] == 0 ) {
     //   debug = true;
     // }
-    if ( debug ) {
-      console.log( tag, 'this.posicion_nivel-1 == posicion?',
-          this.posicion_nivel-1, posicion );
-      console.log( tag, 'enfocado', this.enfocado );
-      console.log( tag, 'decimales', this.decimales );
-      console.log( tag, 'fin',
-          '\n\t', 'posicion', posicion,
-          '\n\t', 'this.operandos[posicion]', this.operandos[posicion] );
-    }
   }
 
   /**
@@ -711,8 +619,6 @@ export default class Operacion {
    * @memberof Operacion
    */
   calcularResultado() {
-    const tag = '[Operacion.calcularResultado()] ';
-    if ( debug ) console.log( tag );
     if (this.resultado === undefined) this.resultado = 0;
   }
 
@@ -727,34 +633,15 @@ export default class Operacion {
    */
   toString( equal=true, verbose = false ) {
     // const debug= true;
-    const tag = '[operacion.js.toString(equal=true, verbose = false)]';
-    if ( debug ) console.log( tag, equal, verbose );
     // expresa la operación
     let txt = '';
     const operandos = this.getOperandos();
     // console.log( tag, 'operandos', operandos);
 
-    if ( debug && verbose ) {
-      txt += '- nivel: ' + this.nivel + '.\n';
-      // txt += '- posnivel: ' + this.posicion_nivel + '.\n';
-      if (this.cantidad_operandos >2 ) {
-        txt += '- numero de operandos: ' +
-        operandos.length + '.\n';
-      }
-      txt += '- incognita: ' + this.posicion_incognita + '.\n';
-      if (this.enfocado) txt += '- enfocado: ' + this.enfocado + '.\n';
-      if (this.permitir_negativos) txt += '- negativos: ' + this.permitir_negativos + '.\n';
-      if (this.complementario) txt += '- complementario: ' + this.complementario + '.\n';
-    }
     // pone entre corchetes la incognita
     let lastSymbol = '';
     for (let i = 0; i < operandos.length; i++) {
       let operan = operandos[i];
-      if ( debug && verbose ) {
-        if (this.posicion_nivel - 1 == i) {
-          operan = '_' + operan + '_';
-        }
-      }
       if ( verbose ) {
         if (this.posicion_incognita - 1 == i) {
           operan = '[' + operan + ']';
@@ -789,8 +676,6 @@ export default class Operacion {
    * @memberof Operacion
    */
   toStringUnsolved() {
-    const tag = '[operacion.js.toStringUnsolved() {]';
-    if ( debug ) console.log( tag );
     let txt = this.toString(true, true);
     txt = txt.replace('/\[ (\-?[0-9]+) ]/gi', '[ ? ]');
     return txt;
@@ -806,18 +691,9 @@ export default class Operacion {
    * @memberof Operacion
    */
   toStringUserInput(input) {
-    const tag = '[operacion.js.toStringUserInput(input)]';
-    if ( debug ) console.log( tag, input );
     const txtini = this.toString(true, true);
     const regex = /\[-?[0-9]+(.[0-9]+)?\]/gi;
     const txt = txtini.replace( regex, '[ '+ input +' ]');
-    if ( debug ) {
-      console.log( tag,
-          '\n\t regex', regex,
-          '\n\t txtini', txtini,
-          '\n\t txt', txt
-      );
-    }
 
     return txt;
   }
@@ -896,7 +772,6 @@ export default class Operacion {
     html += '<span class="simbolo igual"> = </span>'+ resultado;
 
     html = '<p class="operacion f-operacion">'+html+'</p>';
-    if ( debug ) html = this.id + ' ' + html;
 
     return html;
   }
@@ -909,8 +784,6 @@ export default class Operacion {
    * @memberof Operacion
    */
   toHtmlSolved() {
-    const tag = '[operacion.js.toHtmlSolved]';
-    if ( debug ) console.log( tag );
     const html = '<p>' + this.toString(true, true) + '</p>';
     return html;
   }
@@ -947,7 +820,6 @@ export default class Operacion {
    * @memberof Operacion
    */
   posicionAlAzar( incluirPosicionResultado = true) {
-    const tag = '[Operacion.posicionAlAzar]';
     let posicion;
     if (incluirPosicionResultado) {
       // sale la mayoria de las veces la primera posicion
@@ -958,14 +830,6 @@ export default class Operacion {
     } else {
       posicion = posicion = this.getRandomMinMax(1, this.cantidad_operandos);
       // Math.round( this.rng()*123412341234 ) % this.cantidad_operandos + 1;
-    }
-    if ( debug ) {
-      console.log(
-          tag, 'fin', '\n\t',
-          'complementario', this.complementario, '\n\t',
-          'incluirPosicionResultado', incluirPosicionResultado, '\n\t',
-          this.cantidad_operandos, '\n\t',
-          'posicion al azar:', posicion);
     }
     return posicion;
   }
@@ -993,11 +857,6 @@ export default class Operacion {
      * @memberof Operacion
      */
   getDesvio(lowerBound = 1, upperBound = 10, offset = 0 ) {
-    const tag = '[Operacion.getDesvio]';
-    if ( debug ) {
-      console.log( this.id+tag, 'lowerBound', lowerBound,
-          'upperBound', upperBound, 'offset', offset );
-    }
     let limiteSuperior = this.nivel + offset;
     let limiteInferior = this.nivel - offset;
     if ( limiteSuperior > upperBound ) {
@@ -1006,15 +865,12 @@ export default class Operacion {
     if ( limiteInferior < lowerBound ) {
       limiteInferior = lowerBound;
     }
-    if ( debug ) console.log( this.id+tag, 'limiteSuperior', limiteSuperior );
-    if ( debug ) console.log( this.id+tag, 'limiteInferior', limiteInferior );
     const desvio = roundedBetween(
         () => this.rng(),
         limiteInferior,
         limiteSuperior,
     );
 
-    if ( debug ) console.log( this.id+tag, 'desvio', desvio );
     return desvio;
   }
 
@@ -1054,15 +910,6 @@ export default class Operacion {
   numeroRandom(
       esPosicionNivel = false, desvioNegativo = false,
       lowerBound=this.lower_bound, upperBound=this.upper_bound ) {
-    const tag = '[Operacion.numeroRandom]';
-    if ( debug ) {
-      console.log( this.id+tag,
-          'esPosicionNivel, desvioNegativo,'+
-          'lowerBound, upperBound',
-          esPosicionNivel, desvioNegativo,
-          lowerBound, upperBound
-      );
-    }
     // porcentaje de desvio del número al azar depende del nivel
     let offset = 0;
     let signo = 1; // Inicializamos el signo a Positivo
@@ -1109,8 +956,6 @@ export default class Operacion {
    * @return {number} resultado
    */
   multiplicarValores(lista) {
-    const tag = '[Operacion.multiplicarValores(lista)]';
-    if ( debug ) console.log( this.id+tag, lista );
     return multiplyValues(lista);
   }
 
@@ -1121,8 +966,6 @@ export default class Operacion {
    * @return {number} resultado
    */
   dividirValores(lista) {
-    const tag = '[Operacion.dividirValores(lista)]';
-    if ( debug ) console.log( this.id+tag, lista );
     return divideValues(lista);
   }
 
@@ -1133,8 +976,6 @@ export default class Operacion {
    * @return {number} resultado
    */
   sumarValores(lista) {
-    const tag = '[Operacion.sumarValores(lista)]';
-    if ( debug ) console.log( this.id+tag, lista );
     return sumValues(lista);
   }
 
@@ -1145,11 +986,6 @@ export default class Operacion {
    * @return {number} resultado
    */
   restarValores(lista) {
-    const tag = '[Operacion.restarValores(lista)]';
-    if ( debug ) console.log( this.id+tag, lista );
-    if (lista[0] === undefined) {
-      console.log( tag, 'r es undefined algo ha ido mal', lista );
-    }
     return subtractValues(lista);
   }
 
@@ -1205,8 +1041,6 @@ export default class Operacion {
    * @memberof Operacion
    */
   comprobarOperandosEnviados() {
-    const tag = '[Operacion.comprobarOperandosEnviados]';
-    if ( debug ) console.log( this.id+tag, this.operandos );
 
     // si se envia solo un operando generar el faltante:
     // if ( debug ) console.log( this.id+tag, 'operandos', this.operandos );
@@ -1224,31 +1058,14 @@ export default class Operacion {
         operandosLlenos++;
       }
     }
-    if ( debug ) {
-      console.log( this.id+tag,
-          'operandosVacios', operandosVacios,
-          'operandosLlenos', operandosLlenos
-      );
-    }
     if ( operandosLlenos>0 && operandosVacios>0 ) {
-      if ( debug ) {
-        console.log( this.id+tag,
-            'hay operados vacios'
-        );
-      }
       for (let idx = 0; idx < this.cantidad_operandos; idx++) {
-        if ( debug ) console.log(tag, 'rellenar operandos pendientes:');
         // if ( debug ) console.log(tag,'operando number', this.operandos[idx]);
         if (shouldGenerateOperand(this.operandos[idx], this.operandosIniciales[idx])) {
-          if ( debug ) {
-            console.log(
-                this.id+tag, 'generar operando para ', idx );
-          }
           this._generarOperandoPosicion(idx);
         }
       }
     }
-    if ( debug ) console.log( this.id+tag, 'final operandos:', this.operandos );
   }
 
   /**
@@ -1274,8 +1091,6 @@ export default class Operacion {
    * @memberof Operacion
    */
   _ObtenerOperandosDeGrupoFactores(factores, cantidadOperandos) {
-    const tag = '[Operacion._ObtenerOperandosDeGrupoFactores]';
-    if ( debug ) console.log( tag );
 
     const factoresRestantes = factores;
     let nFactoresRestantes = factores.length;
@@ -1284,7 +1099,6 @@ export default class Operacion {
     const grupoFactores = [];
 
     if (this.complementario==100) {
-      if ( debug ) console.log('todos los operandos deberían ser multiplos de 10, solo puede ser 10*10*1*1....');
       const cien =[100, 1];
       // agregar *1 para el resto de operandos
       for (let index = 0; index < this.cantidad_operandos-2; index++) {
@@ -1306,10 +1120,6 @@ export default class Operacion {
       if ( maxSize>1 ) {
         groupSize = Math.round( this.rng()*(maxSize-1) ) +1;
       } else groupSize = 1;
-      if ( debug ) {
-        console.log( this.id+tag,
-            'groupSize', groupSize );
-      }
 
       if ( operandosRestantes == 1 ) {
         groupSize = maxSize;
@@ -1319,7 +1129,6 @@ export default class Operacion {
       if ( nFactoresRestantes > 0) {
         for (let index = 0; index < groupSize; index++) {
           const r = Math.floor(this.rng()*nFactoresRestantes);
-          if ( debug ) console.log( this.id+tag, 'factor que se agrega a grupo:', factores[r] );
           grupoFactores[grupoN].push( factoresRestantes[r] );
           factoresRestantes.splice(r, 1);
           nFactoresRestantes--;
@@ -1490,9 +1299,6 @@ export default class Operacion {
   }
 
   esRespuesta( respuestaUsuario ) {
-    const tag = '[operacion.js.esRespuesta( respuestaUsuario )]';
-    if ( debug ) console.log( tag, respuestaUsuario );
-    if ( debug ) console.log( this.respuesta() );
     return (this.respuesta() == respuestaUsuario);
   }
 
@@ -1535,23 +1341,13 @@ export default class Operacion {
    */
   operandoMultiploN(posicion, multiplo) {
     // const debug = true;
-    const tag = '[operacion.js.operandoMultiploN(posicion, multiplo)]';
-    if ( debug ) console.log( tag, posicion, multiplo );
     this._operandoUnidad(posicion);
     let operando = this.operandos[posicion];
-    if ( debug ) {
-      console.log( tag,
-          'operando de _operandoUnidad(posicion)', operando );
-    }
 
     if (Math.abs(operando)>0) {
       operando *= multiplo;
     }
     this.operandos[posicion] = operando;
-    if ( debug ) {
-      console.log( tag,
-          'operando posicion', operando, this.operandos );
-    }
   }
 
   /**

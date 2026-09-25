@@ -20,28 +20,9 @@ export default class DivisionDecimales extends DivisionEntera {
     decimales = false, decimalesMaximo,
     random,
   } = {}) {
-    const tag = '[DivisionDecimales]';
     // const debug= true;
     if ( !lower_bound ) lower_bound = 0.1;
     if ( lower_bound==0 ) lower_bound = 0.1;
-    if ( debug ) console.log( tag, 'nivel', nivel );
-    if ( debug ) {
-      console.log( tag, '\n\t',
-          'nivel', nivel, '\n\t',
-          'lower_bound', lower_bound, '\n\t',
-          'upper_bound', upper_bound, '\n\t',
-          'cantidadOperandos', cantidadOperandos, '\n\t',
-          'permitirNegativos', permitirNegativos, '\n\t',
-          'operandos', operandos, '\n\t',
-          'incognita', incognita, '\n\t',
-          'enfocado', enfocado, '\n\t',
-          'posicion_nivel', posicion_nivel, '\n\t',
-          'multiplo10', multiplo10, '\n\t',
-          'multiplo100', multiplo100, '\n\t',
-          'complementario', complementario, '\n\t',
-          'decimales', decimales, '\n\t',
-          'decimalesMaximo', decimalesMaximo, '\n\t' );
-    }
     super({
       nivel: nivel,
       lower_bound: lower_bound,
@@ -62,9 +43,6 @@ export default class DivisionDecimales extends DivisionEntera {
 
     this.deep = 0;
 
-    if ( debug ) {
-      console.log( tag, 'this.posicion_incognita', this.posicion_incognita );
-    }
 
     if (cantidadOperandos>2 ) {
       this.errors.push({
@@ -77,83 +55,37 @@ export default class DivisionDecimales extends DivisionEntera {
          this.posicion_incognita === undefined ) {
         this.posicion_incognita = this.cantidad_operandos+1;
       }
-      if ( debug ) {
-        console.log( tag,
-            'this.posicion_incognita post', this.posicion_incognita );
-      }
       this.generarNumerosOperandos();
       // console.log('llamando calcular resultado desde cantOperandos>2');
       this.calcularResultado();
-      const comprobarResultados = this.comprobarResultado();
-      console.log(comprobarResultados);
+      this.comprobarResultado();
     }
 
     this.simbolo = '/';
     this.tipo = 'division_decimales';
 
-    if ( debug ) console.log( tag, 'FIN.' );
   }
 
   calcularResultado() {
     // const id = this.getRandomMinMax(1, 99999999);
-    const tag = this.id+'[DivisionDecimales.calcularResultado]';
     // const tag = '[DivisionDecimales.calcularResultado]';
     // const debug = true;
 
     this.intentos = 0;
-    if ( debug ) {
-      console.log( tag );
-      console.log( tag, 'Decimales: \n\t',
-          'this.operandos', this.operandos, '\n\t',
-          'this.decimales', this.decimales, '\n\t',
-          'this.decimalesMaximo', this.decimalesMaximo, '\n\t',
-          'this.deep', this.deep, '\n\t',
-          'operandos por usuario', this.operandos_por_usuario, '\n\t'
-          // 'this.operandosIniciales',this.operandosIniciales, '\n\t',
-          // 'this.operandosInicalesLength()', this.operandosInicalesLength(),
-          // '\n\t',
-          // 'this.cantidad_operandos', this.cantidad_operandos, '\n\t',
-      );
-    }
 
     if (this.operandosIniciales &&
         this.operandosInicialesLength() !== this.cantidad_operandos
     ) {
       this._generarDivisionPorMultiplicacionInvertida();
-      if ( debug ) {
-        console.log( tag, 'operandos generados por mulInvert',
-            'this.operandos', this.operandos );
-      }
       // la multiplicacion es entera
-      if ( debug ) {
-        console.log( tag,
-            'operandos tran', this.operandandos );
-      }
       return;
     }
 
     if ( !this.operandos_por_usuario) {
-      if ( debug ) {
-        console.log( tag, 'this.nivel', this.nivel );
-      }
-      if ( debug ) {
-        console.log( tag,
-            'llamando super.calcular resultado desde', tag );
-      }
       super.calcularResultado();
-      if ( debug ) {
-        console.log( tag,
-            'operacion recibida de super', '\n\t',
-            this.toString(), '\n\t',
-            'operandos', JSON.stringify(this.operandos), '\n\t'
-        );
-      }
 
 
       if (this.comprobarDecimalesValidos(this.operandos)) {
-        if ( debug ) {
-          console.log( tag, 'decimales validos antes de crearlos' );
-        }
         if (this.resultado &&
           this.resultado == new Decimal(this.operandos[0])
               .div(this.operandos[1])
@@ -161,11 +93,6 @@ export default class DivisionDecimales extends DivisionEntera {
           this.operandosDecimalToFloat();
           return;
         } else {
-          if ( debug ) {
-            console.log( tag,
-                'decimales validos pero no resultado',
-                this.operandos, this.resultado );
-          }
         }
       }
 
@@ -186,10 +113,6 @@ export default class DivisionDecimales extends DivisionEntera {
         // this.resultado = complementario viene del super
       } else {
         const azar = this.getRandomMinMax(0, 1);
-        if ( debug ) {
-          console.log('método division decimal', azar, this.toString(false) );
-          console.log( tag, 'powDecimales', powDecimales );
-        }
 
         switch (azar) {
           case 0:
@@ -225,23 +148,12 @@ export default class DivisionDecimales extends DivisionEntera {
         }
 
         this.resultado = new Decimal(this.operandos[0]).div(this.operandos[1]);
-        if ( debug ) {
-          console.log( tag,
-              'this.tostri', this.toString() );
-        }
         // comprobar que van a dar números con decimales
         const listaNumeros = this.operandos.slice();
         // listaNumeros.push(this.resultado);
-        if ( debug ) {
-          console.log( tag, 'intentos', this.intentos );
-        }
         if ( ! this.comprobarDecimalesValidos( listaNumeros ) ) {
           this.intentos = this.intentos +1;
           this.deep++;
-          if ( debug ) {
-            console.log(
-                tag, 'se hubiera vuelto a lanzar crear num y calcular' );
-          }
           if (this.operandosIniciales) {
             this.operandos = this.operandosIniciales.slice();
           } else {
@@ -273,20 +185,10 @@ export default class DivisionDecimales extends DivisionEntera {
     // el resultado del numero entero viene de "generar operandos "
     // this.resultado = this.resultado / 1000 ;
     this.operandosDecimalToFloat();
-    if ( debug ) {
-      console.log( tag, 'fin' );
-    }
   }
 
   _generarOperandoPosicion(posicion) {
-    const tag = '[divisionDecimales._generarOperandoPosicion(posicion)]';
-    if ( debug ) console.log( tag, posicion );
     this.decimales = true;
-    if ( debug ) {
-      console.log( tag,
-          'this.decimalesMaximo', this.decimalesMaximo,
-          'this.decimales', this.decimales );
-    }
     // super._generarOperandoPosicion(posicion);
     // NO GENERAR CEROS!
     let i = 0;
@@ -295,27 +197,17 @@ export default class DivisionDecimales extends DivisionEntera {
       super._generarOperandoPosicion(posicion);
       i++;
     } while ( this.operandos[posicion] == 0 && i<tries );
-    if ( debug ) {
-      console.log( tag,
-          'this.operandos[posicion]', posicion, this.operandos[posicion] );
-    }
   }
 
   comprobarDecimalesValidos(lista) {
     // const debug = true;
-    const tag = '[divisionDecimales.js.comprobarDecimalesValidos]';
-    if ( debug ) console.log( tag );
     this.decimalToFloat(lista);
-    if ( debug ) console.log( tag, lista );
 
     let noHayDecimales = true;
     lista.forEach((element) => {
       if (element %1 !== 0) noHayDecimales = false;
     });
     if (noHayDecimales) {
-      if ( debug ) {
-        console.log( tag, 'no hay decimales en ningun numero' );
-      }
       return false;
     }
 
@@ -324,10 +216,6 @@ export default class DivisionDecimales extends DivisionEntera {
       const num = lista[i];
       if ( undefined !== num ) {
         if (this.obtenerNumeroDecimales(num) > nDecimales) {
-          if ( debug ) {
-            console.log( tag,
-                'hay mas decimales de lo que deberia en algun numero' );
-          }
           return false;
         }
       }
