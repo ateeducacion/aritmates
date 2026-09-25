@@ -52,6 +52,7 @@ import '../css/print.scss';
 import {DEFAULTS, ENABLE} from './defaultOptions';
 import {renderResults} from './application/results';
 import {createSessionTimer} from './application/timer';
+import {canEnableNegativeResult, operationAvailability, requiresTwoOperands} from './application/optionAvailability';
 import OPERACIONES from './operaciones/operaciones';
 import {TIPO_NUMERO} from './operaciones/tipoNumero';
 
@@ -729,13 +730,7 @@ function updateOperasdosOnDivisionChange() {
   if ( debug ) console.log( tag );
   // Si hay en tipos numero decimal y esta seleciondo solo la opoeracion de diviision:
   // o si esta seleciondo division con resto
-  if (
-    (
-      opciones.tiposNumero.includes(TIPO_NUMERO.DECIMAL) &&
-      utils.isArraysCompareSimilar(opciones.tiposOperaciones, [OPERACIONES.DIVISION])
-    ) ||
-    opciones.tiposOperaciones.includes(OPERACIONES.DIVISION_RESTO)
-  ) {
+  if (requiresTwoOperands(opciones.tiposOperaciones, opciones.tiposNumero)) {
     elimminarOpcionMas2Operandos();
   } else {
     restaurarOpcionMas2Operandos();
@@ -1212,10 +1207,7 @@ function permitirResultadoNegativo() {
   const btnSumSelected = $('#btnSuma')[0].classList.contains('selected');
   const btnRestaSelected = $('#btnResta')[0].classList.contains('selected');
   const btnDivSelected = $('#btnDiv')[0].classList.contains('selected');
-  const onlyBtnDivSelected = (utils.isArraysCompareSimilar(
-      opciones.tiposOperaciones, [OPERACIONES.DIVISION] ) ||
-    utils.isArraysCompareSimilar(
-        opciones.tiposOperaciones, [OPERACIONES.DIVISION_RESTO]));
+  const {onlyDivision} = operationAvailability(opciones.tiposOperaciones);
 
   const btnMultiSelected = $('#btnMulti')[0].classList.contains('selected');
   // si esta seleccionado numeros negativos o restas ( y solo restas )
@@ -1225,12 +1217,15 @@ function permitirResultadoNegativo() {
   // console.log('negativos y no solo divisiones', (btnNegativosSelected && !onlyBtnDivSelected) );
   // console.log('resta y no divsion , no mul y no suma ', ( btnRestaSelected && !btnDivSelected && !btnMultiSelected && !btnSumSelected ) );
   // console.log('resta y mas de 2 operadores', ( btnRestaSelected && opciones.cantidadOperandos>2) );
-  if (
-    ( btnNegativosSelected && !onlyBtnDivSelected )|| (
-      btnRestaSelected && !btnDivSelected &&
-      !btnMultiSelected && !btnSumSelected ) ||
-      ( btnRestaSelected && opciones.cantidadOperandos>2)
-  ) {
+  if (canEnableNegativeResult({
+    negativeNumbersSelected: btnNegativosSelected,
+    sumSelected: btnSumSelected,
+    subtractionSelected: btnRestaSelected,
+    divisionSelected: btnDivSelected,
+    multiplicationSelected: btnMultiSelected,
+    onlyDivision,
+    operandCount: opciones.cantidadOperandos,
+  })) {
     $('#switch-resultadoNegativo')[0].removeAttribute('disabled');
     $('#switch-resultadoNegativo_mv')[0].removeAttribute('disabled');
   } else {
@@ -1309,13 +1304,10 @@ $('#selectNuOperandos').on('change', (ev) => {
  * Activa o desactiva tipos de numeros segun operaciones seleccioanadas
  */
 function changeOpTipoNumero() {
-  const onlyBtnDivSelected = (utils.isArraysCompareSimilar(
-      opciones.tiposOperaciones, [OPERACIONES.DIVISION] ) ||
-  utils.isArraysCompareSimilar(
-      opciones.tiposOperaciones, [OPERACIONES.DIVISION_RESTO]));
-
-  const decimalesSelected = utils.isArraysCompareSimilar(
-      opciones.tiposOperaciones, [OPERACIONES.DIVISION_RESTO]);
+  const {
+    disableNegativeNumbers: onlyBtnDivSelected,
+    disableDecimals: decimalesSelected,
+  } = operationAvailability(opciones.tiposOperaciones);
 
   // si solo esta selecionado division entonces desactiva numeros negativos
   if (onlyBtnDivSelected) {
