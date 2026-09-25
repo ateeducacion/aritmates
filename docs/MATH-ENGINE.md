@@ -10,7 +10,7 @@ las restricciones de la portada (nivel, tipo de número, signo del resultado).
 |--------|-----------------|
 | `random.js` | `Math.random` en producción, o una función con semilla en tests |
 | `arithmetic.js` | suma, resta, producto y división de una lista, con Decimal.js |
-| `expression.js` | qué operadores van antes, y cómo se reescribe una cadena de sumas y restas |
+| `expression.js` | precedencia, reescrituras y agrupación de operadores consecutivos |
 | `evaluate.js` | valor de una expresión ya escrita (`+ - * /` y paréntesis) |
 | `operacion.js` | clase base: límites, signos, factorización, texto |
 | `suma.js`, `resta.js`, `multiplicacion.js`, `division*.js` | generación de cada operación |

@@ -4,7 +4,10 @@ import Multiplicacion from '../src/operaciones/multiplicacion';
 import DivisionEntera from '../src/operaciones/divisionEntera';
 import {seededRandom} from '../src/operaciones/random';
 import {evaluateArithmetic} from '../src/operaciones/evaluate';
-import {subtractionsAsNegativeSums} from '../src/operaciones/expression';
+import {
+  subtractionsAsNegativeSums,
+  groupSimilarOperations,
+} from '../src/operaciones/expression';
 import OPERACIONES from '../src/operaciones/operaciones';
 import {scoreBadges, speedBadges} from '../src/application/badges';
 
@@ -72,6 +75,32 @@ describe('Invariantes del motor', () => {
     const original = 10 - 3 + 2;
     const asSums = rewritten.operandos.reduce((a, b) => a + b, 0);
     expect(asSums).to.equal(original);
+  });
+});
+
+describe('Agrupación de expresiones', () => {
+  it('agrupa operadores consecutivos sin depender de OperacionMultiple', () => {
+    const groups = groupSimilarOperations(
+        [OPERACIONES.SUMA, OPERACIONES.SUMA, OPERACIONES.MULTIPLICACION],
+    );
+    expect(groups[0]).to.deep.include({
+      tipo: OPERACIONES.SUMA,
+      cantidadOperandos: 3,
+    });
+    expect(groups[2]).to.deep.include({
+      tipo: OPERACIONES.MULTIPLICACION,
+      cantidadOperandos: 2,
+    });
+  });
+
+  it('conserva operandos y posiciones cuando vienen del usuario', () => {
+    const groups = groupSimilarOperations(
+        [OPERACIONES.SUMA, OPERACIONES.SUMA],
+        [2, 3, 4],
+        true,
+    );
+    expect(groups[0].operandos).to.deep.equal([2, 3, 4]);
+    expect(groups[0].posicionOperadores).to.deep.equal([0, 1, 2]);
   });
 });
 
