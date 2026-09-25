@@ -1,5 +1,9 @@
 # Changelog
 
+## Hoja de la portada (post 1.3)
+
+* La ilustración de la portada vuelve a ocupar la columna derecha y a apoyar el borde inferior en la caja, como en la versión de Medusa. En Bootstrap 5 la columna ya no era el punto de anclaje.
+
 ## Imágenes más ligeras (post 1.3)
 
 No cambia la portada ni los ejercicios.
