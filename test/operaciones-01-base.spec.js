@@ -315,3 +315,28 @@ describe('Objeto Operaciones', ()=>{
 });
 
 
+
+
+describe('resolverIncognita', () => {
+  it('no recalcula cuando comprobarResultado rechaza la operación', () => {
+    const op = new objetos.Operacion();
+    let recalculos = 0;
+    op.comprobarResultado = () => ({resultado: false});
+    op.calcularResultado = () => recalculos++;
+
+    op.resolverIncognita();
+
+    expect(recalculos).to.equal(0);
+  });
+
+  it('recalcula cuando comprobarResultado acepta la operación', () => {
+    const op = new objetos.Operacion();
+    let recalculos = 0;
+    op.comprobarResultado = () => ({resultado: true});
+    op.calcularResultado = () => recalculos++;
+
+    op.resolverIncognita();
+
+    expect(recalculos).to.equal(1);
+  });
+});
