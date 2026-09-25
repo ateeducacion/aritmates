@@ -13,6 +13,7 @@ import {TIPO_NUMERO} from '../src/operaciones/tipoNumero';
 import {scoreBadges, speedBadges} from '../src/application/badges';
 import {createSessionTimer} from '../src/application/timer';
 import {canEnableNegativeResult, operationAvailability, requiresTwoOperands} from '../src/application/optionAvailability';
+import {addQuestionTime, createSessionScore, nextOperation, recordAnswer, shouldReloadInfiniteOperations} from '../src/application/exerciseSession';
 import {countDecimalOperands, countFollowingOperands, countNegativeOperands, decimalPlaces, decimalPlacesForLevel, multiplesUntil} from '../src/operaciones/numberRules';
 import {factorize} from '../src/operaciones/factorization';
 
@@ -317,5 +318,47 @@ describe('Factorización y reglas numéricas extraídas', () => {
     expect(countNegativeOperands([-1, 2, -3])).to.equal(2);
     expect(countDecimalOperands([1, 2, 3, 4, 5])).to.equal(0);
     expect(countNegativeOperands([1, -2, 3, -4, 5])).to.equal(0);
+  });
+});
+
+
+describe('Estado de sesión de ejercicios', () => {
+  it('crea un marcador vacío y acumula tiempos con la regla histórica', () => {
+    const score = createSessionScore();
+    addQuestionTime(score, 1200, 10);
+    addQuestionTime(score, 800, 10);
+    expect(score.tiempoConsumido).to.equal(2000);
+    expect(score.tiempoMedioEjercicio).to.equal(200);
+  });
+
+  it('registra aciertos, fallos y respuestas incorrectas', () => {
+    const score = createSessionScore();
+    recordAnswer(score, {index: 0, answer: '4', correct: true});
+    recordAnswer(score, {index: 1, answer: '7', correct: false});
+    recordAnswer(score, {index: 2, answer: '', correct: false});
+
+    expect(score.completados).to.equal(2);
+    expect(score.aciertos).to.equal(1);
+    expect(score.fallos).to.equal(2);
+    expect(score.operacionesMal[1]).to.equal('7');
+    expect(score.operacionesMal[2]).to.equal('');
+  });
+
+  it('avanza y reinicia el índice al terminar', () => {
+    expect(nextOperation(0, 3)).to.deep.equal({index: 1, finished: false});
+    expect(nextOperation(2, 3)).to.deep.equal({index: 0, finished: true});
+  });
+
+  it('solo recarga operaciones en modo infinito al alcanzar el intervalo', () => {
+    expect(shouldReloadInfiniteOperations({
+      configuredOperations: 0,
+      currentIndex: 9,
+      reloadEvery: 10,
+    })).to.equal(true);
+    expect(shouldReloadInfiniteOperations({
+      configuredOperations: 20,
+      currentIndex: 9,
+      reloadEvery: 10,
+    })).to.equal(false);
   });
 });
