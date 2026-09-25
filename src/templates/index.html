@@ -123,9 +123,9 @@
                                 <div>Elige el rango de números en los operandos
                                     </div><br>
                                 <div class="controles d-flex flex-row">
-                                    <input class="sliderIndicator" type="text" name="nivelMin" id="nivelMin_mv" value="0" />
-                                    <xy-slider id="sliderNivel_mv" showtips="showtips" defaultvalue="5" min="1" max="23"></xy-slider>
-                                    <input class="sliderIndicator" type="text" name="nivelMax" value="5" id="nivelMax_mv"/>
+                                    <input class="sliderIndicator" type="text" name="nivelMin" id="nivelMin_mv" aria-label="Nivel mínimo" value="0" />
+                                    <xy-slider id="sliderNivel_mv" aria-label="Nivel" showtips="showtips" defaultvalue="5" min="1" max="23"></xy-slider>
+                                    <input class="sliderIndicator" type="text" name="nivelMax" value="5" id="nivelMax_mv" aria-label="Nivel máximo"/>
                                 </div>
 
                                 <div class="row post-slider">
@@ -149,15 +149,15 @@
                                         Elige los minutos de duración
                                     </div><br>
                                     <div class="controles d-flex flex-row">
-                                        <input class="sliderIndicator" type="text" disabled name="" id="cronomin_mv"/>
+                                        <input class="sliderIndicator" type="text" disabled name="" id="cronomin_mv" aria-label="Duración mínima"/>
                                         <xy-slider
-                                            id="sliderCrono_mv"
+                                            id="sliderCrono_mv" aria-label="Duración"
                                             style="width:100%"
                                             showtips="showtips"
                                             defaultvalue="1"
                                             min="1"
                                             max="9"></xy-slider>
-                                        <input class="sliderIndicator" type="text" disabled name="" id="cronomax_mv"/>
+                                        <input class="sliderIndicator" type="text" disabled name="" id="cronomax_mv" aria-label="Duración máxima"/>
                                     </div>
                                     <div class="d-flex post-slider">
                                         <p class="grow"></p>
@@ -175,16 +175,16 @@
                                     <div>Elige el número de ejercicios
                                         <span id="ratingsLabel_mv" class="caption"></span></div><br>
                                     <div class="controles d-flex flex-row">
-                                        <input class="sliderIndicator" type="text" disabled name="" id="cantidadOpMin_mv"/>
+                                        <input class="sliderIndicator" type="text" disabled name="" id="cantidadOpMin_mv" aria-label="Número mínimo de ejercicios"/>
                                         <xy-slider
-                                            id="sliderCantidadOp_mv"
+                                            id="sliderCantidadOp_mv" aria-label="Número de ejercicios"
                                             style="width:100%"
                                             showtips="showtips"
                                             defaultvalue="20"
                                             step="10"
                                             min="10"
                                             max="100"></xy-slider>
-                                        <input class="sliderIndicator" type="text" disabled name="" id="cantidadOpMax_mv"/>
+                                        <input class="sliderIndicator" type="text" disabled name="" id="cantidadOpMax_mv" aria-label="Número máximo de ejercicios"/>
                                     </div>
         
                                     <div class="d-flex post-slider">
@@ -262,7 +262,7 @@
                             <paper-item>
                                 <paper-item-body two-line>
                                     <div>
-                                        Elige el número de operandos<span id="ratingsLabel_mv" class="caption"></span>
+                                        Elige el número de operandos<span id="operandosLabel_mv" class="caption"></span>
                                     </div><br>
 
                                     <div id="selectNuOperandos_mv" data-name="noperandos" class="ib-radio-group controles">
@@ -381,9 +381,9 @@
                             <p class="groupTitle title">Nivel</p>
                             <div class="description">Elige el rango de números en los operandos</div><br>
                             <div class="controles d-flex flex-row">
-                                <input class="sliderIndicator" type="text" name="nivelMin" id="nivelMin" value="0" />
-                                <xy-slider id="sliderNivel" showtips="showtips" defaultvalue="5" min="1" max="23"></xy-slider>
-                                <input class="sliderIndicator" type="text" name="nivelMax" value="5" id="nivelMax"/>
+                                <input class="sliderIndicator" type="text" name="nivelMin" id="nivelMin" aria-label="Nivel mínimo" value="0" />
+                                <xy-slider id="sliderNivel" aria-label="Nivel" showtips="showtips" defaultvalue="5" min="1" max="23"></xy-slider>
+                                <input class="sliderIndicator" type="text" name="nivelMax" value="5" id="nivelMax" aria-label="Nivel máximo"/>
                             </div>
 
                             <div class="d-flex post-slider">
@@ -407,15 +407,15 @@
                                 Elige los minutos de duración
                             </div><br>
                             <div class="controles d-flex flex-row">
-                                <input class="sliderIndicator" type="text" disabled name="" id="cronomin"/>
+                                <input class="sliderIndicator" type="text" disabled name="" id="cronomin" aria-label="Duración mínima"/>
                                 <xy-slider
-                                    id="sliderCrono"
+                                    id="sliderCrono" aria-label="Duración"
                                     style="width:100%"
                                     showtips="showtips"
                                     defaultvalue="1"
                                     min="1"
                                     max="9"></xy-slider>
-                                <input class="sliderIndicator" type="text" disabled name="" id="cronomax"/>
+                                <input class="sliderIndicator" type="text" disabled name="" id="cronomax" aria-label="Duración máxima"/>
                             </div>
                             <div class="d-flex post-slider">
                                 <p class="grow"></p>
@@ -430,16 +430,16 @@
                             <div>Elige el número de ejercicios
                                 <span id="ratingsLabel" class="caption"></span></div><br>
                             <div class="controles d-flex flex-row">
-                                <input class="sliderIndicator" type="text" disabled name="" id="cantidadOpMin"/>
+                                <input class="sliderIndicator" type="text" disabled name="" id="cantidadOpMin" aria-label="Número mínimo de ejercicios"/>
                                 <xy-slider
-                                    id="sliderCantidadOp"
+                                    id="sliderCantidadOp" aria-label="Número de ejercicios"
                                     style="width:100%"
                                     showtips="showtips"
                                     defaultvalue="20"
                                     step="10"
                                     min="10"
                                     max="100"></xy-slider>
-                                <input class="sliderIndicator" type="text" disabled name="" id="cantidadOpMax"/>
+                                <input class="sliderIndicator" type="text" disabled name="" id="cantidadOpMax" aria-label="Número máximo de ejercicios"/>
                             </div>
 
                             <div class="d-flex post-slider">
@@ -514,7 +514,7 @@
                         <div class="col-md fondo d-none d-sm-none d-md-block">
                             <p class="groupTitle title">Operandos</p>
                             <div>
-                                Elige el número de operandos<span id="ratingsLabel" class="caption"></span>
+                                Elige el número de operandos<span id="operandosLabel" class="caption"></span>
                             </div><br>
 
                             <div id="selectNuOperandos" data-name="noperandos" class="ib-radio-group controles">

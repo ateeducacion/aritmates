@@ -66,7 +66,6 @@ function bindResultActions() {
  * @return {Promise<void>}
  */
 export async function renderResults({score, options, exam, helpDrawer}) {
-  console.time('resultados');
   $('#ejercicios > div').hide();
 
   const response = await fetch('./templates/part_resultado.html');
@@ -112,5 +111,4 @@ export async function renderResults({score, options, exam, helpDrawer}) {
   if (helpDrawer) {
     helpDrawer.refreshEvents();
   }
-  console.timeEnd('resultados');
 }

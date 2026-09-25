@@ -59,3 +59,10 @@ La salida `console.log` del bundle legacy se silencia por defecto para que CI mu
 3. Compara `toString()` y `resultado`.
 
 No se alargan timeouts para tapar un fallo intermitente.
+
+
+## Calidad incremental
+
+Los módulos ya saneados usan `no-unused-vars` y `no-console` como reglas bloqueantes. El alcance se amplía de forma gradual para no convertir una limpieza legacy en un cambio funcional masivo.
+
+Los E2E de accesibilidad verifican nombres accesibles, estados ARIA, interacción por teclado, recorrido por tabulación y ausencia de identificadores HTML duplicados.

@@ -150,6 +150,8 @@ export default class XySlider extends ElementBase {
     connectedCallback() {
         this.slider = this.shadowRoot.getElementById('slider');
         this.sliderCon = this.shadowRoot.getElementById('slider-con');
+        const accessibleName = this.getAttribute('aria-label');
+        if (accessibleName) this.slider.setAttribute('aria-label', accessibleName);
         if( this.vertical ){
             this.resizeObserver = new ResizeObserver(entries => {
                 for (let entry of entries) {
@@ -169,7 +171,7 @@ export default class XySlider extends ElementBase {
                 }
             }));
         })
-        this.slider.addEventListener('change',(ev) => {
+        this.slider.addEventListener('change',(_ev) => {
             this.value = this.slider.value;
             this._oninput = false;
             this.dispatchEvent(new CustomEvent('change',{

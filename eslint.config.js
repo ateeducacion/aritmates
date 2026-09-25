@@ -41,6 +41,7 @@ const browserGlobals = {
   MouseEvent: 'readonly',
   ResizeObserver: 'readonly',
   DOMParser: 'readonly',
+  CSS: 'readonly',
   global: 'readonly',
   sessionStorage: 'readonly',
   btoa: 'readonly',
@@ -138,15 +139,21 @@ export default [
   {
     files: [
       'src/application/**/*.js',
+      'src/components/**/*.js',
+      'src/helpers.js',
       'src/operaciones/arithmetic.js',
       'src/operaciones/evaluate.js',
       'src/operaciones/expression.js',
       'src/operaciones/random.js',
+      'src/operaciones/numberRules.js',
+      'src/operaciones/operaciones.js',
+      'src/operaciones/tipoNumero.js',
       'src/pdfLibs.js',
       'e2e/**/*.js',
     ],
     rules: {
       'no-unused-vars': ['error', {argsIgnorePattern: '^_', varsIgnorePattern: '^_'}],
+      'no-console': ['error', {allow: ['warn', 'error']}],
     },
   },
   {
