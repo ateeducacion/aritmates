@@ -3,7 +3,7 @@ import Resta from '../src/operaciones/resta';
 import Multiplicacion from '../src/operaciones/multiplicacion';
 import DivisionEntera from '../src/operaciones/divisionEntera';
 import OperacionMultiple from '../src/operaciones/OperacionMultiple';
-import {asRandom, seededRandom, setDefaultRandom} from '../src/operaciones/random';
+import {asRandom, randomSign, roundedBetween, seededRandom, setDefaultRandom} from '../src/operaciones/random';
 import {evaluateArithmetic} from '../src/operaciones/evaluate';
 import {
   subtractionsAsNegativeSums,
@@ -629,5 +629,38 @@ describe('Aislamiento de reescrituras suma/resta', () => {
     expect(rewritten.cambios).to.deep.equal([]);
     expect(rewritten.operandos).to.not.equal(operandos);
     expect(rewritten.operaciones).to.not.equal(operaciones);
+  });
+});
+
+
+describe('Reglas puras de aleatoriedad', () => {
+  it('conserva el redondeo histórico en intervalos', () => {
+    expect(roundedBetween(() => 0, 1, 5)).to.equal(1);
+    expect(roundedBetween(() => 0.24, 1, 5)).to.equal(2);
+    expect(roundedBetween(() => 0.5, 1, 5)).to.equal(3);
+    expect(roundedBetween(() => 0.99, 1, 5)).to.equal(5);
+  });
+
+  it('conserva la regla histórica de signo', () => {
+    expect(randomSign(() => 0)).to.equal(-1);
+    expect(randomSign(() => 0.49)).to.equal(-1);
+    expect(randomSign(() => 0.5)).to.equal(1);
+    expect(randomSign(() => 0.99)).to.equal(1);
+  });
+
+  it('una misma semilla conserva la secuencia al usar los helpers', () => {
+    const a = seededRandom(1234);
+    const b = seededRandom(1234);
+    const seqA = [
+      roundedBetween(a, 1, 20),
+      randomSign(a),
+      roundedBetween(a, 5, 10),
+    ];
+    const seqB = [
+      roundedBetween(b, 1, 20),
+      randomSign(b),
+      roundedBetween(b, 5, 10),
+    ];
+    expect(seqB).to.deep.equal(seqA);
   });
 });
