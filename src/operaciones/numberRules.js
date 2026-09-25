@@ -88,3 +88,16 @@ export function countNegativeOperands(operands) {
   if (!Array.isArray(operands) || operands.length >= 5) return 0;
   return operands.filter((value) => value < 0).length;
 }
+
+
+/**
+ * Indica si un operando no fue proporcionado.
+ *
+ * Cero es un operando válido y no debe confundirse con ausencia de valor.
+ *
+ * @param {*} value
+ * @return {boolean}
+ */
+export function isMissingOperand(value) {
+  return value === undefined || value === null || value === '';
+}
