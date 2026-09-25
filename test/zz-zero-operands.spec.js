@@ -11,6 +11,8 @@ describe('Cero como operando explícito', () => {
     expect(isMissingOperand(undefined)).to.equal(true);
     expect(isMissingOperand(null)).to.equal(true);
     expect(isMissingOperand('')).to.equal(true);
+    expect(isMissingOperand(false)).to.equal(true);
+    expect(isMissingOperand(NaN)).to.equal(true);
     expect(isMissingOperand(0)).to.equal(false);
     expect(isMissingOperand('0')).to.equal(false);
     expect(shouldGenerateOperand(0, 0)).to.equal(false);
