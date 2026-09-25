@@ -163,8 +163,6 @@ export class OptionsShortcode {
           // como es obligatorio 3 operandos para poder poner parentesis 
           // lo pongo directamente
           if (optionKey == 'parentesis' && (valOpcion == 1) ) {
-            // objOpciones.cantidadOperandos = 3;
-            // console.log(tag, 'cantidad de operandos pasado a 3? ', objOpciones.cantidadOperandos );
             objOpciones[optionKey] = true;
           }
 

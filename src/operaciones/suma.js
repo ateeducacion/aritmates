@@ -79,7 +79,6 @@ export default class Suma extends Operacion {
    * @memberof Suma
    */
   calcularResultado() {
-    // const debug = true;
 
     // TODO revisar complementario y resultado por usuario
     if (this.complementario) {
@@ -95,14 +94,12 @@ export default class Suma extends Operacion {
     this.resultado = this.operandos[0];
 
     if (this.posicion_nivel-1 == this.operandos.length) {
-      // console.log('el resultado es el numero que define el nivel');
       // poner un numero que cumpla con el nivel como resultado y averiguar
       //  el resto de operandos
       this.resultado = this.numeroRandom(true);
       // re-calcula primer operando para que sea valido con el resultado
       let primerOperando=this.resultado;
       for (let i =1; i < this.operandos.length; i++) {
-        // primerOperando -= this.operandos[i];
         primerOperando = new Decimal(primerOperando).minus(this.operandos[i]);
         primerOperando = parseFloat(primerOperando.toString());
       }
@@ -111,7 +108,6 @@ export default class Suma extends Operacion {
       this.resultado = this.sumarValores(this.operandos);
     }
 
-    // this.comprobarResultado();
 
   }
 
@@ -122,7 +118,6 @@ export default class Suma extends Operacion {
    * @memberof Suma
    */
   generarNumerosOperandos() {
-    // const debug = true;
     super.generarNumerosOperandos();
 
     if (this.complementario && this.complementario>0) {
@@ -131,38 +126,11 @@ export default class Suma extends Operacion {
 
 
     // aqui ya viene con unso operandos de
-    // this._generarOperandoPosicion(posicion)
 
     // TODO: si permite numeros negativos y el resultado es positivo
 
     // solo puede ser negativo con numeros negativos
     // TODO: revisar
-    // if (this.resultadoNegativo && this.permitir_negativos) {
-    //   if (this.cantidad_operandos>2) {
-    //     // comprobamos del 3 op en adelante
-    //     for (let index = 2; index < this.operandos.length; index++) {
-    //       const operando = this.operandos[index];
-    //       // resultado de operandos anteriores:
-    //       const resultadoAnterior = this.sumarValores(
-    //           this.operandos.slice(0, index));
-    //       if ( resultadoAnterior >= operando ) {
-    //         const max = (this.nivel > resultadoAnterior) ?
-    //             this.nivel : resultadoAnterior+2;
-    //         this.operandos[index] = this.getRandomMinMax(resultadoAnterior+1,
-    //             max );
-    //       }
-    //     }
-    //   } else {
-    //     this.operandos.sort(function(a, b) {
-    //     // ordenador de menor a mayor
-    //       return a-b;
-    //     });
-    //     if ( this.operandos[0] == this.operandos[1] ) {
-    //       this.operandos[1] = this.operandos[1] + this.getRandomMinMax(
-    //           1, this.nivel);
-    //     }
-    //   }
-    // }
 
   }
 
@@ -183,7 +151,6 @@ export default class Suma extends Operacion {
     }
     let limiteInferior = 0;
     const nivel = parseInt(this.nivel);
-    // console.log(tag, 'permitir negativos?', this.permitir_negativos );
     if ( this.permitir_negativos ) {
       limiteInferior = nivel * -1;
     }
@@ -202,8 +169,6 @@ export default class Suma extends Operacion {
           // console.log( tag,
           //    'primer operando','limites',limiteInferior,limiteSuperior, 
           //    'con numeros posteriores', numOperandosPosteriores );
-          // limiteInferior = valOpPosteriores;
-          // limiteSuperior = nivel+valOpPosteriores;
           // si solo se permiten positivos no hace falta cambiar nada
 
           // si hay operandos negativos 
@@ -221,7 +186,6 @@ export default class Suma extends Operacion {
         // 10 - [ del -nivel al 10]
         //Si no hay mas operaderes 
         if ( !(numOperandosPosteriores>0) ) {
-          // limiteSuperior = opAnteriores; // comento para que el limite superiro sea el nivel          
           if ( this.permitir_negativos ) {
             if (opAnteriores <= 0) {
               // asegurar resultado positivo?
@@ -250,14 +214,12 @@ export default class Suma extends Operacion {
             // suponiendo nivel 10 :
             // ejempplo -5 + [-10..4] = negativo
             limiteInferior = -nivel;
-            // limiteSuperior = limiteInferior + nivel;  
             limiteSuperior = opAnteriores-1;  
           } else {
             // operaciones anteriores positivas
             // ejemplo 5 + [-10..-6] = negativo
             limiteSuperior = - opAnteriores - 1;
             if (this.decimales) limiteSuperior = - opAnteriores + 2;
-            // limiteInferior = limiteSuperior - nivel;
             limiteInferior = - nivel;
           }
           
@@ -340,7 +302,6 @@ export default class Suma extends Operacion {
   }
 
   operandoMultiploN(posicion, multiplo) {
-    // const debug = true;
     const ultimoOperando = this.cantidad_operandos-1;
     let valOpPosteriores = 0;
     const numOperandosPosteriores = this.numOperandosPosteriores(posicion);
@@ -416,10 +377,6 @@ export default class Suma extends Operacion {
               // ej: 1 + [-9 .. -2] = negativo
               limiteSuperior = - (valOpAnteriores + 1);
               limiteInferior = - 9;
-              // if (valOpAnteriores > 9){
-              //   limiteInferior = - (valOpAnteriores+1);
-              //   limiteSuperior = - (valOpAnteriores+1);
-              // } 
               // 60 + 50 + ? = negativo
               // 110 + [-120 .. -120] = negativo (-10)
               // 

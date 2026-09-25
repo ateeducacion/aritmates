@@ -32,7 +32,6 @@ export default class Resta extends Operacion {
     forzarSignos,
     random,
   } = {}) {
-    // const debug = true;
     if ( !upper_bound ) {
       upper_bound = nivel;
     }
@@ -60,7 +59,6 @@ export default class Resta extends Operacion {
     this.simbolo = '-';
     this.tipo = OPERACIONES.RESTA;
     // esta en super
-    // this.operandosIniciales = operandos.slice();
     if (resultado !== null && resultado !== undefined) {
       this.resultadoPorUsuario = true;
       this.resultado = resultado;
@@ -91,11 +89,6 @@ export default class Resta extends Operacion {
   calcularResultado() {
 
     // TODO:
-    // if (this.complementario) {
-    //   this.resultado = this.complementario;
-    //   this.resolverIncognita();
-    //   return;
-    // }
 
     if (this.resultadoPorUsuario) {
       this.resolverIncognita();
@@ -105,14 +98,12 @@ export default class Resta extends Operacion {
     this.resultado = this.operandos[0];
 
     if (this.posicion_nivel-1 == this.operandos.length) {
-      // console.log('el resultado es el numero que define el nivel');
       // poner un numero que cumpla con el nivel como resultado y averiguar
       //  el resto de operandos
       this.resultado = this.numeroRandom(true);
       // re-calcula primer operando para que sea valido con el resultado
       let primerOperando=this.resultado;
       for (let i =1; i < this.operandos.length; i++) {
-        // primerOperando += this.operandos[i];
         primerOperando = new Decimal(primerOperando).plus(this.operandos[i]);
         primerOperando = parseFloat(primerOperando.toString());
       }
@@ -126,7 +117,6 @@ export default class Resta extends Operacion {
   }
 
   generarNumerosOperandos() {
-    // const debug = true;
     super.generarNumerosOperandos();
 
 
@@ -135,27 +125,17 @@ export default class Resta extends Operacion {
     }
 
 
-    // if ( !this.resultadoNegativo) {
     //   // ordenador de mayor a menor
     //   this.operandos.sort(function(a, b) {
-    //     return b-a;
-    //   });
 
-    //   if (this.cantidad_operandos>2) {
     //     // comprobamos del 3 op en adelante
-    //     for ( let index = 2; index < this.operandos.length; index++ ) {
-    //       const operando = this.operandos[index];
     //       // resultado de operandos anteriores:
     //       const resultadoAnterior = this.restarValores(
     //           this.operandos.slice(0, index));
-    //       if ( resultadoAnterior==0 ) {
     //         // si el resultado anterior es 0 corremos el riesgo de terminar
     //         // con numero al azar del 1-9una operacion tipo
     //         // "23 - 23 - 0 - 0 = 0 "
     //         // asi que pedimos nuevos numero
-    //         this.generarNumerosOperandos();
-    //         return;
-    //       }
     //       // calculamos los operandos siguiente, el max el resutadoAnterior
     //       // para que no sea resultado negativo creo que no hace falta por
     //       // que ya lo hace en generarNumeroOperando
@@ -163,41 +143,11 @@ export default class Resta extends Operacion {
     //       //   this.operandos[index] = Math.round(
     //       //       this.rng()*resultadoAnterior );
     //       // }
-    //     }
-    //   }
-    // }
 
-    // if (this.resultadoNegativo) {
-    //   if (this.cantidad_operandos>2) {
-    //     // comprobamos del 3 op en adelante
-    //     for (let index = 2; index < this.operandos.length; index++) {
-    //       const operando = this.operandos[index];
-    //       // resultado de operandos anteriores:
-    //       const resultadoAnterior = this.restarValores(
-    //           this.operandos.slice(0, index));
-    //       if ( resultadoAnterior >= operando ) {
-    //         const max = (this.nivel > resultadoAnterior) ?
-    //             this.nivel : resultadoAnterior+2;
-    //         this.operandos[index] = this.getRandomMinMax(resultadoAnterior+1,
-    //             max );
-    //       }
-    //     }
-    //   } else {
-    //     this.operandos.sort(function(a, b) {
-    //     // ordenador de menor a mayor
-    //       return a-b;
-    //     });
-    //     if ( this.operandos[0] == this.operandos[1] ) {
-    //       this.operandos[1] = this.operandos[1] + this.getRandomMinMax(
-    //           1, this.nivel);
-    //     }
-    //   }
-    // }
 
   }
 
   _generarOperandoPosicion( posicion ) {
-    // const debug = true;
 
     const limites = this.calcularLimitesOperando(posicion);
     let limiteInferior = limites.limiteInferior;
@@ -230,7 +180,6 @@ export default class Resta extends Operacion {
 
     // si este operando tiene cambiar el signo:
     if ( forzarOperandoNegativo ) {
-      // console.log(tag, 'forzar negativo');
       if (this.resultadoNegativo) {
         switch (posicion) {
           case 0:
@@ -248,7 +197,6 @@ export default class Resta extends Operacion {
               // por que seria como positivo 5 - (-1) = 6
               this.operandos[posicion] = 0;
             } else {
-              // ej: opAnteriores = -5
               // -5 - ( -4..-1 ) = ( -1..-4 )  >= 0;
               limiteInferior = opAnteriores+1;
               limiteSuperior = -1;
@@ -279,8 +227,6 @@ export default class Resta extends Operacion {
             break;
         }
       }
-      // if ( limiteInferior == 0 ) limiteInferior = -1;
-      // if ( limiteSuperior == 0 ) limiteSuperior = -1;
     }
 
 
@@ -314,7 +260,6 @@ export default class Resta extends Operacion {
       let nuevoOperando;
       const op = this.operandos[index];
 
-      // if ( index !== posicionIncognita ){
       // generamos el operando a no se que existan operandos mandados por el
       // usuario
       if ( !this.operandos_por_usuario ||
@@ -322,11 +267,8 @@ export default class Resta extends Operacion {
 
         if ( index == ultimoOperando) {
           // si la incognita ya se definió calcular el ultimo operando
-          // if (restaOperandosSinIncognita>0){
           nuevoOperando = restaOperandosSinIncognita - this.resultado;
-          // } else {
           //     nuevoOperando = this.resultado+ ;
-          // }
 
           // pero esto no se va  a dar nunca con los complementarios!
           // ultimo operando con ingognita == resultado
@@ -360,16 +302,13 @@ export default class Resta extends Operacion {
 
       // el único numero posible para el resultado hay que repartirlo entre los
       // operandos
-      // const operandos_restantes = this.cantidad_operandos-index;
       // maximo = Math.round(
       //  ( restaOperandosSinIncognita - this.resultado) / operandos_restantes
-      // ) ;
       maximoActual = restaOperandosSinIncognita - this.resultado;
 
 
       // }  // fi ( index !== posicionIncognita )
     }// fin for
-    // this.restaOperandosSinIncognita = restaOperandosSinIncognita;
   }
 
   /**
@@ -397,9 +336,7 @@ export default class Resta extends Operacion {
   }
 
   operandoMultiploN(posicion, multiplo) {
-    // const debug = true;
     // super.operandoMultiploN(posicion, multiplo);
-    // const ultimoOperando = this.cantidad_operandos-1;
     const nivelOriginal = this.nivel;
     this.nivel = 9; // maximo 90 o 900
     const limites = this.calcularLimitesOperando(posicion, multiplo );
@@ -444,7 +381,6 @@ export default class Resta extends Operacion {
         limiteInferior = valOpPosteriores;
         // esto lo puse para facilitar resultado positivo, pero no hace falta
         // y si lo pongo no se cumple que el maximo sea el nivel
-        // limiteSuperior = this.nivel+valOpPosteriores;
         limiteSuperior = this.nivel;
       } else {
         // si no hay generar un operando culaquiera

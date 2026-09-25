@@ -2,7 +2,6 @@ import DivisionDecimal from './divisionDecimales';
 import DivisionEntera from './divisionEntera';
 import OPERACIONES from './operaciones';
 
-// import Operacion from './operacion';
 /**
  * Operación División
  *

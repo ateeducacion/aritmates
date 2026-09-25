@@ -1,23 +1,5 @@
 import combinations from './utils/combinations.js';
 
-// export const posibilidadPorOpcion = {
-//   cantidadOperaciones: 11,
-//   cantidadOperandos: 3,
-//   complementario: 10,
-//   cuentaAtras: 10,
-//   nivel: 23,
-
-// enfocado: 2,
-// operacionMultiple: 2,
-// parentesis: 2,
-// posicionIncognitaAlAzar: 2,
-// resultadoNegativo: 2,
-
-//   tiposNumero: 32,
-//   tiposOperacion: 32,
-// };
-
-
 function totalPosibilidades( posibilidadPorOpcion ) {
   let posibilidades = 1;
   const keys = Object.keys(posibilidadPorOpcion);
@@ -103,7 +85,6 @@ const selectOptionsV0 = {
   'cantidadOperandos': [2, 3, 4],
 };
 
-// console.log('selectOptionsv0', selectOptionsV0);
 
 const posibilidadPorOpcionV0 = calcPosibilidadesPorOpcion(listOptionsPorTipoV0);
 

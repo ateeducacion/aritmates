@@ -19,10 +19,7 @@ import Suma from './suma';
 import Resta from './resta';
 import Multiplicacion from './multiplicacion';
 import DivisionEntera from './divisionEntera';
-// import DivisionResto from './divisionResto';
-// import DivisionDecimales from './divisionDecimales';
 import OPERACIONES from './operaciones';
-// import {Decimal} from 'decimal.js';
 import {TIPO_NUMERO} from './tipoNumero';
 import {selectExpressionOperations} from './operationSelection';
 import DivisionDecimales from './divisionDecimales';
@@ -58,7 +55,6 @@ class OperacionMultiple extends Operacion {
 
     // si no pongo esto me cambia los operandos el super
     const operandosEnviados = operandos.slice();
-    // if ( debug ) console.log( tag, operandosEnviados, 'operandosEnviados' );
 
     super({
       nivel: nivel,
@@ -71,7 +67,6 @@ class OperacionMultiple extends Operacion {
       // resultadoNegativo: resultadoNegativo,
     });
 
-    // this.id = '[id:'+this.getRandomMinMax(0, 10000) +']';
 
     if (cantidadOperandos < 3) {
       this.resultado = null;
@@ -86,9 +81,6 @@ class OperacionMultiple extends Operacion {
       (operandosEnviados.length == this.cantidad_operandos );
     this.operandosEnviados = operandosEnviados;
 
-    // this.prioridadOperadores = [['(', ')'], ['*', '/'], ['+', '-']];
-    // this.operaciones = [];
-    // this.operadores = [];
     this.resultadoNegativo = resultadoNegativo;
     this.resultados = [];
     this.tiposOperacionAzar = tiposOperacionAzar;
@@ -148,7 +140,6 @@ class OperacionMultiple extends Operacion {
 
     // comprobar error operaciones imposibles
     this.comprobarErrorTiposOperacion();
-    // console.log('errores actuales:', this.errors);
 
     this.operadores = symbolsFor(this.tiposOperacion);
     if ( this.forzarParentesis ) this.colocarParentesis();
@@ -173,11 +164,9 @@ class OperacionMultiple extends Operacion {
       }
     }
 
-    // console.log(tag, this.toString(true,true) )
   }
 
   generarOperaciones() {
-    // const debug = true;
 
     const antiguosOperandos = this.operandos.slice();
     this.operandos = null;
@@ -188,9 +177,6 @@ class OperacionMultiple extends Operacion {
     if ( this.forzarParentesis && hasAny(this.tiposOperacion, DIVISIONS) ) {
       if (onlyMulDiv(this.tiposOperacion) && this.parentesisInicial == 0 && this.parentesisFinal == 2){
         // si solo hay mul y div deveria resolverse como una operacion normal con multiplicaciones y divisiones
-        // this.crearDivisionesSinParentesis(operacionesRestantes);
-        // this.resolverOperacionParentesis();
-        // return;
       } else {
         this.crearDivisionesSinParentesis(operacionesRestantes);
         this.resolverOperacionParentesisResultado();
@@ -228,9 +214,7 @@ class OperacionMultiple extends Operacion {
     // hace esto si son todo multiplicaciones y divisiones
     if ( onlyMulDiv(this.tiposOperacion) ) {
       if ( this.tiposNumero.includes(TIPO_NUMERO.ENTERO) ) {
-        // debug = true;
         this.cambiarSignoAMulDivSiResultado(operandosMulDiv);
-        // debug = false;
 
         if (this.resultadoNegativo == false) {
           this.cambiarSignoDosOperandos();
@@ -259,7 +243,6 @@ class OperacionMultiple extends Operacion {
 
     // rellenar huecos de operandos con los operandos random que nos dio el
     // padre
-    // if (this.deep>0)
     this._rellenarOperandosVacios(antiguosOperandos);
 
   }
@@ -277,7 +260,6 @@ class OperacionMultiple extends Operacion {
   }
 
   toString(equal=true, verbose=false) {
-    // const debug = true;
     let resultado = this.resultado;
     let txt = '';
     let lastSymbol = '';
@@ -321,7 +303,6 @@ class OperacionMultiple extends Operacion {
    * @memberof OperacionMultiple
    */
   toHtml() {
-    // const debug = true;
     let html = this.toString();
     const inputIncognita = '<input type="number" size=3 class="incognita">';
     let solucionInput;
@@ -346,7 +327,6 @@ class OperacionMultiple extends Operacion {
    * @memberof OperacionMultiple
    */
   toPrint() {
-    // const debug = true;
 
     let html = '';
     const inputIncognita = '<span class="input">&nbsp;</span>';
@@ -459,14 +439,11 @@ class OperacionMultiple extends Operacion {
       // va a borrar
       operadoresABorrar.sort().reverse();
       operadoresABorrar.forEach((x)=>{
-        // operacionesUltimaPrioridad.posicionOperadores.splice(x, 1);
         operacionesUltimaPrioridad.operandos.splice(x, 1);
       });
     });
 
     const operacionesOrdenadas = orden.flat();
-    // console.log( this.id+tag, 'ordenOperandos', ordenOperandos );
-    // ordenOperandos = ordenOperandos.flat(1);
 
     return operacionesOrdenadas;
   }
@@ -474,10 +451,6 @@ class OperacionMultiple extends Operacion {
   addOperandoOperacionAnterior( posicionOperando, operandos, operacionesAnte,
       resultadoAnterior) {
 
-    // // si hay un resultado de operacion anterior
-    // if(resultadoAnterior && operacionesAnte && operacionesAnte.length == 0) {
-    //   operandos[0] = resultadoAnterior;
-    // }
 
     if (operandos.length == 0) {
       operandos[0] = resultadoAnterior;
@@ -536,13 +509,9 @@ class OperacionMultiple extends Operacion {
 
   generarNumerosOperandos() {
      
-    // const debug = true;
 
     if ( undefined === this.tiposOperacion ) return;
     this.generarOperaciones();
-    // if ( debug ) console.log( tag );
-    // // this.operandos = [];
-    // // this.resultado = null;
   }
 
   calcularResultadoComplejo() {
@@ -554,16 +523,8 @@ class OperacionMultiple extends Operacion {
     const tiposOperacion = this.tiposOperacion.slice();
     const cantidadOperaciones = this.cantidad_operandos-1;
     // operadores tienen que venir ya definidos
-    // if (this.tiposOperacion.length != cantidadOperaciones ) {
-    //   this.operadores = symbolsFor(this.tiposOperacion);
-    // }
 
     const ejercicioTxt = this.toString(false); // algo como 343 * 43 = 0
-    // if (this.parentesisInicial && this.parentesisFinal) {
-    //   if ( debug ) {
-    //     console.log( tag, 'opParentesis', opParenstesis );
-    //   }
-    // }
 
     let d = new Decimal(0);
 
@@ -627,8 +588,6 @@ class OperacionMultiple extends Operacion {
 
 
     this.resultado = parseFloat( d.toString() );
-    // if ( this.resultado < 0 ) {
-    // }
   }
 
   /**
@@ -639,14 +598,6 @@ class OperacionMultiple extends Operacion {
     if ( undefined === this.tiposOperacion ) return;
     let operacion = this.toString(false);
 
-    // const jsonOperaciones = JSON.stringify(this.tiposOperacion.sort());
-    // const jsonSumaMulti = JSON.stringify(
-    //     [OPERACIONES.SUMA, OPERACIONES.MULTIPLICACION].sort());
-    // if ( jsonOperaciones == jsonSumaMulti ) {
-    //   console.log('suma y multi', operacion );
-    //   this.calcularResultadoComplejo();
-    //   return;
-    // }
 
     operacion = operacion.replace(/∙/g, '*');
     let resultado;
@@ -657,7 +608,6 @@ class OperacionMultiple extends Operacion {
     }
     this.resultado = resultado.toFixed(3);
     this.resultado = parseFloat(this.resultado).toString();
-    // console.log('resultado', this.resultado );
   }
 
   /**
@@ -685,7 +635,6 @@ class OperacionMultiple extends Operacion {
       operacionesRestantes[i] = null;
       j++;
     }
-    // if ( debug ) console.log(this.id+tag, 'this.operandos', this.operandos);
   }
 
   /**
@@ -719,7 +668,6 @@ class OperacionMultiple extends Operacion {
   }
 
   obtenerOperacion(operacion, opciones) {
-    // const debug = true;
     opciones = Object.assign({}, opciones, {
       random: (opciones && opciones.random) || this._rng,
     });
@@ -776,12 +724,9 @@ class OperacionMultiple extends Operacion {
   }
 
   obtenerResultadoOpAnteriores(posicion) {
-    // const debug = true;
     // lo usa la resta para evitar operaciones negativas
     // normalmente estas operaciones son todas div y multiplicaciones asi que
     // no hay problemas de prioridad de operaciones
-    // const ultimaOperacion = this.cantidadOperandos-2;
-    // if ( posicion > ultimaOperacion ) return 0;
     if ( posicion <= 0 ) return 0;
     const optmp = this.operandos.slice();
     const opertmp = this.tiposOperacion.slice();
@@ -809,9 +754,7 @@ class OperacionMultiple extends Operacion {
   }
 
   obtenerResultadoOpPosteriores(posicion, operacionesJuntas=1) {
-    // const debug = true;
 
-    // posicion = posicion+1;
 
     const ultimaOperacion = this.cantidad_operandos-2;
     if ( posicion > ultimaOperacion ) {
@@ -854,7 +797,6 @@ class OperacionMultiple extends Operacion {
   }
 
   _rellenarOperandosVacios( operandosRelleno ) {
-    // const debug = true;
 
     for (let index = 0; index < this.cantidad_operandos; index++) {
       if ( this.operandos[index] === undefined ) {
@@ -909,13 +851,6 @@ class OperacionMultiple extends Operacion {
     this.parentesisFinal = null;
     let inicial;
     let final;
-    // if ( debug ) {
-    //   console.log( this.id+tag,
-    //       'posicion parentesis:', this.posicionParentesis,
-    //       'cantidad operandos', this.cantidad_operandos,
-    //       'tiposOperacion', this.tiposOperacion,
-    //        );
-    // }
     if ( this.posicionParentesis && this.posicionParentesis.length>0 ) {
       this.parentesisInicial = this.posicionParentesis[0];
       this.parentesisFinal = this.posicionParentesis[1];
@@ -959,16 +894,11 @@ class OperacionMultiple extends Operacion {
       tries++;
     }
 
-    // if ( debug ) console.log( this.id+tag,
-    //     inicial, final, operacionInvalida,
-    //     'inicial','final', 'operacionInvalida',
-    // );
     this.parentesisInicial = inicial;
     this.parentesisFinal = final;
   }
 
   resolverOperacionParentesis() {
-    // const debug = true;
 
     const tiposOperacionEnParentesis = [];
     for (let i = this.parentesisInicial; i < this.parentesisFinal; i++) {
@@ -1035,7 +965,6 @@ class OperacionMultiple extends Operacion {
    * anterior
    */
   resolverOperacionParentesisResultado() {
-    // const debug = true;
     let tipoDivision;
     if (this.tiposOperacion.indexOf(OPERACIONES.DIVISION_ENTERA) != -1) {
       tipoDivision = OPERACIONES.DIVISION_ENTERA;
@@ -1049,8 +978,6 @@ class OperacionMultiple extends Operacion {
     
     const posiciondiv = this.tiposOperacion.indexOf( tipoDivision );
     let resultado;
-    // resultado = this.obtenerResultado( posiciondiv);
-    // console.log( tag, 'resultado', resultado );
 
     // el resultado de la operacion tiene que ser el operando correspondiente de 
     // la division
@@ -1082,10 +1009,6 @@ class OperacionMultiple extends Operacion {
       if ( this.tiposNumero.includes(TIPO_NUMERO.ENTERO) ) {
         opciones.permitirNegativos = true;
       }
-      // if ( this.operandos_por_usuario) {
-      //   opciones.operandos = this.operandos.slice(
-      //       this.parentesisInicial, this.parentesisFinal+1 );
-      // }
 
       operacionEnParentesis = this.obtenerOperacion(
           tiposOperacionEnParentesis[0],
@@ -1120,7 +1043,6 @@ class OperacionMultiple extends Operacion {
   }
 
   crearDivisiones(operacionesRestantes) {
-    // const debug = true;
 
     const operandos = this.operandosEnviados;
     let tipoDivision;
@@ -1216,7 +1138,6 @@ class OperacionMultiple extends Operacion {
    * @param {*} operacionesRestantes 
    */
   crearDivisionesSinParentesis(operacionesRestantes) {
-    // const debug = true;
 
     const operandos = this.operandosEnviados;
     let tipoDivision;
@@ -1284,7 +1205,6 @@ class OperacionMultiple extends Operacion {
   }
 
   crearMultiplicaciones(operacionesRestantes) {
-    // const debug = true;
     while ( operacionesRestantes.indexOf(OPERACIONES.MULTIPLICACION) != -1 ) {
       const posicion = operacionesRestantes
           .lastIndexOf(OPERACIONES.MULTIPLICACION);
@@ -1293,8 +1213,6 @@ class OperacionMultiple extends Operacion {
           operacionesRestantes, posicion, OPERACIONES.MULTIPLICACION);
       const cantidadOperandos = numOperacionesJuntas+1;
       
-      // let ultimoOperandoDefinido = false;
-      // let primerOperandoDefinido = false;
 
       // si el ultimo operando esta definido viene de otra operacion con mas
       // prioridad y se usa como resultado
@@ -1324,18 +1242,9 @@ class OperacionMultiple extends Operacion {
 
       // esto no es necesario para las multiplicaciones 
       // // si ya esta definido el ultimo operando:
-      // if ( this.operandos[posicion+1] ) {
-      //   opcionesMultiplicacion.resultado = this.operandos[posicion+1];
-      //   opcionesMultiplicacion.incognita = 'random';
-      //   if ( debug ) console.log( this.id+tag, 'generan div con resultado ya dado', opcionesMultiplicacion.resultado );
       //   // ultimoOperandoDefinido = true;
-      // }
       // // si ya esta definido el primero operando:
-      // if ( this.operandos[posicion] ) {
-      //   opcionesMultiplicacion.operandos = [this.operandos[posicion]];
-      //   if ( debug ) console.log( this.id+tag, opcionesMultiplicacion.operandos, 'opcionesMultiplicacion.operandos' );
       //   // primerOperandoDefinido = true;
-      // }
 
       
       const newOp = new Multiplicacion(Object.assign({random: this._rng}, opcionesMultiplicacion));
@@ -1359,7 +1268,6 @@ class OperacionMultiple extends Operacion {
    * @param {Array.OPERACIONES} operacionesRestantes
    */
   crearSumasRestas(operacionesRestantes) {
-    // const debug = true;
     let tries = 0;
 
     // realizar la resta al final para poder mostrar resultado negativo con
@@ -1388,7 +1296,6 @@ class OperacionMultiple extends Operacion {
           tipoOperacion // Operacion.Suma/Resta
       );
       const cantidadOperandos = numOperacionesJuntas+1;
-      // const numOperacionesJuntas = 1;
       // reducimos forzar signo a solo los operandos correspondientes a esta op
       const forzarSignoResta = forzarSigno.slice(posicion, posicion+cantidadOperandos );
 
@@ -1406,7 +1313,6 @@ class OperacionMultiple extends Operacion {
 
       const esAnt = anterior;
       const esPos = posterior;
-      // console.log('anterior y post', esAnt, esPos);
 
       if ( esAnt ) {
         restaOperandos[0] = anterior;
@@ -1425,7 +1331,6 @@ class OperacionMultiple extends Operacion {
         enfocado: this.enfocado,
       };
 
-      // console.log( tag, 'comprobar si exstie multiplicacion');
       if (
         this.tiposOperacion.includes(OPERACIONES.SUMA) &&
         this.tiposOperacion.includes(OPERACIONES.MULTIPLICACION) &&
@@ -1434,12 +1339,10 @@ class OperacionMultiple extends Operacion {
         opciones.resultadoNegativo = false;
         // cambiar signo a la multiplicaicion si se quier resultado negativo
         if (this.resultadoNegativo)
-        // this.cambiarSignoAMulDivSiResultado( this.operandos.slice() );
         // camiba el signo de la multiplicacion :
         {
           this.tiposOperacion.forEach((val, index) => {
             if (val == OPERACIONES.MULTIPLICACION) {
-            // this.operandos[index] = this
               this.forzarSignos[index] = -1;
             }
           });
@@ -1461,7 +1364,6 @@ class OperacionMultiple extends Operacion {
         opciones.operandos = restaOperandos;
 
         // TODO: revisar si hay mul y divisiones tipo A - B * C - D
-        // if ( this.)
         opciones.resultadoNegativo = this.resultadoNegativo;
 
 
@@ -1469,11 +1371,9 @@ class OperacionMultiple extends Operacion {
       }
 
        
-      // newOp = this.obtenerOperacion(tipoOperacion, opciones);
 
 
       const newOp = new Resta(Object.assign({random: this._rng}, opciones));
-      // restaOperandos = newOp.operandos.slice();
       this.operacionesGuardadas.push({
         posicion: posicion,
         tipo: tipoOperacion,
@@ -1481,7 +1381,6 @@ class OperacionMultiple extends Operacion {
         operacion: newOp,
       });
 
-      // console.log( tag, 'darle vuelta a operaciones', restaOperandos );
       // darle la vuelta a las operaciones
       const operandosResultados = newOp.operandos.slice();
       operandosResultados.forEach((operando, i) => {
@@ -1609,7 +1508,6 @@ class OperacionMultiple extends Operacion {
    * @param [Operaciones] operacionesRestantes 
    */
   crearSumasParaMultiplicacionSuma(operacionesRestantes) {
-    // const debug = true;
     let tries = 0;
     const operacionesRestantesOriginal = operacionesRestantes.slice();
     const forzarSigno = [];
@@ -1719,7 +1617,6 @@ class OperacionMultiple extends Operacion {
    * para forzar resultado negativo o positivo
    */
   cambiarSignoAMulDivSiResultado() {
-    // const debug = true;
     const operandos =this.operandos.slice();
     const operaciones = this.tiposOperacion.slice();
 
@@ -1762,7 +1659,6 @@ class OperacionMultiple extends Operacion {
    * 
    */
   cambiarSignoDosOperandos() {
-    // const debug = true;
 
     const operandos = this.operandos.slice();
     // cambia 2 operandos de signo para forzar resultado positivo con numeros
@@ -1799,7 +1695,6 @@ class OperacionMultiple extends Operacion {
 
    
   crearRestas(operacionesRestantes) {
-    // const debug= true;
     let tries = 0;
     while ( operacionesRestantes.indexOf(OPERACIONES.RESTA) != -1 && tries<5 ) {
       const posicion = operacionesRestantes.indexOf(OPERACIONES.RESTA);
@@ -1854,12 +1749,6 @@ class OperacionMultiple extends Operacion {
     return this.constructor.name;
   }
 
-  // toStringUserInput(input) {
-  //   const tag = '[OperacionMultiple.js.toStringUserInput(input)]';
-  //   if ( debug ) console.log( tag, input );
-  //   const txtini = this.toString();
-  //   return txt;
-  // }
 
 }
 

@@ -89,11 +89,6 @@ export default class DivisionResto extends DivisionEntera {
     const dividendo = this.operandos[0];
     let divisor = this.operandos[1];
     if (this.cantidad_operandos>2) {
-      // let divisores = 1;
-      // for (let index = 1; index < this.operandos; index++) {
-      //   divisores *= this.operandos[index];
-      // }
-      // divisor = divisores;
       // si hay mas de dos operandos el divisor es la mul de todos los
       // poteriores al primero
       divisor = this.multiplicarValores(
@@ -101,7 +96,6 @@ export default class DivisionResto extends DivisionEntera {
       );
     }
 
-    // this.resto = dividendo % divisor;
     this.resto = new Decimal(dividendo).modulo(divisor);
     const calcResultado = () => {
       return new Decimal(this.operandos[0]).div(divisor)
@@ -117,7 +111,6 @@ export default class DivisionResto extends DivisionEntera {
         let minMultiplo;
         if ( this.resultado != 1 ) {
           const factores = this.factorizar(this.resultado);
-          // factores.push(1);// si no agrego un uno da infinito  el resto
           minMultiplo = Math.min(...factores);
         } else {
           minMultiplo = 1;
@@ -162,8 +155,6 @@ export default class DivisionResto extends DivisionEntera {
     let html = super.toHtml();
     if (show) {
       html = html.substring(0, html.length-4);
-      // const idnum = '0000';
-      // const id = 'id="resto+' +idnum+ '"';
       // TODO: id para operaciones ( con randseed?? )
       const inputResto ='<input type="number" id="resto" class="resto" size=3 >';
       html +=' &nbsp; <br><span class="resto">Resto: ' + inputResto + '</span></p>';
@@ -187,11 +178,7 @@ export default class DivisionResto extends DivisionEntera {
   }
 
   generarNumerosOperandos() {
-    // const debug = true;
 
-    // let enfocado= this.enfocado;
-    // //obtenemos operandos como si no fuera enfocado
-    // if (this.enfocado)this.enfocado = false;
 
     super.generarNumerosOperandos(); // genera operandos de division entera -
 

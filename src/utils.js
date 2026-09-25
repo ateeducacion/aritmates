@@ -23,7 +23,6 @@ function sameElements(array1, array2) {
  */
 class Utils {
   constructor() {
-    // console.log('utils');
   }
 
   /**
@@ -89,7 +88,6 @@ class Utils {
    * @return {boolean}
    */
   isArraysCompareSimilar(array1, array2) {
-    // const debug = true;
     if ( !(array1 instanceof Array && array2 instanceof Array) ) return false;
 
     let flag = true;
@@ -109,7 +107,6 @@ class Utils {
    * @return {integer} posicion de aguja en pajar o -1 si no lo encuentra
    */
   findArrayInArray(aguja, pajar) {
-    // const debug = true;
 
     let place = -1;
     pajar.some( (el, indx) => {
@@ -151,7 +148,6 @@ class Utils {
       celdasPorTabla = Math.floor(maxRows * columns);
     }
     cantidadCeldas++; // +1 por que i empieza en 1 s
-    // console.log('celdas por tabla:', celdasPorTabla, maxRows, columns);
     let tablas = 0;
     do {
       tablas++;
@@ -218,7 +214,6 @@ class Utils {
 
 // probe findArrayInArray de esta manera pero no va por que llama a this
 // supongo que tiene que haber una forma de que funcione
-// export const {isArraysCompareSimilar, findArrayInArray} = new Utils();
 
 export default new Utils();
 export const {shuffle} = new Utils();

@@ -36,8 +36,6 @@ export function factorize(numero, maxIterations = 4999) {
 
       divisor = primos[primo_n];
       if (divisor === undefined) break;
-      // console.log('num:', num);
-      // console.log('divisor:', divisor);
       const resto = new Decimal(num).modulo(divisor);
       if (resto == 0) {
         factores.push(divisor);
