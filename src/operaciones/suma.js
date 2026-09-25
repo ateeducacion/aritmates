@@ -3,6 +3,8 @@
 import Operacion from './operacion';
 import OPERACIONES from './operaciones';
 import Decimal from 'decimal.js';
+import {isMissingOperand} from './numberRules';
+import {roundedBetween} from './random';
 /**
  * Operacion Suma 
  *
@@ -390,122 +392,32 @@ export default class Suma extends Operacion {
   }
 
 
-  // TODO: complementarios los voy a dejar aparte por ahora
+  /**
+   * Genera operandos cuya suma es el complementario. Respeta los operandos
+   * enviados por el usuario; el último operando cierra la suma.
+   *
+   * @memberof Suma
+   */
   _generarOperandosComplementario() {
-    const tag = '[Suma._generarOperandosComplementarios] ';
-    if ( debug ) console.log(this.id+tag);
-    const nivel= parseInt(this.nivel);
-
-    const maximo = nivel*2;
-    let maximoActual = maximo;
-    let minimo = this.complementario; // = this.resultado
-
-    if ( this.permitir_negativos ) minimo = maximoActual * -1;
-
-    let restaOperandosSinIncognita = 0;
-    const ultimoOperando = this.cantidad_operandos-1;
-    const posicionIncognita = this.posicion_incognita-1;
-
-    if ( debug ) console.log(this.id+tag, 'ultimoOperando', ultimoOperando);
-
-    let valorIncognita;
-    if (this.operandos[posicionIncognita] !== undefined ) {
-      valorIncognita = this.operandos[this.posicion_incognita];
-    }
-
-    if ( debug ) console.log(this.id+tag, 'valorIncognita', valorIncognita);
+    const objetivo = this.complementario;
+    const ultimo = this.cantidad_operandos - 1;
+    let acumulado = 0;
 
     for (let index = 0; index < this.cantidad_operandos; index++) {
-      if ( debug ) console.log(this.id+tag, 'index operando', index );
-      let nuevoOperando;
-      const op = this.operandos[index];
-
-      // if ( index !== posicionIncognita ){
-      // generamos el operando a no se que existan operandos mandados por el
-      // usuario
-      if ( !this.operandos_por_usuario ||
-          (this.operandos_por_usuario && op === undefined) ) {
-        if ( debug ) console.log(this.id+tag, 'operandos no definidos por usuario');
-
-        if ( index == ultimoOperando) {
-          // si la incognita ya se definió calcular el ultimo operando
-          if ( debug ) {
-            console.log(this.id+tag, 'ultimo operando con incognita definida ');
-          }
-          // if (restaOperandosSinIncognita>0){
-          nuevoOperando = restaOperandosSinIncognita - this.resultado;
-          // } else {
-          //     nuevoOperando = this.resultado+ ;
-          // }
-          if ( debug ) {
-            console.log(this.id+tag, 'nuevo op', nuevoOperando, 'index', index );
-          }
-
-          // pero esto no se va  a dar nunca con los complementarios!
-          // ultimo operando con ingognita == resultado
-          if ( posicionIncognita==this.cantidad_operandos ) {
-            if ( debug ) {
-              console.log(this.id+tag,
-                  'ultimo operando con incognita = resultado ');
-            }
-            nuevoOperando = restaOperandosSinIncognita - this.resultado;
-          }
-          if ( debug ) {
-            console.log(this.id+tag,
-                'nuevo op (ultimo operando)', nuevoOperando );
-          }
+      let operando = this.operandos[index];
+      if (isMissingOperand(operando)) {
+        if (index == ultimo) {
+          operando = objetivo - acumulado;
         } else {
-          if ( debug ) {
-            console.log(this.id+tag, 'mínimo', minimo);
-            console.log(this.id+tag, 'maximo actual', maximoActual);
-          }
-
-          nuevoOperando = Math.round(
-              this.rng()*(maximoActual-minimo))+minimo;
-          if ( debug ) {
-            console.log(this.id+tag, 'nuevo op (no ultimo operando)', nuevoOperando );
-          }
+          const restante = Math.max(objetivo - acumulado, 0);
+          const minimo = this.permitir_negativos ? -objetivo : 0;
+          operando = roundedBetween(this._rng, minimo, restante);
+          if (objetivo == 100) operando = Math.round(operando / 10) * 10;
         }
-      } else {
-        // si esta definido por el usuario se queda como esta
-        nuevoOperando = op;
       }
-
-      maximoActual = maximo - nuevoOperando;
-
-      if (this.complementario==100) {
-        nuevoOperando = Math.round( nuevoOperando/10 ) * 10;
-      }
-
-      this.operandos[index] = nuevoOperando;
-      if ( debug ) {
-        console.log(this.id+tag, 'op',
-            this.operandos[index], 'index', index);
-      }
-
-
-      if (index == 0) {
-        restaOperandosSinIncognita = nuevoOperando;
-      } else {
-        restaOperandosSinIncognita -= nuevoOperando;
-      }
-
-      // el único numero posible para el resultado hay que repartirlo entre los
-      // operandos
-      // const operandos_restantes = this.cantidad_operandos-index;
-      // maximo = Math.round(
-      //  ( restaOperandosSinIncognita - this.resultado) / operandos_restantes
-      // ) ;
-      maximoActual = restaOperandosSinIncognita - this.resultado;
-
-
-      // }  // fi ( index !== posicionIncognita )
-    }// fin for
-    if ( debug ) {
-      console.log(this.id+tag, 'restaOperandosSinIncognita',
-          restaOperandosSinIncognita );
+      this.operandos[index] = operando;
+      acumulado += operando;
     }
-    // this.restaOperandosSinIncognita = restaOperandosSinIncognita;
   }
 
   /**
