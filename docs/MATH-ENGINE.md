@@ -98,6 +98,10 @@ const op = new Suma({
 La misma semilla repite operandos y resultado. Sin `random`, se usa
 `Math.random`.
 
+Los intervalos enteros y la elección de signo viven en `random.js`. Se conserva
+el `Math.round` histórico de forma explícita para que esta refactorización no
+cambie la distribución ni las secuencias reproducibles de los ejercicios.
+
 La suite de tests, además, sustituye `Math.random` por una semilla fija al
 arrancar. Así los spec antiguos que no pasan `random` también se repiten.
 Un spec nuevo debe pasar su propia semilla si quiere aislarse del resto.
