@@ -76,14 +76,13 @@ primer operando. El comentario original decía que no se entendía y que
 parecía pensado solo para las restas. El bloque ya estaba desactivado. Se ha
 eliminado. No cambia los ejercicios: no se ejecutaba.
 
-## `indexOf(RESTA != -1)`
+## Reescrituras suma/resta
 
-`subtractionsAsNegativeSums` y `additionsAsSubtractions` comprueban la resta o
-la suma con `indexOf(OPERACIONES.RESTA != -1)`. Esa comparación es siempre
-verdadera (`-1` es truthy), así que la rama alternativa no se usa. Corregirla
-haría que, cuando no hay restas, el resultado compartiera el array del
-llamante. Quien llama modifica ese array. Se deja como está y hay un test que
-fija el valor de `10 - 3 + 2` tras la reescritura.
+Las transformaciones que convierten restas en sumas con signo (y viceversa)
+siempre devuelven arrays nuevos. El código histórico conseguía accidentalmente
+esa copia mediante un guard `indexOf(... != -1)` siempre verdadero. La
+condición se ha eliminado, pero se conserva de forma explícita la semántica de
+copia para que quien llama pueda modificar el resultado sin mutar sus entradas.
 
 ## Aleatoriedad
 
