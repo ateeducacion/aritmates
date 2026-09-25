@@ -7,7 +7,7 @@ import html2canvas from 'html2canvas';
  * Imrimir pdf , usa html2canvas para crear un archivo PDF
  * 
  * @author Fernando Ramirez <fernando.ramirez@altia.es>
- * @author Área de Tecnología Educativa (versión simplificada 1.3+)
+ * @author Área de Tecnología Educativa <ate.educacion@gobiernodecanarias.org> (versión simplificada 1.3+)
  * @version 1.0.0-rc1
  * @class ImprimirPdf
  */
