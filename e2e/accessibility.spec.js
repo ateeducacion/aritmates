@@ -55,3 +55,61 @@ test('los controles principales son alcanzables mediante tabulación', async ({p
   }
   expect(reachedStart).toBe(true);
 });
+
+
+test('los elementos interactivos visibles tienen un nombre accesible', async ({page}) => {
+  await page.goto('/');
+
+  const unnamed = await page.locator(
+      'button:visible, a[href]:visible, input:visible, select:visible, textarea:visible, ' +
+      '[role="button"]:visible, [role="checkbox"]:visible, [role="switch"]:visible',
+  ).evaluateAll((elements) => {
+    const hasName = (element) => {
+      if ((element.getAttribute('aria-label') || '').trim()) return true;
+
+      const labelledBy = element.getAttribute('aria-labelledby');
+      if (labelledBy) {
+        const text = labelledBy
+            .split(/\s+/)
+            .map((id) => document.getElementById(id)?.textContent || '')
+            .join(' ')
+            .trim();
+        if (text) return true;
+      }
+
+      if ((element.getAttribute('title') || '').trim()) return true;
+      if ((element.textContent || '').trim()) return true;
+
+      if (element.id) {
+        const label = document.querySelector(`label[for="${CSS.escape(element.id)}"]`);
+        if ((label?.textContent || '').trim()) return true;
+      }
+
+      if ((element.getAttribute('placeholder') || '').trim()) return true;
+      if ((element.getAttribute('alt') || '').trim()) return true;
+      return false;
+    };
+
+    return elements
+        .filter((element) => !hasName(element))
+        .map((element) => element.id || element.outerHTML.slice(0, 120));
+  });
+
+  expect(unnamed).toEqual([]);
+});
+
+test('la portada no contiene identificadores HTML duplicados', async ({page}) => {
+  await page.goto('/');
+
+  const duplicates = await page.evaluate(() => {
+    const counts = new Map();
+    document.querySelectorAll('[id]').forEach((element) => {
+      counts.set(element.id, (counts.get(element.id) || 0) + 1);
+    });
+    return [...counts.entries()]
+        .filter(([, count]) => count > 1)
+        .map(([id, count]) => ({id, count}));
+  });
+
+  expect(duplicates).toEqual([]);
+});
