@@ -24,6 +24,7 @@ import DivisionEntera from './divisionEntera';
 import OPERACIONES from './operaciones';
 // import {Decimal} from 'decimal.js';
 import {TIPO_NUMERO} from './tipoNumero';
+import {isMissingOperand} from './numberRules';
 import {selectExpressionOperations} from './operationSelection';
 import DivisionDecimales from './divisionDecimales';
 import Division from './division';
@@ -1286,7 +1287,7 @@ class OperacionMultiple extends Operacion {
             operandosRelleno, index, operandosRelleno[index] );
       }
       if ( this.operandos[index] === undefined ) {
-        if ( operandosRelleno[index] ) {
+        if (!isMissingOperand(operandosRelleno[index])) {
           this.operandos[index] = operandosRelleno[index];
         } else {
           this._generarOperandoPosicion(index);
