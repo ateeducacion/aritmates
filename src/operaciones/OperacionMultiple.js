@@ -340,8 +340,6 @@ class OperacionMultiple extends Operacion {
         }
       }
 
-      // TODO: borrar?? en teoria solo hay div mul aqui, no necesito crearRestas
-      this.crearRestas(operacionesRestantes);
     } else {
       const jsonDivDecimal = [OPERACIONES.SUMA, OPERACIONES.DIVISION_DECIMAL];
       const jsonSumaMulti = [OPERACIONES.SUMA, OPERACIONES.MULTIPLICACION];
@@ -714,30 +712,6 @@ class OperacionMultiple extends Operacion {
     if ( debug ) console.log(tag, 'operandos devueltos:', operandos);
 
     return operandos;
-  }
-
-  /**
-   * unir operaciones del mismo tipo
-   * @param {Array} operaciones nombres de tipos de operaciones
-   * @param {Array} operandos enviá los operandos cuando ya están definidos
-   *                  por el usuario
-   * @return {Array} Operaciones con tipo y numero de operandos
-   */
-  definirOperacionOperandosUsuario(operandos, index, numeroOperandos) {
-    const defOperacion = {
-      operandos: [],
-      posicionOperadores: [],
-    };
-    if ( this.operandos_por_usuario ) {
-      for (let i = 0; i < numeroOperandos; i++) {
-        defOperacion.operandos.push( operandos[index-i] );
-        defOperacion.posicionOperadores.push(index-i);
-      }
-    }
-    defOperacion.operandos.reverse();
-    defOperacion.posicionOperadores.reverse();
-
-    return defOperacion;
   }
 
   obtenerOperacionesAzar(operaciones) {
@@ -2428,29 +2402,22 @@ class OperacionMultiple extends Operacion {
       );
     }
 
-    if ( this.tiposNumero.includes(TIPO_NUMERO.ENTERO) &&
-          this.resultadoNegativo==false ) {
-      const rand = this.getRandomMinMax(1, operandos.length-1);
-      if ( debug ) {
-        console.log( tag,
-            '-rand:', rand );
-      }
-
-      // ponemos todos los operandos como positivos primero
-      operandos.forEach((op) => {
-        op = Math.abs(op);
-      });
-
-      // el primero operando negativo y otro al azar negativo
-      operandos[0] = Math.abs(operandos[0]) * -1;
-      operandos[rand] = Math.abs(operandos[rand]) * -1;
-
-      if ( debug ) {
-        console.log( tag,
-            'operandos cambiados', operandos );
-      }
-      this.operandos = operandos;
+    // The only caller already checks ENTERO and resultadoNegativo == false.
+    const rand = this.getRandomMinMax(1, operandos.length-1);
+    if ( debug ) {
+      console.log( tag,
+          '-rand:', rand );
     }
+
+    // el primero operando negativo y otro al azar negativo
+    operandos[0] = Math.abs(operandos[0]) * -1;
+    operandos[rand] = Math.abs(operandos[rand]) * -1;
+
+    if ( debug ) {
+      console.log( tag,
+          'operandos cambiados', operandos );
+    }
+    this.operandos = operandos;
   }
 
   comprobarErrorTiposOperacion() {
