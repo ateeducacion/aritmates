@@ -15,7 +15,6 @@ const REQUIRED = [
   'css/app.css',
   'css/vendors.css',
   'plantilla/index.html',
-  'js/plantilla.js',
   'templates/ayuda.html',
   'templates/creditos.html',
   'templates/part_ejercicio.html',

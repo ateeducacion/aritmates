@@ -18,9 +18,6 @@ objetos.DivisionEntera = DivisionEntera;
 objetos.DivisionResto = DivisionResto;
 objetos.DivisionDecimales = DivisionDecimales;
 
-import {Decimal} from 'decimal.js';
-import OPERACIONES from '../src/operaciones/operaciones';
-import {seededRandom} from '../src/operaciones/random';
 
 // const {equal} = require('assert');
 // import debug from '../src/debug';

@@ -9,11 +9,11 @@
  * 6. Copia vendor UMD (jquery, bootstrap, html2canvas, jspdf, …)
  * 7. Verifica recursos
  *
- * esbuild resuelve imports ES de src/ y produce un único app.js/plantilla.js
+ * esbuild resuelve imports ES de src/ y produce un único app.js
  * sin Webpack/Babel. Las librerías UMD se cargan por <script> desde vendor/.
  */
 import { cp, mkdir, readFile, writeFile, readdir, rm } from 'node:fs/promises';
-import { join, resolve, dirname, extname } from 'node:path';
+import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as esbuild from 'esbuild';
 import * as sass from 'sass';
@@ -341,13 +341,6 @@ async function buildJs() {
     sourcemap: true,
   });
 
-  await esbuild.build({
-    ...common,
-    entryPoints: [join(root, 'src/view/plantilla.js')],
-    outfile: join(jsDir, 'plantilla.js'),
-    sourcemap: true,
-  });
-
   console.log('✓ js (esbuild minify, vendor: jquery, bootstrap, html2canvas, jspdf)');
 }
 
@@ -396,7 +389,6 @@ async function buildHtml() {
 `;
   const pBody = `
 ${vendorScripts('../')}
-    <script src="../js/plantilla.js" defer></script>
 `;
   let plantillaHtml = plantillaTpl;
   if (plantillaHtml.includes('</head>')) {

@@ -90,8 +90,6 @@ class Utils {
   isArraysCompareSimilar(array1, array2) {
     if ( !(array1 instanceof Array && array2 instanceof Array) ) return false;
 
-    let flag = true;
-
     if (array1.length == array2.length) {
       return sameElements(array1, array2);
     } else {
