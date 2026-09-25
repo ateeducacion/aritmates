@@ -54,7 +54,7 @@ npm run dev      # build + http://127.0.0.1:9012/
 | CDN / dependencias de UI pesadas | Todo local en `dist/` y `dist/vendor/` |
 | Node en producción | Solo hace falta Node para build y desarrollo |
 
-Documentación: **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**, **[docs/MATH-ENGINE.md](docs/MATH-ENGINE.md)**, **[docs/TESTING.md](docs/TESTING.md)**, **[docs/SIMPLIFICACION.md](docs/SIMPLIFICACION.md)**.
+Documentación: **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**, **[docs/MATH-ENGINE.md](docs/MATH-ENGINE.md)**, **[docs/TESTING.md](docs/TESTING.md)**, **[docs/SIMPLIFICACION.md](docs/SIMPLIFICACION.md)**. Quien mantiene el código sigue **[AGENTS.md](AGENTS.md)**.
 
 ## Estructura
 
@@ -64,6 +64,8 @@ css/           estilos fuente (SCSS/CSS)
 scripts/       build, serve, tests, vendor
 test/          pruebas
 docs/          documentación de la simplificación
+AGENTS.md      reglas para quien mantiene el código
+.agents/       skills de agente (árbol canónico)
 dist/          salida publicable (generada; no requiere Node)
 ```
 
