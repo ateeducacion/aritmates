@@ -30,8 +30,11 @@ paper-expansion-panel paper-item {
 #ayuda paper-item-body > div.mediateca{
     display: block;
 }
-#ayuda div.mediateca iframe{
+#ayuda div.mediateca iframe,
+#ayuda div.mediateca video {
     width: 100%;
+    height: auto;
+    border-radius: 4px;
 }
 
 #ayuda img.tab-icon {
