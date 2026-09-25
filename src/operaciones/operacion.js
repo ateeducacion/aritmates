@@ -336,13 +336,7 @@ export default class Operacion {
     if (this.deep > 2 ) {
       const errormsg = 'Tardo demasiados intentos en generar una operación'+
         'correcta';
-      if ( debug ) {
-        console.log( tag, errormsg);
-        this.errors.push({
-          error: 'Demasiados intentos',
-          msg: errormsg,
-        });
-      }
+      if ( debug ) console.log( tag, errormsg);
       return {resultado: false};
     }
 
@@ -821,11 +815,6 @@ export default class Operacion {
     txt = txt.substr(0, txt.length - lastSymbol.length);
 
     let resultado = this.resultado;
-    if ( debug ) {
-      if (this.posicion_nivel == operandos.length + 1) {
-        resultado = '_' + this.resultado + '_';
-      }
-    }
     if ( verbose ) {
       if (this.posicion_incognita == operandos.length + 1) {
         resultado = '[' + this.resultado + ']';
