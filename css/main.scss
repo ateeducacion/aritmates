@@ -123,6 +123,9 @@ main {
         min-height: 200px;
     }
     > .col-md {
+        // Bootstrap 4 columns were position: relative, so the sheet
+        // anchors to the right column rather than the whole card.
+        position: relative;
         padding-top: 3em;
         padding-bottom: 2em;
     }
@@ -213,8 +216,9 @@ main {
 .hoja{
     position: absolute;
     bottom: -2.5rem;
-
     right: 0;
+    width: 100%;
+    height: auto;
     opacity: 1;
 }
 
