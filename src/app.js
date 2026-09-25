@@ -73,7 +73,6 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import {valoresNiveles} from './helpers';
 
 import { keyCrono, valoresCrono, keyNivel, textoCrono } from './PortadaUI';
-import {descargarPdfResultados, enviarform} from './ResultadosUI';
 
 // TODO: refactor , la mayoria de las cosas de este fichero se deberian separar
 // en uno o varios archivos como por ejemplo portadaUi.js ejerciosUi.js y resultadosUi.js
@@ -1244,26 +1243,14 @@ $('body').on('finEjercicios', (ev) => {
           location.reload();
         });
 
-        $('#btnDownloadScore').click( (ev) => {
-
-            const formData = new FormData();
-            formData.append('score', JSON.stringify(score) );
-            formData.append('puntuacion', puntuacion);
-            formData.append('cantidadOperaciones', opcionesGuardadas.cantidadOperaciones);
-            formData.append('tiempoTotal', ttotal);
-            formData.append('tiempoConsumido', tiempoConsumido);
-            formData.append('tiempoMedia', utils.milisToMinSg(score.tiempoMedioEjercicio) );
-            formData.append('tiempoTotalMilis', opcionesGuardadas.cuentaAtras );
-
-            // formData.append('date', hdate );
-            // formData.append('hashfirma', hash );
-
-            formData.append('correcciones', $('#correciones').html() );
-
-            enviarform('pdf.php', formData);
-
-          // console.log('lanzado abrir modal #btnDownloadScore', ev);
-
+        $('#btnDownloadScore').click(() => {
+          whenPdfLibraries().then(() => {
+            const printpdf = new ImprimirPdf('Aritmates-Resultados.pdf');
+            window.scrollTo(0, 0);
+            printpdf.printImgPages('#interior');
+          }).catch((error) => {
+            console.error(error);
+          });
         });
 
         $('#ejercicios').show();
