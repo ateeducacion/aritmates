@@ -18,6 +18,7 @@ export default class DivisionDecimales extends DivisionEntera {
     incognita = cantidadOperandos + 1, enfocado, posicion_nivel,
     multiplo10 = false, multiplo100 = false, complementario = false,
     decimales = false, decimalesMaximo,
+    random,
   } = {}) {
     const tag = '[DivisionDecimales]';
     // const debug= true;
@@ -56,6 +57,7 @@ export default class DivisionDecimales extends DivisionEntera {
       complementario: complementario,
       decimales: decimales,
       decimalesMaximo: decimalesMaximo,
+      random,
     });
 
     this.deep = 0;
@@ -114,22 +116,20 @@ export default class DivisionDecimales extends DivisionEntera {
       );
     }
 
-    if ( this.operandosIniciales && this.operandosIniciales!=[] ) {
-      if (this.operandosIniciales !== [] &&
+    if (this.operandosIniciales &&
         this.operandosInicialesLength() !== this.cantidad_operandos
-      ) {
-        this._generarDivisionPorMultiplicacionInvertida();
-        if ( debug ) {
-          console.log( tag, 'operandos generados por mulInvert',
-              'this.operandos', this.operandos );
-        }
-        // la multiplicacion es entera
-        if ( debug ) {
-          console.log( tag,
-              'operandos tran', this.operandandos );
-        }
-        return;
+    ) {
+      this._generarDivisionPorMultiplicacionInvertida();
+      if ( debug ) {
+        console.log( tag, 'operandos generados por mulInvert',
+            'this.operandos', this.operandos );
       }
+      // la multiplicacion es entera
+      if ( debug ) {
+        console.log( tag,
+            'operandos tran', this.operandandos );
+      }
+      return;
     }
 
     if ( !this.operandos_por_usuario) {

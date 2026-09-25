@@ -6,6 +6,7 @@ chai.use(require('chai-match'));
 import GenerarExamen from '../src/generarExamen';
 import {TIPO_NUMERO} from '../src/operaciones/tipoNumero';
 import OPERACIONES from '../src/operaciones/operaciones';
+import {seededRandom} from '../src/operaciones/random';
 
 // const { equal } = require("assert");
 global.debug = false;
@@ -616,13 +617,14 @@ describe('Generar Examen, Tipos numero', ()=>{
       cantidadOperaciones: 100,
       tiposOperaciones: OPERACIONES.base,
       tiposNumero: [TIPO_NUMERO.DECIMAL],
+      random: seededRandom(1),
     });
 
     const actual = o.operacionesExamen;
 
     expect(actual).to.satisfy( (operacion) => {
       const re = new RegExp(
-          '^([\\( ]?-?[0-9]+([.][0-9]{0,3})?\\)?) [-+*\\/] ' +
+          '^([\\( ]?-?[0-9]+([.][0-9]{0,3})?\\)?) [-+∙/] ' +
           '([\\( ]?\\(?-?[0-9]+([.][0-9]{0,3})?\\)?[ \\)]?) ' +
           '= (-?[0-9]+([.][0-9]{0,3})?)$');
       // si alguna operacion on coincide con la exp regular:
@@ -665,12 +667,13 @@ describe('Generar Examen, Tipos numero', ()=>{
       nivel: 8,
       tiposOperaciones: OPERACIONES.base,
       tiposNumero: [TIPO_NUMERO.DECIMAL],
+      random: seededRandom(1),
     });
     const actual = o.operacionesExamen;
     // falla por que las divisiones las fuerza a que sean de 2 operandos!
     expect(actual).to.satisfy( (operacion) => {
       const re = new RegExp(
-          '^([\\( ]?-?[0-9]+([.][0-9]{0,2})?\\)?) [-+*\\/] ' +
+          '^([\\( ]?-?[0-9]+([.][0-9]{0,2})?\\)?) [-+∙/] ' +
           '([\\( ]?\\(?-?[0-9]+([.][0-9]{0,2})?\\)?[ \\)]?) ' +
           '= (-?[0-9]+([.][0-9]{0,3})?)$'); // he dejado el resultado con 3 decimales por mul/div
       // si alguna operacion on coincide con la exp regular:
@@ -728,7 +731,7 @@ describe('Generar Examen, Tipos numero', ()=>{
     const actual = o.operacionesExamen;
     expect(actual).to.satisfy( (operacion) => {
       const re = new RegExp(
-          '^([\\( ]?-?[0-9]+([.][0-9]{0,1})?\\)?) [-+*\\/] ' +
+          '^([\\( ]?-?[0-9]+([.][0-9]{0,1})?\\)?) [-+∙/] ' +
           '([\\( ]?\\(?-?[0-9]+([.][0-9]{0,1})?\\)?[ \\)]?) ' +
           '= (-?[0-9]+([.][0-9]{0,3})?)$'); // he dejado el resultado con 3 decimales por mul/div
       // si alguna operacion on coincide con la exp regular:
@@ -774,11 +777,12 @@ describe('Generar Examen, Tipos numero', ()=>{
       nivel: 15,
       tiposOperaciones: OPERACIONES.base,
       tiposNumero: [TIPO_NUMERO.DECIMAL],
+      random: seededRandom(1),
     });
     const actual = o.operacionesExamen;
     expect(actual).to.satisfy( (operacion) => {
       const re = new RegExp(
-          '^([\\( ]?-?[0-9]+([.][0-9]{0,2})?\\)?) [-+*\\/]' +
+          '^([\\( ]?-?[0-9]+([.][0-9]{0,2})?\\)?) [-+∙/]' +
           '([\\( ]?\\(?-?[0-9]+([.][0-9]{0,2})?\\)?[ \\)]?) ' +
           '= (-?[0-9]+([.][0-9]{0,3})?)$'); // he dejado el resultado con 3 decimales por mul/div
       // si alguna operacion on coincide con la exp regular:
@@ -814,17 +818,17 @@ describe('Generar Examen, Tipos numero', ()=>{
       tiposOperaciones: OPERACIONES.base,
       tiposNumero: [TIPO_NUMERO.DECIMAL],
       decimalesMaximo: 4,
+      random: seededRandom(1),
     });
     const actual = o.operacionesExamen;
     expect(actual).to.satisfy( (operacion) => {
       const re = new RegExp(
-          '^([\\( ]?-?[0-9]+([.][0-9]{0,4})?\\)?) [-+*\\/]' +
+          '^([\\( ]?-?[0-9]+([.][0-9]{0,4})?\\)?) [-+∙/]' +
           '([\\( ]?\\(?-?[0-9]+([.][0-9]{0,4})?\\)?[ \\)]?) ' +
           '= (-?[0-9]+([.][0-9]{0,4})?)$');
       const operacionNoMatch = operacion.some(
           (o) => {
             const match = re.exec(o.toString());
-            console.log(o.toString());
             if ( debug ) {
               console.log(match, o.toString(),
                   'resultado', o.resultado );

@@ -27,6 +27,7 @@ export default class Multiplicacion extends Operacion {
     resultadoNegativo,
     decimales = false,
     decimalesMaximo,
+    random,
   } = {}) {
     const tag = '[Multiplicacion.constructor] ';
     // const debug = true;
@@ -72,6 +73,7 @@ export default class Multiplicacion extends Operacion {
       resultadoNegativo,
       decimales,
       decimalesMaximo,
+      random,
     });
     this.simbolo = this.obtenerSimbolo();
     this.tipo = 'multiplicación';
@@ -181,7 +183,7 @@ export default class Multiplicacion extends Operacion {
       // resultado con decimales
       // le quito los decimales
       const resDecimales = this.obtenerNumeroDecimales(this.resultado);
-      const resInt = Math.pow(10, resDecimales) * this.resultado;
+      const resInt = Math.round(Math.pow(10, resDecimales) * Number(this.resultado));
       const resIntFactores = this.factorizar(resInt);
       if ( debug ) {
         console.log( tag,
@@ -253,7 +255,7 @@ export default class Multiplicacion extends Operacion {
         if ( this.operandosInicialesLength() == 1 ) {
           if ( this.operandos[1] == this.operandosIniciales[1]) {
             // si es el divisor, calculamo,.s el dividendo
-            this.operandos[0] = this.operandos[1] * resultado;
+            this.operandos[0] = this.operandos[1] * this.resultado;
           } else {
             this.operandos[1] = this.operandos[0] / this.resultado;
           }

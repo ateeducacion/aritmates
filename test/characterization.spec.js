@@ -19,27 +19,7 @@ import { DEFAULTS, ENABLE } from '../src/defaultOptions';
 import shortcodeApi from '../src/OptionsShortcode';
 import GenerarExamen from '../src/generarExamen';
 import utils from '../src/utils';
-
-/**
- * Fuente de aleatoriedad controlable SOLO para pruebas.
- * No altera Math.random en producción.
- */
-function withSeededRandom(seed, fn) {
-  const original = Math.random;
-  let s = seed >>> 0;
-  Math.random = function seededRandom() {
-    // xorshift32
-    s ^= s << 13;
-    s ^= s >>> 17;
-    s ^= s << 5;
-    return ((s >>> 0) % 1000000) / 1000000;
-  };
-  try {
-    return fn();
-  } finally {
-    Math.random = original;
-  }
-}
+import {seededRandom} from '../src/operaciones/random';
 
 describe('Caracterización — defaults y configuración', () => {
   it('operación predeterminada incluye suma, resta, multiplicación y división', () => {
@@ -151,39 +131,34 @@ describe('Caracterización — operaciones combinadas y prioridad', () => {
   });
 });
 
-describe('Caracterización — aleatoriedad controlada (solo tests)', () => {
-  it('con la misma semilla se generan los mismos operandos de suma', () => {
-    const a = withSeededRandom(12345, () => {
-      const s = new Suma({ nivel: 10, enfocado: true });
-      return { operandos: [...s.operandos], resultado: s.resultado };
-    });
-    const b = withSeededRandom(12345, () => {
-      const s = new Suma({ nivel: 10, enfocado: true });
-      return { operandos: [...s.operandos], resultado: s.resultado };
-    });
-    expect(a).to.deep.equal(b);
+describe('Caracterización — aleatoriedad inyectada', () => {
+  it('la misma semilla reproduce operandos y resultado de una suma', () => {
+    const run = () => {
+      const s = new Suma({nivel: 10, enfocado: true, random: seededRandom(12345)});
+      return {operandos: [...s.operandos], resultado: s.resultado};
+    };
+    expect(run()).to.deep.equal(run());
   });
 
-  it('semillas distintas producen resultados potencialmente distintos', () => {
-    const a = withSeededRandom(1, () => new Suma({ nivel: 20, enfocado: true }).operandos.join(','));
-    const b = withSeededRandom(99999, () => new Suma({ nivel: 20, enfocado: true }).operandos.join(','));
-    // No es garantía absoluta, pero con alta probabilidad difieren
-    // Si coinciden por casualidad el test no es inválido; solo informativo.
-    expect(typeof a).to.equal('string');
-    expect(typeof b).to.equal('string');
+  it('semillas distintas producen operandos distintos', () => {
+    const a = new Suma({nivel: 20, enfocado: true, random: seededRandom(1)}).operandos.join(',');
+    const b = new Suma({nivel: 20, enfocado: true, random: seededRandom(99999)}).operandos.join(',');
+    expect(a).to.not.equal(b);
   });
 
-  it('examen con semilla fija produce cantidad y tipos estables', () => {
-    const run = () => withSeededRandom(42, () => {
+  it('un examen con semilla fija repite tipos y textos', () => {
+    const run = () => {
       const g = new GenerarExamen({
         nivel: 10,
         cantidadOperaciones: 5,
         tiposOperaciones: [OPERACIONES.SUMA, OPERACIONES.RESTA],
         cantidadOperandos: 2,
+        random: seededRandom(42),
       });
-      return g.operacionesExamen.map((op) => op.tipo);
-    });
+      return g.operacionesExamen.map((op) => op.toString());
+    };
     expect(run()).to.deep.equal(run());
+    expect(run()).to.have.length(5);
   });
 });
 
@@ -209,7 +184,7 @@ describe('Caracterización — códigos de configuración', () => {
       options: {
         nivel: 5,
         cuentaAtras: 0,
-        cantidadOperaciones: 5,
+        cantidadOperaciones: 10,
         tiposOperaciones: ['suma'],
         cantidadOperandos: 2,
         posicionIncognitaAlAzar: false,
@@ -222,7 +197,7 @@ describe('Caracterización — códigos de configuración', () => {
       options: {
         nivel: 20,
         cuentaAtras: 60,
-        cantidadOperaciones: 15,
+        cantidadOperaciones: 20,
         tiposOperaciones: ['suma', 'resta'],
         cantidadOperandos: 2,
         posicionIncognitaAlAzar: true,
@@ -234,26 +209,20 @@ describe('Caracterización — códigos de configuración', () => {
 
   sampleConfigs.forEach(({ name, options }) => {
     it(`round-trip código estable: ${name}`, () => {
-      // generateCodeDirecto / decode según API disponible
-      if (typeof shortcode.generateCodeDirecto === 'function') {
-        const code1 = shortcode.generateCodeDirecto(options);
-        const code2 = shortcode.generateCodeDirecto(options);
-        expect(code1).to.equal(code2);
-        expect(code1).to.be.a('string');
-        expect(code1.length).to.be.greaterThan(0);
-
-        if (typeof shortcode.decodeCodeDirecto === 'function') {
-          const decoded = shortcode.decodeCodeDirecto(code1);
-          // Comparar campos clave cuando existan
-          if (decoded && decoded.nivel !== undefined) {
-            expect(Number(decoded.nivel)).to.equal(Number(options.nivel));
-          }
-        }
-      } else {
-        // API alternativa jsonToHash
-        const h1 = shortcode.jsonToHash(options);
-        const h2 = shortcode.jsonToHash(options);
-        expect(h1).to.equal(h2);
+      const copy = JSON.parse(JSON.stringify(options));
+      const code = shortcode.generateCodeDirecto(copy);
+      expect(code).to.match(/^#[A-Z][0-9A-Z]+/);
+      expect(code).to.equal(shortcode.generateCodeDirecto(JSON.parse(JSON.stringify(options))));
+      const decoded = shortcode.codigoDirectoToOptions(code);
+      expect(Number(decoded.nivel)).to.equal(Number(options.nivel));
+      expect(Number(decoded.cantidadOperaciones)).to.equal(Number(options.cantidadOperaciones));
+      expect(Number(decoded.cantidadOperandos)).to.equal(Number(options.cantidadOperandos));
+      expect(decoded.resultadoNegativo).to.equal(options.resultadoNegativo);
+      expect(decoded.posicionIncognitaAlAzar).to.equal(options.posicionIncognitaAlAzar);
+      expect(decoded.tiposOperaciones.slice().sort()).to.deep.equal(options.tiposOperaciones.slice().sort());
+      expect(decoded.tiposNumero.slice().sort()).to.deep.equal(options.tiposNumero.slice().sort());
+      if (options.cuentaAtras) {
+        expect(Number(decoded.cuentaAtras)).to.equal(Number(options.cuentaAtras));
       }
     });
   });
@@ -280,13 +249,12 @@ describe('Caracterización — utilidades', () => {
 
 describe('Caracterización — límites de nivel (muestra)', () => {
   it('a nivel 5 enfocado, operandos de suma están en rango acotado', () => {
-    withSeededRandom(7, () => {
-      for (let i = 0; i < 20; i++) {
-        const s = new Suma({ nivel: 5, enfocado: true });
-        s.operandos.forEach((n) => {
-          expect(Math.abs(Number(n))).to.be.at.most(50);
-        });
-      }
-    });
+    for (let i = 0; i < 20; i++) {
+      const s = new Suma({nivel: 5, enfocado: true, random: seededRandom(7 + i)});
+      s.operandos.forEach((n) => {
+        expect(Math.abs(Number(n))).to.be.at.most(50);
+      });
+      expect(s.operandos).to.include(5);
+    }
   });
 });

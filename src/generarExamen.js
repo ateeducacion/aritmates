@@ -10,8 +10,10 @@ import DivisionDecimales from './operaciones/divisionDecimales';
 import Division from './operaciones/division';
 import OperacionMultiple from './operaciones/OperacionMultiple';
 import {TIPO_NUMERO} from './operaciones/tipoNumero';
+import './debug.js';
 import {DEFAULTS} from './defaultOptions';
 import utils, {shuffle} from './utils';
+import {asRandom} from './operaciones/random';
 /**
  * Gererar examen crea un objeto con varias operaciones que son cargadas en la 
  * web
@@ -49,8 +51,10 @@ export default class GenerarExamen {
         operacionMultiple= false,
         parentesis = false,
         resultadoNegativo,
+        random,
 
       } = {}) {
+    this._rng = asRandom(random);
     // const debug = true;
     const tag = '[GenerarExamen] ';
     const txtTiposNumero = TIPO_NUMERO.tiposNumeroToText(tiposNumero);
@@ -79,7 +83,7 @@ export default class GenerarExamen {
           'resultadoNegativo', resultadoNegativo, '\n\t'
       );
     }
-    // eslint-disable-next-line prefer-rest-params
+     
     if ( debug ) console.log( tag, arguments, arguments[0] );
     this.operacionesExamen = [];
     this.cantidad= cantidadOperaciones;
@@ -167,6 +171,7 @@ export default class GenerarExamen {
       parentesis: parentesis,
       tiposNumero: tiposNumero,
       resultadoNegativo: resultadoNegativo,
+      random: this._rng,
     };
 
     this.resultadoNegativo = resultadoNegativo;
@@ -226,7 +231,7 @@ export default class GenerarExamen {
           nombre = tiposOperaciones[index];
         } else {
           // luego crear el resto random
-          const randomOp = Math.floor(Math.random()*tiposOperaciones.length);
+          const randomOp = Math.floor(this._rng()*tiposOperaciones.length);
           nombre = tiposOperaciones[randomOp];
         }
         this._addOperacionesPorTipo(nombre);
@@ -242,7 +247,7 @@ export default class GenerarExamen {
         this.operacionesExamen.push( opRand );
       }
       // desordenar array
-      this.operacionesExamen = shuffle(this.operacionesExamen);
+      this.operacionesExamen = shuffle(this.operacionesExamen, this._rng);
     } else {
       if ( this.tipos_operaciones.length == 0 ) {
         this.tipos_operaciones[0]='suma';

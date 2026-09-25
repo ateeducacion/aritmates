@@ -1,5 +1,22 @@
 
+import '../debug.js';
 import Operacion from './operacion';
+import {evaluateArithmetic} from './evaluate';
+import {
+  symbolFor,
+  symbolsFor,
+  hasAny,
+  indexOfAny,
+  sameOperatorMultiset,
+  foldMulDiv,
+  subtractionsAsNegativeSums,
+  additionsAsSubtractions,
+  countAdjacent,
+  onlySumSub,
+  onlyMulDiv,
+  MUL_DIV,
+  SUM_SUB,
+} from './expression';
 import Suma from './suma';
 import Resta from './resta';
 import Multiplicacion from './multiplicacion';
@@ -35,10 +52,11 @@ class OperacionMultiple extends Operacion {
     tiposNumero = [],
     incognita = parseInt(cantidadOperandos) + 1,
     enfocado = false,
+    random,
   } = {}) {
     const debug = false;
     let tag = '[OperacionMultiple]';
-    // eslint-disable-next-line prefer-rest-params
+     
     if ( debug ) {
       console.log( tag, '\n\t',
           'nivel', nivel, '\n\t',
@@ -62,6 +80,7 @@ class OperacionMultiple extends Operacion {
       operandos: operandos,
       incognita: incognita,
       enfocado: enfocado,
+      random,
       // permitirNegativos: permitirNegativos,
       // resultadoNegativo: resultadoNegativo,
     });
@@ -184,10 +203,13 @@ class OperacionMultiple extends Operacion {
         this.errors.push({
           error: 'Operación con errores', msg: '',
         });
-        const objReturn = Object.assign({}, this);
-        objReturn.resultadoPre = objReturn.resultado;
-        objReturn.resultado = false;
-        return objReturn;
+        // Keep the instance. Returning a plain copy dropped every method
+        // (toString became Object.prototype.toString → "[object Object]")
+        // whenever validation failed, so the UI and the tests could not
+        // inspect the exercise. resultado === false still signals failure
+        // and GenerarExamen already retries on that.
+        this.resultadoPre = this.resultado;
+        this.resultado = false;
       }
     }
 
@@ -384,14 +406,8 @@ class OperacionMultiple extends Operacion {
    * @return {boolean} devuelve true si son iguales
    * @memberof OperacionMultiple
    */
-  compararTiposOperaciones( tiposA , tiposB ) {    
-    let mTiposA = tiposA.slice();
-    mTiposA = JSON.stringify( mTiposA.sort() );
-    
-    let mTiposB = tiposB.slice();
-    mTiposB = JSON.stringify( mTiposB.sort() );
-
-    return (mTiposA == mTiposB);
+  compararTiposOperaciones( tiposA , tiposB ) {
+    return sameOperatorMultiset(tiposA, tiposB);
   }
 
   toString(equal=true, verbose=false) {
@@ -635,107 +651,30 @@ class OperacionMultiple extends Operacion {
   }
 
   obtenerOperadorOperacion(operacion) {
-    switch (operacion) {
-      case OPERACIONES.SUMA:
-        return '+';
-        break;
-      case OPERACIONES.RESTA:
-        return '-';
-        break;
-      case OPERACIONES.MULTIPLICACION:
-        return '∙';
-        break;
-      case OPERACIONES.DIVISION_RESTO:
-      case OPERACIONES.DIVISION_ENTERA:
-      case OPERACIONES.DIVISION:
-      case OPERACIONES.DIVISION_DECIMAL:
-        return '/';
-        break;
-      default:
-        return '+';
-        break;
-    }
+    return symbolFor(operacion);
   }
 
   obtenerOperadorOperaciones(operaciones) {
     const tag = '[OperacionMultiple.obtenerOperadorOperaciones]';
     if ( debug ) console.log(tag, operaciones);
-    const operadores = [];
-    operaciones.forEach( (op) => {
-      operadores.push(this.obtenerOperadorOperacion(op));
-    });
-    if ( debug ) console.log(tag, operaciones);
-    return operadores;
+    return symbolsFor(operaciones);
   }
 
   despejarPrioridadMultiDivi( operandos, operaciones ) {
-    // const debug = true;
     const tag = '[OperacionMultiple.despejarPrioridadMultiDivi]';
     if ( debug ) console.log(tag, operandos, operaciones );
-
-    const mOperandos = operandos.slice();
-    const mOperaciones = operaciones.slice();
-    // let op;
-
-    if ( debug ) console.log(tag, 'mOperandos, mOperaciones', mOperandos, mOperaciones );
-
-    if ( this.siHayDiviMulti(mOperaciones) ) {
-      if ( debug ) {
-        console.log( this.id+tag, this.posicionHayDiviMulti(mOperaciones),
-            'this.posicionHayDiviMulti(mOperaciones)' );
-      }
-      while ( this.siHayDiviMulti( mOperaciones )) {
-        const index = this.posicionHayDiviMulti(mOperaciones);
-        const tipoOp = mOperaciones[index];
-        if ( debug ) {
-          console.log( this.id+tag,
-              'se encontro una operacion:', tipoOp, 'index', index );
-        }
-        const opciones = {
-          nivel: this.nivel,
-          operandos: [mOperandos[index], mOperandos[index+1]],
-        };
-        const op = this.obtenerOperacion( tipoOp, opciones );
-
-        mOperandos[index] = op.resultado;
-        mOperandos.splice(index+1, 1);
-        mOperaciones.splice(index, 1);
-        if ( debug ) {
-          console.log( this.id+tag,
-              'se resolvio ', tipoOp, 'quedan:', mOperaciones, mOperandos );
-        }
-      }
-      if ( debug ) {
-        console.log( this.id+tag, 'for, operandos, operaciones',
-            mOperandos, mOperaciones );
-      }
-    }
-
-    mOperandos.forEach((v, i)=> {
-      // if ( debug ) {
-      //   console.log( this.id+tag,
-      //       'v.constructor.name', v.constructor.name );
-      // }
-      if ( v !== undefined ) {
-        if ( v.constructor.name === 'Decimal' ) {
-          mOperandos[i] = parseFloat(v);
-        }
-      }
+    return foldMulDiv(operandos, operaciones, (tipoOp, pair) => {
+      return this.obtenerOperacion(tipoOp, {
+        nivel: this.nivel,
+        operandos: pair,
+      });
     });
-
-    return {operandos: mOperandos, operaciones: mOperaciones};
   }
 
   siHayOperaciones( pajar, agujas ) {
     const tag = '[OperacionMultiple.js.siHayOperaciones]';
     if ( debug ) console.log( this.id+tag );
-    // if ( debug ) console.log( this.id+tag, '(pajar, agujas)',
-    //    pajar, agujas );
-    let encontrado = false;
-    agujas.forEach((a) => {
-      // una vez se se encuentre uno encontrado siempre da true
-      encontrado = pajar.indexOf(a) != -1 || encontrado;
-    });
+    const encontrado = hasAny(pajar, agujas);
     if ( debug ) console.log(tag, agujas, encontrado );
     return encontrado;
   }
@@ -749,172 +688,35 @@ class OperacionMultiple extends Operacion {
   }
 
   siHayDiviMulti(operaciones) {
-    return this.siHayOperaciones( operaciones, [
-      OPERACIONES.MULTIPLICACION,
-      OPERACIONES.DIVISION_ENTERA,
-      OPERACIONES.DIVISION,
-      OPERACIONES.DIVISION_DECIMAL,
-      OPERACIONES.DIVISION_RESTO]);
+    return hasAny(operaciones, MUL_DIV);
   }
   siHaySumaResta(operaciones) {
-    return this.siHayOperaciones( operaciones,
-        [OPERACIONES.SUMA, OPERACIONES.RESTA] );
+    return hasAny(operaciones, SUM_SUB);
   }
 
   posicionOperacionBusca(operaciones, busqueda, reverse ) {
     const tag = '[OperacionMultiple.posicionHayDiviMulti]';
     if ( debug ) console.log( this.id+tag, operaciones, reverse );
-    const primeraPorTipo = [];
-    if ( this.siHayOperaciones(operaciones, busqueda) ) {
-
-    } else {
-      return -1;
-    }
-    busqueda.forEach((tipoOperacion) => {
-      primeraPorTipo.push({
-        tipo: tipoOperacion,
-        first: operaciones.indexOf(tipoOperacion),
-        last: operaciones.lastIndexOf(tipoOperacion),
-      });
-    });
-    const primeraPorTipoClean = [];
-    if (!reverse) {
-      for (let indx = 0; indx < primeraPorTipo.length; indx++) {
-        if ( primeraPorTipo[indx].first != -1) {
-          primeraPorTipoClean.push(primeraPorTipo[indx]);
-        }
-      }
-      primeraPorTipoClean.sort(function(a, b) {
-        return a.first < b.first ? -1 : 1;
-      });
-      if ( debug ) {
-        console.log( this.id+tag, 'después de ordenar por \'first\'',
-            primeraPorTipoClean );
-      }
-      if (undefined !== primeraPorTipoClean[0]) {
-        if ( debug ) {
-          console.log( this.id+tag,
-              'primera por tipo :', primeraPorTipoClean[0].first );
-        }
-        return primeraPorTipoClean[0].first;
-      } else return -1;
-    } else {
-      for (let indx = 0; indx < primeraPorTipo.length; indx++) {
-        if ( primeraPorTipo[indx].last != -1) {
-          primeraPorTipoClean.push(primeraPorTipo[indx]);
-        }
-      }
-      primeraPorTipoClean.sort(function(a, b) {
-        if (a.last !== -1 ) {
-          return a.last < b.last ? -1 : 1;
-        } else return -1;
-      });
-
-      if ( debug ) {
-        console.log( this.id+tag, 'después de ordenar por \'last\'',
-            primeraPorTipoClean, 'primeraPorTipo' );
-      }
-
-      if (undefined !== primeraPorTipoClean[0]) {
-        if ( debug ) {
-          console.log( this.id+tag,
-              'ultima por tipo :', primeraPorTipoClean[0].last );
-        }
-        return primeraPorTipoClean[0].last;
-      } else return -1;
-    }
+    return indexOfAny(operaciones, busqueda, reverse);
   }
 
   posicionHayDiviMulti(operaciones, reverse) {
-    return this.posicionOperacionBusca(operaciones, [
-      OPERACIONES.MULTIPLICACION,
-      OPERACIONES.DIVISION_ENTERA,
-      OPERACIONES.DIVISION,
-      OPERACIONES.DIVISION_DECIMAL,
-      OPERACIONES.DIVISION_RESTO,
-    ], reverse );
+    return indexOfAny(operaciones, MUL_DIV, reverse);
   }
   posicionHaySumaResta(operaciones, reverse) {
-    return this.posicionOperacionBusca(operaciones, [
-      OPERACIONES.SUMA,
-      OPERACIONES.RESTA,
-    ], reverse );
+    return indexOfAny(operaciones, SUM_SUB, reverse);
   }
 
   convertirSumarYRestarenSuma( operandos, operaciones ) {
     const tag = '[OperacionMultiple.convertirSumarYRestarenSuma]';
     if ( debug ) console.log(tag, operandos, operaciones);
-    let mOperandos = [];
-    let mOperaciones = [];
-
-    if (this.siHayDiviMulti(operaciones)) {
-      if ( debug ) console.log(tag, 'error hay multiplicaciones');
-      return {};
-    }
-
-    if ( operaciones.indexOf(OPERACIONES.RESTA!=-1) ) {
-      mOperandos.push(operandos[0]);
-      for (let index = 1; index <= operaciones.length; index++) {
-        const operacion = operaciones[index-1];
-        switch (operacion) {
-          case OPERACIONES.SUMA:
-            mOperandos.push(operandos[index]);
-            mOperaciones.push(operacion);
-            break;
-          case OPERACIONES.RESTA:
-            mOperandos.push(operandos[index] * -1 );
-            mOperaciones.push(OPERACIONES.SUMA);
-            break;
-        }
-      }
-      if ( debug ) console.log(tag, operandos, operaciones);
-    } else {
-      mOperandos = operandos;
-      mOperaciones = operaciones;
-    }
-
-    return {operandos: mOperandos, operaciones: mOperaciones};
+    return subtractionsAsNegativeSums(operandos, operaciones);
   }
 
   convertirSumasEnResta( operandos, operaciones ) {
     const tag = '[OperacionMultiple.convertirSumasEnResta]';
     if ( debug ) console.log(tag, operandos, operaciones);
-    let mOperandos = [];
-    let mOperaciones = [];
-    const cambios = [];
-
-    if (this.siHayDiviMulti(operaciones)) {
-      if ( debug ) console.log(tag, 'error hay multiplicaciones y divisiones');
-      return {};
-    }
-
-    if ( operaciones.indexOf(OPERACIONES.SUMA!=-1) ) {
-      mOperandos.push(operandos[0]);
-      for (let index = 1; index <= operaciones.length; index++) {
-        const operacion = operaciones[index-1];
-        switch (operacion) {
-          case OPERACIONES.SUMA:
-            mOperandos.push(operandos[index] * -1 );
-            mOperaciones.push(OPERACIONES.RESTA);
-            cambios.push(index);
-            break;
-          case OPERACIONES.RESTA:
-            mOperandos.push(operandos[index] );
-            mOperaciones.push(operacion);
-            break;
-        }
-      }
-      if ( debug ) console.log(tag, operandos, operaciones);
-    } else {
-      mOperandos = operandos;
-      mOperaciones = operaciones;
-    }
-
-    return {
-      operandos: mOperandos,
-      operaciones: mOperaciones,
-      cambios: cambios,
-    };
+    return additionsAsSubtractions(operandos, operaciones);
   }
 
   addOperandoOperacionAnterior( posicionOperando, operandos, operacionesAnte,
@@ -1078,14 +880,14 @@ class OperacionMultiple extends Operacion {
         console.log( this.id+tag, 'i', index, 'length',
             operaciones.length, 'maxOperaciones', maxOperaciones );
       }
-      const r = Math.floor( Math.random()*opers.length );
+      const r = Math.floor( this.rng()*opers.length );
       mOperaciones.push( opers[r] );
       opers.splice(r, 1);
     }
     if ( debug ) console.log( this.id+tag, 'opers', opers );
     // rellena con el resto de operaciones al azar
     while ( this.cantidad_operandos-1 > mOperaciones.length ) {
-      const r = Math.floor(Math.random()*operaciones.length);
+      const r = Math.floor(this.rng()*operaciones.length);
       mOperaciones.push(operaciones[r]);
     }
 
@@ -1113,7 +915,7 @@ class OperacionMultiple extends Operacion {
         mOperaciones.includes(OPERACIONES.RESTA)
       )
     ) {
-      const r = Math.floor(Math.random()*mOperaciones.length);
+      const r = Math.floor(this.rng()*mOperaciones.length);
       mOperaciones[r] = OPERACIONES.RESTA;
       console.log('nuevso tipos operaciones:', mOperaciones);
     }
@@ -1123,7 +925,7 @@ class OperacionMultiple extends Operacion {
   }
 
   generarNumerosOperandos() {
-    // eslint-disable-next-line no-unused-vars
+     
     const tag = this.id+'[OperacionMultiple.js.generarNumerosOperandos]';
     // const debug = true;
 
@@ -1323,8 +1125,12 @@ class OperacionMultiple extends Operacion {
     // }
 
     operacion = operacion.replace(/∙/g, '*');
-    // console.log( operacion.toString() );
-    const resultado = eval(operacion);
+    let resultado;
+    try {
+      resultado = evaluateArithmetic(operacion);
+    } catch (err) {
+      resultado = NaN;
+    }
     this.resultado = resultado.toFixed(3);
     this.resultado = parseFloat(this.resultado).toString();
     // console.log('resultado', this.resultado );
@@ -1336,23 +1142,7 @@ class OperacionMultiple extends Operacion {
       console.log( this.id+tag, 'operaciones, posicion, operacion: ',
           operaciones, posicion, operacion );
     }
-    let i;
-    let numOperacionesJuntas=1;
-    if ( operacion == OPERACIONES.DIVISION_ENTERA ) {
-      i = posicion-1;
-      while (operaciones[i] == operacion) {
-        numOperacionesJuntas++;
-        i--;
-      }
-    } else {
-      let i = posicion;
-      numOperacionesJuntas=0;
-      while (operaciones[i] == operacion) {
-        numOperacionesJuntas++;
-        i++;
-      }
-    }
-
+    const numOperacionesJuntas = countAdjacent(operaciones, posicion, operacion);
     if ( debug ) console.log( this.id+tag, numOperacionesJuntas );
     return numOperacionesJuntas;
   }
@@ -1462,6 +1252,9 @@ class OperacionMultiple extends Operacion {
   obtenerOperacion(operacion, opciones) {
     // const debug = true;
     const tag = '[OperacionMultiple.js.obtenerOperacion(operacion, opciones)]';
+    opciones = Object.assign({}, opciones, {
+      random: (opciones && opciones.random) || this._rng,
+    });
     if ( debug ) console.log( tag, operacion, JSON.stringify(opciones) );
     let op;
     switch (operacion) {
@@ -1478,13 +1271,13 @@ class OperacionMultiple extends Operacion {
         op = new Multiplicacion(opciones);
         break;
       case OPERACIONES.RESTA:
-        op = new Resta(opciones);
+        op = new Resta(Object.assign({random: this._rng}, opciones));
         break;
       case OPERACIONES.SUMA:
-        op = new Suma(opciones);
+        op = new Suma(Object.assign({random: this._rng}, opciones));
         break;
       default:
-        op = new Suma(opciones);
+        op = new Suma(Object.assign({random: this._rng}, opciones));
         break;
     }
     if ( debug ) {
@@ -1565,6 +1358,7 @@ class OperacionMultiple extends Operacion {
         operandos: operandosAnteriores,
         tiposOperacion: operacionesAnteriores,
         tiposOperacionAzar: false,
+        random: this._rng,
       });
     }
 
@@ -1651,6 +1445,7 @@ class OperacionMultiple extends Operacion {
         operandos: operandosPosteriores,
         tiposOperacion: operacionesPosteriores,
         tiposOperacionAzar: false,
+        random: this._rng,
       };
       if ( debug ) {
         console.log( this.id+tag,
@@ -1884,6 +1679,7 @@ class OperacionMultiple extends Operacion {
           tiposOperacion: tiposOperacionEnParentesis,
           tiposOperacionAzar: false,
           cantidadOperandos: cantidadOperandosEnParentesis,
+          random: this._rng,
         });
         if ( this.operandos_por_usuario) {
           operacionEnParentesis.operandos = this.operandos.slice(
@@ -1979,6 +1775,24 @@ class OperacionMultiple extends Operacion {
           tiposOperacionEnParentesis[0],
           opciones
       );
+    } else if (cantidadOperandosEnParentesis > 2) {
+      // The binary branch above was the only one implemented. A wider
+      // parenthesis left operacionEnParentesis undefined and threw while
+      // reading .operandos. Generate the inner exercise the same way the
+      // non-division path does, so the outer exercise can still be built.
+      operacionEnParentesis = new OperacionMultiple({
+        nivel: this.nivel,
+        tiposNumero: this.tiposNumero,
+        tiposOperacion: tiposOperacionEnParentesis,
+        tiposOperacionAzar: false,
+        cantidadOperandos: cantidadOperandosEnParentesis,
+        permitirNegativos: this.permitirNegativos,
+        random: this._rng,
+      });
+    }
+
+    if (!operacionEnParentesis || !operacionEnParentesis.operandos) {
+      return;
     }
 
     // pasar el operandos parentesis a los operadores operacion final:
@@ -1992,9 +1806,8 @@ class OperacionMultiple extends Operacion {
     this.operacionEnParentesis = operacionEnParentesis;
     if ( debug ) {
       console.log( tag,
-          'opciones', JSON.stringify(opciones,null,2),
           'operacion parentesis:', operacionEnParentesis.toString(),
-          'operacion final:', this.toString() 
+          'operacion final:', this.toString()
       );
     }
   }
@@ -2049,7 +1862,7 @@ class OperacionMultiple extends Operacion {
                 'posicion', posicion );
           }
           // numOperacionesJuntas == siempre ultimo operando de la division
-          // eslint-disable-next-line max-len
+           
           operandos[numOperacionesJuntas] = this.operacionEnParentesis.resultado;
         }
       }
@@ -2077,13 +1890,13 @@ class OperacionMultiple extends Operacion {
       let newOp;
       switch (tipoDivision) {
         case OPERACIONES.DIVISION:
-          newOp = new Division( opciones );
+          newOp = new Division(Object.assign({random: this._rng}, opciones));
           break;
         case OPERACIONES.DIVISION_ENTERA:
-          newOp = new DivisionEntera( opciones );
+          newOp = new DivisionEntera(Object.assign({random: this._rng}, opciones));
           break;
         case OPERACIONES.DIVISION_DECIMAL:
-          newOp = new DivisionDecimales( opciones );
+          newOp = new DivisionDecimales(Object.assign({random: this._rng}, opciones));
           break;
       }
       if ( debug ) console.log( tag, newOp.toString(), 'newOp.toString()' );
@@ -2159,13 +1972,13 @@ class OperacionMultiple extends Operacion {
       let newOp;
       switch (tipoDivision) {
         case OPERACIONES.DIVISION:
-          newOp = new Division( opciones );
+          newOp = new Division(Object.assign({random: this._rng}, opciones));
           break;
         case OPERACIONES.DIVISION_ENTERA:
-          newOp = new DivisionEntera( opciones );
+          newOp = new DivisionEntera(Object.assign({random: this._rng}, opciones));
           break;
         case OPERACIONES.DIVISION_DECIMAL:
-          newOp = new DivisionDecimales( opciones );
+          newOp = new DivisionDecimales(Object.assign({random: this._rng}, opciones));
           break;
       }
 
@@ -2256,7 +2069,7 @@ class OperacionMultiple extends Operacion {
         );
       }
       
-      const newOp = new Multiplicacion( opcionesMultiplicacion );
+      const newOp = new Multiplicacion(Object.assign({random: this._rng}, opcionesMultiplicacion));
       this.operacionesGuardadas.push({
         posicion: posicion,
         operandos: newOp.operandos,
@@ -2421,7 +2234,7 @@ class OperacionMultiple extends Operacion {
         }
       }
 
-      // eslint-disable-next-line prefer-const
+       
       // newOp = this.obtenerOperacion(tipoOperacion, opciones);
 
       if ( debug ) {
@@ -2440,7 +2253,7 @@ class OperacionMultiple extends Operacion {
         console.log( this.id+tag, 'restaOperansdos.len', restaOperandos.length );
       }
 
-      const newOp = new Resta(opciones);
+      const newOp = new Resta(Object.assign({random: this._rng}, opciones));
       // restaOperandos = newOp.operandos.slice();
       this.operacionesGuardadas.push({
         posicion: posicion,
@@ -2559,7 +2372,7 @@ class OperacionMultiple extends Operacion {
         opciones.resultadoNegativo = this.resultadoNegativo;
       }
 
-      const newOp = new Suma(opciones);
+      const newOp = new Suma(Object.assign({random: this._rng}, opciones));
       this.operacionesGuardadas.push({
         posicion: posicion,
         tipo: tipoOperacion,
@@ -2602,14 +2415,10 @@ class OperacionMultiple extends Operacion {
     const operacionesRestantesOriginal = operacionesRestantes.slice();
     const forzarSigno = [];
 
-    // no entiendo por que le cambio el signo creo que esto debe ser solo para 
-    // las restas y accidentalmente se dejo aqui
-    // operacionesRestantesOriginal.forEach((element, i) => {
-    //   if (element == OPERACIONES.SUMA ) {
-    //     if ( i == 0 ) forzarSigno[0]=-1;
-    //     if ( i == 1 ) forzarSigno[2]=-1;
-    //   }
-    // });
+    // A previous draft negated the first operand of a sum that sits next to
+    // a multiplication. That flip belongs only to subtractions; leaving it
+    // here made sums negative. The block is gone. forzarSigno stays empty
+    // unless a caller fills it.
 
     const operandosIniciales = this.operandos.slice();
 
@@ -2665,7 +2474,7 @@ class OperacionMultiple extends Operacion {
         opciones.resultadoNegativo = this.resultadoNegativo;
       }
 
-      const newOp = new Suma(opciones);
+      const newOp = new Suma(Object.assign({random: this._rng}, opciones));
       this.operacionesGuardadas.push({
         posicion: posicion,
         tipo: tipoOperacion,
@@ -2834,16 +2643,12 @@ class OperacionMultiple extends Operacion {
   soloHaySumasRestas(operaciones) {
     const tag = '[OperacionMultiple.js.soloHaySumasRestas]';
     if ( debug ) console.log( this.id+tag );
-    const hay = this.siHaySumaResta(operaciones);
-    const hayOtros = this.siHayDiviMulti(operaciones);
-    return ( hay && !hayOtros );
+    return onlySumSub(operaciones);
   }
   soloHayMulDiv(operaciones) {
     const tag = '[OperacionMultiple.js.soloHayMulDiv]';
     if ( debug ) console.log( this.id+tag );
-    const hayOtros =this.siHaySumaResta(operaciones);
-    const hay = this.siHayDiviMulti(operaciones);
-    return ( hay && !hayOtros );
+    return onlyMulDiv(operaciones);
   }
 
   comprobarErrorTiposOperacion() {
@@ -2867,7 +2672,7 @@ class OperacionMultiple extends Operacion {
     }
   }
 
-  /* eslint-disable max-len */
+   
   crearRestas(operacionesRestantes) {
     const tag = this.id+'[OperacionMultiple.crearRestas]';
     // const debug= true;
@@ -2925,7 +2730,7 @@ class OperacionMultiple extends Operacion {
               'opciones resta:', JSON.stringify(opciones)
           );
         }
-        newOp = new Resta(opciones);
+        newOp = new Resta(Object.assign({random: this._rng}, opciones));
         restaOperandos = newOp.operandos.slice();
         this.operacionesGuardadas.push({
           posicion: posicion,

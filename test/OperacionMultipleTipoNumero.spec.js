@@ -1,6 +1,7 @@
 import OPERACIONES from '../src/operaciones/operaciones';
 import {TIPO_NUMERO} from '../src/operaciones/tipoNumero';
 import OperacionMultiple from '../src/operaciones/OperacionMultiple';
+import {seededRandom} from '../src/operaciones/random';
 
 const chai = require('chai');
 const expect = require('chai').expect;
@@ -101,17 +102,17 @@ describe('Operación Multiple N.Decimales', () => {
     if ( debug ) console.log( tag );
 
     debug= false;
-    const o = new OperacionMultiple(
-        {nivel: 50,
-          cantidadOperandos: 3,
-          permitirNegativos: false,
-          tiposOperacion: [
-            OPERACIONES.DIVISION,
-            OPERACIONES.SUMA,
-          ],
-          tiposNumero: [TIPO_NUMERO.DECIMAL],
-        }
-    );
+    const o = new OperacionMultiple({
+      nivel: 50,
+      cantidadOperandos: 3,
+      permitirNegativos: false,
+      random: seededRandom(1),
+      tiposOperacion: [
+        OPERACIONES.DIVISION,
+        OPERACIONES.SUMA,
+      ],
+      tiposNumero: [TIPO_NUMERO.DECIMAL],
+    });
 
     const actual = o;
     // const actual = ['3.33 + 3 = -34','3 + 3.12 = -34','20 / 10 = 3.333'];
@@ -122,8 +123,8 @@ describe('Operación Multiple N.Decimales', () => {
 
     expect(actual).to.satisfy( (o) => {
       const re = new RegExp(
-          '^([\\( ]?\\(?-?[0-9]+([.][0-9]{0,3})?\\)?[ \\)]?) [-+*\\/] '+
-          '([\\( ]?\\(?-?[0-9]+([.][0-9]{0,3})?\\)?[ \\)]?) [-+*\\/] '+
+          '^([\\( ]?\\(?-?[0-9]+([.][0-9]{0,3})?\\)?[ \\)]?) [-+∙/] '+
+          '([\\( ]?\\(?-?[0-9]+([.][0-9]{0,3})?\\)?[ \\)]?) [-+∙/] '+
           '([\\( ]?\\(?-?[0-9]+([.][0-9]{0,3})?\\)?[ \\)]?) '+
           '= (-?[0-9]+([.][0-9]{0,3})?)$'
       );
@@ -148,12 +149,10 @@ describe('Operación Multiple N.Decimales', () => {
       if (algunaCoincide) {
         // decimales la primera cifra:
         if ( match[2] && match[2] != '' ) decimales = true;
-        // decimales segunda cifra:
         if ( match[4] && match[4] != '' ) decimales = true;
-        // decimales resultado
         if ( match[6] && match[6] != '' ) decimales = true;
+        if ( match[8] && match[8] != '' ) decimales = true;
       }
-      console.log(tag, 'decimales', decimales );
       // si no coincide con la exp regular o no tiene ni un numero
       // con decimales falla
       return decimales;

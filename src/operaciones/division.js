@@ -1,5 +1,6 @@
 import DivisionDecimal from './divisionDecimales';
 import DivisionEntera from './divisionEntera';
+import OPERACIONES from './operaciones';
 
 // import Operacion from './operacion';
 /**
@@ -16,7 +17,7 @@ export default class Division {
     operandos = [], incognita = cantidadOperandos + 1, enfocado, posicion_nivel,
     multiplo10 = false,
     multiplo100 = false, complementario = false, resultado = null,
-    resultadoNegativo, decimales = false, decimalesMaximo} = {}
+    resultadoNegativo, decimales = false, decimalesMaximo, random} = {}
   ) {
     const tag = '[Division]';
     if ( debug ) console.log( tag );
@@ -55,14 +56,15 @@ export default class Division {
         multiplo100: multiplo100,
         complementario: complementario,
         resultadoNegativo: resultadoNegativo,
-        decimalesMaximo: decimalesMaximo}
+        decimalesMaximo: decimalesMaximo,
+        random}
       );
     } else {
       division = new DivisionEntera({
         nivel, lower_bound, upper_bound, cantidadOperandos, permitirNegativos,
         operandos, incognita, enfocado, posicion_nivel, multiplo10,
         multiplo100, complementario,
-        resultadoNegativo}
+        resultadoNegativo, random}
       );
     }
     return division;

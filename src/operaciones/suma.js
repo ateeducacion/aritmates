@@ -30,6 +30,7 @@ export default class Suma extends Operacion {
     resultadoNegativo = false,
     decimales = false,
     decimalesMaximo,
+    random,
   } = {}) {
     const tag = '[Suma.constructor]';
     const debug = false;
@@ -69,6 +70,7 @@ export default class Suma extends Operacion {
       resultadoNegativo,
       decimales,
       decimalesMaximo,
+      random,
     });
 
     if ( debug ) {
@@ -282,7 +284,7 @@ export default class Suma extends Operacion {
 
           // si hay operandos negativos 
           if ( this.permitir_negativos && valOpPosteriores<0 ) {
-            limiteInferior = math.abs(valOpPosteriores)+1;
+            limiteInferior = Math.abs(valOpPosteriores)+1;
             if ( limiteInferior > limiteSuperior ) limiteSuperior = limiteInferior + 2;
           }
         } else {
@@ -459,7 +461,7 @@ export default class Suma extends Operacion {
           }
 
           nuevoOperando = Math.round(
-              Math.random()*(maximoActual-minimo))+minimo;
+              this.rng()*(maximoActual-minimo))+minimo;
           if ( debug ) {
             console.log(this.id+tag, 'nuevo op (no ultimo operando)', nuevoOperando );
           }

@@ -20,6 +20,7 @@ objetos.DivisionDecimales = DivisionDecimales;
 
 import {Decimal} from 'decimal.js';
 import OPERACIONES from '../src/operaciones/operaciones';
+import {seededRandom} from '../src/operaciones/random';
 
 // const {equal} = require('assert');
 // import debug from '../src/debug';
@@ -923,6 +924,7 @@ describe('Resta', ()=>{
       cantidadOperandos: 3,
       permitirNegativos: true,
       multiplo100: true,
+      random: seededRandom(1),
     };
     const actual = new objetos.Resta(input);
     // console.log( actual );

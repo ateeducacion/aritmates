@@ -2,6 +2,8 @@
 import OPERACIONES from '../src/operaciones/operaciones';
 import OperacionMultiple from '../src/operaciones/OperacionMultiple';
 import {TIPO_NUMERO} from '../src/operaciones/tipoNumero';
+import {seededRandom} from '../src/operaciones/random';
+import {assertSolved} from './assertExercise';
 
 const chai = require('chai');
 const expect = require('chai').expect;
@@ -46,107 +48,79 @@ describe('Parentesis', () => {
   });
 
   it('*+- al azar -> positivos y sin decimales', () => {
-    const op = new OperacionMultiple(
-        {
-          nivel: 50,
-          cantidadOperandos: 4,
-          tiposNumero: [
-            TIPO_NUMERO.NATURAL,
-          ],
-          tiposOperacion: [
-            OPERACIONES.MULTIPLICACION,
-            OPERACIONES.SUMA,
-            OPERACIONES.RESTA,
-          ],
-          parentesis: true,
-        }
-    );
-    const actual = op.toString();
-
-    expect(actual).to.match(
-        /^(\( )?[0-9]+( \))? [-+∙\/] (\( )?[0-9]+( \))? [-+∙\/] (\( )?[0-9]+( \))? [-+∙\/] (\( )?[0-9]+( \))? = [0-9]+$/
-    );
+    const op = new OperacionMultiple({
+      nivel: 50,
+      cantidadOperandos: 4,
+      random: seededRandom(1),
+      tiposNumero: [TIPO_NUMERO.NATURAL],
+      tiposOperacion: [
+        OPERACIONES.MULTIPLICACION,
+        OPERACIONES.SUMA,
+        OPERACIONES.RESTA,
+      ],
+      parentesis: true,
+    });
+    expect(op.toString()).to.include('(');
+    assertSolved(op, {allowNegativeResult: false});
+    expect(op.toString()).to.not.match(/\./);
   });
 
   it('*/+- al azar -> positivos y decimales', () => {
-    const op = new OperacionMultiple(
-        {
-          nivel: 50,
-          cantidadOperandos: 4,
-          permitirNegativos: false,
-          tiposNumero: [
-            TIPO_NUMERO.NATURAL,
-            TIPO_NUMERO.DECIMAL,
-          ],
-          tiposOperacion: [
-            OPERACIONES.MULTIPLICACION,
-            OPERACIONES.DIVISION_ENTERA,
-            OPERACIONES.SUMA,
-            OPERACIONES.RESTA,
-          ],
-          parentesis: true,
-        }
-    );
-    const actual = op.toString();
-
-    expect(actual).to.match(
-        /^(\( )?[0-9]+( \))? [-+∙\/] (\( )?[0-9]+( \))? [-+∙\/] (\( )?[0-9]+( \))? [-+∙\/] (\( )?[0-9]+( \))? = [0-9]+$/
-    );
+    const op = new OperacionMultiple({
+      nivel: 50,
+      cantidadOperandos: 4,
+      permitirNegativos: false,
+      random: seededRandom(1),
+      tiposNumero: [TIPO_NUMERO.NATURAL, TIPO_NUMERO.DECIMAL],
+      tiposOperacion: [
+        OPERACIONES.MULTIPLICACION,
+        OPERACIONES.DIVISION_ENTERA,
+        OPERACIONES.SUMA,
+        OPERACIONES.RESTA,
+      ],
+      parentesis: true,
+    });
+    expect(op.toString()).to.match(/\d\.\d/);
+    expect(op.toString()).to.include('(');
+    assertSolved(op, {allowNegativeResult: false});
   });
 
   it('*/+- al azar -> negativos y sin decimales 4 operandos', () => {
-    const op = new OperacionMultiple(
-        {
-          nivel: 50,
-          cantidadOperandos: 4,
-          permitirNegativos: true,
-          tiposOperacion: [
-            OPERACIONES.MULTIPLICACION,
-            OPERACIONES.DIVISION_ENTERA,
-            OPERACIONES.SUMA,
-            OPERACIONES.RESTA,
-          ],
-          parentesis: true,
-        }
-    );
-    const actual = op.toString();
-    // /^  incio
-    //   (\( )?-?[0-9]+ [-+∙\/] // = ( -8 o 8
-    //   (\( )?\(?-?[0-9]+\)?( \))? [-+∙\/] // ( (-34) ) * o ( 34 ) * o ( 34 *...
-    //   (\( )?\(?-?[0-9]+\)?( \))? [-+∙\/] // igual
-    //   (\( )?\(?-?[0-9]+\)?( \))? // sin el simbolo al final
-    //   = -?[0-9]+$/ // = -34  o = 23 no 34.3
-
-    expect(actual).to.match(
-        /^(\( )?-?[0-9]+ [-+∙\/] (\( )?\(?-?[0-9]+\)?( \))? [-+∙\/] (\( )?\(?-?[0-9]+\)?( \))? [-+∙\/] (\( )?\(?-?[0-9]+\)?( \))? = -?[0-9]+$/);
+    const op = new OperacionMultiple({
+      nivel: 50,
+      cantidadOperandos: 4,
+      permitirNegativos: true,
+      random: seededRandom(1),
+      tiposOperacion: [
+        OPERACIONES.MULTIPLICACION,
+        OPERACIONES.DIVISION_ENTERA,
+        OPERACIONES.SUMA,
+        OPERACIONES.RESTA,
+      ],
+      parentesis: true,
+    });
+    expect(op.toString()).to.include('(');
+    expect(op.toString()).to.not.match(/\d\.\d/);
+    assertSolved(op);
   });
 
   it('*/+- al azar -> negativos y decimales 4 operandos', () => {
-    const op = new OperacionMultiple(
-        {
-          nivel: 50,
-          cantidadOperandos: 4,
-          permitirNegativos: true,
-          tiposOperacion: [
-            OPERACIONES.MULTIPLICACION,
-            OPERACIONES.DIVISION_ENTERA,
-            OPERACIONES.DIVISION_DECIMAL,
-            OPERACIONES.SUMA,
-            OPERACIONES.RESTA,
-          ],
-          parentesis: true,
-        }
-    );
-    const actual = op.toString();
-    // /^(\( )?-?[0-9]+[.]?([0-9]+)? [-+∙\/]
-    // (\( )?\(?-?[0-9]+[.]?([0-9]+)?\)?( \))? [-+∙\/]
-    // (\( )?\(?-?[0-9]+[.]?([0-9]+)?\)?( \))? [-+∙\/]
-    // (\( )?\(?-?[0-9]+[.]?([0-9]+)?\)?( \))?
-    // = -?[0-9]+[.]?([0-9]+)?/
-    expect(actual).to.match(
-        /^(\( )?-?[0-9]+[.]?([0-9]+)? [-+∙\/] (\( )?\(?-?[0-9]+[.]?([0-9]+)?\)?( \))? [-+∙\/] (\( )?\(?-?[0-9]+[.]?([0-9]+)?\)?( \))? [-+∙\/] (\( )?\(?-?[0-9]+[.]?([0-9]+)?\)?( \))? = -?[0-9]+[.]?([0-9]+)?/
-    );
-    // /^(\( )?-?[0-9]+ [-+∙\/] (\( )?\(?-?[0-9]+\)?( \))? [-+∙\/] (\( )?\(?-?[0-9]+\)?( \))? [-+∙\/] (\( )?\(?-?[0-9]+\)?( \))? = -?[0-9]+[.]?([0-9]+)?/ );
+    const op = new OperacionMultiple({
+      nivel: 50,
+      cantidadOperandos: 4,
+      permitirNegativos: true,
+      random: seededRandom(2),
+      tiposOperacion: [
+        OPERACIONES.MULTIPLICACION,
+        OPERACIONES.DIVISION_ENTERA,
+        OPERACIONES.DIVISION_DECIMAL,
+        OPERACIONES.SUMA,
+        OPERACIONES.RESTA,
+      ],
+      parentesis: true,
+    });
+    expect(op.toString()).to.include('(');
+    assertSolved(op);
   });
 
   it('*/+- al azar -> negativos y sin decimales, 3 operandos', () => {
