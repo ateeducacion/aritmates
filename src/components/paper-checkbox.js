@@ -155,7 +155,7 @@ class PaperCheckbox extends ElementBase {
     else this.removeAttribute('disabled');
   }
 
-  _onClick(ev) {
+  _onClick(_ev) {
     if (this.disabled) return;
     // Evitar doble toggle si el click viene del label interno
     this.checked = !this.checked;
