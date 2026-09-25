@@ -15,8 +15,7 @@ class ImprimirPdf {
   constructor(filename='OperacionesMatematicas.pdf') {
     const tag = '[ImprimirPdf.Testpdf]';
     if ( debug ) console.log( tag );
-    global.html2canvas = html2canvas;
-     
+
     this.doc = new jsPDF();
     this.filename = filename;
     this.title = 'Hoja Ejercicios Aritmates';

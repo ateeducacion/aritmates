@@ -67,17 +67,18 @@ export async function checkAssets() {
     missing.push('Referencia a node_modules en index.html');
   }
 
-  // Vendor scripts deben cargarse desde rutas locales
+  // jQuery y Bootstrap van en la portada. El PDF se carga al imprimir.
   const vendorScripts = [
     'vendor/jquery/jquery.min.js',
     'vendor/bootstrap/bootstrap.bundle.min.js',
-    'vendor/html2canvas/html2canvas.min.js',
-    'vendor/jspdf/jspdf.umd.min.js',
   ];
   for (const src of vendorScripts) {
     if (!html.includes(src)) {
       missing.push(`index.html no referencia ${src}`);
     }
+  }
+  if (html.includes('html2canvas.min.js') || html.includes('jspdf.umd.min.js')) {
+    missing.push('index.html carga librerías de PDF en la portada');
   }
 
   // El bundle no debería re-empaquetar jQuery (señal de externalización rota)
