@@ -46,9 +46,9 @@
       "todo": 11,
       "ficherosPhp": 0,
       "lineasPhp": 0,
-      "ficherosTest": 33,
-      "lineasTest": 8304,
-      "tests": 445,
+      "ficherosTest": 34,
+      "lineasTest": 8750,
+      "tests": 469,
       "testsVacios": 0,
       "configBuild": 0,
       "ci": 4
@@ -94,11 +94,11 @@
         "font": 44300
       },
       "total": 2973984,
-      "peticionesExternas": 90,
-      "bytesExternos": 30565817,
+      "peticionesExternas": 93,
+      "bytesExternos": 30760249,
       "errores": 0,
-      "domContentLoadedMs": 103,
-      "loadMs": 1498
+      "domContentLoadedMs": 93,
+      "loadMs": 1493
     },
     "nueva": {
       "requests": 47,
@@ -114,8 +114,8 @@
       "peticionesExternas": 0,
       "bytesExternos": 0,
       "errores": 0,
-      "domContentLoadedMs": 29,
-      "loadMs": 30
+      "domContentLoadedMs": 30,
+      "loadMs": 31
     }
   }
 }

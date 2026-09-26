@@ -1,237 +1,240 @@
 # Informe de modernización de Aritmates
 
-Qué ha cambiado entre la versión original de Aritmates (rama `upstream`) y la versión que mantenemos hoy (rama `main`).
+Comparación técnica entre la versión original (rama `upstream`) y la versión mantenida (rama `main`).
 
 | | |
 |---|---|
-| **Para qué sirve** | Ver qué ha mejorado, qué ha empeorado y qué queda pendiente tras renovar Aritmates. |
-| **Versiones comparadas** | La original (`upstream`, `a78fc91`, versión 1.0.5, entregada por el proveedor) y la actual (`main`, `ae338b6`, versión 1.3). |
+| **Objeto** | Valorar qué ha mejorado, qué ha empeorado y qué queda pendiente tras la modernización de Aritmates. |
+| **Versiones comparadas** | `upstream` (`a78fc91`, versión 1.0.5 entregada por el proveedor) y `main` (`14147f2`, versión 1.3). |
 | **Fecha de las mediciones** | 26 de septiembre de 2026. |
-| **Cómo se ha medido** | Con el script `scripts/informe-modernizacion.mjs`, que cualquiera puede volver a ejecutar. Los datos están en [`docs/informe/metricas.json`](informe/metricas.json). |
+| **Método** | Script reproducible `scripts/informe-modernizacion.mjs`. Datos en [`docs/informe/metricas.json`](informe/metricas.json). |
 | **Elaborado por** | Área de Tecnología Educativa. |
 
 ## 1. Objeto
 
-Este informe compara la aplicación original con la actual en cuatro aspectos: lo que pesa y lo rápido que carga, la
-seguridad, las pruebas automáticas y lo fácil que es mantenerla. Las cifras se han medido sobre el código de cada
-versión y se separan de las opiniones. La idea es decidir qué hacer a partir de ahora, no justificar lo hecho, así
-que también se señalan los puntos débiles de la versión actual.
+Este informe compara la aplicación original con la actual en cuatro aspectos: tamaño y rendimiento, seguridad,
+pruebas y mantenibilidad. Las cifras se han medido sobre el código de cada rama y se presentan separadas de las
+valoraciones. El objetivo es decidir los siguientes pasos, no justificar lo hecho, por lo que también se señalan
+los puntos débiles de la versión actual.
 
 ## 2. Conclusión
 
-**La versión actual es claramente mejor que la original: pesa mucho menos, es más segura, está mucho mejor probada
-y es más fácil de publicar. Lo que más queda por mejorar es la parte que genera los ejercicios, que sigue siendo
-prácticamente la original.**
+**La versión actual es claramente mejor que la original en tamaño, seguridad, pruebas y facilidad de despliegue.
+La principal deuda es el motor que genera los ejercicios, que conserva el diseño original.**
 
-- Lo que se publica pasa de 24 MB a 3,1 MB. Al abrir la portada, el navegador descarga 1,1 MB de la aplicación en
-  lugar de 2,9 MB, y deja de descargar los 30 MB de vídeos de otras webs que cargaba la versión original.
-- Ya no hace falta un servidor con PHP. También desaparecen el código que enviaba correos, una clave que estaba
-  escrita dentro del propio código y la función `eval`, que ejecutaba texto como si fuera código.
-- Se pasa de 100 librerías de terceros a 15. Antes nadie comprobaba automáticamente si las pruebas pasaban; ahora
-  GitHub impide integrar un cambio si falla alguna de las 457 pruebas, si falla alguna de las 14 pruebas en el
-  navegador o si la parte del código que cubren las pruebas baja del 80 %.
-- La parte que genera los ejercicios conserva su diseño original: piezas muy grandes, difíciles de seguir, y
-  algunos comportamientos raros que se han dejado igual a propósito para no cambiar los ejercicios que ya se
-  generan (apartado 7).
+- Lo desplegado pasa de 24 MB a 3,1 MB. Al abrir la portada el navegador descarga 1,1 MB propios en lugar de
+  2,9 MB, y ya no descarga los 30 MB de vídeos externos que cargaba la versión original.
+- Desaparecen el servidor PHP, el código de envío de correo, una clave escrita en el propio código y el uso de
+  `eval`.
+- Se pasa de 100 dependencias a 15. El CI, que antes no ejecutaba las pruebas, bloquea ahora cualquier cambio si
+  falla el lint, alguna de las 482 pruebas unitarias o de las 14 de extremo a extremo, o si la cobertura baja del
+  90 %.
+- El motor mantiene clases muy grandes con estado mutable y algunos comportamientos incorrectos que se han dejado
+  como están para no cambiar los ejercicios que se generan (apartado 7).
+
+> [!TIP]
+> **Funciona en cualquier servidor web básico.** La aplicación son solo ficheros HTML, CSS y JavaScript: no necesita
+> PHP, base de datos ni ningún programa en el servidor. Basta con copiar la carpeta `dist/` a un servidor web
+> cualquiera o a GitHub Pages.
 
 ## 3. Resumen de la valoración
 
-| Aspecto | Versión original | Versión actual | Comentario |
+| Aspecto | upstream | main | Observaciones |
 |---|---|---|---|
-| Publicación | Necesita PHP | Ficheros estáticos | La actual funciona en cualquier servidor web o en GitHub Pages. |
-| Tamaño publicado | 24 MB, 628 ficheros | 3,1 MB, 75 ficheros | 87 % menos. 10,6 MB de la original eran librerías del servidor. |
-| Descarga de la portada | 2,9 MB + 30 MB de vídeos externos | 1,1 MB | La ayuda enlaza los vídeos en lugar de cargarlos dentro de la página. |
-| Librerías de terceros | 56 + 44 | 8 + 7 | La original incluía React y Material UI sin usarlos. |
-| Seguridad | Clave en el código, `eval`, servidor PHP | Nada de eso | La configuración se lee sin bloquear la página. |
-| Pruebas automáticas | 300, 13 vacías, sin comprobación automática | 457 + 14 en el navegador | Las de la original solo podían ejecutarse a mano, con herramientas antiguas. |
-| Cobertura de pruebas | Sin medir | 86 % | GitHub rechaza cambios que la bajen del 80 %. |
-| Restos de depuración | 589 mensajes de consola y 506 bloques | Ninguno | Contando solo código que se ejecuta. |
-| Generación de ejercicios | 2962 líneas en una sola pieza | 1423 líneas en la misma pieza | Más limpia, pero con el mismo diseño. |
-| Interfaz | Polymer, MDC, xy-ui y React sin usar | Componentes propios y jQuery | En ambas, el formulario está repetido para escritorio y para móvil. |
-| Licencia | Ninguna (`UNLICENSED`) | AGPL-3.0 | Imprescindible para poder publicar y compartir el código. |
+| Despliegue | Requiere PHP | Ficheros estáticos | Funciona en cualquier servidor web o en GitHub Pages. |
+| Tamaño desplegado | 24 MB, 628 ficheros | 3,1 MB, 75 ficheros | 87 % menos. 10,6 MB de la original eran librerías PHP. |
+| Descarga de la portada | 2,9 MB + 30 MB externos | 1,1 MB | La ayuda enlaza los vídeos en lugar de incrustarlos. |
+| Dependencias | 56 + 44 | 8 + 7 | La original declaraba React y Material UI sin usarlos. |
+| Seguridad | Clave en el código, `eval`, PHP | Sin servidor ni `eval` | La configuración se lee sin peticiones síncronas. |
+| Pruebas | 300 (13 vacías), sin CI | 482 unitarias + 14 E2E en CI | Las de la original solo se ejecutaban a mano. |
+| Cobertura | Sin medir | 94 % de líneas | El CI rechaza cambios que la bajen del 90 %. |
+| Código de depuración | 589 `console.log` y 506 bloques | 0 y 0 | Contando solo código ejecutable. |
+| Motor de ejercicios | 2962 líneas en una clase | 1423 en la misma clase | Más limpio, pero con el mismo diseño. |
+| Interfaz | Polymer, MDC, xy-ui y React sin uso | Componentes propios y jQuery | En ambas, el formulario está duplicado para escritorio y móvil. |
+| Licencia | `UNLICENSED` | AGPL-3.0 | Necesaria para publicar y reutilizar el código. |
 
 : Tabla 1. Resumen de la comparación.
 
 ## 4. Cifras
 
-![Figura 1. Librerías de terceros: 56 y 44 en la versión original frente a 8 y 7 en la actual.](informe/dependencias.svg)
+![Figura 1. Dependencias: 56 y 44 en la versión original frente a 8 y 7 en la actual.](informe/dependencias.svg)
 
-![Figura 2. Tamaño de lo que se publica, por tipo de fichero. La original incluía 10,6 MB de código de servidor y 5 MB de fuentes.](informe/despliegue.svg)
+![Figura 2. Tamaño de lo desplegado por tipo de fichero. La original incluía 10,6 MB de PHP y 5 MB de fuentes.](informe/despliegue.svg)
 
-![Figura 3. Lo que descarga el navegador al abrir la portada, separando lo de la aplicación de lo que viene de otras webs.](informe/carga.svg)
+![Figura 3. Lo que descarga el navegador al abrir la portada, separando lo propio de lo que llega de otras webs.](informe/carga.svg)
 
-![Figura 4. Código propio de la aplicación: líneas, comentarios y restos de depuración.](informe/codigo.svg)
+![Figura 4. Código propio: líneas, comentarios y código de depuración.](informe/codigo.svg)
 
-![Figura 5. Pruebas automáticas: cuántas hay, cuántas estaban vacías y cuántas líneas ocupan.](informe/pruebas.svg)
+![Figura 5. Pruebas automáticas: número de pruebas, pruebas vacías y líneas de test.](informe/pruebas.svg)
 
-Dos cifras no mejoran tanto como las demás, y conviene explicar por qué:
+Dos cifras mejoran menos que el resto:
 
-- **Las líneas de código propio solo bajan un 18 %** (de 12 686 a 10 406). La versión original usaba librerías
-  externas para la interfaz, y ese código no cuenta como propio. La actual las ha sustituido por componentes
-  propios y ha añadido piezas pequeñas y probadas. Lo que sí ha desaparecido es el código que no se usaba y el de
-  depuración, pero la parte que genera los ejercicios sigue siendo grande.
-- **Las fuentes que se descargan al abrir la portada siguen siendo más que en la original** (110 KB frente a
-  43 KB). La original no cargaba la tipografía Roboto y usaba la del sistema. La actual sí la carga, aunque solo
-  con los caracteres del español y los tres grosores que se usan, y sin hacer esperar al texto mientras llega.
+- **Las líneas de JavaScript propio solo bajan un 18 %** (de 12 686 a 10 406). La versión original delegaba la
+  interfaz en librerías de npm, que no cuentan como código propio; la actual las sustituye por componentes propios
+  y añade módulos pequeños y probados. El código muerto y el de depuración han desaparecido, pero el motor sigue
+  siendo voluminoso.
+- **Las fuentes de la portada siguen pesando más que en la original** (110 KB frente a 43 KB). La original no
+  cargaba Roboto y usaba la fuente del sistema. La actual carga un subconjunto latino de Roboto con los tres pesos
+  que usa y `font-display: swap`, así que el texto no espera a la fuente.
 
 ## 5. Mejoras aplicadas
 
-### Publicación y velocidad
+### Despliegue y rendimiento
 
-- La aplicación son ficheros estáticos: no necesita PHP, ni Composer, ni un servidor propio. `npm run build`
-  genera la carpeta `dist/`, que es lo que se publica.
-- Las herramientas de construcción antiguas (webpack y Babel) se han sustituido por esbuild y Sass: construir la
-  aplicación tarda menos de un segundo y no necesita configuración propia.
-- Las librerías para generar PDF solo se descargan cuando alguien imprime. La portada aparece sin esperar a
-  imágenes ni librerías.
-- Se han quitado 95 imágenes y fuentes que nada usaba, copias de librerías que nadie cargaba, Font Awesome (se
-  usaba para tres iconos) y dos hojas de estilo de MDC.
-- La tipografía Roboto se reduce a los caracteres del español y a los tres grosores que se usan: la portada
-  descarga 110 KB de fuentes en lugar de 234 KB, y lo publicado pasa de 2,2 MB de fuentes a 110 KB.
-- La configuración (`config.json`) se lee sin bloquear la página y se puede seguir editando después de publicar.
+- Aplicación estática: sin PHP, sin Composer y sin servidor de aplicación. `npm run build` genera `dist/`.
+- webpack y Babel sustituidos por esbuild y Sass: el build tarda menos de un segundo y no necesita configuración
+  propia.
+- jsPDF y html2canvas solo se descargan al imprimir; la portada no espera a imágenes ni librerías.
+- Retirados 95 ficheros de imagen y fuente sin uso, copias de librerías que nadie cargaba, Font Awesome (se usaba
+  para tres iconos) y dos hojas de estilo de MDC.
+- Roboto en subconjunto latino y solo con los pesos que se usan: la portada descarga 110 KB de fuentes en lugar
+  de 234 KB, y `dist/fonts` pasa de 2,2 MB a 110 KB.
+- `config.json` se lee de forma asíncrona antes de arrancar y se puede seguir editando en `dist/` tras el build.
 
 ### Seguridad
 
-- Se ha quitado todo el código de servidor en PHP: el que enviaba correos (que ya no se usaba) y el que generaba
-  PDF. Con él desaparece una clave que estaba escrita dentro del código publicado.
-- La función `eval`, que ejecutaba texto como código, se ha sustituido por una calculadora propia que solo acepta
-  operaciones matemáticas. Se ha comprobado que rechaza, por ejemplo, `alert(1)`.
-- Las tareas automáticas de GitHub tienen solo los permisos que necesitan y revisan las librerías en busca de
-  fallos de seguridad conocidos.
+- Eliminado el backend PHP (el envío de correo, que ya no se usaba, y la generación de PDF con dompdf) y, con él,
+  la clave que `index.php` usaba para generar un hash diario y que estaba escrita en el repositorio.
+- `eval` sustituido por un analizador aritmético propio que solo acepta operaciones; se ha comprobado que
+  rechaza entradas como `alert(1)`.
+- Los workflows de GitHub tienen los permisos mínimos, el CI audita las dependencias y la cobertura se sube a
+  Codecov sin tokens guardados en el repositorio.
 
 ### Calidad del código
 
-- Se han quitado 414 bloques de depuración, unas 600 líneas de código comentado y casi 50 funciones que nadie
-  usaba. Se comprobó una a una que nada las llamaba.
-- Se han sacado de las piezas grandes las partes que se pueden probar por separado: las operaciones aritméticas,
-  las reglas de los números y del azar, el temporizador, la sesión de ejercicios y los resultados.
-- Ya no existe un modo de depuración dentro del código: la aplicación genera siempre lo mismo para la misma
-  configuración.
-- GitHub rechaza cambios que dejen variables sin usar.
+- Retirados 414 bloques de depuración, unas 600 líneas de código comentado y casi 50 métodos sin llamadas,
+  verificados uno a uno.
+- Extraídas del motor y de `app.js` las piezas que se pueden probar por separado: aritmética, reglas de números y
+  de azar, temporizador, sesión de ejercicios y resultados.
+- Eliminado el flag de depuración: con la misma configuración y semilla, el motor genera siempre lo mismo.
+- ESLint rechaza variables sin usar en todo el repositorio.
 
-### Pruebas automáticas
+### Pruebas e integración continua
 
-- Hay una sola batería de 457 pruebas, sin pruebas vacías. Los ejercicios se pueden repetir exactamente usando
-  una semilla, y una prueba de referencia guarda lo que genera la aplicación para 1184 combinaciones de opciones:
-  si algo cambia sin querer, la prueba avisa.
-- Los componentes de la interfaz (casillas, interruptores, desplegables, paneles y ventanas) tienen pruebas de su
-  comportamiento: cómo responden al ratón y al teclado y qué avisos dan a los lectores de pantalla.
-- 14 pruebas se ejecutan en un navegador real: el recorrido completo de un alumno, la vista previa del PDF, la
-  accesibilidad, la ayuda, las ventanas y la carga de la configuración. Fallan también si la página muestra algún
-  error.
-- La cobertura, es decir, la parte del código que ejecutan las pruebas, es del 86 %. GitHub rechaza cambios que
-  la bajen del 80 %, y las piezas ya renovadas deben estar por encima del 98 %.
-- La web de demostración solo se actualiza si todas las comprobaciones han pasado.
+- Una sola suite de 482 pruebas unitarias, sin pruebas vacías. Los ejercicios se pueden reproducir con una
+  semilla, y una prueba de referencia guarda la salida del motor para 1346 combinaciones de opciones: si algo
+  cambia sin querer, falla.
+- Los componentes de la interfaz (casillas, interruptores, deslizadores, desplegables, paneles y diálogos) tienen
+  pruebas de su comportamiento: atributos, teclado, eventos y estado accesible.
+- 14 pruebas de extremo a extremo en un navegador real: el recorrido completo de un alumno, la vista previa del
+  PDF, la accesibilidad, la ayuda, los diálogos y la carga de la configuración. También fallan si la página lanza
+  algún error.
+- Cobertura global del 94 % en líneas, 90,6 % en ramas y 96,9 % en funciones. El CI rechaza cualquier cambio que
+  la baje del 90 %, y los módulos ya renovados deben superar el 98 % en líneas.
+- GitHub Pages solo se actualiza si el CI ha pasado.
+
+> [!TIP]
+> **Qué es la cobertura de pruebas.** Es el porcentaje del código que llegan a ejecutar las pruebas automáticas.
+> Un 94 % de líneas significa que, al pasar las pruebas, se ejecutan 94 de cada 100 líneas de la aplicación. No
+> garantiza que no haya errores, pero sí que casi todo el código se ha ejercitado al menos una vez y que un cambio
+> que rompa algo tiene muchas posibilidades de detectarse.
 
 ### Errores corregidos
 
 | Error | Origen | PR |
 |---|---|---|
-| Las sumas con «resultado igual a» salían mal (`12 + (-18) = 30`) | Original | #127 |
-| Un reintento con paréntesis podía dejar la página colgada | Original | #141 |
-| El navegador y las pruebas trataban los decimales de forma distinta | Original | #140 |
-| Se avisaba de «resultado no entero» justo cuando sí lo era | Original | #146 |
-| Las ventanas repetían acciones y «Atrás» no cerraba | Original | #137 |
-| Un cero se tomaba por hueco | Original | #120, #121 |
-| El modo de depuración cambiaba los ejercicios | Original | #114 |
-| Una división inexacta se daba por buena (`7 / 2 = 3`) | Original | #151 |
-| Añadir una operación ya elegida daba error | Original | #153 |
-| No se generaba el ZIP de cada versión | Proyecto | #134 |
+| Sumas con «resultado igual a» incorrectas (`12 + (-18) = 30`) | Original | #127 |
+| El reintento con paréntesis podía colgar la página | Original | #141 |
+| Los decimales se trataban distinto en el navegador | Original | #140 |
+| Aviso «no es entero» cuando sí lo era | Original | #146 |
+| Los diálogos repetían acciones | Original | #137 |
+| Un cero se tomaba por operando vacío | Original | #120, #121 |
+| `debug` alteraba los ejercicios | Original | #114 |
+| División inexacta dada por buena (`7 / 2 = 3`) | Original | #151 |
+| Error al añadir una operación ya elegida | Original | #153 |
+| No se generaba el ZIP de la versión | Proyecto | #134 |
 
 : Tabla 2. Errores corregidos durante la modernización.
 
 ## 6. Valoración crítica de la versión original
 
-- **Demasiado pesada para lo que hace.** Una aplicación de ejercicios que funciona en el navegador necesitaba un
-  servidor PHP, cinco configuraciones de webpack y 100 librerías, entre ellas React y Material UI sin usarlas.
-- **Poco cuidado con la seguridad.** Tenía una clave escrita dentro del código publicado, ejecutaba texto como
-  código con `eval` y seguía publicando un script de envío de correos que ya no se usaba.
-- **Código de pruebas mezclado con el de producción.** 589 mensajes de consola y 506 bloques de depuración, que
-  además cambiaban los ejercicios cuando se activaban, y 1450 líneas de comentarios, muchas con código desactivado.
-- **Pruebas que no protegían nada.** Había 300 pruebas, pero 13 estaban vacías, solo se podían ejecutar a mano y
-  nada comprobaba automáticamente que pasaran.
-- **Errores que veía el alumnado**, como las sumas incorrectas con «resultado igual a».
-- **Sin licencia**, lo que impedía reutilizar o publicar el código.
+- **Arquitectura sobredimensionada.** Una aplicación de ejercicios que funciona en el navegador dependía de PHP,
+  Composer, cinco configuraciones de webpack y 100 dependencias, entre ellas React y Material UI sin usar.
+- **Seguridad descuidada.** Una clave estaba escrita en el código publicado, se evaluaban expresiones con `eval` y
+  seguía desplegado un script PHP de envío de correo que ya no se usaba.
+- **Código de depuración mezclado con el de producción.** 589 `console.log` y 506 bloques `if (debug)`, que
+  además cambiaban los ejercicios cuando se activaban, y 1450 líneas de comentario, muchas con código desactivado.
+- **Pruebas que no protegían nada.** Había 300, pero 13 estaban vacías, solo se ejecutaban a mano con webpack y
+  el CI se limitaba a un análisis estático de GitLab.
+- **Errores visibles para el alumnado**, como las sumas incorrectas con «resultado igual a».
+- **Sin licencia** (`UNLICENSED`), lo que impedía reutilizar o publicar el código.
 
-Hay que reconocer que la parte pedagógica (niveles, tipos de número, incógnita en distintas posiciones, enfoque,
-múltiplos) es rica y está pensada para el aula. La modernización la ha conservado entera.
+La lógica pedagógica (niveles, tipos de número, incógnita en distintas posiciones, enfoque, múltiplos) es rica y
+está pensada para el aula. La modernización la ha conservado íntegramente.
 
 ## 7. Valoración crítica de la versión actual
 
-- **La generación de ejercicios no se ha rediseñado.** Las dos piezas principales (1423 y 1183 líneas) siguen
-  siendo difíciles de seguir: guardan estado que cambia por el camino y repiten intentos hasta que un ejercicio
-  sale bien. Se ha preferido mantener el comportamiento antes que cambiarlo, lo que protege a los usuarios pero
-  deja algunas rarezas:
-  - una división entre números que no dan un resultado exacto se sigue mostrando recortada, como `7 / 2 = 3`.
-    Ahora se registra como error, pero el resultado no se corrige. En 15 000 ejercicios generados por la
-    aplicación no apareció ningún caso;
-  - dos partes crean unas 20 operaciones de más por ejercicio que luego se descartan. Quitarlas cambia qué
-    ejercicios salen, así que se probó y se dejó como estaba.
-- **`app.js` sigue teniendo 1526 líneas.** Es el fichero que une la interfaz con el resto, y usa jQuery y
-  variables compartidas. Se han sacado piezas, pero el formulario repetido para escritorio y móvil sigue ahí.
-- **Dos componentes son copias de código de terceros** (el control deslizante y su etiqueta, 734 líneas). Solo
-  los prueban las pruebas en el navegador.
-- **Se han hecho muchos cambios en poco tiempo** (139 PRs), buena parte con ayuda de agentes de IA. Cada cambio es
-  pequeño y se comprueba, pero revisar a fondo tanto volumen es difícil para una persona.
-- **Las pruebas tienen límites:** la prueba de referencia ocupa unos 525 KB, las pruebas en el navegador solo se
-  hacen en Chrome y no hay una revisión automática de accesibilidad o velocidad más allá de casos concretos.
+- **El motor no se ha rediseñado.** `OperacionMultiple.js` (1423 líneas) y `operacion.js` (1183) siguen basándose
+  en clases con estado mutable y en reintentos difíciles de seguir. Se ha preferido fijar el comportamiento antes
+  que cambiarlo, lo que protege a los usuarios pero mantiene algunas rarezas:
+  - una división entera con operandos que no dividen exacto se sigue mostrando truncada (`7 / 2 = 3`). Ahora se
+    registra como error, pero el resultado no se corrige. En 15 000 ejercicios generados por la aplicación no
+    apareció ningún caso;
+  - dos generadores crean unas 20 operaciones que luego se descartan en cada ejercicio. Quitarlas cambia qué
+    ejercicios salen, así que se probó y se descartó.
+- **`app.js` sigue teniendo 1526 líneas** con jQuery y estado global. Se han extraído piezas, pero el formulario
+  duplicado para escritorio y móvil sigue ahí.
+- **Dos componentes son código copiado de terceros** (el deslizador y su etiqueta, 734 líneas). Ya tienen pruebas,
+  pero su mantenimiento depende de nosotros.
+- **El volumen de cambios ha sido muy alto** (140 PRs), buena parte en pocos días y con ayuda de agentes de IA.
+  Cada PR es pequeño y va validado, pero revisar a fondo semejante volumen es difícil.
+- **Las pruebas tienen límites:** la prueba de referencia ocupa unos 590 KB, las de extremo a extremo solo se
+  ejecutan en Chromium y no hay una auditoría automática de accesibilidad o rendimiento.
 
 ## 8. DAFO de la versión actual
 
 | | Positivo | Negativo |
 |---|---|---|
-| **Interno** | **Fortalezas.** Ligera (1,1 MB en la portada) y sin servidor. Sin claves en el código. Todo cambio pasa 457 pruebas, 14 en el navegador y un 80 % de cobertura. Licencia libre y documentación en español. | **Debilidades.** La generación de ejercicios mantiene su diseño original y algunas rarezas. `app.js` tiene 1526 líneas con jQuery. Formulario repetido para escritorio y móvil. Componentes copiados de terceros. Pruebas en el navegador solo en Chrome. |
-| **Externo** | **Oportunidades.** La prueba de referencia permite corregir la generación de ejercicios con seguridad. Podría funcionar como aplicación instalable sin conexión. Otras comunidades pueden reutilizarla gracias a la licencia. | **Amenazas.** Depender de jQuery y Bootstrap a largo plazo. Que el ritmo de cambios con IA supere la capacidad de revisión. Que el conocimiento de la generación de ejercicios quede en pocas personas. Que cambios en Medusa Mediateca rompan los enlaces a los vídeos. |
+| **Interno** | **Fortalezas.** Estática y ligera (1,1 MB en la portada). Sin servidor ni claves en el código. CI con 482 pruebas unitarias, 14 E2E y cobertura mínima del 90 %. Licencia libre y documentación en español. | **Debilidades.** Motor heredado con estado mutable y rarezas conservadas a propósito. `app.js` de 1526 líneas con jQuery. Formulario duplicado. Componentes copiados de terceros. E2E solo en Chromium. |
+| **Externo** | **Oportunidades.** La prueba de referencia permite corregir el motor de forma controlada. Podría ofrecerse como aplicación instalable sin conexión. Reutilizable por otras comunidades gracias a la licencia. | **Amenazas.** Dependencia de jQuery y Bootstrap a largo plazo. Que el ritmo de cambios asistidos por IA supere la capacidad de revisión. Conocimiento del motor concentrado en pocas personas. Cambios en Medusa Mediateca que rompan los enlaces a los vídeos. |
 
 : Tabla 3. DAFO de la versión actual.
 
 ## 9. Propuestas
 
-1. Corregir la generación de ejercicios poco a poco, revisando en cada cambio qué ejercicios cambian. Empezar por
-   que una división inexacta se genere de nuevo en lugar de mostrarse recortada.
-2. Unificar el formulario de escritorio y móvil en uno solo que se adapte a la pantalla.
-3. Ejecutar también las pruebas en el navegador en Firefox y Safari.
-4. Añadir una revisión automática de accesibilidad y velocidad (por ejemplo con Lighthouse), primero solo como
-   aviso.
-5. Ir más despacio con los cambios para que la revisión de una persona siga siendo real.
+1. Corregir el motor en PRs pequeños, revisando en cada uno el cambio de la prueba de referencia; empezar por que
+   una división inexacta se regenere en lugar de mostrarse truncada.
+2. Unificar el formulario de escritorio y móvil en uno responsive.
+3. Ejecutar las pruebas de extremo a extremo también en Firefox y WebKit.
+4. Añadir una auditoría automática de accesibilidad y rendimiento (por ejemplo, Lighthouse), primero sin bloquear.
+5. Reducir el ritmo de PRs para que la revisión humana siga siendo real.
 
 <!-- salto de página -->
 
-## Anexo A. Cómo se ha medido
+## Anexo A. Metodología
 
-- **Código.** Se lee directamente de cada versión en git. Se cuenta el código JavaScript de `src/`, sin librerías
-  de terceros. Los mensajes de consola, `eval` y los bloques de depuración solo se cuentan si no están comentados.
-- **Lo publicado.** La versión original guarda en git la carpeta `dist/` que se publicaba; la actual se construye
-  con `npm run build`. Los ficheros se clasifican por tipo, y el código PHP cuenta como servidor.
-- **La descarga de la portada.** Cada versión se sirve en local, sin comprimir, y se abre la portada cinco veces
-  con un navegador automático (Playwright), empezando cada vez sin caché. Se toma el tiempo del valor central.
-  Para la versión original se reconstruye la página tal como la montaba su PHP. Lo que llega de otras webs (los
-  vídeos) se cuenta aparte y varía un poco entre mediciones.
-- **Límites.** Los tiempos en local no son los de una red real; solo sirven para comparar. Las pruebas de la
-  versión original no se han ejecutado, porque necesitan sus herramientas antiguas; se cuentan las que había. La
-  cobertura se mide sobre lo que cargan las pruebas; `app.js` queda fuera porque se prueba en el navegador. No se
-  ha medido con Lighthouse.
-- **Repetir la medición.** `node scripts/informe-modernizacion.mjs` regenera `docs/informe/`. El PDF se genera
-  con la plantilla de documentos del ATE a partir de este fichero.
+- **Código fuente.** Se lee de git en cada rama. Se cuentan los `.js` de `src/` sin librerías de terceros;
+  `console.log`, `eval` y `if (debug)` solo en líneas que no son comentario.
+- **Despliegue.** La rama `upstream` tiene su `dist/` versionado; el de `main` se construye con `npm run build`.
+  Los ficheros se clasifican por extensión y el PHP cuenta como servidor.
+- **Carga de la portada.** Cada `dist/` se sirve en local y sin compresión; Playwright abre la portada cinco veces
+  con la caché vacía y se toma la mediana. Para `upstream` el HTML se reconstruye como lo componía su
+  `index.php`. Lo que llega de otras webs (los vídeos) se cuenta aparte y varía un poco entre mediciones.
+- **Límites.** Los tiempos en local no representan una red real y solo sirven para comparar. Las pruebas de
+  `upstream` no se ejecutaron porque necesitan sus herramientas antiguas; se cuentan las declaradas. La cobertura
+  se mide sobre el código que cargan las pruebas unitarias; `app.js` queda fuera porque se prueba de extremo a
+  extremo. No se ha medido con Lighthouse.
+- **Reproducción.** `node scripts/informe-modernizacion.mjs` regenera `docs/informe/`. El PDF se genera con la
+  plantilla de documentos del ATE a partir de este fichero.
 
-## Anexo B. Todas las cifras
+## Anexo B. Métricas completas
 
-| Qué se mide | Versión original | Versión actual |
+| Métrica | upstream | main |
 |---|---:|---:|
-| Librerías de terceros (aplicación / desarrollo) | 56 / 44 | 8 / 7 |
-| Ficheros de código propio / líneas | 31 / 12 686 | 49 / 10 406 |
+| Dependencias / dependencias de desarrollo | 56 / 44 | 8 / 7 |
+| Ficheros JS propios / líneas | 31 / 12 686 | 49 / 10 406 |
 | Fichero más grande (líneas) | `OperacionMultiple.js` (2962) | `app.js` (1526) |
-| Mensajes de consola / bloques de depuración | 589 / 506 | 0 / 0 |
+| `console.log` / bloques de depuración ejecutables | 589 / 506 | 0 / 0 |
 | Usos de `eval` | 1 | 0 |
 | Líneas de comentario | 1450 | 513 |
-| Código de servidor PHP (ficheros / líneas) | 3 / 778 | 0 / 0 |
-| Pruebas escritas / vacías | 300 / 13 | 445 / 0 (431 en Node y 14 en el navegador) |
-| Pruebas ejecutadas en cada comprobación | Ninguna | 457 en Node y 14 en el navegador |
-| Cobertura de pruebas (líneas / funciones) | Sin medir | 86,5 % / 86,1 % |
-| Tamaño de lo publicado | 24 056 KB (628 ficheros) | 3131 KB (75 ficheros) |
-| Ficheros que usa el navegador (sin PHP ni ayudas de depuración) | 13 006 KB | 2363 KB |
-| Portada: descarga de la aplicación / peticiones | 2904 KB / 45 | 1088 KB / 47 |
-| Portada: descarga de otras webs / peticiones | 29 849 KB / 90 | 0 / 0 |
-| Portada: tiempo hasta que termina de cargar (local) | 1498 ms | 30 ms |
+| PHP (ficheros / líneas) | 3 / 778 | 0 / 0 |
+| Pruebas declaradas / vacías | 300 / 13 | 469 / 0 (455 unitarias y 14 E2E) |
+| Pruebas ejecutadas en el CI | Ninguna | 482 unitarias y 14 E2E |
+| Cobertura (líneas / ramas / funciones) | Sin medir | 94,4 % / 90,6 % / 96,9 % |
+| Tamaño de `dist/` | 24 056 KB (628 ficheros) | 3131 KB (75 ficheros) |
+| Recursos de cliente (sin PHP ni mapas de código) | 13 006 KB | 2363 KB |
+| Portada: bytes propios / peticiones | 2904 KB / 45 | 1088 KB / 47 |
+| Portada: bytes de otras webs / peticiones | 30 039 KB / 93 | 0 / 0 |
+| Portada: evento `load` (mediana en local) | 1493 ms | 31 ms |
 
-: Tabla 4. Cifras medidas el 26 de septiembre de 2026.
+: Tabla 4. Métricas medidas el 26 de septiembre de 2026.
