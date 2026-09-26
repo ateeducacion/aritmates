@@ -60,6 +60,10 @@ function divisionCases() {
     ambosDecimales: {operandos: [8.4, 4]},
     tresOperandos: {cantidadOperandos: 3},
     incognitaInicial: {incognita: 1},
+    multiplo10: {multiplo10: true},
+    multiplo100: {multiplo100: true},
+    // How OperacionMultiple builds chained divisions (a / b / c).
+    tresConOperandos: {cantidadOperandos: 3, operandos: [84, 8]},
   };
   for (const [name, Clase] of Object.entries(classes)) {
     for (const nivel of [1, 5, 10, 20, 50, 100]) {
@@ -88,6 +92,8 @@ function multipleCases() {
     [OPERACIONES.RESTA, OPERACIONES.MULTIPLICACION],
     [OPERACIONES.MULTIPLICACION, OPERACIONES.DIVISION_ENTERA],
     [OPERACIONES.RESTA, OPERACIONES.DIVISION_RESTO],
+    [OPERACIONES.DIVISION_DECIMAL, OPERACIONES.DIVISION_DECIMAL],
+    [OPERACIONES.DIVISION_ENTERA, OPERACIONES.DIVISION_ENTERA],
   ];
   const numeros = {
     natural: [TIPO_NUMERO.NATURAL],

@@ -390,6 +390,117 @@
    "aciertaConRespuesta": true,
    "errores": []
   },
+  "DivisionEntera|n1|multiplo10|s1": {
+   "texto": "3500 / 70 = 50",
+   "textoIncognita": "[3500] / 70 = 50",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 70 = 50</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">70</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">50</span></p>",
+   "resultado": 50,
+   "respuesta": 3500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n1|multiplo10|s2": {
+   "texto": "800 / 80 = 10",
+   "textoIncognita": "800 / [80] = 10",
+   "resultado": 10,
+   "respuesta": 80,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n1|multiplo10|s3": {
+   "texto": "2400 / 30 = 80",
+   "textoIncognita": "[2400] / 30 = 80",
+   "resultado": 80,
+   "respuesta": 2400,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n1|multiplo10|s4": {
+   "texto": "2100 / 70 = 30",
+   "textoIncognita": "2100 / [70] = 30",
+   "resultado": 30,
+   "respuesta": 70,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n1|multiplo100|s1": {
+   "texto": "350000 / 700 = 500",
+   "textoIncognita": "[350000] / 700 = 500",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 700 = 500</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">700</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">500</span></p>",
+   "resultado": 500,
+   "respuesta": 350000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n1|multiplo100|s2": {
+   "texto": "80000 / 800 = 100",
+   "textoIncognita": "80000 / [800] = 100",
+   "resultado": 100,
+   "respuesta": 800,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n1|multiplo100|s3": {
+   "texto": "240000 / 300 = 800",
+   "textoIncognita": "[240000] / 300 = 800",
+   "resultado": 800,
+   "respuesta": 240000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n1|multiplo100|s4": {
+   "texto": "210000 / 700 = 300",
+   "textoIncognita": "210000 / [700] = 300",
+   "resultado": 300,
+   "respuesta": 700,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n1|tresConOperandos|s1": {
+   "texto": "84 / 3 / 2 = 14",
+   "textoIncognita": "84 / 3 / 2 = [14]",
+   "html": "<p class=\"operacion f-operacion\">84 / 3 / 2 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">84</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">3</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">2</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 14,
+   "respuesta": 14,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n1|tresConOperandos|s2": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n1|tresConOperandos|s3": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n1|tresConOperandos|s4": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
   "DivisionEntera|n5|base|s1": {
    "texto": "6 / 3 = 2",
    "textoIncognita": "[6] / 3 = 2",
@@ -785,6 +896,120 @@
    "respuesta": 9,
    "aciertaConRespuesta": true,
    "errores": []
+  },
+  "DivisionEntera|n5|multiplo10|s1": {
+   "texto": "3500 / 70 = 50",
+   "textoIncognita": "[3500] / 70 = 50",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 70 = 50</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">70</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">50</span></p>",
+   "resultado": 50,
+   "respuesta": 3500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n5|multiplo10|s2": {
+   "texto": "800 / 80 = 10",
+   "textoIncognita": "800 / [80] = 10",
+   "resultado": 10,
+   "respuesta": 80,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n5|multiplo10|s3": {
+   "texto": "2400 / 30 = 80",
+   "textoIncognita": "[2400] / 30 = 80",
+   "resultado": 80,
+   "respuesta": 2400,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n5|multiplo10|s4": {
+   "texto": "2100 / 70 = 30",
+   "textoIncognita": "2100 / [70] = 30",
+   "resultado": 30,
+   "respuesta": 70,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n5|multiplo100|s1": {
+   "texto": "350000 / 700 = 500",
+   "textoIncognita": "[350000] / 700 = 500",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 700 = 500</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">700</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">500</span></p>",
+   "resultado": 500,
+   "respuesta": 350000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n5|multiplo100|s2": {
+   "texto": "80000 / 800 = 100",
+   "textoIncognita": "80000 / [800] = 100",
+   "resultado": 100,
+   "respuesta": 800,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n5|multiplo100|s3": {
+   "texto": "240000 / 300 = 800",
+   "textoIncognita": "[240000] / 300 = 800",
+   "resultado": 800,
+   "respuesta": 240000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n5|multiplo100|s4": {
+   "texto": "210000 / 700 = 300",
+   "textoIncognita": "210000 / [700] = 300",
+   "resultado": 300,
+   "respuesta": 700,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n5|tresConOperandos|s1": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "html": "<p class=\"operacion f-operacion\">84 / 8 / 1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">84</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n5|tresConOperandos|s2": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n5|tresConOperandos|s3": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n5|tresConOperandos|s4": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n10|base|s1": {
    "texto": "18 / 6 = 3",
@@ -1182,6 +1407,120 @@
    "aciertaConRespuesta": true,
    "errores": []
   },
+  "DivisionEntera|n10|multiplo10|s1": {
+   "texto": "3500 / 70 = 50",
+   "textoIncognita": "[3500] / 70 = 50",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 70 = 50</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">70</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">50</span></p>",
+   "resultado": 50,
+   "respuesta": 3500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n10|multiplo10|s2": {
+   "texto": "800 / 80 = 10",
+   "textoIncognita": "800 / [80] = 10",
+   "resultado": 10,
+   "respuesta": 80,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n10|multiplo10|s3": {
+   "texto": "2400 / 30 = 80",
+   "textoIncognita": "[2400] / 30 = 80",
+   "resultado": 80,
+   "respuesta": 2400,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n10|multiplo10|s4": {
+   "texto": "2100 / 70 = 30",
+   "textoIncognita": "2100 / [70] = 30",
+   "resultado": 30,
+   "respuesta": 70,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n10|multiplo100|s1": {
+   "texto": "350000 / 700 = 500",
+   "textoIncognita": "[350000] / 700 = 500",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 700 = 500</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">700</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">500</span></p>",
+   "resultado": 500,
+   "respuesta": 350000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n10|multiplo100|s2": {
+   "texto": "80000 / 800 = 100",
+   "textoIncognita": "80000 / [800] = 100",
+   "resultado": 100,
+   "respuesta": 800,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n10|multiplo100|s3": {
+   "texto": "240000 / 300 = 800",
+   "textoIncognita": "[240000] / 300 = 800",
+   "resultado": 800,
+   "respuesta": 240000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n10|multiplo100|s4": {
+   "texto": "210000 / 700 = 300",
+   "textoIncognita": "210000 / [700] = 300",
+   "resultado": 300,
+   "respuesta": 700,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n10|tresConOperandos|s1": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "html": "<p class=\"operacion f-operacion\">84 / 8 / 1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">84</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n10|tresConOperandos|s2": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n10|tresConOperandos|s3": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n10|tresConOperandos|s4": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
   "DivisionEntera|n20|base|s1": {
    "texto": "55 / 11 = 5",
    "textoIncognita": "[55] / 11 = 5",
@@ -1577,6 +1916,120 @@
    "respuesta": 110,
    "aciertaConRespuesta": true,
    "errores": []
+  },
+  "DivisionEntera|n20|multiplo10|s1": {
+   "texto": "3500 / 70 = 50",
+   "textoIncognita": "[3500] / 70 = 50",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 70 = 50</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">70</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">50</span></p>",
+   "resultado": 50,
+   "respuesta": 3500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n20|multiplo10|s2": {
+   "texto": "800 / 80 = 10",
+   "textoIncognita": "800 / [80] = 10",
+   "resultado": 10,
+   "respuesta": 80,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n20|multiplo10|s3": {
+   "texto": "2400 / 30 = 80",
+   "textoIncognita": "[2400] / 30 = 80",
+   "resultado": 80,
+   "respuesta": 2400,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n20|multiplo10|s4": {
+   "texto": "2100 / 70 = 30",
+   "textoIncognita": "2100 / [70] = 30",
+   "resultado": 30,
+   "respuesta": 70,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n20|multiplo100|s1": {
+   "texto": "350000 / 700 = 500",
+   "textoIncognita": "[350000] / 700 = 500",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 700 = 500</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">700</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">500</span></p>",
+   "resultado": 500,
+   "respuesta": 350000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n20|multiplo100|s2": {
+   "texto": "80000 / 800 = 100",
+   "textoIncognita": "80000 / [800] = 100",
+   "resultado": 100,
+   "respuesta": 800,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n20|multiplo100|s3": {
+   "texto": "240000 / 300 = 800",
+   "textoIncognita": "[240000] / 300 = 800",
+   "resultado": 800,
+   "respuesta": 240000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n20|multiplo100|s4": {
+   "texto": "210000 / 700 = 300",
+   "textoIncognita": "210000 / [700] = 300",
+   "resultado": 300,
+   "respuesta": 700,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n20|tresConOperandos|s1": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "html": "<p class=\"operacion f-operacion\">84 / 8 / 1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">84</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n20|tresConOperandos|s2": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n20|tresConOperandos|s3": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n20|tresConOperandos|s4": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n50|base|s1": {
    "texto": "308 / 28 = 11",
@@ -1974,6 +2427,120 @@
    "aciertaConRespuesta": true,
    "errores": []
   },
+  "DivisionEntera|n50|multiplo10|s1": {
+   "texto": "3500 / 70 = 50",
+   "textoIncognita": "[3500] / 70 = 50",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 70 = 50</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">70</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">50</span></p>",
+   "resultado": 50,
+   "respuesta": 3500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n50|multiplo10|s2": {
+   "texto": "800 / 80 = 10",
+   "textoIncognita": "800 / [80] = 10",
+   "resultado": 10,
+   "respuesta": 80,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n50|multiplo10|s3": {
+   "texto": "2400 / 30 = 80",
+   "textoIncognita": "[2400] / 30 = 80",
+   "resultado": 80,
+   "respuesta": 2400,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n50|multiplo10|s4": {
+   "texto": "2100 / 70 = 30",
+   "textoIncognita": "2100 / [70] = 30",
+   "resultado": 30,
+   "respuesta": 70,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n50|multiplo100|s1": {
+   "texto": "350000 / 700 = 500",
+   "textoIncognita": "[350000] / 700 = 500",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 700 = 500</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">700</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">500</span></p>",
+   "resultado": 500,
+   "respuesta": 350000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n50|multiplo100|s2": {
+   "texto": "80000 / 800 = 100",
+   "textoIncognita": "80000 / [800] = 100",
+   "resultado": 100,
+   "respuesta": 800,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n50|multiplo100|s3": {
+   "texto": "240000 / 300 = 800",
+   "textoIncognita": "[240000] / 300 = 800",
+   "resultado": 800,
+   "respuesta": 240000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n50|multiplo100|s4": {
+   "texto": "210000 / 700 = 300",
+   "textoIncognita": "210000 / [700] = 300",
+   "resultado": 300,
+   "respuesta": 700,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n50|tresConOperandos|s1": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "html": "<p class=\"operacion f-operacion\">84 / 8 / 1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">84</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n50|tresConOperandos|s2": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n50|tresConOperandos|s3": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n50|tresConOperandos|s4": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
   "DivisionEntera|n100|base|s1": {
    "texto": "1155 / 55 = 21",
    "textoIncognita": "[1155] / 55 = 21",
@@ -2369,6 +2936,120 @@
    "respuesta": 2438,
    "aciertaConRespuesta": true,
    "errores": []
+  },
+  "DivisionEntera|n100|multiplo10|s1": {
+   "texto": "3500 / 70 = 50",
+   "textoIncognita": "[3500] / 70 = 50",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 70 = 50</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">70</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">50</span></p>",
+   "resultado": 50,
+   "respuesta": 3500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n100|multiplo10|s2": {
+   "texto": "800 / 80 = 10",
+   "textoIncognita": "800 / [80] = 10",
+   "resultado": 10,
+   "respuesta": 80,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n100|multiplo10|s3": {
+   "texto": "2400 / 30 = 80",
+   "textoIncognita": "[2400] / 30 = 80",
+   "resultado": 80,
+   "respuesta": 2400,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n100|multiplo10|s4": {
+   "texto": "2100 / 70 = 30",
+   "textoIncognita": "2100 / [70] = 30",
+   "resultado": 30,
+   "respuesta": 70,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n100|multiplo100|s1": {
+   "texto": "350000 / 700 = 500",
+   "textoIncognita": "[350000] / 700 = 500",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 700 = 500</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">700</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">500</span></p>",
+   "resultado": 500,
+   "respuesta": 350000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n100|multiplo100|s2": {
+   "texto": "80000 / 800 = 100",
+   "textoIncognita": "80000 / [800] = 100",
+   "resultado": 100,
+   "respuesta": 800,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n100|multiplo100|s3": {
+   "texto": "240000 / 300 = 800",
+   "textoIncognita": "[240000] / 300 = 800",
+   "resultado": 800,
+   "respuesta": 240000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n100|multiplo100|s4": {
+   "texto": "210000 / 700 = 300",
+   "textoIncognita": "210000 / [700] = 300",
+   "resultado": 300,
+   "respuesta": 700,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionEntera|n100|tresConOperandos|s1": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "html": "<p class=\"operacion f-operacion\">84 / 8 / 1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">84</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n100|tresConOperandos|s2": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n100|tresConOperandos|s3": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
+  },
+  "DivisionEntera|n100|tresConOperandos|s4": {
+   "texto": "84 / 8 / 1 = 10",
+   "textoIncognita": "84 / 8 / 1 = [10]",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionResto|n1|base|s1": {
    "texto": "1 / 1 = 1 Resto: 0",
@@ -2962,6 +3643,188 @@
    "errores": [],
    "entradaUsuario": "[ 7 ] / 1 = 1 Resto: [ 2 ]"
   },
+  "DivisionResto|n1|multiplo10|s1": {
+   "texto": "3001 / 50 = 60 Resto: 1",
+   "textoIncognita": "[3001] / 50 = 60 Resto: 1",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 50 = 60 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">50</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">60</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "60",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 3001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 50 = 60 Resto: [ 2 ]"
+  },
+  "DivisionResto|n1|multiplo10|s2": {
+   "texto": "1601 / 20 = 80 Resto: 1",
+   "textoIncognita": "1601 / [20] = 80 Resto: 1",
+   "resultado": "80",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 20,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "1601 / [ 7 ] = 80 Resto: [ 2 ]"
+  },
+  "DivisionResto|n1|multiplo10|s3": {
+   "texto": "2401 / 60 = 40 Resto: 1",
+   "textoIncognita": "[2401] / 60 = 40 Resto: 1",
+   "resultado": "40",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 2401,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 60 = 40 Resto: [ 2 ]"
+  },
+  "DivisionResto|n1|multiplo10|s4": {
+   "texto": "402 / 10 = 40 Resto: 2",
+   "textoIncognita": "402 / [10] = 40 Resto: 2",
+   "resultado": "40",
+   "resto": "2",
+   "respuesta": {
+    "incognita": 10,
+    "resto": "2"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "402 / [ 7 ] = 40 Resto: [ 2 ]"
+  },
+  "DivisionResto|n1|multiplo100|s1": {
+   "texto": "300001 / 500 = 600 Resto: 1",
+   "textoIncognita": "[300001] / 500 = 600 Resto: 1",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 500 = 600 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">500</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">600</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "600",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 300001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 500 = 600 Resto: [ 2 ]"
+  },
+  "DivisionResto|n1|multiplo100|s2": {
+   "texto": "160001 / 200 = 800 Resto: 1",
+   "textoIncognita": "160001 / [200] = 800 Resto: 1",
+   "resultado": "800",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 200,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "160001 / [ 7 ] = 800 Resto: [ 2 ]"
+  },
+  "DivisionResto|n1|multiplo100|s3": {
+   "texto": "240001 / 600 = 400 Resto: 1",
+   "textoIncognita": "[240001] / 600 = 400 Resto: 1",
+   "resultado": "400",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 240001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 600 = 400 Resto: [ 2 ]"
+  },
+  "DivisionResto|n1|multiplo100|s4": {
+   "texto": "40002 / 100 = 400 Resto: 2",
+   "textoIncognita": "40002 / [100] = 400 Resto: 2",
+   "resultado": "400",
+   "resto": "2",
+   "respuesta": {
+    "incognita": 100,
+    "resto": "2"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "40002 / [ 7 ] = 400 Resto: [ 2 ]"
+  },
+  "DivisionResto|n1|tresConOperandos|s1": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "html": "<p class=\"operacion f-operacion\">84 / 8 = <input type=\"number\" size=3 class=\"incognita\">  &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">84</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n1|tresConOperandos|s2": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n1|tresConOperandos|s3": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n1|tresConOperandos|s4": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
   "DivisionResto|n5|base|s1": {
    "texto": "17 / 4 = 4 Resto: 1",
    "textoIncognita": "[17] / 4 = 4 Resto: 1",
@@ -3553,6 +4416,188 @@
    "aciertaConRespuesta": true,
    "errores": [],
    "entradaUsuario": "[ 7 ] / 1 = 3 Resto: [ 2 ]"
+  },
+  "DivisionResto|n5|multiplo10|s1": {
+   "texto": "3001 / 50 = 60 Resto: 1",
+   "textoIncognita": "[3001] / 50 = 60 Resto: 1",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 50 = 60 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">50</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">60</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "60",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 3001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 50 = 60 Resto: [ 2 ]"
+  },
+  "DivisionResto|n5|multiplo10|s2": {
+   "texto": "1601 / 20 = 80 Resto: 1",
+   "textoIncognita": "1601 / [20] = 80 Resto: 1",
+   "resultado": "80",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 20,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "1601 / [ 7 ] = 80 Resto: [ 2 ]"
+  },
+  "DivisionResto|n5|multiplo10|s3": {
+   "texto": "2401 / 60 = 40 Resto: 1",
+   "textoIncognita": "[2401] / 60 = 40 Resto: 1",
+   "resultado": "40",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 2401,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 60 = 40 Resto: [ 2 ]"
+  },
+  "DivisionResto|n5|multiplo10|s4": {
+   "texto": "402 / 10 = 40 Resto: 2",
+   "textoIncognita": "402 / [10] = 40 Resto: 2",
+   "resultado": "40",
+   "resto": "2",
+   "respuesta": {
+    "incognita": 10,
+    "resto": "2"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "402 / [ 7 ] = 40 Resto: [ 2 ]"
+  },
+  "DivisionResto|n5|multiplo100|s1": {
+   "texto": "300001 / 500 = 600 Resto: 1",
+   "textoIncognita": "[300001] / 500 = 600 Resto: 1",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 500 = 600 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">500</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">600</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "600",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 300001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 500 = 600 Resto: [ 2 ]"
+  },
+  "DivisionResto|n5|multiplo100|s2": {
+   "texto": "160001 / 200 = 800 Resto: 1",
+   "textoIncognita": "160001 / [200] = 800 Resto: 1",
+   "resultado": "800",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 200,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "160001 / [ 7 ] = 800 Resto: [ 2 ]"
+  },
+  "DivisionResto|n5|multiplo100|s3": {
+   "texto": "240001 / 600 = 400 Resto: 1",
+   "textoIncognita": "[240001] / 600 = 400 Resto: 1",
+   "resultado": "400",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 240001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 600 = 400 Resto: [ 2 ]"
+  },
+  "DivisionResto|n5|multiplo100|s4": {
+   "texto": "40002 / 100 = 400 Resto: 2",
+   "textoIncognita": "40002 / [100] = 400 Resto: 2",
+   "resultado": "400",
+   "resto": "2",
+   "respuesta": {
+    "incognita": 100,
+    "resto": "2"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "40002 / [ 7 ] = 400 Resto: [ 2 ]"
+  },
+  "DivisionResto|n5|tresConOperandos|s1": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "html": "<p class=\"operacion f-operacion\">84 / 8 = <input type=\"number\" size=3 class=\"incognita\">  &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">84</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n5|tresConOperandos|s2": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n5|tresConOperandos|s3": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n5|tresConOperandos|s4": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
   },
   "DivisionResto|n10|base|s1": {
    "texto": "57 / 8 = 7 Resto: 1",
@@ -4146,6 +5191,188 @@
    "errores": [],
    "entradaUsuario": "[ 7 ] / 1 = 6 Resto: [ 2 ]"
   },
+  "DivisionResto|n10|multiplo10|s1": {
+   "texto": "3001 / 50 = 60 Resto: 1",
+   "textoIncognita": "[3001] / 50 = 60 Resto: 1",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 50 = 60 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">50</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">60</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "60",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 3001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 50 = 60 Resto: [ 2 ]"
+  },
+  "DivisionResto|n10|multiplo10|s2": {
+   "texto": "1601 / 20 = 80 Resto: 1",
+   "textoIncognita": "1601 / [20] = 80 Resto: 1",
+   "resultado": "80",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 20,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "1601 / [ 7 ] = 80 Resto: [ 2 ]"
+  },
+  "DivisionResto|n10|multiplo10|s3": {
+   "texto": "2401 / 60 = 40 Resto: 1",
+   "textoIncognita": "[2401] / 60 = 40 Resto: 1",
+   "resultado": "40",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 2401,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 60 = 40 Resto: [ 2 ]"
+  },
+  "DivisionResto|n10|multiplo10|s4": {
+   "texto": "402 / 10 = 40 Resto: 2",
+   "textoIncognita": "402 / [10] = 40 Resto: 2",
+   "resultado": "40",
+   "resto": "2",
+   "respuesta": {
+    "incognita": 10,
+    "resto": "2"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "402 / [ 7 ] = 40 Resto: [ 2 ]"
+  },
+  "DivisionResto|n10|multiplo100|s1": {
+   "texto": "300001 / 500 = 600 Resto: 1",
+   "textoIncognita": "[300001] / 500 = 600 Resto: 1",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 500 = 600 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">500</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">600</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "600",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 300001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 500 = 600 Resto: [ 2 ]"
+  },
+  "DivisionResto|n10|multiplo100|s2": {
+   "texto": "160001 / 200 = 800 Resto: 1",
+   "textoIncognita": "160001 / [200] = 800 Resto: 1",
+   "resultado": "800",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 200,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "160001 / [ 7 ] = 800 Resto: [ 2 ]"
+  },
+  "DivisionResto|n10|multiplo100|s3": {
+   "texto": "240001 / 600 = 400 Resto: 1",
+   "textoIncognita": "[240001] / 600 = 400 Resto: 1",
+   "resultado": "400",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 240001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 600 = 400 Resto: [ 2 ]"
+  },
+  "DivisionResto|n10|multiplo100|s4": {
+   "texto": "40002 / 100 = 400 Resto: 2",
+   "textoIncognita": "40002 / [100] = 400 Resto: 2",
+   "resultado": "400",
+   "resto": "2",
+   "respuesta": {
+    "incognita": 100,
+    "resto": "2"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "40002 / [ 7 ] = 400 Resto: [ 2 ]"
+  },
+  "DivisionResto|n10|tresConOperandos|s1": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "html": "<p class=\"operacion f-operacion\">84 / 8 = <input type=\"number\" size=3 class=\"incognita\">  &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">84</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n10|tresConOperandos|s2": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n10|tresConOperandos|s3": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n10|tresConOperandos|s4": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
   "DivisionResto|n20|base|s1": {
    "texto": "213 / 15 = 14 Resto: 3",
    "textoIncognita": "[213] / 15 = 14 Resto: 3",
@@ -4737,6 +5964,188 @@
    "aciertaConRespuesta": true,
    "errores": [],
    "entradaUsuario": "[ 7 ] / 1 = 12 Resto: [ 2 ]"
+  },
+  "DivisionResto|n20|multiplo10|s1": {
+   "texto": "3001 / 50 = 60 Resto: 1",
+   "textoIncognita": "[3001] / 50 = 60 Resto: 1",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 50 = 60 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">50</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">60</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "60",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 3001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 50 = 60 Resto: [ 2 ]"
+  },
+  "DivisionResto|n20|multiplo10|s2": {
+   "texto": "1601 / 20 = 80 Resto: 1",
+   "textoIncognita": "1601 / [20] = 80 Resto: 1",
+   "resultado": "80",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 20,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "1601 / [ 7 ] = 80 Resto: [ 2 ]"
+  },
+  "DivisionResto|n20|multiplo10|s3": {
+   "texto": "2401 / 60 = 40 Resto: 1",
+   "textoIncognita": "[2401] / 60 = 40 Resto: 1",
+   "resultado": "40",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 2401,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 60 = 40 Resto: [ 2 ]"
+  },
+  "DivisionResto|n20|multiplo10|s4": {
+   "texto": "402 / 10 = 40 Resto: 2",
+   "textoIncognita": "402 / [10] = 40 Resto: 2",
+   "resultado": "40",
+   "resto": "2",
+   "respuesta": {
+    "incognita": 10,
+    "resto": "2"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "402 / [ 7 ] = 40 Resto: [ 2 ]"
+  },
+  "DivisionResto|n20|multiplo100|s1": {
+   "texto": "300001 / 500 = 600 Resto: 1",
+   "textoIncognita": "[300001] / 500 = 600 Resto: 1",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 500 = 600 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">500</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">600</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "600",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 300001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 500 = 600 Resto: [ 2 ]"
+  },
+  "DivisionResto|n20|multiplo100|s2": {
+   "texto": "160001 / 200 = 800 Resto: 1",
+   "textoIncognita": "160001 / [200] = 800 Resto: 1",
+   "resultado": "800",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 200,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "160001 / [ 7 ] = 800 Resto: [ 2 ]"
+  },
+  "DivisionResto|n20|multiplo100|s3": {
+   "texto": "240001 / 600 = 400 Resto: 1",
+   "textoIncognita": "[240001] / 600 = 400 Resto: 1",
+   "resultado": "400",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 240001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 600 = 400 Resto: [ 2 ]"
+  },
+  "DivisionResto|n20|multiplo100|s4": {
+   "texto": "40002 / 100 = 400 Resto: 2",
+   "textoIncognita": "40002 / [100] = 400 Resto: 2",
+   "resultado": "400",
+   "resto": "2",
+   "respuesta": {
+    "incognita": 100,
+    "resto": "2"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "40002 / [ 7 ] = 400 Resto: [ 2 ]"
+  },
+  "DivisionResto|n20|tresConOperandos|s1": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "html": "<p class=\"operacion f-operacion\">84 / 8 = <input type=\"number\" size=3 class=\"incognita\">  &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">84</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n20|tresConOperandos|s2": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n20|tresConOperandos|s3": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n20|tresConOperandos|s4": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
   },
   "DivisionResto|n50|base|s1": {
    "texto": "1260 / 38 = 33 Resto: 6",
@@ -5330,6 +6739,188 @@
    "errores": [],
    "entradaUsuario": "[ 7 ] / 2 = 22 Resto: [ 2 ]"
   },
+  "DivisionResto|n50|multiplo10|s1": {
+   "texto": "3001 / 50 = 60 Resto: 1",
+   "textoIncognita": "[3001] / 50 = 60 Resto: 1",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 50 = 60 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">50</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">60</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "60",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 3001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 50 = 60 Resto: [ 2 ]"
+  },
+  "DivisionResto|n50|multiplo10|s2": {
+   "texto": "1601 / 20 = 80 Resto: 1",
+   "textoIncognita": "1601 / [20] = 80 Resto: 1",
+   "resultado": "80",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 20,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "1601 / [ 7 ] = 80 Resto: [ 2 ]"
+  },
+  "DivisionResto|n50|multiplo10|s3": {
+   "texto": "2401 / 60 = 40 Resto: 1",
+   "textoIncognita": "[2401] / 60 = 40 Resto: 1",
+   "resultado": "40",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 2401,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 60 = 40 Resto: [ 2 ]"
+  },
+  "DivisionResto|n50|multiplo10|s4": {
+   "texto": "402 / 10 = 40 Resto: 2",
+   "textoIncognita": "402 / [10] = 40 Resto: 2",
+   "resultado": "40",
+   "resto": "2",
+   "respuesta": {
+    "incognita": 10,
+    "resto": "2"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "402 / [ 7 ] = 40 Resto: [ 2 ]"
+  },
+  "DivisionResto|n50|multiplo100|s1": {
+   "texto": "300001 / 500 = 600 Resto: 1",
+   "textoIncognita": "[300001] / 500 = 600 Resto: 1",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 500 = 600 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">500</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">600</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "600",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 300001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 500 = 600 Resto: [ 2 ]"
+  },
+  "DivisionResto|n50|multiplo100|s2": {
+   "texto": "160001 / 200 = 800 Resto: 1",
+   "textoIncognita": "160001 / [200] = 800 Resto: 1",
+   "resultado": "800",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 200,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "160001 / [ 7 ] = 800 Resto: [ 2 ]"
+  },
+  "DivisionResto|n50|multiplo100|s3": {
+   "texto": "240001 / 600 = 400 Resto: 1",
+   "textoIncognita": "[240001] / 600 = 400 Resto: 1",
+   "resultado": "400",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 240001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 600 = 400 Resto: [ 2 ]"
+  },
+  "DivisionResto|n50|multiplo100|s4": {
+   "texto": "40002 / 100 = 400 Resto: 2",
+   "textoIncognita": "40002 / [100] = 400 Resto: 2",
+   "resultado": "400",
+   "resto": "2",
+   "respuesta": {
+    "incognita": 100,
+    "resto": "2"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "40002 / [ 7 ] = 400 Resto: [ 2 ]"
+  },
+  "DivisionResto|n50|tresConOperandos|s1": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "html": "<p class=\"operacion f-operacion\">84 / 8 = <input type=\"number\" size=3 class=\"incognita\">  &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">84</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n50|tresConOperandos|s2": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n50|tresConOperandos|s3": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n50|tresConOperandos|s4": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
   "DivisionResto|n100|base|s1": {
    "texto": "5029 / 76 = 66 Resto: 13",
    "textoIncognita": "[5029] / 76 = 66 Resto: 13",
@@ -5922,6 +7513,188 @@
    "errores": [],
    "entradaUsuario": "[ 7 ] / 2 = 43 Resto: [ 2 ]"
   },
+  "DivisionResto|n100|multiplo10|s1": {
+   "texto": "3001 / 50 = 60 Resto: 1",
+   "textoIncognita": "[3001] / 50 = 60 Resto: 1",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 50 = 60 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">50</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">60</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "60",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 3001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 50 = 60 Resto: [ 2 ]"
+  },
+  "DivisionResto|n100|multiplo10|s2": {
+   "texto": "1601 / 20 = 80 Resto: 1",
+   "textoIncognita": "1601 / [20] = 80 Resto: 1",
+   "resultado": "80",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 20,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "1601 / [ 7 ] = 80 Resto: [ 2 ]"
+  },
+  "DivisionResto|n100|multiplo10|s3": {
+   "texto": "2401 / 60 = 40 Resto: 1",
+   "textoIncognita": "[2401] / 60 = 40 Resto: 1",
+   "resultado": "40",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 2401,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 60 = 40 Resto: [ 2 ]"
+  },
+  "DivisionResto|n100|multiplo10|s4": {
+   "texto": "402 / 10 = 40 Resto: 2",
+   "textoIncognita": "402 / [10] = 40 Resto: 2",
+   "resultado": "40",
+   "resto": "2",
+   "respuesta": {
+    "incognita": 10,
+    "resto": "2"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "402 / [ 7 ] = 40 Resto: [ 2 ]"
+  },
+  "DivisionResto|n100|multiplo100|s1": {
+   "texto": "300001 / 500 = 600 Resto: 1",
+   "textoIncognita": "[300001] / 500 = 600 Resto: 1",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 500 = 600 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">500</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">600</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "600",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 300001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 500 = 600 Resto: [ 2 ]"
+  },
+  "DivisionResto|n100|multiplo100|s2": {
+   "texto": "160001 / 200 = 800 Resto: 1",
+   "textoIncognita": "160001 / [200] = 800 Resto: 1",
+   "resultado": "800",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 200,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "160001 / [ 7 ] = 800 Resto: [ 2 ]"
+  },
+  "DivisionResto|n100|multiplo100|s3": {
+   "texto": "240001 / 600 = 400 Resto: 1",
+   "textoIncognita": "[240001] / 600 = 400 Resto: 1",
+   "resultado": "400",
+   "resto": "1",
+   "respuesta": {
+    "incognita": 240001,
+    "resto": "1"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 600 = 400 Resto: [ 2 ]"
+  },
+  "DivisionResto|n100|multiplo100|s4": {
+   "texto": "40002 / 100 = 400 Resto: 2",
+   "textoIncognita": "40002 / [100] = 400 Resto: 2",
+   "resultado": "400",
+   "resto": "2",
+   "respuesta": {
+    "incognita": 100,
+    "resto": "2"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [],
+   "entradaUsuario": "40002 / [ 7 ] = 400 Resto: [ 2 ]"
+  },
+  "DivisionResto|n100|tresConOperandos|s1": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "html": "<p class=\"operacion f-operacion\">84 / 8 = <input type=\"number\" size=3 class=\"incognita\">  &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">84</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n100|tresConOperandos|s2": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n100|tresConOperandos|s3": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
+  "DivisionResto|n100|tresConOperandos|s4": {
+   "texto": "84 / 8 = 10 Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "textoIncognita": "84 / 8 = [10] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "resultado": "10",
+   "resto": "4",
+   "respuesta": {
+    "incognita": "10",
+    "resto": "4"
+   },
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero",
+    "Cantidad de operandos",
+    "Resultado no es entero"
+   ],
+   "entradaUsuario": "84 / 8 = [ 7 ] Resto: 4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+  },
   "DivisionDecimales|n1|base|s1": {
    "texto": "0.8 / 0.8 = 1",
    "textoIncognita": "[0.8] / 0.8 = 1",
@@ -6277,6 +8050,116 @@
    "respuesta": 0.3,
    "aciertaConRespuesta": true,
    "errores": []
+  },
+  "DivisionDecimales|n1|multiplo10|s1": {
+   "texto": "3500 / 70 = 50",
+   "textoIncognita": "[3500] / 70 = 50",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 70 = 50</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">70</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">50</span></p>",
+   "resultado": 50,
+   "respuesta": 3500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n1|multiplo10|s2": {
+   "texto": "800 / 80 = 10",
+   "textoIncognita": "800 / [80] = 10",
+   "resultado": 10,
+   "respuesta": 80,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n1|multiplo10|s3": {
+   "texto": "2400 / 30 = 80",
+   "textoIncognita": "[2400] / 30 = 80",
+   "resultado": 80,
+   "respuesta": 2400,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n1|multiplo10|s4": {
+   "texto": "2100 / 70 = 30",
+   "textoIncognita": "2100 / [70] = 30",
+   "resultado": 30,
+   "respuesta": 70,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n1|multiplo100|s1": {
+   "texto": "350000 / 700 = 500",
+   "textoIncognita": "[350000] / 700 = 500",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 700 = 500</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">700</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">500</span></p>",
+   "resultado": 500,
+   "respuesta": 350000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n1|multiplo100|s2": {
+   "texto": "80000 / 800 = 100",
+   "textoIncognita": "80000 / [800] = 100",
+   "resultado": 100,
+   "respuesta": 800,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n1|multiplo100|s3": {
+   "texto": "240000 / 300 = 800",
+   "textoIncognita": "[240000] / 300 = 800",
+   "resultado": 800,
+   "respuesta": 240000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n1|multiplo100|s4": {
+   "texto": "210000 / 700 = 300",
+   "textoIncognita": "210000 / [700] = 300",
+   "resultado": 300,
+   "respuesta": 700,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n1|tresConOperandos|s1": {
+   "texto": "8 / 8 / 1 = 1",
+   "textoIncognita": "8 / 8 / [1] = 1",
+   "html": "<p class=\"operacion f-operacion\">8 / 8 / <input type=\"number\" size=3 class=\"incognita\">  = 1</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">8</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo /\">\n          /</span><span class=\"input\">&nbsp;</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">1</span></p>",
+   "resultado": 1,
+   "respuesta": 1,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n1|tresConOperandos|s2": {
+   "texto": "8 / 8 / 1 = 1",
+   "textoIncognita": "8 / 8 / [1] = 1",
+   "resultado": 1,
+   "respuesta": 1,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n1|tresConOperandos|s3": {
+   "texto": "8 / 8 / 1 = 1",
+   "textoIncognita": "8 / 8 / [1] = 1",
+   "resultado": 1,
+   "respuesta": 1,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n1|tresConOperandos|s4": {
+   "texto": "8 / 8 / 1 = 1",
+   "textoIncognita": "8 / 8 / [1] = 1",
+   "resultado": 1,
+   "respuesta": 1,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
   },
   "DivisionDecimales|n5|base|s1": {
    "texto": "15.2 / 3.8 = 4",
@@ -6635,6 +8518,116 @@
    "respuesta": 1.7,
    "aciertaConRespuesta": true,
    "errores": []
+  },
+  "DivisionDecimales|n5|multiplo10|s1": {
+   "texto": "3500 / 70 = 50",
+   "textoIncognita": "[3500] / 70 = 50",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 70 = 50</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">70</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">50</span></p>",
+   "resultado": 50,
+   "respuesta": 3500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n5|multiplo10|s2": {
+   "texto": "800 / 80 = 10",
+   "textoIncognita": "800 / [80] = 10",
+   "resultado": 10,
+   "respuesta": 80,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n5|multiplo10|s3": {
+   "texto": "2400 / 30 = 80",
+   "textoIncognita": "[2400] / 30 = 80",
+   "resultado": 80,
+   "respuesta": 2400,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n5|multiplo10|s4": {
+   "texto": "2100 / 70 = 30",
+   "textoIncognita": "2100 / [70] = 30",
+   "resultado": 30,
+   "respuesta": 70,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n5|multiplo100|s1": {
+   "texto": "350000 / 700 = 500",
+   "textoIncognita": "[350000] / 700 = 500",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 700 = 500</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">700</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">500</span></p>",
+   "resultado": 500,
+   "respuesta": 350000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n5|multiplo100|s2": {
+   "texto": "80000 / 800 = 100",
+   "textoIncognita": "80000 / [800] = 100",
+   "resultado": 100,
+   "respuesta": 800,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n5|multiplo100|s3": {
+   "texto": "240000 / 300 = 800",
+   "textoIncognita": "[240000] / 300 = 800",
+   "resultado": 800,
+   "respuesta": 240000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n5|multiplo100|s4": {
+   "texto": "210000 / 700 = 300",
+   "textoIncognita": "210000 / [700] = 300",
+   "resultado": 300,
+   "respuesta": 700,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n5|tresConOperandos|s1": {
+   "texto": "24 / 8 / 1 = 3",
+   "textoIncognita": "24 / 8 / [1] = 3",
+   "html": "<p class=\"operacion f-operacion\">24 / 8 / <input type=\"number\" size=3 class=\"incognita\">  = 3</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">24</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo /\">\n          /</span><span class=\"input\">&nbsp;</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">3</span></p>",
+   "resultado": 3,
+   "respuesta": 3,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n5|tresConOperandos|s2": {
+   "texto": "24 / 8 / 1 = 3",
+   "textoIncognita": "24 / 8 / [1] = 3",
+   "resultado": 3,
+   "respuesta": 3,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n5|tresConOperandos|s3": {
+   "texto": "24 / 8 / 1 = 3",
+   "textoIncognita": "24 / 8 / [1] = 3",
+   "resultado": 3,
+   "respuesta": 3,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n5|tresConOperandos|s4": {
+   "texto": "8 / 8 / 1 = 1",
+   "textoIncognita": "8 / 8 / [1] = 1",
+   "resultado": 1,
+   "respuesta": 1,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
   },
   "DivisionDecimales|n10|base|s1": {
    "texto": "60.8 / 7.6 = 8",
@@ -7000,6 +8993,116 @@
    "aciertaConRespuesta": true,
    "errores": []
   },
+  "DivisionDecimales|n10|multiplo10|s1": {
+   "texto": "3500 / 70 = 50",
+   "textoIncognita": "[3500] / 70 = 50",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 70 = 50</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">70</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">50</span></p>",
+   "resultado": 50,
+   "respuesta": 3500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n10|multiplo10|s2": {
+   "texto": "800 / 80 = 10",
+   "textoIncognita": "800 / [80] = 10",
+   "resultado": 10,
+   "respuesta": 80,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n10|multiplo10|s3": {
+   "texto": "2400 / 30 = 80",
+   "textoIncognita": "[2400] / 30 = 80",
+   "resultado": 80,
+   "respuesta": 2400,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n10|multiplo10|s4": {
+   "texto": "2100 / 70 = 30",
+   "textoIncognita": "2100 / [70] = 30",
+   "resultado": 30,
+   "respuesta": 70,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n10|multiplo100|s1": {
+   "texto": "350000 / 700 = 500",
+   "textoIncognita": "[350000] / 700 = 500",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 700 = 500</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">700</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">500</span></p>",
+   "resultado": 500,
+   "respuesta": 350000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n10|multiplo100|s2": {
+   "texto": "80000 / 800 = 100",
+   "textoIncognita": "80000 / [800] = 100",
+   "resultado": 100,
+   "respuesta": 800,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n10|multiplo100|s3": {
+   "texto": "240000 / 300 = 800",
+   "textoIncognita": "[240000] / 300 = 800",
+   "resultado": 800,
+   "respuesta": 240000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n10|multiplo100|s4": {
+   "texto": "210000 / 700 = 300",
+   "textoIncognita": "210000 / [700] = 300",
+   "resultado": 300,
+   "respuesta": 700,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n10|tresConOperandos|s1": {
+   "texto": "56 / 8 / 1 = 7",
+   "textoIncognita": "56 / 8 / [1] = 7",
+   "html": "<p class=\"operacion f-operacion\">56 / 8 / <input type=\"number\" size=3 class=\"incognita\">  = 7</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">56</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo /\">\n          /</span><span class=\"input\">&nbsp;</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">7</span></p>",
+   "resultado": 7,
+   "respuesta": 7,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n10|tresConOperandos|s2": {
+   "texto": "40 / 8 / 1 = 5",
+   "textoIncognita": "40 / 8 / [1] = 5",
+   "resultado": 5,
+   "respuesta": 5,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n10|tresConOperandos|s3": {
+   "texto": "40 / 8 / 1 = 5",
+   "textoIncognita": "40 / 8 / [1] = 5",
+   "resultado": 5,
+   "respuesta": 5,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n10|tresConOperandos|s4": {
+   "texto": "16 / 8 / 1 = 2",
+   "textoIncognita": "16 / 8 / [1] = 2",
+   "resultado": 2,
+   "respuesta": 2,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
   "DivisionDecimales|n20|base|s1": {
    "texto": "241.6 / 15.1 = 16",
    "textoIncognita": "[241.6] / 15.1 = 16",
@@ -7356,6 +9459,116 @@
    "aciertaConRespuesta": true,
    "errores": []
   },
+  "DivisionDecimales|n20|multiplo10|s1": {
+   "texto": "3500 / 70 = 50",
+   "textoIncognita": "[3500] / 70 = 50",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 70 = 50</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">70</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">50</span></p>",
+   "resultado": 50,
+   "respuesta": 3500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n20|multiplo10|s2": {
+   "texto": "800 / 80 = 10",
+   "textoIncognita": "800 / [80] = 10",
+   "resultado": 10,
+   "respuesta": 80,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n20|multiplo10|s3": {
+   "texto": "2400 / 30 = 80",
+   "textoIncognita": "[2400] / 30 = 80",
+   "resultado": 80,
+   "respuesta": 2400,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n20|multiplo10|s4": {
+   "texto": "2100 / 70 = 30",
+   "textoIncognita": "2100 / [70] = 30",
+   "resultado": 30,
+   "respuesta": 70,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n20|multiplo100|s1": {
+   "texto": "350000 / 700 = 500",
+   "textoIncognita": "[350000] / 700 = 500",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 700 = 500</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">700</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">500</span></p>",
+   "resultado": 500,
+   "respuesta": 350000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n20|multiplo100|s2": {
+   "texto": "80000 / 800 = 100",
+   "textoIncognita": "80000 / [800] = 100",
+   "resultado": 100,
+   "respuesta": 800,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n20|multiplo100|s3": {
+   "texto": "240000 / 300 = 800",
+   "textoIncognita": "[240000] / 300 = 800",
+   "resultado": 800,
+   "respuesta": 240000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n20|multiplo100|s4": {
+   "texto": "210000 / 700 = 300",
+   "textoIncognita": "210000 / [700] = 300",
+   "resultado": 300,
+   "respuesta": 700,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n20|tresConOperandos|s1": {
+   "texto": "104 / 8 / 1 = 13",
+   "textoIncognita": "104 / 8 / [1] = 13",
+   "html": "<p class=\"operacion f-operacion\">104 / 8 / <input type=\"number\" size=3 class=\"incognita\">  = 13</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">104</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo /\">\n          /</span><span class=\"input\">&nbsp;</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">13</span></p>",
+   "resultado": 13,
+   "respuesta": 13,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n20|tresConOperandos|s2": {
+   "texto": "80 / 8 / 1 = 10",
+   "textoIncognita": "80 / 8 / [1] = 10",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n20|tresConOperandos|s3": {
+   "texto": "80 / 8 / 1 = 10",
+   "textoIncognita": "80 / 8 / [1] = 10",
+   "resultado": 10,
+   "respuesta": 10,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n20|tresConOperandos|s4": {
+   "texto": "16 / 8 / 1 = 2",
+   "textoIncognita": "16 / 8 / [1] = 2",
+   "resultado": 2,
+   "respuesta": 2,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
   "DivisionDecimales|n50|base|s1": {
    "texto": "1478.1 / 37.9 = 39",
    "textoIncognita": "[1478.1] / 37.9 = 39",
@@ -7711,6 +9924,116 @@
    "respuesta": 98.94,
    "aciertaConRespuesta": true,
    "errores": []
+  },
+  "DivisionDecimales|n50|multiplo10|s1": {
+   "texto": "3500 / 70 = 50",
+   "textoIncognita": "[3500] / 70 = 50",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 70 = 50</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">70</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">50</span></p>",
+   "resultado": 50,
+   "respuesta": 3500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n50|multiplo10|s2": {
+   "texto": "800 / 80 = 10",
+   "textoIncognita": "800 / [80] = 10",
+   "resultado": 10,
+   "respuesta": 80,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n50|multiplo10|s3": {
+   "texto": "2400 / 30 = 80",
+   "textoIncognita": "[2400] / 30 = 80",
+   "resultado": 80,
+   "respuesta": 2400,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n50|multiplo10|s4": {
+   "texto": "2100 / 70 = 30",
+   "textoIncognita": "2100 / [70] = 30",
+   "resultado": 30,
+   "respuesta": 70,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n50|multiplo100|s1": {
+   "texto": "350000 / 700 = 500",
+   "textoIncognita": "[350000] / 700 = 500",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 700 = 500</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">700</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">500</span></p>",
+   "resultado": 500,
+   "respuesta": 350000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n50|multiplo100|s2": {
+   "texto": "80000 / 800 = 100",
+   "textoIncognita": "80000 / [800] = 100",
+   "resultado": 100,
+   "respuesta": 800,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n50|multiplo100|s3": {
+   "texto": "240000 / 300 = 800",
+   "textoIncognita": "[240000] / 300 = 800",
+   "resultado": 800,
+   "respuesta": 240000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n50|multiplo100|s4": {
+   "texto": "210000 / 700 = 300",
+   "textoIncognita": "210000 / [700] = 300",
+   "resultado": 300,
+   "respuesta": 700,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n50|tresConOperandos|s1": {
+   "texto": "248 / 8 / 1 = 31",
+   "textoIncognita": "248 / 8 / [1] = 31",
+   "html": "<p class=\"operacion f-operacion\">248 / 8 / <input type=\"number\" size=3 class=\"incognita\">  = 31</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">248</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo /\">\n          /</span><span class=\"input\">&nbsp;</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">31</span></p>",
+   "resultado": 31,
+   "respuesta": 31,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n50|tresConOperandos|s2": {
+   "texto": "200 / 8 / 1 = 25",
+   "textoIncognita": "200 / 8 / [1] = 25",
+   "resultado": 25,
+   "respuesta": 25,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n50|tresConOperandos|s3": {
+   "texto": "200 / 8 / 1 = 25",
+   "textoIncognita": "200 / 8 / [1] = 25",
+   "resultado": 25,
+   "respuesta": 25,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n50|tresConOperandos|s4": {
+   "texto": "40 / 8 / 1 = 5",
+   "textoIncognita": "40 / 8 / [1] = 5",
+   "resultado": 5,
+   "respuesta": 5,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
   },
   "DivisionDecimales|n100|base|s1": {
    "texto": "5828.9 / 75.7 = 77",
@@ -8069,6 +10392,116 @@
    "respuesta": 329.8,
    "aciertaConRespuesta": true,
    "errores": []
+  },
+  "DivisionDecimales|n100|multiplo10|s1": {
+   "texto": "3500 / 70 = 50",
+   "textoIncognita": "[3500] / 70 = 50",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 70 = 50</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">70</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">50</span></p>",
+   "resultado": 50,
+   "respuesta": 3500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n100|multiplo10|s2": {
+   "texto": "800 / 80 = 10",
+   "textoIncognita": "800 / [80] = 10",
+   "resultado": 10,
+   "respuesta": 80,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n100|multiplo10|s3": {
+   "texto": "2400 / 30 = 80",
+   "textoIncognita": "[2400] / 30 = 80",
+   "resultado": 80,
+   "respuesta": 2400,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n100|multiplo10|s4": {
+   "texto": "2100 / 70 = 30",
+   "textoIncognita": "2100 / [70] = 30",
+   "resultado": 30,
+   "respuesta": 70,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n100|multiplo100|s1": {
+   "texto": "350000 / 700 = 500",
+   "textoIncognita": "[350000] / 700 = 500",
+   "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 700 = 500</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">700</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">500</span></p>",
+   "resultado": 500,
+   "respuesta": 350000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n100|multiplo100|s2": {
+   "texto": "80000 / 800 = 100",
+   "textoIncognita": "80000 / [800] = 100",
+   "resultado": 100,
+   "respuesta": 800,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n100|multiplo100|s3": {
+   "texto": "240000 / 300 = 800",
+   "textoIncognita": "[240000] / 300 = 800",
+   "resultado": 800,
+   "respuesta": 240000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n100|multiplo100|s4": {
+   "texto": "210000 / 700 = 300",
+   "textoIncognita": "210000 / [700] = 300",
+   "resultado": 300,
+   "respuesta": 700,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "DivisionDecimales|n100|tresConOperandos|s1": {
+   "texto": "496 / 8 / 1 = 62",
+   "textoIncognita": "496 / 8 / [1] = 62",
+   "html": "<p class=\"operacion f-operacion\">496 / 8 / <input type=\"number\" size=3 class=\"incognita\">  = 62</p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">496</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">8</span><span class=\"simbolo /\">\n          /</span><span class=\"input\">&nbsp;</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">62</span></p>",
+   "resultado": 62,
+   "respuesta": 62,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n100|tresConOperandos|s2": {
+   "texto": "400 / 8 / 1 = 50",
+   "textoIncognita": "400 / 8 / [1] = 50",
+   "resultado": 50,
+   "respuesta": 50,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n100|tresConOperandos|s3": {
+   "texto": "392 / 8 / 1 = 49",
+   "textoIncognita": "392 / 8 / [1] = 49",
+   "resultado": 49,
+   "respuesta": 49,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
+  },
+  "DivisionDecimales|n100|tresConOperandos|s4": {
+   "texto": "72 / 8 / 1 = 9",
+   "textoIncognita": "72 / 8 / [1] = 9",
+   "resultado": 9,
+   "respuesta": 9,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Cantidad de operandos"
+   ]
   }
  },
  "multiples": {
@@ -9708,6 +12141,462 @@
     "Resultado positivo",
     "Resultado positivo",
     "Operación con errores"
+   ]
+  },
+  "division_decimal+division_decimal|natural|negfalse|s1": {
+   "texto": "8.4 / 60.8 / 7.6 = 0.018",
+   "textoIncognita": "8.4 / 60.8 / 7.6 = [0.018]",
+   "html": "<p class=\"operacion operacionMultiple\">8.4 / 60.8 / 7.6 = <input type=\"number\" size=3 class=\"incognita\"></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><br><span class=\"operando\">8,4</span><span class=\"simbolo /\">/</span><span class=\"operando\">60,8</span><span class=\"simbolo /\">/</span><span class=\"operando\">7,6</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": "0.018",
+   "respuesta": "0.018",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_decimal+division_decimal|natural|negfalse|s2": {
+   "texto": "26.1 / 8.1 / 8.1 = 0.398",
+   "textoIncognita": "26.1 / 8.1 / 8.1 = [0.398]",
+   "resultado": "0.398",
+   "respuesta": "0.398",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_decimal+division_decimal|natural|negfalse|s3": {
+   "texto": "12.8 / 22.2 / 3.7 = 0.156",
+   "textoIncognita": "12.8 / 22.2 / 3.7 = [0.156]",
+   "resultado": "0.156",
+   "respuesta": "0.156",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_decimal+division_decimal|natural|negfalse|s4": {
+   "texto": "25.6 / 44 / 5.5 = 0.106",
+   "textoIncognita": "25.6 / 44 / 5.5 = [0.106]",
+   "resultado": "0.106",
+   "respuesta": "0.106",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_decimal+division_decimal|natural|negtrue|s1": {
+   "texto": "8.4 / 60.8 / 7.6 = 0.018",
+   "textoIncognita": "8.4 / 60.8 / 7.6 = [0.018]",
+   "html": "<p class=\"operacion operacionMultiple\">8.4 / 60.8 / 7.6 = <input type=\"number\" size=3 class=\"incognita\"></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><br><span class=\"operando\">8,4</span><span class=\"simbolo /\">/</span><span class=\"operando\">60,8</span><span class=\"simbolo /\">/</span><span class=\"operando\">7,6</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": "0.018",
+   "respuesta": "0.018",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
+   ]
+  },
+  "division_decimal+division_decimal|natural|negtrue|s2": {
+   "texto": "26.1 / 8.1 / 8.1 = 0.398",
+   "textoIncognita": "26.1 / 8.1 / 8.1 = [0.398]",
+   "resultado": "0.398",
+   "respuesta": "0.398",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
+   ]
+  },
+  "division_decimal+division_decimal|natural|negtrue|s3": {
+   "texto": "12.8 / 22.2 / 3.7 = 0.156",
+   "textoIncognita": "12.8 / 22.2 / 3.7 = [0.156]",
+   "resultado": "0.156",
+   "respuesta": "0.156",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
+   ]
+  },
+  "division_decimal+division_decimal|natural|negtrue|s4": {
+   "texto": "25.6 / 44 / 5.5 = 0.106",
+   "textoIncognita": "25.6 / 44 / 5.5 = [0.106]",
+   "resultado": "0.106",
+   "respuesta": "0.106",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
+   ]
+  },
+  "division_decimal+division_decimal|entero|negfalse|s1": {
+   "texto": "-8.4 / 60.8 / -7.6 = 0.018",
+   "textoIncognita": "-8.4 / 60.8 / -7.6 = [0.018]",
+   "html": "<p class=\"operacion operacionMultiple\">-8.4 / 60.8 / -7.6 = <input type=\"number\" size=3 class=\"incognita\"></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><br><span class=\"operando\">-8,4</span><span class=\"simbolo /\">/</span><span class=\"operando\">60,8</span><span class=\"simbolo /\">/</span><span class=\"operando\">-7,6</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": "0.018",
+   "respuesta": "0.018",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_decimal+division_decimal|entero|negfalse|s2": {
+   "texto": "-26.1 / 8.1 / -8.1 = 0.398",
+   "textoIncognita": "-26.1 / 8.1 / -8.1 = [0.398]",
+   "resultado": "0.398",
+   "respuesta": "0.398",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_decimal+division_decimal|entero|negfalse|s3": {
+   "texto": "-12.8 / -22.2 / 3.7 = 0.156",
+   "textoIncognita": "-12.8 / -22.2 / 3.7 = [0.156]",
+   "resultado": "0.156",
+   "respuesta": "0.156",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_decimal+division_decimal|entero|negfalse|s4": {
+   "texto": "-25.6 / 44 / -5.5 = 0.106",
+   "textoIncognita": "-25.6 / 44 / -5.5 = [0.106]",
+   "resultado": "0.106",
+   "respuesta": "0.106",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_decimal+division_decimal|entero|negtrue|s1": {
+   "texto": "8.4 / 60.8 / -7.6 = -0.018",
+   "textoIncognita": "8.4 / 60.8 / -7.6 = [-0.018]",
+   "html": "<p class=\"operacion operacionMultiple\">8.4 / 60.8 / -7.6 = <input type=\"number\" size=3 class=\"incognita\"></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><br><span class=\"operando\">8,4</span><span class=\"simbolo /\">/</span><span class=\"operando\">60,8</span><span class=\"simbolo /\">/</span><span class=\"operando\">-7,6</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": "-0.018",
+   "respuesta": "-0.018",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Se cambio el signo"
+   ]
+  },
+  "division_decimal+division_decimal|entero|negtrue|s2": {
+   "texto": "26.1 / 8.1 / -8.1 = -0.398",
+   "textoIncognita": "26.1 / 8.1 / -8.1 = [-0.398]",
+   "resultado": "-0.398",
+   "respuesta": "-0.398",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Se cambio el signo"
+   ]
+  },
+  "division_decimal+division_decimal|entero|negtrue|s3": {
+   "texto": "12.8 / -22.2 / 3.7 = -0.156",
+   "textoIncognita": "12.8 / -22.2 / 3.7 = [-0.156]",
+   "resultado": "-0.156",
+   "respuesta": "-0.156",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Se cambio el signo"
+   ]
+  },
+  "division_decimal+division_decimal|entero|negtrue|s4": {
+   "texto": "25.6 / 44 / -5.5 = -0.106",
+   "textoIncognita": "25.6 / 44 / -5.5 = [-0.106]",
+   "resultado": "-0.106",
+   "respuesta": "-0.106",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Se cambio el signo"
+   ]
+  },
+  "division_decimal+division_decimal|decimal|negfalse|s1": {
+   "texto": "8.4 / 60.8 / 7.6 = 0.018",
+   "textoIncognita": "8.4 / 60.8 / 7.6 = [0.018]",
+   "html": "<p class=\"operacion operacionMultiple\">8.4 / 60.8 / 7.6 = <input type=\"number\" size=3 class=\"incognita\"></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><br><span class=\"operando\">8,4</span><span class=\"simbolo /\">/</span><span class=\"operando\">60,8</span><span class=\"simbolo /\">/</span><span class=\"operando\">7,6</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": "0.018",
+   "respuesta": "0.018",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_decimal+division_decimal|decimal|negfalse|s2": {
+   "texto": "26.1 / 8.1 / 8.1 = 0.398",
+   "textoIncognita": "26.1 / 8.1 / 8.1 = [0.398]",
+   "resultado": "0.398",
+   "respuesta": "0.398",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_decimal+division_decimal|decimal|negfalse|s3": {
+   "texto": "12.8 / 22.2 / 3.7 = 0.156",
+   "textoIncognita": "12.8 / 22.2 / 3.7 = [0.156]",
+   "resultado": "0.156",
+   "respuesta": "0.156",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_decimal+division_decimal|decimal|negfalse|s4": {
+   "texto": "25.6 / 44 / 5.5 = 0.106",
+   "textoIncognita": "25.6 / 44 / 5.5 = [0.106]",
+   "resultado": "0.106",
+   "respuesta": "0.106",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_decimal+division_decimal|decimal|negtrue|s1": {
+   "texto": "8.4 / 60.8 / 7.6 = 0.018",
+   "textoIncognita": "8.4 / 60.8 / 7.6 = [0.018]",
+   "html": "<p class=\"operacion operacionMultiple\">8.4 / 60.8 / 7.6 = <input type=\"number\" size=3 class=\"incognita\"></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><br><span class=\"operando\">8,4</span><span class=\"simbolo /\">/</span><span class=\"operando\">60,8</span><span class=\"simbolo /\">/</span><span class=\"operando\">7,6</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": "0.018",
+   "respuesta": "0.018",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
+   ]
+  },
+  "division_decimal+division_decimal|decimal|negtrue|s2": {
+   "texto": "26.1 / 8.1 / 8.1 = 0.398",
+   "textoIncognita": "26.1 / 8.1 / 8.1 = [0.398]",
+   "resultado": "0.398",
+   "respuesta": "0.398",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
+   ]
+  },
+  "division_decimal+division_decimal|decimal|negtrue|s3": {
+   "texto": "12.8 / 22.2 / 3.7 = 0.156",
+   "textoIncognita": "12.8 / 22.2 / 3.7 = [0.156]",
+   "resultado": "0.156",
+   "respuesta": "0.156",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
+   ]
+  },
+  "division_decimal+division_decimal|decimal|negtrue|s4": {
+   "texto": "25.6 / 44 / 5.5 = 0.106",
+   "textoIncognita": "25.6 / 44 / 5.5 = [0.106]",
+   "resultado": "0.106",
+   "respuesta": "0.106",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
+   ]
+  },
+  "division_entera+division_entera|natural|negfalse|s1": {
+   "texto": "320 / 4 / 8 = 10",
+   "textoIncognita": "320 / 4 / 8 = [10]",
+   "html": "<p class=\"operacion operacionMultiple\">320 / 4 / 8 = <input type=\"number\" size=3 class=\"incognita\"></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><br><span class=\"operando\">320</span><span class=\"simbolo /\">/</span><span class=\"operando\">4</span><span class=\"simbolo /\">/</span><span class=\"operando\">8</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": "10",
+   "respuesta": "10",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_entera+division_entera|natural|negfalse|s2": {
+   "texto": "160 / 10 / 8 = 2",
+   "textoIncognita": "160 / 10 / 8 = [2]",
+   "resultado": "2",
+   "respuesta": "2",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_entera+division_entera|natural|negfalse|s3": {
+   "texto": "240 / 8 / 6 = 5",
+   "textoIncognita": "240 / 8 / 6 = [5]",
+   "resultado": "5",
+   "respuesta": "5",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_entera+division_entera|natural|negfalse|s4": {
+   "texto": "210 / 7 / 6 = 5",
+   "textoIncognita": "210 / 7 / 6 = [5]",
+   "resultado": "5",
+   "respuesta": "5",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_entera+division_entera|natural|negtrue|s1": {
+   "texto": "320 / 4 / 8 = 10",
+   "textoIncognita": "320 / 4 / 8 = [10]",
+   "html": "<p class=\"operacion operacionMultiple\">320 / 4 / 8 = <input type=\"number\" size=3 class=\"incognita\"></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><br><span class=\"operando\">320</span><span class=\"simbolo /\">/</span><span class=\"operando\">4</span><span class=\"simbolo /\">/</span><span class=\"operando\">8</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": "10",
+   "respuesta": "10",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
+   ]
+  },
+  "division_entera+division_entera|natural|negtrue|s2": {
+   "texto": "160 / 10 / 8 = 2",
+   "textoIncognita": "160 / 10 / 8 = [2]",
+   "resultado": "2",
+   "respuesta": "2",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
+   ]
+  },
+  "division_entera+division_entera|natural|negtrue|s3": {
+   "texto": "240 / 8 / 6 = 5",
+   "textoIncognita": "240 / 8 / 6 = [5]",
+   "resultado": "5",
+   "respuesta": "5",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
+   ]
+  },
+  "division_entera+division_entera|natural|negtrue|s4": {
+   "texto": "210 / 7 / 6 = 5",
+   "textoIncognita": "210 / 7 / 6 = [5]",
+   "resultado": "5",
+   "respuesta": "5",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
+   ]
+  },
+  "division_entera+division_entera|entero|negfalse|s1": {
+   "texto": "-320 / -4 / 8 = 10",
+   "textoIncognita": "-320 / -4 / 8 = [10]",
+   "html": "<p class=\"operacion operacionMultiple\">-320 / -4 / 8 = <input type=\"number\" size=3 class=\"incognita\"></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><br><span class=\"operando\">-320</span><span class=\"simbolo /\">/</span><span class=\"operando\">-4</span><span class=\"simbolo /\">/</span><span class=\"operando\">8</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": "10",
+   "respuesta": "10",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_entera+division_entera|entero|negfalse|s2": {
+   "texto": "-160 / -10 / 8 = 2",
+   "textoIncognita": "-160 / -10 / 8 = [2]",
+   "resultado": "2",
+   "respuesta": "2",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_entera+division_entera|entero|negfalse|s3": {
+   "texto": "-240 / 8 / -6 = 5",
+   "textoIncognita": "-240 / 8 / -6 = [5]",
+   "resultado": "5",
+   "respuesta": "5",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_entera+division_entera|entero|negfalse|s4": {
+   "texto": "-210 / -7 / 6 = 5",
+   "textoIncognita": "-210 / -7 / 6 = [5]",
+   "resultado": "5",
+   "respuesta": "5",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_entera+division_entera|entero|negtrue|s1": {
+   "texto": "320 / -4 / 8 = -10",
+   "textoIncognita": "320 / -4 / 8 = [-10]",
+   "html": "<p class=\"operacion operacionMultiple\">320 / -4 / 8 = <input type=\"number\" size=3 class=\"incognita\"></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><br><span class=\"operando\">320</span><span class=\"simbolo /\">/</span><span class=\"operando\">-4</span><span class=\"simbolo /\">/</span><span class=\"operando\">8</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": "-10",
+   "respuesta": "-10",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Se cambio el signo"
+   ]
+  },
+  "division_entera+division_entera|entero|negtrue|s2": {
+   "texto": "160 / -10 / 8 = -2",
+   "textoIncognita": "160 / -10 / 8 = [-2]",
+   "resultado": "-2",
+   "respuesta": "-2",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Se cambio el signo"
+   ]
+  },
+  "division_entera+division_entera|entero|negtrue|s3": {
+   "texto": "240 / 8 / -6 = -5",
+   "textoIncognita": "240 / 8 / -6 = [-5]",
+   "resultado": "-5",
+   "respuesta": "-5",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Se cambio el signo"
+   ]
+  },
+  "division_entera+division_entera|entero|negtrue|s4": {
+   "texto": "210 / -7 / 6 = -5",
+   "textoIncognita": "210 / -7 / 6 = [-5]",
+   "resultado": "-5",
+   "respuesta": "-5",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Se cambio el signo"
+   ]
+  },
+  "division_entera+division_entera|decimal|negfalse|s1": {
+   "texto": "320 / 4 / 8 = 10",
+   "textoIncognita": "320 / 4 / 8 = [10]",
+   "html": "<p class=\"operacion operacionMultiple\">320 / 4 / 8 = <input type=\"number\" size=3 class=\"incognita\"></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><br><span class=\"operando\">320</span><span class=\"simbolo /\">/</span><span class=\"operando\">4</span><span class=\"simbolo /\">/</span><span class=\"operando\">8</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": "10",
+   "respuesta": "10",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_entera+division_entera|decimal|negfalse|s2": {
+   "texto": "160 / 10 / 8 = 2",
+   "textoIncognita": "160 / 10 / 8 = [2]",
+   "resultado": "2",
+   "respuesta": "2",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_entera+division_entera|decimal|negfalse|s3": {
+   "texto": "240 / 8 / 6 = 5",
+   "textoIncognita": "240 / 8 / 6 = [5]",
+   "resultado": "5",
+   "respuesta": "5",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_entera+division_entera|decimal|negfalse|s4": {
+   "texto": "210 / 7 / 6 = 5",
+   "textoIncognita": "210 / 7 / 6 = [5]",
+   "resultado": "5",
+   "respuesta": "5",
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "division_entera+division_entera|decimal|negtrue|s1": {
+   "texto": "320 / 4 / 8 = 10",
+   "textoIncognita": "320 / 4 / 8 = [10]",
+   "html": "<p class=\"operacion operacionMultiple\">320 / 4 / 8 = <input type=\"number\" size=3 class=\"incognita\"></p>",
+   "impresion": "<p class=\"operacion f-operacion\"><br><span class=\"operando\">320</span><span class=\"simbolo /\">/</span><span class=\"operando\">4</span><span class=\"simbolo /\">/</span><span class=\"operando\">8</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": "10",
+   "respuesta": "10",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
+   ]
+  },
+  "division_entera+division_entera|decimal|negtrue|s2": {
+   "texto": "160 / 10 / 8 = 2",
+   "textoIncognita": "160 / 10 / 8 = [2]",
+   "resultado": "2",
+   "respuesta": "2",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
+   ]
+  },
+  "division_entera+division_entera|decimal|negtrue|s3": {
+   "texto": "240 / 8 / 6 = 5",
+   "textoIncognita": "240 / 8 / 6 = [5]",
+   "resultado": "5",
+   "respuesta": "5",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
+   ]
+  },
+  "division_entera+division_entera|decimal|negtrue|s4": {
+   "texto": "210 / 7 / 6 = 5",
+   "textoIncognita": "210 / 7 / 6 = [5]",
+   "resultado": "5",
+   "respuesta": "5",
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado negativo con numeros naturales sin restas"
    ]
   }
  },
