@@ -172,7 +172,6 @@ describe('Parentesis', () => {
 });
 
 
-
 describe('Regla de colocación automática de paréntesis', () => {
   it('no coloca paréntesis automáticos si solo hay sumas y restas', () => {
     expect(canAutoPlaceParentheses(

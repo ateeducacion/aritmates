@@ -1,5 +1,4 @@
  
-import '../debug.js';
 import {Decimal} from 'decimal.js';
 import {DEFAULTS} from '../defaultOptions';
 import {asRandom, randomSign, roundedBetween} from './random';
@@ -787,8 +786,6 @@ export default class Operacion {
       signo= -1;
     }
 
-    // if ( debug ) console.log( this.id+tag, 'lowerBound, upperBound, offset',
-    //    lowerBound, upperBound, offset );
     // Desvio siempre da el mismo numero, lo cambio por getRandomMinMax
     const operando = this.getRandomMinMax( lowerBound, upperBound);
 
@@ -888,10 +885,6 @@ export default class Operacion {
   comprobarOperandosEnviados() {
 
     // si se envia solo un operando generar el faltante:
-    // if ( debug ) console.log( this.id+tag, 'cantidad_operandos',
-    //    this.cantidad_operandos );
-    // if ( debug ) console.log( this.id+tag, 'operandos length',
-    //    this.operandos.length );
 
     let operandosVacios = 0;
     let operandosLlenos = 0;
@@ -951,9 +944,6 @@ export default class Operacion {
     }
 
     for (let grupoN = 0; grupoN < this.cantidad_operandos; grupoN++) {
-      // if ( debug ) console.log(tag, 'gen grupo de factores',
-      // '\n\t', tag, 'factoresRestantes', factoresRestantes,
-      // '\n\t', tag, 'factoresRestantes', factoresRestantes,
       // genera un grupo con el numero al azar de factores
       // que sea inferior la n factores restantes
 

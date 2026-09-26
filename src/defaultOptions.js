@@ -1,6 +1,5 @@
 import OPERACIONES from './operaciones/operaciones';
 import {TIPO_NUMERO} from './operaciones/tipoNumero';
-import $ from 'jquery';
 /**
  *  Aqui definimos las opciones predeterminadas que se cargan en la web
  *  @author Fernando Ramirez Perez <fernando.ramirez@altia.es>
@@ -51,30 +50,41 @@ export const ENABLE = {
 };
 
 
-/* load from config.json */
-let config;
-$.ajax({
-  url: './config.json',
-  dataType: 'json',
-  async: false,
-  success: function(data) {
-    config = data;
+const CONFIG_KEYS = [
+  'nivel', 'cuentaAtras', 'cantidadOperaciones', 'cantidadOperandos',
+  'posicionIncognitaAlAzar', 'resultadoNegativo', 'maximoPrimo',
+  'maximoOperandos', 'recargarOperacionesInfinitas', 'reCalcTries',
+  'tiposOperaciones', 'tiposNumero', 'baseurl', 'version',
+];
 
-    if ( config.nivel ) DEFAULTS.nivel = config.nivel;
-    if ( config.cuentaAtras ) DEFAULTS.cuentaAtras = config.cuentaAtras;
-    if ( config.cantidadOperaciones ) DEFAULTS.cantidadOperaciones = config.cantidadOperaciones;
-    if ( config.cantidadOperandos ) DEFAULTS.cantidadOperandos = config.cantidadOperandos;
-    if ( config.posicionIncognitaAlAzar ) DEFAULTS.posicionIncognitaAlAzar = config.posicionIncognitaAlAzar;
-    if ( config.resultadoNegativo ) DEFAULTS.resultadoNegativo = config.resultadoNegativo;
-    if ( config.maximoPrimo ) DEFAULTS.maximoPrimo = config.maximoPrimo;
-    if ( config.maximoOperandos ) DEFAULTS.maximoOperandos = config.maximoOperandos;
-    if ( config.recargarOperacionesInfinitas ) DEFAULTS.recargarOperacionesInfinitas = config.recargarOperacionesInfinitas;
-    if ( config.reCalcTries ) DEFAULTS.reCalcTries = config.reCalcTries;
-    if ( config.tiposOperaciones ) DEFAULTS.tiposOperaciones = config.tiposOperaciones;
-    if ( config.tiposNumero ) DEFAULTS.tiposNumero = config.tiposNumero;
+/**
+ * Copy the truthy values of config.json onto DEFAULTS, as the historical
+ * loader did (a falsy value in the file never overrides a default).
+ *
+ * @param {object} config
+ * @param {object} [target=DEFAULTS]
+ * @return {object} target
+ */
+export function applyConfig(config, target = DEFAULTS) {
+  if (!config) return target;
+  for (const key of CONFIG_KEYS) {
+    if (config[key]) target[key] = config[key];
+  }
+  return target;
+}
 
-    if ( config.baseurl ) DEFAULTS.baseurl = config.baseurl;
-    if ( config.version ) DEFAULTS.version = config.version;
-  },
-});
-
+/**
+ * Load ./config.json without blocking the page. On any failure the built-in
+ * defaults stay, like the old synchronous request.
+ *
+ * @return {Promise<object>} DEFAULTS
+ */
+export async function loadConfig() {
+  try {
+    const response = await fetch('./config.json');
+    if (response.ok) applyConfig(await response.json());
+  } catch {
+    // Keep the defaults.
+  }
+  return DEFAULTS;
+}

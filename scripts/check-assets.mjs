@@ -1,7 +1,7 @@
 /**
  * Verifica que dist contenga los recursos críticos.
  */
-import { access, readFile, readdir } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -43,13 +43,9 @@ export async function checkAssets() {
     if (!(await exists(join(dist, rel)))) missing.push(rel);
   }
 
-  // Fonts
-  const fontsDir = join(dist, 'fonts');
-  if (!(await exists(fontsDir))) {
-    missing.push('fonts/');
-  } else {
-    const fonts = await readdir(fontsDir);
-    if (fonts.length < 5) missing.push('fonts/ (pocos archivos)');
+  for (const font of ['roboto-latin-400.woff2', 'roboto-latin-500.woff2',
+    'roboto-latin-700.woff2', 'MaterialIcons-Regular.woff2']) {
+    if (!(await exists(join(dist, 'fonts', font)))) missing.push('fonts/' + font);
   }
 
   // HTML no debe referenciar CDN

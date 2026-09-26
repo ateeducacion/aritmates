@@ -49,7 +49,6 @@ const browserGlobals = {
   $: 'readonly',
   jQuery: 'readonly',
   bootstrap: 'readonly',
-  debug: 'writable',
 };
 
 const nodeGlobals = {

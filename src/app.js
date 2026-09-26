@@ -16,9 +16,7 @@
  * @license AGPL-3.0 
  */
 /** @global */
-window.debug = false;
 
-import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import $ from 'jquery';
 // Switch nativo compatible (sustituye @material/mwc-switch)
 import './components/mwc-switch.js';
@@ -84,7 +82,6 @@ function setBoth(id, prop, value) {
 // y estado de sesión viven en src/application. Este archivo conserva el cableado
 // con el DOM y los eventos mientras se extraen responsabilidades completas.
 
-window.jQuery = $;
 const sessionTimer = createSessionTimer({
   formatTime: utils.milisToMinSg,
   onTimeUp: () => $('body').trigger('timeup'),
@@ -260,8 +257,8 @@ const opciones = {
           break;
       }
       el = $(elName);
+      el.click();
     }
-    el.click();
   },
 
   addTipoNumero(tipo) {
@@ -295,7 +292,6 @@ const SCENE = {
 };
 let scene = SCENE.OPTIONS;
 
-window.opciones = opciones;
 
 
 const sliderNivel = $('xy-slider#sliderNivel')[0];
@@ -333,7 +329,6 @@ $('#nivelMax').val(valoresNiveles(sliderNivel.value));
 $('#nivelMax_mv').val(valoresNiveles(sliderNivel.value));
 
 const sliderCrono = $('#row-nivel-crono-noperaciones').find('#sliderCrono')[0];
-window.sliderCrono = sliderCrono;
 const sliderCrono_mv = $('#sliderCrono_mv')[0];
 
 if (DEFAULTS.cuentaAtras != 0) {
@@ -821,16 +816,10 @@ const enviarRespuesta = (ev) => {
 };
 // Fin enviar respuesta ---
 
-window.opActual = {};
-
 function mostrarOperacion(op) {
   // TODO: no desactiva la barra scroll en input number
   actualizarClaseAyuda( op.getTipo() );
   tagOperacion.innerHTML = op.toHtml();
-  if ( window.debugSelenium ) {
-    window.opActual = op;
-  }
-  actualizarClaseAyuda(op.getTipo() );
 }
 
 let opcionesGuardadas;
@@ -847,7 +836,6 @@ function guardarOpciones(opciones) {
   opcionesGuardadas = Object.assign(opcionesGuardadas, opciones);
   opcionesGuardadas.cantidadOperandos = parseInt(
       opcionesGuardadas.cantidadOperandos);
-  window.opcionesGuardadas = opcionesGuardadas;
   return opcionesGuardadas;
 }
 
@@ -1031,10 +1019,6 @@ $('body').on('finEjercicios', () => {
     console.error('Could not render results', error);
   });
 });
-
-window.finEjercicios = () => {
-  $('body').trigger('finEjercicios');
-};
 
 function actualizarNumeroEjercicio( total ) {
   $('.numEjercicios')[0]

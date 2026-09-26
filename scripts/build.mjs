@@ -51,21 +51,14 @@ async function copyFonts() {
   const fontsDir = join(dist, 'fonts');
   await mkdir(fontsDir, { recursive: true });
 
-  // Roboto
-  const robotoSrc = join(nm, 'roboto-fontface/fonts/roboto');
-  for (const f of await readdir(robotoSrc)) {
-    if (/\.(woff2?|ttf|eot)$/i.test(f)) {
-      await cp(join(robotoSrc, f), join(fontsDir, f));
-    }
+  // Roboto: Latin subset committed in src/fonts (see css/fonts.css).
+  for (const f of await readdir(join(root, 'src/fonts'))) {
+    if (f.endsWith('.woff2')) await cp(join(root, 'src/fonts', f), join(fontsDir, f));
   }
 
-  // Material Icons
-  const miSrc = join(nm, 'material-design-icons/iconfont');
-  for (const f of await readdir(miSrc)) {
-    if (/\.(woff2?|ttf|eot)$/i.test(f)) {
-      await cp(join(miSrc, f), join(fontsDir, f));
-    }
-  }
+  // Material Icons: every current browser takes woff2.
+  await cp(join(nm, 'material-design-icons/iconfont/MaterialIcons-Regular.woff2'),
+      join(fontsDir, 'MaterialIcons-Regular.woff2'));
 
   console.log('✓ fonts');
 }
@@ -106,10 +99,8 @@ async function buildCss() {
   // --- vendors.css ---
   const vendorParts = [];
 
-  // Roboto
-  let roboto = await readIfExists(join(nm, 'roboto-fontface/css/roboto/roboto-fontface.css'));
-  roboto = rewriteFontUrls(roboto);
-  vendorParts.push('/* roboto-fontface */\n' + roboto);
+  // Roboto (own @font-face with font-display: swap)
+  vendorParts.push('/* fonts */\n' + await readFile(join(root, 'css/fonts.css'), 'utf8'));
 
   // Material Icons (CSS local con rutas a ../fonts/)
   const miLocal = await readIfExists(join(root, 'css/material-icons.css'));
@@ -309,7 +300,7 @@ async function buildJs() {
 
   await esbuild.build({
     ...common,
-    entryPoints: [join(root, 'src/app.js')],
+    entryPoints: [join(root, 'src/main.js')],
     outfile: join(jsDir, 'app.js'),
     sourcemap: true,
   });

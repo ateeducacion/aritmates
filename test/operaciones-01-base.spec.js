@@ -119,7 +119,6 @@ describe('Objeto Operaciones', ()=>{
 
 
   it('debería dar múltiplos de 10 con la opción x10', ()=>{
-    debug = false;
     const input = {
       nivel: 25,
       cantidadOperandos: 3,
@@ -139,11 +138,9 @@ describe('Objeto Operaciones', ()=>{
       } while (r==true && i<=x.cantidadOperandos );
       return r;
     }, actual.operandos );
-    debug = false;
   });
 
   it('debería dar múltiplos de 100 con la opción x100', ()=>{
-    debug = false;
     const input = {
       nivel: 25,
       cantidadOperandos: 3,
@@ -163,11 +160,9 @@ describe('Objeto Operaciones', ()=>{
       } while (r==true && i<=x.cantidadOperandos );
       return r;
     }, actual.operandos );
-    debug = false;
   });
 
   it('complementarios deberían estar entre 10-100', ()=>{
-    debug = false;
     const input = {
       nivel: 25,
       complementario: 120,
@@ -175,11 +170,9 @@ describe('Objeto Operaciones', ()=>{
     const actual = new objetos.Operacion(input);
 
     expect(actual.complementario).to.be.within(10, 100);
-    debug = false;
   });
 
   it('complementarios deberían ser múltiplo de 10', ()=>{
-    debug = false;
     const input = {
       nivel: 25,
       complementario: 12,
@@ -189,12 +182,10 @@ describe('Objeto Operaciones', ()=>{
     expect( actual.complementario ).to.satisfy(function(x) {
       return (x % 10)==0;
     }, 'expected '+actual.complementario+' to be divisible by 10' );
-    debug = false;
   });
 
   // it ('complementarios deberían fijar el resultado en el valor que se le pasa en complementario')
   it('deberían valer el resultado 30 si se fija complementario 30', ()=>{
-    debug=false;
     const input = {
       nivel: 100,
       enfocado: true,
@@ -202,12 +193,10 @@ describe('Objeto Operaciones', ()=>{
     };
     const actual = new objetos.Operacion(input);
     expect(actual.resultado).is.equal(30);
-    debug=false;
   });
 
   it('no deberían ser el resultado la posición incognita en complementarios',
       ()=>{
-        debug=false;
         const input = {
           nivel: 100,
           enfocado: true,
@@ -217,12 +206,10 @@ describe('Objeto Operaciones', ()=>{
 
         expect(actual.posicion_incognita).is
             .not.equal(actual.cantidad_operandos+1);
-        debug=false;
       }
   );
 
   it('no pueden haber operandos que no sean números', ()=>{
-    // debug = true;
     const input = {
       nivel: 100,
       cantidadOperandos: 4,
@@ -230,7 +217,6 @@ describe('Objeto Operaciones', ()=>{
       posicion_nivel: 5,
     };
     const actual = new objetos.Operacion(input);
-    if ( debug )console.log(actual.toString());
 
 
     expect(actual.operandos).satisfy(function(x) {
@@ -245,7 +231,6 @@ describe('Objeto Operaciones', ()=>{
       });
       return r;
     });
-    debug = false;
   });
 
   it('complementario debería generar resultado igual al valor de complementario',
@@ -257,24 +242,20 @@ describe('Objeto Operaciones', ()=>{
 
         expect(actual.resultado).to.be.equal(input.complementario);
 
-        debug = false;
       }
   );
 
   it('complementario, posicion de la incognita no puede ser posicion resultado', ()=>{
-    // debug = true;
 
     const input = {
       complementario: 5,
     };
     const actual = new objetos.Operacion(input);
-    if ( debug ) console.log( actual );
 
     console.log( actual.toString(), actual.posicion_incognita );
 
     expect(actual.posicion_incognita).not.to.be.equal(3);
 
-    debug = false;
   });
 
   // pruebas de metodos
@@ -310,8 +291,6 @@ describe('Objeto Operaciones', ()=>{
     expect(s.operandos).to.eql(input.operandos);
   });
 });
-
-
 
 
 describe('resolverIncognita', () => {

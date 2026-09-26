@@ -10,7 +10,6 @@ import DivisionDecimales from './operaciones/divisionDecimales';
 import Division from './operaciones/division';
 import OperacionMultiple from './operaciones/OperacionMultiple';
 import {TIPO_NUMERO} from './operaciones/tipoNumero';
-import './debug.js';
 import {DEFAULTS} from './defaultOptions';
 import utils, {shuffle} from './utils';
 import {asRandom} from './operaciones/random';
