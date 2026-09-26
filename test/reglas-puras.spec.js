@@ -23,6 +23,7 @@ import {
   requiresTwoOperands,
 } from '../src/application/optionAvailability';
 import {speedBadges} from '../src/application/badges';
+import {applyConfig} from '../src/defaultOptions';
 
 describe('evaluateArithmetic: entradas que no son una expresión válida', () => {
   it('acepta el + unario y cualquier espacio en blanco', () => {
@@ -174,5 +175,18 @@ describe('Temporizador y opciones', () => {
     expect(speedBadges(1000, 0)).to.deep.equal({
       bronze: false, silver: false, gold: false, platinum: false,
     });
+  });
+});
+
+describe('applyConfig', () => {
+  it('copia solo valores verdaderos de las claves conocidas', () => {
+    const target = {nivel: 10, cuentaAtras: 30, otra: 1};
+    applyConfig({nivel: 5, cuentaAtras: 0, desconocida: 9}, target);
+    expect(target).to.deep.equal({nivel: 5, cuentaAtras: 30, otra: 1});
+  });
+
+  it('ignora una configuración ausente', () => {
+    const target = {nivel: 10};
+    expect(applyConfig(null, target)).to.deep.equal({nivel: 10});
   });
 });
