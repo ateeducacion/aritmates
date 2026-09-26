@@ -6,6 +6,8 @@ function solveVisible(text) {
 }
 
 test('portada, ejercicio, acierto y resultados', async ({page}) => {
+  const errors = [];
+  page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/');
   await expect(page.locator('#main')).toBeVisible();
   await expect(page).toHaveTitle(/Aritmates/);
@@ -36,6 +38,7 @@ test('portada, ejercicio, acierto y resultados', async ({page}) => {
   await page.locator('#btnDownloadScore').click();
   const download = await downloadPromise;
   expect(download.suggestedFilename()).toBe('Aritmates-Resultados.pdf');
+  expect(errors).toEqual([]);
 });
 
 test('la hoja de ejercicios abre la vista previa', async ({page}) => {

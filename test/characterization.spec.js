@@ -245,6 +245,12 @@ describe('Caracterización — utilidades', () => {
   it('milisToMinSg(90000) = "01:30"', () => {
     expect(utils.milisToMinSg(90000)).to.equal('01:30');
   });
+
+  it('los formateadores de tiempo funcionan sin this (formatTime del reloj)', () => {
+    const {milisToMinSg, sgToMinSg} = utils;
+    expect(milisToMinSg(65000)).to.equal('01:05');
+    expect(sgToMinSg(65)).to.equal('1:05');
+  });
 });
 
 describe('Caracterización — límites de nivel (muestra)', () => {
