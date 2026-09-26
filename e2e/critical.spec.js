@@ -96,3 +96,21 @@ test('portada usable en un móvil estrecho', async ({page}) => {
   });
   expect(overflow).toBeLessThan(40);
 });
+
+test('config.json se aplica antes de arrancar la aplicación', async ({page}) => {
+  await page.route('**/config.json', (route) => route.fulfill({
+    contentType: 'application/json',
+    body: JSON.stringify({cantidadOperaciones: 20, tiposOperaciones: ['suma']}),
+  }));
+  await page.goto('/');
+  await expect(page.locator('#btnSuma')).toHaveClass(/selected/);
+  await page.locator('#btnComenzar').click();
+  await expect(page.locator('.numEjercicios')).toContainText('1 / 20');
+});
+
+test('sin config.json la aplicación usa los valores por defecto', async ({page}) => {
+  await page.route('**/config.json', (route) => route.fulfill({status: 404, body: ''}));
+  await page.goto('/');
+  await page.locator('#btnComenzar').click();
+  await expect(page.locator('.numEjercicios')).toContainText('1 / 10');
+});

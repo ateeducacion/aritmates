@@ -300,7 +300,7 @@ async function buildJs() {
 
   await esbuild.build({
     ...common,
-    entryPoints: [join(root, 'src/app.js')],
+    entryPoints: [join(root, 'src/main.js')],
     outfile: join(jsDir, 'app.js'),
     sourcemap: true,
   });

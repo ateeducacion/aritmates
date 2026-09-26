@@ -32,7 +32,7 @@ const cssStubPlugin = {
   },
 };
 
-// jquery stub para Node: defaultOptions usa $.ajax al importar
+// jquery stub para Node: algunos módulos de la interfaz importan jQuery
 const jqueryStubPlugin = {
   name: 'jquery-node-stub',
   setup(build) {

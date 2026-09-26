@@ -57,6 +57,11 @@ Hay una sola cascada:
 3. la portada — el usuario cambia la selección
 4. el código corto — restaura una selección ya codificada
 
+`src/main.js` lee `config.json` con `fetch` y, cuando termina, importa
+`app.js`; si el archivo no existe o no es válido se quedan los valores por
+defecto. No hay petición síncrona y el archivo se puede editar en `dist/`
+después de construir.
+
 `config.json` no es un segundo modelo de opciones. Es el mismo objeto
 `DEFAULTS`, con los campos que ese despliegue quiere fijar. `baseurl` es la URL
 pública usada en el enlace de compartir. En este repositorio vale `./`.
