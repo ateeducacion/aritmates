@@ -8,8 +8,6 @@ import {TIPO_NUMERO} from './operaciones/tipoNumero';
 import utils from './utils';
 
 
-global.listOptions = listOptions;
-
 /**
   * Generar y parsear un codigo corto basando en las opciones
   *

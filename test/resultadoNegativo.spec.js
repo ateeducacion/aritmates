@@ -7,9 +7,7 @@ import Resta from '../src/operaciones/resta';
 import {seededRandom} from '../src/operaciones/random';
 
 
-const chai = require('chai');
 const expect = require('chai').expect;
-chai.use(require('chai-match'));
 
 describe( 'resultadoNegativo ', ()=> {
   describe('Forzar resultado Negativo', () => {

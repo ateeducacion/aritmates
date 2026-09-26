@@ -1,7 +1,5 @@
 
-const chai = require('chai');
 const expect = require('chai').expect;
-chai.use(require('chai-match'));
 
 import GenerarExamen from '../src/generarExamen';
 import {TIPO_NUMERO} from '../src/operaciones/tipoNumero';
