@@ -67,22 +67,12 @@ async function copyFonts() {
     }
   }
 
-  // Font Awesome webfonts
-  const faSrc = join(nm, '@fortawesome/fontawesome-free/webfonts');
-  for (const f of await readdir(faSrc)) {
-    if (/\.(woff2?|ttf|eot)$/i.test(f)) {
-      await cp(join(faSrc, f), join(fontsDir, f));
-    }
-  }
-
   console.log('✓ fonts');
 }
 
 /** Reescribe urls de fuentes en CSS hacia ../fonts/ */
 function rewriteFontUrls(css, options = {}) {
   let out = css;
-  // Font Awesome: ../webfonts/ → ../fonts/
-  out = out.replace(/url\((['"]?)\.\.\/webfonts\//g, 'url($1../fonts/');
   // Roboto: ../../fonts/roboto/ → ../fonts/
   out = out.replace(/url\((['"]?)\.\.\/\.\.\/fonts\/roboto\//g, 'url($1../fonts/');
   out = out.replace(/url\((['"]?)\.\.\/\.\.\/fonts\//g, 'url($1../fonts/');
@@ -127,16 +117,9 @@ async function buildCss() {
     vendorParts.push('/* material-icons */\n' + miLocal);
   }
 
-  // Font Awesome
-  let fa = await readIfExists(join(nm, '@fortawesome/fontawesome-free/css/all.min.css'));
-  fa = rewriteFontUrls(fa);
-  vendorParts.push('/* fontawesome */\n' + fa);
-
   // MDC precompiled
   for (const name of [
     'mdc.dialog.min.css',
-    'mdc.textfield.min.css',
-    'mdc.list.min.css',
     'mdc.drawer.min.css',
   ]) {
     const c = await readIfExists(join(root, 'css', name));

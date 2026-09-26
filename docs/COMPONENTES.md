@@ -25,5 +25,5 @@ Estilos MDC estáticos (sin paquetes `@material/*` JS):
 
 - `css/mdc.dialog.min.css`
 - `css/mdc.drawer.min.css`
-- `css/mdc.list.min.css`
-- `css/mdc.textfield.min.css`
+
+El campo de texto de los diálogos (`mdc-text-field`) y el separador de los drawers (`mdc-list-divider`) usan unas pocas reglas propias en `css/main.scss`.

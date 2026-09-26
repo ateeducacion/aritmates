@@ -35,11 +35,10 @@ import './components/paper-checkbox.js';
 
 // no funcionaba con @material/..../mdc.dialog.css los he tenido que copiar
 import '../css/mdc.dialog.min.css';
-import '../css/mdc.textfield.min.css';
 
 import '../css/main.scss';
 import '../css/widgets.css';
-// Iconos Material, Font Awesome y placeholder-loading se emiten en dist/css/vendors.css
+// Iconos Material y placeholder-loading se emiten en dist/css/vendors.css
 // (scripts/build.mjs). Estos imports CSS se ignoran en esbuild (css-stub).
 import '../css/ejercicio.scss';
 import '../css/resultado.scss';
@@ -1256,7 +1255,6 @@ $('#btnCodigoEjercicio').click((ev) => {
   inputField = `
   <div class="mdc-text-field mdc-text-field--fullwidth">
     <input id="userCode" class="mdc-text-field__input" >
-    <div class="mdc-line-ripple"></div>
     <label for="userCode" class="mdc-floating-label">
       Introduce o pega el código de ejercicios
     </label>
@@ -1285,7 +1283,6 @@ $('#btnCompartirHoja').click( (ev) => {
       readonly
       value="${baseurl}?c=${urlcode}" 
       >
-      <div class="mdc-line-ripple"></div>
     </div>`;
   $('#modal-dialog-content')[0].innerHTML += inputField;
   $('#modal-dialog-content')[0].innerHTML += `<p class="mt-1">

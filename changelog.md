@@ -1,5 +1,13 @@
 # Changelog
 
+## CSS de terceros más ligero (post 1.3)
+
+No cambia el aspecto de la aplicación.
+
+* La medalla, el cohete y el logo de GitHub son SVG en línea. Font Awesome ya no se instala ni se publica: eran tres iconos.
+* El campo de texto de los diálogos y el separador de los drawers usan unas reglas propias en lugar de `mdc.textfield.min.css` y `mdc.list.min.css`.
+* `dist/css/vendors.css` pasa de 194 KB a 21 KB.
+
 ## Sumas con «resultado igual a» (post 1.3)
 
 * Con «resultado igual a» (activable desde el código corto), las sumas mostraban igualdades falsas como `12 + (-18) = 30`, incluso con los negativos desactivados. Ahora los operandos suman el valor pedido, sin negativos si no se permiten y en múltiplos de 10 cuando el valor es 100. Restas, multiplicaciones y divisiones ya cuadraban y no cambian.
