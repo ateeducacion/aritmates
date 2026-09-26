@@ -1,38 +1,3 @@
-import combinations from './utils/combinations.js';
-
-function totalPosibilidades( posibilidadPorOpcion ) {
-  let posibilidades = 1;
-  const keys = Object.keys(posibilidadPorOpcion);
-  keys.forEach((e) => {
-    posibilidades = posibilidades * e;
-  });
-  return posibilidades;
-}
-
-function calcPosibilidadesPorOpcion( opciones ) {
-  const posiciones = {};
-
-  Object.keys(opciones.bool).forEach( (e) => {
-    posiciones[e] = 2;
-  });
-
-  Object.keys(opciones.select).forEach( (e) => {
-    posiciones[e] = opciones.select[e];
-  });
-
-  Object.keys(opciones.multi).forEach( (e) => {
-     
-    const array = Array.apply(null, {length: opciones.multi[e]})
-        .map(Number.call, Number);
-    const combinaciones = combinations( array ).length;
-    // +1 de la opcion de que este vacio
-    posiciones[e] = combinaciones+1;
-  });
-
-  return posiciones;
-}
-
- 
 const array10al100 = Array.apply(null, {length: 10})
     .map(Number.call, Number).map( (x) => ((x+1)*10));
 
@@ -86,8 +51,6 @@ const selectOptionsV0 = {
 };
 
 
-const posibilidadPorOpcionV0 = calcPosibilidadesPorOpcion(listOptionsPorTipoV0);
-
 function listarOpciones( listOptionPorTipo ) {
   let list = [];
   Object.keys(listOptionPorTipo).forEach( ( tipo ) => {
@@ -103,10 +66,7 @@ function listarOpciones( listOptionPorTipo ) {
 }
 
 // opciones actuales
-export const version = 0;
 export const listOptions = listarOpciones(listOptionsPorTipoV0);
-export const posibilidadesPorOpcion = posibilidadPorOpcionV0;
 export const gTipoOpcion = tipoOpcion;
-export const opcionesPosibilidades = totalPosibilidades(posibilidadPorOpcionV0);
 export const selectOptions = selectOptionsV0;
 

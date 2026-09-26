@@ -162,21 +162,6 @@ export default class DivisionResto extends DivisionEntera {
     return html;
   }
 
-  toHtmlSolved() {
-    const html = '<p>' + this.toString(true, true, true) + '</p>';
-    return html;
-  }
-
-  formula() {
-    const f = super.formula();
-    const resto = this.resto;
-    f.push(resto);
-  }
-
-  _generarDivisionPorMultiplicacionInvertida() {
-    super._generarDivisionPorMultiplicacionInvertida();
-  }
-
   generarNumerosOperandos() {
 
 

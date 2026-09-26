@@ -56,83 +56,12 @@ export function hasAny(operaciones, needles) {
 }
 
 /**
- * Index of the first (or, when reverse, last) operator whose type is in
- * `busqueda`. The ordering matches the historical scan: among types that
- * occur, pick the leftmost occurrence, or the rightmost when reverse.
- */
-export function indexOfAny(operaciones, busqueda, reverse) {
-  if (!hasAny(operaciones, busqueda)) return -1;
-
-  const found = [];
-  busqueda.forEach((tipoOperacion) => {
-    found.push({
-      tipo: tipoOperacion,
-      first: operaciones.indexOf(tipoOperacion),
-      last: operaciones.lastIndexOf(tipoOperacion),
-    });
-  });
-
-  const present = [];
-  if (!reverse) {
-    for (let indx = 0; indx < found.length; indx++) {
-      if (found[indx].first != -1) present.push(found[indx]);
-    }
-    present.sort(function(a, b) {
-      return a.first < b.first ? -1 : 1;
-    });
-    if (present[0] !== undefined) return present[0].first;
-    return -1;
-  }
-
-  for (let indx = 0; indx < found.length; indx++) {
-    if (found[indx].last != -1) present.push(found[indx]);
-  }
-  present.sort(function(a, b) {
-    if (a.last !== -1) return a.last < b.last ? -1 : 1;
-    return -1;
-  });
-  if (present[0] !== undefined) return present[0].last;
-  return -1;
-}
-
-/**
  * True when both lists contain the same operator types, ignoring order.
  */
 export function sameOperatorMultiset(tiposA, tiposB) {
   const a = JSON.stringify(tiposA.slice().sort());
   const b = JSON.stringify(tiposB.slice().sort());
   return a == b;
-}
-
-/**
- * Collapse every multiplication and division, left to right, into a single
- * value. `evalAt(tipo, [left, right])` must return `{ resultado }`.
- *
- * @param {Array} operandos
- * @param {Array} operaciones
- * @param {(tipo: string, pair: Array) => {resultado: *}} evalAt
- */
-export function foldMulDiv(operandos, operaciones, evalAt) {
-  const mOperandos = operandos.slice();
-  const mOperaciones = operaciones.slice();
-
-  while (hasAny(mOperaciones, MUL_DIV)) {
-    const index = indexOfAny(mOperaciones, MUL_DIV, false);
-    const tipoOp = mOperaciones[index];
-    const op = evalAt(tipoOp, [mOperandos[index], mOperandos[index + 1]]);
-    mOperandos[index] = op.resultado;
-    mOperandos.splice(index + 1, 1);
-    mOperaciones.splice(index, 1);
-  }
-
-  for (let i = 0; i < mOperandos.length; i++) {
-    const v = mOperandos[i];
-    if (v !== undefined && v.constructor && v.constructor.name === 'Decimal') {
-      mOperandos[i] = parseFloat(v);
-    }
-  }
-
-  return {operandos: mOperandos, operaciones: mOperaciones};
 }
 
 /**
@@ -221,12 +150,6 @@ export function countAdjacent(operaciones, posicion, operacion) {
   return numOperacionesJuntas;
 }
 
-export function onlySumSub(operaciones) {
-  const hay = hasAny(operaciones, SUM_SUB);
-  const hayOtros = hasAny(operaciones, MUL_DIV);
-  return hay && !hayOtros;
-}
-
 export function onlyMulDiv(operaciones) {
   const hay = hasAny(operaciones, MUL_DIV);
   const hayOtros = hasAny(operaciones, SUM_SUB);
@@ -243,44 +166,3 @@ export function canAutoPlaceParentheses(operandCount, operations) {
 }
 
 
-/**
- * Group adjacent operators of the same type.
- *
- * When user operands are supplied, each group keeps the operand slice and the
- * historical operator-position metadata expected by OperacionMultiple.
- *
- * @param {Array} operations
- * @param {Array} operands
- * @param {boolean} includeOperands
- * @return {Array}
- */
-export function groupSimilarOperations(operations, operands = [], includeOperands = false) {
-  const groups = [];
-  let previous = '';
-  let firstIndex = 0;
-
-  operations.forEach((operation, index) => {
-    if (index > 0 && previous == operation) {
-      if (includeOperands) {
-        groups[firstIndex].operandos.push(operands[index + 1]);
-        groups[firstIndex].posicionOperadores.push(index + 1);
-      }
-      groups[firstIndex].cantidadOperandos++;
-      return;
-    }
-
-    firstIndex = index;
-    previous = operation;
-    groups[firstIndex] = {
-      tipo: operation,
-      cantidadOperandos: 2,
-    };
-
-    if (includeOperands) {
-      groups[firstIndex].operandos = [operands[index], operands[index + 1]];
-      groups[firstIndex].posicionOperadores = [index, index + 1];
-    }
-  });
-
-  return groups;
-}

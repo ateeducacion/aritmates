@@ -619,19 +619,6 @@ export default class Operacion {
   }
 
   /**
-   * Obtiene un string como en toString() pero sustituye el resultado por un interrogante
-   *
-   * @author Fernando Ramírez Pérez
-   * @return {string} Operacion como cadena de texto pero sin resolver
-   * @memberof Operacion
-   */
-  toStringUnsolved() {
-    let txt = this.toString(true, true);
-    txt = txt.replace('/\[ (\-?[0-9]+) ]/gi', '[ ? ]');
-    return txt;
-  }
-
-  /**
    * Muestra la operacion como string con la resolución a la incognita mandada por
    *  el usuario
    *
@@ -726,40 +713,6 @@ export default class Operacion {
   }
 
   /**
-   * Igual que toHtml muestra la operacion como codigo html, pero mostrando el resultado
-   *
-   * @author Fernando Ramírez Pérez
-   * @return {string} html
-   * @memberof Operacion
-   */
-  toHtmlSolved() {
-    const html = '<p>' + this.toString(true, true) + '</p>';
-    return html;
-  }
-
-  /**
-   * Devuelve una clase con información de la operacion,
-   *
-   * @author Julio
-   * @return {object} con los datos tipo, operandos, resultado, posicion, incognita, nivel, lower_bound, upper_bound y cantidad de operandos
-   * @memberof Operacion
-   */
-  formula() {
-    const formula = {
-      'tipo': this.tipo,
-      'operandos': this.operandos,
-      'resultado': this.resultado,
-      'posicion': this.posicion_nivel,
-      'incognita': this.posicion_incognita,
-      'nivel': this.nivel,
-      'lower_bound': this.lower_bound,
-      'upper_bound': this.upper_bound,
-      'cantidadOperandos': this.cantidad_operandos,
-    };
-    return formula;
-  }
-
-  /**
    * Posicion al azar, empieza por 1 y incluye el resultado como ultima
    * posicion
    * @param {boolean} incluirPosicionResultado el resultado puede ser una
@@ -787,38 +740,6 @@ export default class Operacion {
   getSigno() {
     return randomSign(() => this.rng());
   }
-  /**
-     * Se cambio la manera de calcular los números y ya no se usa
-     *
-     * Genera un numero entre 0 y offset, tiene en cuenta lower y upper bound
-     * como limites inferiores y superiores que debe tener el numero resultante
-     *
-     *
-     *
-     * @param {number} lowerBound
-     * @param {number} upperBound
-     * @param {number} offset
-     * @return {number} desvio
-     * @memberof Operacion
-     */
-  getDesvio(lowerBound = 1, upperBound = 10, offset = 0 ) {
-    let limiteSuperior = this.nivel + offset;
-    let limiteInferior = this.nivel - offset;
-    if ( limiteSuperior > upperBound ) {
-      limiteSuperior = upperBound;
-    }
-    if ( limiteInferior < lowerBound ) {
-      limiteInferior = lowerBound;
-    }
-    const desvio = roundedBetween(
-        () => this.rng(),
-        limiteInferior,
-        limiteSuperior,
-    );
-
-    return desvio;
-  }
-
   /**
    * Obtenener numero aleatorio entre dos numeros
    *
@@ -1196,29 +1117,6 @@ export default class Operacion {
   }
 
   //TODO: revisar esto para borrarlo o unificar showErrors y mostrarErrores
-  mostrarErrores() {
-    let txt= '';
-    if (this.errors.length > 0 ) {
-      txt = 'Errores:\n';
-    } else {
-      return '';
-    }
-
-    this.errors.forEach((e) => {
-      txt += this.toString() + '\n';
-      txt += e.error+': ' + '\n';
-      txt += e.msg+'. \n';
-      txt += '\n';
-    });
-
-    return txt;
-  }
-
-  mostrarErroresHtml() {
-    const txt = this.mostrarErrores();
-    return '<pre>'+txt+'</pre>';
-  }
-
   esRespuesta( respuestaUsuario ) {
     return (this.respuesta() == respuestaUsuario);
   }

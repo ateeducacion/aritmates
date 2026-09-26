@@ -116,37 +116,6 @@ export default class Resta extends Operacion {
 
   }
 
-  generarNumerosOperandos() {
-    super.generarNumerosOperandos();
-
-
-    if (this.complementario && this.complementario>0) {
-      return;
-    }
-
-
-    //   // ordenador de mayor a menor
-    //   this.operandos.sort(function(a, b) {
-
-    //     // comprobamos del 3 op en adelante
-    //       // resultado de operandos anteriores:
-    //       const resultadoAnterior = this.restarValores(
-    //           this.operandos.slice(0, index));
-    //         // si el resultado anterior es 0 corremos el riesgo de terminar
-    //         // con numero al azar del 1-9una operacion tipo
-    //         // "23 - 23 - 0 - 0 = 0 "
-    //         // asi que pedimos nuevos numero
-    //       // calculamos los operandos siguiente, el max el resutadoAnterior
-    //       // para que no sea resultado negativo creo que no hace falta por
-    //       // que ya lo hace en generarNumeroOperando
-    //       // if ( resultadoAnterior < operando ) {
-    //       //   this.operandos[index] = Math.round(
-    //       //       this.rng()*resultadoAnterior );
-    //       // }
-
-
-  }
-
   _generarOperandoPosicion( posicion ) {
 
     const limites = this.calcularLimitesOperando(posicion);

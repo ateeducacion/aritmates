@@ -204,7 +204,8 @@ export default class DivisionDecimales extends DivisionEntera {
 
   decimalToFloat(lista) {
     lista.forEach((element, i) => {
-      if ( element.constructor.name === 'Decimal') {
+      // constructor.name is mangled in the minified bundle.
+      if (Decimal.isDecimal(element)) {
         lista[i] = parseFloat(lista[i].toString());
       }
     });
