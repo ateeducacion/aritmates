@@ -119,7 +119,6 @@ Dos cifras no mejoran y conviene explicarlas:
 | Los diálogos acumulaban acciones y «Atrás» no cerraba | Original | #137 |
 | Un cero explícito se trataba como «sin operando» | Original | #120, #121 |
 | `debug` alteraba los ejercicios generados | Original | #114 |
-| El reloj de la sesión fallaba en cada tic y la cuenta atrás no terminaba | **Introducido en la modernización** (#99) | #136 |
 | Fallaba el ZIP del release | Pipeline del proyecto | #134 |
 
 : Tabla 2. Defectos corregidos durante la modernización.
@@ -159,8 +158,6 @@ enfoque, múltiplos) es rica y está pensada para el aula. La modernización la 
   con poca cobertura unitaria; solo los protegen las pruebas de extremo a extremo.
 - **La configuración se lee con una petición síncrona** al cargar la página, una práctica obsoleta que bloquea
   el hilo principal.
-- **La propia modernización introdujo una regresión** (el reloj de la sesión, tabla 2) que estuvo en `main`
-  hasta que se añadió a las pruebas la detección de errores de página. La cobertura unitaria no la vio.
 - **El volumen de cambios ha sido muy alto** (más de 130 PRs fusionados), buena parte en pocos días y con ayuda
   de agentes de IA. Cada PR es pequeño y va validado, pero la revisión humana de semejante volumen es limitada.
 - **Las pruebas son amplias pero con límites:** el *golden master* ocupa unos 600 KB, el E2E solo usa Chromium
