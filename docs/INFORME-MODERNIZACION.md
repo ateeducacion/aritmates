@@ -138,7 +138,7 @@ Dos cifras mejoran menos que el resto:
 | Los decimales se trataban distinto en el navegador | Original | #140 |
 | Aviso «no es entero» cuando sí lo era | Original | #146 |
 | Los diálogos repetían acciones | Original | #137 |
-| Un cero se tomaba por operando vacío | Original | #120, #121 |
+| Un cero se tomaba por vacío | Original | #120, #121 |
 | `debug` alteraba los ejercicios | Original | #114 |
 | División inexacta dada por buena (`7 / 2 = 3`) | Original | #151 |
 | Error al añadir una operación ya elegida | Original | #153 |
