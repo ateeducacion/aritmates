@@ -297,3 +297,121 @@ describe('mdc-compat', () => {
     expect(new MDCTextField(fakeNode())).to.be.instanceOf(MDCTextField);
   });
 });
+
+describe('Componentes con shadow DOM', () => {
+  it('casilla e interruptor crean su interior al conectarse, una sola vez', () => {
+    for (const [Clase, part] of [[PaperCheckbox, 'box'], [MwcSwitch, 'track']]) {
+      const el = mount(Clase, {shadow: {}});
+      el.connectedCallback();
+      expect(el._root.innerHTML).to.include(`class="${part}"`);
+    }
+    const ya = mount(PaperCheckbox, {shadow: {'.box': fakeNode()}});
+    ya.connectedCallback();
+    expect(ya._root.innerHTML).to.equal('');
+  });
+
+  it('un interruptor desactivado empieza fuera del orden de tabulación', () => {
+    const el = mount(MwcSwitch, {attrs: {disabled: ''}});
+    el.connectedCallback();
+    expect(el.getAttribute('tabindex')).to.equal('-1');
+    const click = {prevented: false, stopped: false,
+      preventDefault() {
+        this.prevented = true;
+      },
+      stopImmediatePropagation() {
+        this.stopped = true;
+      }};
+    el._onActivate(click);
+    expect(click.prevented && click.stopped).to.equal(true);
+  });
+
+  it('paper-item y paper-item-body pintan su hueco para el contenido', () => {
+    const item = mount(PaperItem, {shadow: {}});
+    const body = mount(PaperItemBody, {shadow: {}});
+    expect(item.shadowRoot.innerHTML).to.include('<slot></slot>');
+    expect(body.shadowRoot.innerHTML).to.include('<slot></slot>');
+  });
+
+  it('el panel se dibuja en su shadow DOM y reacciona a los atributos', () => {
+    withFakeDocument(() => {
+      const parts = {
+        '.header': fakeNode(), '.title': fakeNode(), '.summary': fakeNode(),
+        '.toggle': fakeNode(), '.content': fakeNode(),
+      };
+      const el = mount(PaperExpansionPanel, {shadow: parts});
+      el.connectedCallback();
+      expect(el._root.innerHTML).to.include('class="header"');
+      el.setAttribute('opened', '');
+      expect(parts['.header'].getAttribute('aria-expanded')).to.equal('true');
+      expect(parts['.title'].children[0].textContent).to.equal(' ');
+    });
+  });
+
+  it('el desplegable crea su select, sigue a sus hijos y avisa de los cambios', () => {
+    const observers = [];
+    class FakeMutationObserver {
+      constructor(cb) {
+        this.cb = cb;
+        observers.push(this);
+      }
+      observe() {}
+      disconnect() {
+        this.disconnected = true;
+      }
+    }
+    const previous = globalThis.MutationObserver;
+    globalThis.MutationObserver = FakeMutationObserver;
+    try {
+      withFakeDocument(() => {
+        const select = fakeNode({value: ''});
+        const label = fakeNode();
+        const el = mount(PaperDropdownMenu, {
+          attrs: {label: 'Resultado', disabled: ''},
+          shadow: {'select': select, '.label': label},
+        });
+        let hijos = [{textContent: '30'}];
+        el.querySelectorAll = (tag) => (tag === 'paper-item' ? hijos : []);
+        el.connectedCallback();
+        expect(el._root.innerHTML).to.include('<select');
+        expect(select.disabled).to.equal(true);
+        expect(label.textContent).to.equal('Resultado');
+        expect(select.children.map((o) => o.value)).to.deep.equal(['', '30']);
+
+        hijos = [{textContent: '30'}, {textContent: '40'}];
+        select.value = '30';
+        observers[0].cb();
+        expect(select.children.map((o) => o.value)).to.deep.equal(['', '30', '40']);
+        expect(select.value).to.equal('30');
+
+        el.label = '';
+        el._syncLabel();
+        expect(label.hidden).to.equal(true);
+        expect(select.getAttribute('aria-label')).to.equal(null);
+
+        select.value = '';
+        select.fire('change');
+        expect(el.hasAttribute('value')).to.equal(false);
+        el._suppress = true;
+        el._onSelectChange();
+        expect(el.dispatched.filter((t) => t === 'change')).to.have.length(1);
+
+        el.disconnectedCallback();
+        expect(observers[0].disconnected).to.equal(true);
+        expect(select.listenerCount('change')).to.equal(0);
+      });
+    } finally {
+      if (previous === undefined) delete globalThis.MutationObserver;
+      else globalThis.MutationObserver = previous;
+    }
+  });
+
+  it('el cajón usa el fondo que tiene justo al lado', () => {
+    withFakeDocument(() => {
+      const scrim = fakeNode();
+      scrim.classList.add('mdc-drawer-scrim');
+      const drawer = new MDCDrawer(fakeNode({nextElementSibling: scrim}));
+      drawer.open = true;
+      expect(scrim.style.display).to.equal('block');
+    });
+  });
+});

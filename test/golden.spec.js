@@ -9,6 +9,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {expect} from 'chai';
+import Suma from '../src/operaciones/suma';
+import Resta from '../src/operaciones/resta';
+import Multiplicacion from '../src/operaciones/multiplicacion';
 import DivisionEntera from '../src/operaciones/divisionEntera';
 import DivisionResto from '../src/operaciones/divisionResto';
 import DivisionDecimales from '../src/operaciones/divisionDecimales';
@@ -75,6 +78,33 @@ function divisionCases() {
             cases[`${name}|n${nivel}|${variant}|s${seed}`].entradaUsuario =
               safe(() => op.toStringUserInput({incognita: 7, resto: 2}));
           }
+        }
+      }
+    }
+  }
+  return cases;
+}
+
+function simpleCases() {
+  const cases = {};
+  const classes = {Suma, Resta, Multiplicacion};
+  const variants = {
+    base: {},
+    tresOperandos: {cantidadOperandos: 3},
+    enfocado: {enfocado: true},
+    negativos: {permitirNegativos: true},
+    resultadoNegativo: {permitirNegativos: true, resultadoNegativo: true},
+    multiplo10: {multiplo10: true},
+    multiplo100: {multiplo100: true},
+    decimales: {decimales: true},
+    primerOperando: {operandos: [12]},
+  };
+  for (const [name, Clase] of Object.entries(classes)) {
+    for (const nivel of [3, 10, 50]) {
+      for (const [variant, opts] of Object.entries(variants)) {
+        for (const seed of [1, 2]) {
+          const op = new Clase({nivel, ...opts, random: seededRandom(seed)});
+          cases[`${name}|n${nivel}|${variant}|s${seed}`] = describeOp(op, seed === 1);
         }
       }
     }
@@ -164,6 +194,7 @@ function examCases() {
 describe('Golden master del motor', () => {
   // Through JSON so undefined, NaN and Decimal compare like the fixture.
   const actual = JSON.parse(JSON.stringify({
+    simples: simpleCases(),
     divisiones: divisionCases(),
     multiples: multipleCases(),
     examenes: examCases(),

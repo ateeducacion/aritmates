@@ -1,4 +1,1482 @@
 {
+ "simples": {
+  "Suma|n3|base|s1": {
+   "texto": "2 + 1 = 3",
+   "textoIncognita": "2 + 1 = [3]",
+   "html": "<p class=\"operacion f-operacion\">2 + 1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">2</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 3,
+   "respuesta": 3,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|base|s2": {
+   "texto": "1 + 2 = 3",
+   "textoIncognita": "1 + 2 = [3]",
+   "resultado": 3,
+   "respuesta": 3,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|tresOperandos|s1": {
+   "texto": "1 + 3 + 1 = 5",
+   "textoIncognita": "1 + 3 + 1 = [5]",
+   "html": "<p class=\"operacion f-operacion\">1 + 3 + 1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">1</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">3</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 5,
+   "respuesta": 5,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|tresOperandos|s2": {
+   "texto": "2 + 0 + 2 = 4",
+   "textoIncognita": "2 + 0 + 2 = [4]",
+   "resultado": 4,
+   "respuesta": 4,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|enfocado|s1": {
+   "texto": "3 + 2 = 5",
+   "textoIncognita": "3 + 2 = [5]",
+   "html": "<p class=\"operacion f-operacion\">3 + 2 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">3</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">2</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 5,
+   "respuesta": 5,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|enfocado|s2": {
+   "texto": "3 + 1 = 4",
+   "textoIncognita": "3 + 1 = [4]",
+   "resultado": 4,
+   "respuesta": 4,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|negativos|s1": {
+   "texto": "1 + 0 = 1",
+   "textoIncognita": "1 + 0 = [1]",
+   "html": "<p class=\"operacion f-operacion\">1 + 0 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">1</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">0</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 1,
+   "respuesta": 1,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|negativos|s2": {
+   "texto": "-1 + 3 = 2",
+   "textoIncognita": "-1 + 3 = [2]",
+   "resultado": 2,
+   "respuesta": 2,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|resultadoNegativo|s1": {
+   "texto": "3 + (-4) = -1",
+   "textoIncognita": "3 + (-4) = [-1]",
+   "html": "<p class=\"operacion f-operacion\">3 + (-4) = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">3</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">(-4)</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": -1,
+   "respuesta": -1,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|resultadoNegativo|s2": {
+   "texto": "0 + (-1) = -1",
+   "textoIncognita": "0 + (-1) = [-1]",
+   "resultado": -1,
+   "respuesta": -1,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|multiplo10|s1": {
+   "texto": "80 + 80 = 160",
+   "textoIncognita": "80 + 80 = [160]",
+   "html": "<p class=\"operacion f-operacion\">80 + 80 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">80</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">80</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 160,
+   "respuesta": 160,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|multiplo10|s2": {
+   "texto": "50 + 50 = 100",
+   "textoIncognita": "50 + 50 = [100]",
+   "resultado": 100,
+   "respuesta": 100,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|multiplo100|s1": {
+   "texto": "800 + 800 = 1600",
+   "textoIncognita": "800 + 800 = [1600]",
+   "html": "<p class=\"operacion f-operacion\">800 + 800 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">800</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">800</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 1600,
+   "respuesta": 1600,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|multiplo100|s2": {
+   "texto": "500 + 500 = 1000",
+   "textoIncognita": "500 + 500 = [1000]",
+   "resultado": 1000,
+   "respuesta": 1000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|decimales|s1": {
+   "texto": "3.4 + 1.1 = 4.5",
+   "textoIncognita": "3.4 + 1.1 = [4.5]",
+   "html": "<p class=\"operacion f-operacion\">3.4 + 1.1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">3.4</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">1.1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 4.5,
+   "respuesta": 4.5,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|decimales|s2": {
+   "texto": "0.7 + 1.4 = 2.1",
+   "textoIncognita": "0.7 + 1.4 = [2.1]",
+   "resultado": 2.1,
+   "respuesta": 2.1,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|primerOperando|s1": {
+   "texto": "12 + 2 = 14",
+   "textoIncognita": "12 + 2 = [14]",
+   "html": "<p class=\"operacion f-operacion\">12 + 2 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">12</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">2</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 14,
+   "respuesta": 14,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n3|primerOperando|s2": {
+   "texto": "12 + 0 = 12",
+   "textoIncognita": "12 + 0 = [12]",
+   "resultado": 12,
+   "respuesta": 12,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|base|s1": {
+   "texto": "7 + 4 = 11",
+   "textoIncognita": "7 + 4 = [11]",
+   "html": "<p class=\"operacion f-operacion\">7 + 4 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">7</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">4</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 11,
+   "respuesta": 11,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|base|s2": {
+   "texto": "4 + 8 = 12",
+   "textoIncognita": "4 + 8 = [12]",
+   "resultado": 12,
+   "respuesta": 12,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|tresOperandos|s1": {
+   "texto": "4 + 10 + 5 = 19",
+   "textoIncognita": "4 + 10 + 5 = [19]",
+   "html": "<p class=\"operacion f-operacion\">4 + 10 + 5 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">4</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">10</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">5</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 19,
+   "respuesta": 19,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|tresOperandos|s2": {
+   "texto": "8 + 1 + 8 = 17",
+   "textoIncognita": "8 + 1 + 8 = [17]",
+   "resultado": 17,
+   "respuesta": 17,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|enfocado|s1": {
+   "texto": "10 + 5 = 15",
+   "textoIncognita": "10 + 5 = [15]",
+   "html": "<p class=\"operacion f-operacion\">10 + 5 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">10</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">5</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 15,
+   "respuesta": 15,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|enfocado|s2": {
+   "texto": "10 + 3 = 13",
+   "textoIncognita": "10 + 3 = [13]",
+   "resultado": 13,
+   "respuesta": 13,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|negativos|s1": {
+   "texto": "4 + (-1) = 3",
+   "textoIncognita": "4 + (-1) = [3]",
+   "html": "<p class=\"operacion f-operacion\">4 + (-1) = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">4</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">(-1)</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 3,
+   "respuesta": 3,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|negativos|s2": {
+   "texto": "-3 + 8 = 5",
+   "textoIncognita": "-3 + 8 = [5]",
+   "resultado": 5,
+   "respuesta": 5,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|resultadoNegativo|s1": {
+   "texto": "10 + (-11) = -1",
+   "textoIncognita": "10 + (-11) = [-1]",
+   "html": "<p class=\"operacion f-operacion\">10 + (-11) = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">10</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">(-11)</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": -1,
+   "respuesta": -1,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|resultadoNegativo|s2": {
+   "texto": "1 + (-3) = -2",
+   "textoIncognita": "1 + (-3) = [-2]",
+   "resultado": -2,
+   "respuesta": -2,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|multiplo10|s1": {
+   "texto": "80 + 80 = 160",
+   "textoIncognita": "80 + 80 = [160]",
+   "html": "<p class=\"operacion f-operacion\">80 + 80 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">80</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">80</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 160,
+   "respuesta": 160,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|multiplo10|s2": {
+   "texto": "50 + 50 = 100",
+   "textoIncognita": "50 + 50 = [100]",
+   "resultado": 100,
+   "respuesta": 100,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|multiplo100|s1": {
+   "texto": "800 + 800 = 1600",
+   "textoIncognita": "800 + 800 = [1600]",
+   "html": "<p class=\"operacion f-operacion\">800 + 800 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">800</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">800</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 1600,
+   "respuesta": 1600,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|multiplo100|s2": {
+   "texto": "500 + 500 = 1000",
+   "textoIncognita": "500 + 500 = [1000]",
+   "resultado": 1000,
+   "respuesta": 1000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|decimales|s1": {
+   "texto": "10.4 + 5.1 = 15.5",
+   "textoIncognita": "10.4 + 5.1 = [15.5]",
+   "html": "<p class=\"operacion f-operacion\">10.4 + 5.1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">10.4</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">5.1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 15.5,
+   "respuesta": 15.5,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|decimales|s2": {
+   "texto": "1.7 + 2.4 = 4.1",
+   "textoIncognita": "1.7 + 2.4 = [4.1]",
+   "resultado": 4.1,
+   "respuesta": 4.1,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|primerOperando|s1": {
+   "texto": "12 + 0 = 12",
+   "textoIncognita": "12 + 0 = [12]",
+   "html": "<p class=\"operacion f-operacion\">12 + 0 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">12</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">0</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 12,
+   "respuesta": 12,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n10|primerOperando|s2": {
+   "texto": "12 + 0 = 12",
+   "textoIncognita": "12 + 0 = [12]",
+   "resultado": 12,
+   "respuesta": 12,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|base|s1": {
+   "texto": "36 + 21 = 57",
+   "textoIncognita": "36 + 21 = [57]",
+   "html": "<p class=\"operacion f-operacion\">36 + 21 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">36</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">21</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 57,
+   "respuesta": 57,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|base|s2": {
+   "texto": "18 + 39 = 57",
+   "textoIncognita": "18 + 39 = [57]",
+   "resultado": 57,
+   "respuesta": 57,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|tresOperandos|s1": {
+   "texto": "21 + 50 + 23 = 94",
+   "textoIncognita": "21 + 50 + 23 = [94]",
+   "html": "<p class=\"operacion f-operacion\">21 + 50 + 23 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">21</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">50</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">23</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 94,
+   "respuesta": 94,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|tresOperandos|s2": {
+   "texto": "39 + 6 + 39 = 84",
+   "textoIncognita": "39 + 6 + 39 = [84]",
+   "resultado": 84,
+   "respuesta": 84,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|enfocado|s1": {
+   "texto": "50 + 26 = 76",
+   "textoIncognita": "50 + 26 = [76]",
+   "html": "<p class=\"operacion f-operacion\">50 + 26 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">50</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">26</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 76,
+   "respuesta": 76,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|enfocado|s2": {
+   "texto": "50 + 14 = 64",
+   "textoIncognita": "50 + 14 = [64]",
+   "resultado": 64,
+   "respuesta": 64,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|negativos|s1": {
+   "texto": "22 + (-7) = 15",
+   "textoIncognita": "22 + (-7) = [15]",
+   "html": "<p class=\"operacion f-operacion\">22 + (-7) = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">22</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">(-7)</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 15,
+   "respuesta": 15,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|negativos|s2": {
+   "texto": "-14 + 42 = 28",
+   "textoIncognita": "-14 + 42 = [28]",
+   "resultado": 28,
+   "respuesta": 28,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|resultadoNegativo|s1": {
+   "texto": "48 + (-49) = -1",
+   "textoIncognita": "48 + (-49) = [-1]",
+   "html": "<p class=\"operacion f-operacion\">48 + (-49) = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">48</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">(-49)</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": -1,
+   "respuesta": -1,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|resultadoNegativo|s2": {
+   "texto": "4 + (-11) = -7",
+   "textoIncognita": "4 + (-11) = [-7]",
+   "resultado": -7,
+   "respuesta": -7,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|multiplo10|s1": {
+   "texto": "80 + 80 = 160",
+   "textoIncognita": "80 + 80 = [160]",
+   "html": "<p class=\"operacion f-operacion\">80 + 80 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">80</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">80</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 160,
+   "respuesta": 160,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|multiplo10|s2": {
+   "texto": "50 + 50 = 100",
+   "textoIncognita": "50 + 50 = [100]",
+   "resultado": 100,
+   "respuesta": 100,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|multiplo100|s1": {
+   "texto": "800 + 800 = 1600",
+   "textoIncognita": "800 + 800 = [1600]",
+   "html": "<p class=\"operacion f-operacion\">800 + 800 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">800</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">800</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 1600,
+   "respuesta": 1600,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|multiplo100|s2": {
+   "texto": "500 + 500 = 1000",
+   "textoIncognita": "500 + 500 = [1000]",
+   "resultado": 1000,
+   "respuesta": 1000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|decimales|s1": {
+   "texto": "50.455 + 24.139 = 74.594",
+   "textoIncognita": "50.455 + 24.139 = [74.594]",
+   "html": "<p class=\"operacion f-operacion\">50.455 + 24.139 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">50.455</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">24.139</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 74.594,
+   "respuesta": 74.594,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|decimales|s2": {
+   "texto": "6.785 + 10.424 = 17.209",
+   "textoIncognita": "6.785 + 10.424 = [17.209]",
+   "resultado": 17.209,
+   "respuesta": 17.209,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|primerOperando|s1": {
+   "texto": "12 + 0 = 12",
+   "textoIncognita": "12 + 0 = [12]",
+   "html": "<p class=\"operacion f-operacion\">12 + 0 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">12</span><span class=\"simbolo +\">\n          +</span><span class=\"operando\">0</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 12,
+   "respuesta": 12,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Suma|n50|primerOperando|s2": {
+   "texto": "12 + 0 = 12",
+   "textoIncognita": "12 + 0 = [12]",
+   "resultado": 12,
+   "respuesta": 12,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|base|s1": {
+   "texto": "2 - 1 = 1",
+   "textoIncognita": "2 - 1 = [1]",
+   "html": "<p class=\"operacion f-operacion\">2 - 1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">2</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 1,
+   "respuesta": 1,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|base|s2": {
+   "texto": "1 - 1 = 0",
+   "textoIncognita": "1 - 1 = [0]",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|tresOperandos|s1": {
+   "texto": "1 - 1 - 0 = 0",
+   "textoIncognita": "1 - 1 - 0 = [0]",
+   "html": "<p class=\"operacion f-operacion\">1 - 1 - 0 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">1</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">1</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">0</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Nivel demasiado bajo para numero de operandos"
+   ]
+  },
+  "Resta|n3|tresOperandos|s2": {
+   "texto": "2 - 0 - 2 = 0",
+   "textoIncognita": "2 - 0 - 2 = [0]",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Nivel demasiado bajo para numero de operandos"
+   ]
+  },
+  "Resta|n3|enfocado|s1": {
+   "texto": "3 - 2 = 1",
+   "textoIncognita": "3 - 2 = [1]",
+   "html": "<p class=\"operacion f-operacion\">3 - 2 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">3</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">2</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 1,
+   "respuesta": 1,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|enfocado|s2": {
+   "texto": "3 - 1 = 2",
+   "textoIncognita": "3 - 1 = [2]",
+   "resultado": 2,
+   "respuesta": 2,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|negativos|s1": {
+   "texto": "1 - (-1) = 2",
+   "textoIncognita": "1 - (-1) = [2]",
+   "html": "<p class=\"operacion f-operacion\">1 - (-1) = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">1</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">(-1)</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 2,
+   "respuesta": 2,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|negativos|s2": {
+   "texto": "-1 - (-1) = 0",
+   "textoIncognita": "-1 - (-1) = [0]",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|resultadoNegativo|s1": {
+   "texto": "1 - 3 = -2",
+   "textoIncognita": "1 - 3 = [-2]",
+   "html": "<p class=\"operacion f-operacion\">1 - 3 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">1</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">3</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": -2,
+   "respuesta": -2,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|resultadoNegativo|s2": {
+   "texto": "-1 - 2 = -3",
+   "textoIncognita": "-1 - 2 = [-3]",
+   "resultado": -3,
+   "respuesta": -3,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|multiplo10|s1": {
+   "texto": "90 - 40 = 50",
+   "textoIncognita": "90 - 40 = [50]",
+   "html": "<p class=\"operacion f-operacion\">90 - 40 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">90</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">40</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 50,
+   "respuesta": 50,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|multiplo10|s2": {
+   "texto": "10 - 10 = 0",
+   "textoIncognita": "10 - 10 = [0]",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|multiplo100|s1": {
+   "texto": "900 - 400 = 500",
+   "textoIncognita": "900 - 400 = [500]",
+   "html": "<p class=\"operacion f-operacion\">900 - 400 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">900</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">400</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 500,
+   "respuesta": 500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|multiplo100|s2": {
+   "texto": "100 - 100 = 0",
+   "textoIncognita": "100 - 100 = [0]",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|decimales|s1": {
+   "texto": "3.4 - 1.1 = 2.3",
+   "textoIncognita": "3.4 - 1.1 = [2.3]",
+   "html": "<p class=\"operacion f-operacion\">3.4 - 1.1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">3.4</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">1.1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 2.3,
+   "respuesta": 2.3,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|decimales|s2": {
+   "texto": "0.7 - 0.4 = 0.3",
+   "textoIncognita": "0.7 - 0.4 = [0.3]",
+   "resultado": 0.3,
+   "respuesta": 0.3,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|primerOperando|s1": {
+   "texto": "12 - 0 = 12",
+   "textoIncognita": "12 - 0 = [12]",
+   "html": "<p class=\"operacion f-operacion\">12 - 0 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">12</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">0</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 12,
+   "respuesta": 12,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n3|primerOperando|s2": {
+   "texto": "12 - 0 = 12",
+   "textoIncognita": "12 - 0 = [12]",
+   "resultado": 12,
+   "respuesta": 12,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|base|s1": {
+   "texto": "7 - 3 = 4",
+   "textoIncognita": "7 - 3 = [4]",
+   "html": "<p class=\"operacion f-operacion\">7 - 3 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">7</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">3</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 4,
+   "respuesta": 4,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|base|s2": {
+   "texto": "4 - 3 = 1",
+   "textoIncognita": "4 - 3 = [1]",
+   "resultado": 1,
+   "respuesta": 1,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|tresOperandos|s1": {
+   "texto": "4 - 4 - 0 = 0",
+   "textoIncognita": "4 - 4 - 0 = [0]",
+   "html": "<p class=\"operacion f-operacion\">4 - 4 - 0 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">4</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">4</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">0</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|tresOperandos|s2": {
+   "texto": "8 - 1 - 6 = 1",
+   "textoIncognita": "8 - 1 - 6 = [1]",
+   "resultado": 1,
+   "respuesta": 1,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|enfocado|s1": {
+   "texto": "10 - 5 = 5",
+   "textoIncognita": "10 - 5 = [5]",
+   "html": "<p class=\"operacion f-operacion\">10 - 5 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">10</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">5</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 5,
+   "respuesta": 5,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|enfocado|s2": {
+   "texto": "10 - 3 = 7",
+   "textoIncognita": "10 - 3 = [7]",
+   "resultado": 7,
+   "respuesta": 7,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|negativos|s1": {
+   "texto": "4 - (-4) = 8",
+   "textoIncognita": "4 - (-4) = [8]",
+   "html": "<p class=\"operacion f-operacion\">4 - (-4) = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">4</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">(-4)</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 8,
+   "respuesta": 8,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|negativos|s2": {
+   "texto": "-3 - (-5) = 2",
+   "textoIncognita": "-3 - (-5) = [2]",
+   "resultado": 2,
+   "respuesta": 2,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|resultadoNegativo|s1": {
+   "texto": "4 - 9 = -5",
+   "textoIncognita": "4 - 9 = [-5]",
+   "html": "<p class=\"operacion f-operacion\">4 - 9 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">4</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">9</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": -5,
+   "respuesta": -5,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|resultadoNegativo|s2": {
+   "texto": "-3 - 6 = -9",
+   "textoIncognita": "-3 - 6 = [-9]",
+   "resultado": -9,
+   "respuesta": -9,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|multiplo10|s1": {
+   "texto": "90 - 40 = 50",
+   "textoIncognita": "90 - 40 = [50]",
+   "html": "<p class=\"operacion f-operacion\">90 - 40 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">90</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">40</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 50,
+   "respuesta": 50,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|multiplo10|s2": {
+   "texto": "10 - 10 = 0",
+   "textoIncognita": "10 - 10 = [0]",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|multiplo100|s1": {
+   "texto": "900 - 400 = 500",
+   "textoIncognita": "900 - 400 = [500]",
+   "html": "<p class=\"operacion f-operacion\">900 - 400 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">900</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">400</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 500,
+   "respuesta": 500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|multiplo100|s2": {
+   "texto": "100 - 100 = 0",
+   "textoIncognita": "100 - 100 = [0]",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|decimales|s1": {
+   "texto": "10.4 - 5.1 = 5.3",
+   "textoIncognita": "10.4 - 5.1 = [5.3]",
+   "html": "<p class=\"operacion f-operacion\">10.4 - 5.1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">10.4</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">5.1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 5.3,
+   "respuesta": 5.3,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|decimales|s2": {
+   "texto": "1.7 - 0.4 = 1.3",
+   "textoIncognita": "1.7 - 0.4 = [1.3]",
+   "resultado": 1.3,
+   "respuesta": 1.3,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|primerOperando|s1": {
+   "texto": "12 - 0 = 12",
+   "textoIncognita": "12 - 0 = [12]",
+   "html": "<p class=\"operacion f-operacion\">12 - 0 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">12</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">0</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 12,
+   "respuesta": 12,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n10|primerOperando|s2": {
+   "texto": "12 - 0 = 12",
+   "textoIncognita": "12 - 0 = [12]",
+   "resultado": 12,
+   "respuesta": 12,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|base|s1": {
+   "texto": "36 - 15 = 21",
+   "textoIncognita": "36 - 15 = [21]",
+   "html": "<p class=\"operacion f-operacion\">36 - 15 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">36</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">15</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 21,
+   "respuesta": 21,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|base|s2": {
+   "texto": "18 - 14 = 4",
+   "textoIncognita": "18 - 14 = [4]",
+   "resultado": 4,
+   "respuesta": 4,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|tresOperandos|s1": {
+   "texto": "21 - 21 - 0 = 0",
+   "textoIncognita": "21 - 21 - 0 = [0]",
+   "html": "<p class=\"operacion f-operacion\">21 - 21 - 0 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">21</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">21</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">0</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|tresOperandos|s2": {
+   "texto": "39 - 4 - 28 = 7",
+   "textoIncognita": "39 - 4 - 28 = [7]",
+   "resultado": 7,
+   "respuesta": 7,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|enfocado|s1": {
+   "texto": "50 - 26 = 24",
+   "textoIncognita": "50 - 26 = [24]",
+   "html": "<p class=\"operacion f-operacion\">50 - 26 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">50</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">26</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 24,
+   "respuesta": 24,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|enfocado|s2": {
+   "texto": "50 - 14 = 36",
+   "textoIncognita": "50 - 14 = [36]",
+   "resultado": 36,
+   "respuesta": 36,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|negativos|s1": {
+   "texto": "22 - (-19) = 41",
+   "textoIncognita": "22 - (-19) = [41]",
+   "html": "<p class=\"operacion f-operacion\">22 - (-19) = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">22</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">(-19)</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 41,
+   "respuesta": 41,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|negativos|s2": {
+   "texto": "-14 - (-22) = 8",
+   "textoIncognita": "-14 - (-22) = [8]",
+   "resultado": 8,
+   "respuesta": 8,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|resultadoNegativo|s1": {
+   "texto": "22 - 44 = -22",
+   "textoIncognita": "22 - 44 = [-22]",
+   "html": "<p class=\"operacion f-operacion\">22 - 44 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">22</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">44</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": -22,
+   "respuesta": -22,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|resultadoNegativo|s2": {
+   "texto": "-14 - 26 = -40",
+   "textoIncognita": "-14 - 26 = [-40]",
+   "resultado": -40,
+   "respuesta": -40,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|multiplo10|s1": {
+   "texto": "90 - 40 = 50",
+   "textoIncognita": "90 - 40 = [50]",
+   "html": "<p class=\"operacion f-operacion\">90 - 40 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">90</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">40</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 50,
+   "respuesta": 50,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|multiplo10|s2": {
+   "texto": "10 - 10 = 0",
+   "textoIncognita": "10 - 10 = [0]",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|multiplo100|s1": {
+   "texto": "900 - 400 = 500",
+   "textoIncognita": "900 - 400 = [500]",
+   "html": "<p class=\"operacion f-operacion\">900 - 400 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">900</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">400</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 500,
+   "respuesta": 500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|multiplo100|s2": {
+   "texto": "100 - 100 = 0",
+   "textoIncognita": "100 - 100 = [0]",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|decimales|s1": {
+   "texto": "50.455 - 24.139 = 26.316",
+   "textoIncognita": "50.455 - 24.139 = [26.316]",
+   "html": "<p class=\"operacion f-operacion\">50.455 - 24.139 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">50.455</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">24.139</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 26.316,
+   "respuesta": 26.316,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|decimales|s2": {
+   "texto": "6.785 - 1.424 = 5.361",
+   "textoIncognita": "6.785 - 1.424 = [5.361]",
+   "resultado": 5.361,
+   "respuesta": 5.361,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|primerOperando|s1": {
+   "texto": "12 - 0 = 12",
+   "textoIncognita": "12 - 0 = [12]",
+   "html": "<p class=\"operacion f-operacion\">12 - 0 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">12</span><span class=\"simbolo -\">\n          -</span><span class=\"operando\">0</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 12,
+   "respuesta": 12,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Resta|n50|primerOperando|s2": {
+   "texto": "12 - 0 = 12",
+   "textoIncognita": "12 - 0 = [12]",
+   "resultado": 12,
+   "respuesta": 12,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|base|s1": {
+   "texto": "2 ∙ 2 = 4",
+   "textoIncognita": "2 ∙ 2 = [4]",
+   "html": "<p class=\"operacion f-operacion\">2 ∙ 2 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">2</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">2</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 4,
+   "respuesta": 4,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|base|s2": {
+   "texto": "2 ∙ 3 = 6",
+   "textoIncognita": "2 ∙ 3 = [6]",
+   "resultado": 6,
+   "respuesta": 6,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|tresOperandos|s1": {
+   "texto": "2 ∙ 2 ∙ 1 = 4",
+   "textoIncognita": "2 ∙ 2 ∙ 1 = [4]",
+   "html": "<p class=\"operacion f-operacion\">2 ∙ 2 ∙ 1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">2</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">2</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 4,
+   "respuesta": 4,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|tresOperandos|s2": {
+   "texto": "3 ∙ 3 ∙ 2 = 18",
+   "textoIncognita": "3 ∙ 3 ∙ 2 = [18]",
+   "resultado": 18,
+   "respuesta": 18,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|enfocado|s1": {
+   "texto": "3 ∙ 3 = 9",
+   "textoIncognita": "3 ∙ 3 = [9]",
+   "html": "<p class=\"operacion f-operacion\">3 ∙ 3 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">3</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">3</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 9,
+   "respuesta": 9,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|enfocado|s2": {
+   "texto": "3 ∙ 3 = 9",
+   "textoIncognita": "3 ∙ 3 = [9]",
+   "resultado": 9,
+   "respuesta": 9,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|negativos|s1": {
+   "texto": "1 ∙ 0 = 0",
+   "textoIncognita": "1 ∙ 0 = [0]",
+   "html": "<p class=\"operacion f-operacion\">1 ∙ 0 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">1</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">0</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|negativos|s2": {
+   "texto": "0 ∙ 2 = 0",
+   "textoIncognita": "0 ∙ 2 = [0]",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|resultadoNegativo|s1": {
+   "texto": "-1 ∙ 1 = -1",
+   "textoIncognita": "-1 ∙ 1 = [-1]",
+   "html": "<p class=\"operacion f-operacion\">-1 ∙ 1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">-1</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": -1,
+   "respuesta": -1,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado positivo",
+    "Resultado positivo",
+    "Resultado positivo",
+    "Operación con errores"
+   ]
+  },
+  "Multiplicacion|n3|resultadoNegativo|s2": {
+   "texto": "3 ∙ -2 = -6",
+   "textoIncognita": "3 ∙ -2 = [-6]",
+   "resultado": -6,
+   "respuesta": -6,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado positivo",
+    "Resultado positivo",
+    "Resultado positivo",
+    "Operación con errores"
+   ]
+  },
+  "Multiplicacion|n3|multiplo10|s1": {
+   "texto": "80 ∙ 80 = 6400",
+   "textoIncognita": "80 ∙ 80 = [6400]",
+   "html": "<p class=\"operacion f-operacion\">80 ∙ 80 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">80</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">80</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 6400,
+   "respuesta": 6400,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|multiplo10|s2": {
+   "texto": "50 ∙ 80 = 4000",
+   "textoIncognita": "50 ∙ 80 = [4000]",
+   "resultado": 4000,
+   "respuesta": 4000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|multiplo100|s1": {
+   "texto": "800 ∙ 800 = 640000",
+   "textoIncognita": "800 ∙ 800 = [640000]",
+   "html": "<p class=\"operacion f-operacion\">800 ∙ 800 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">800</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">800</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 640000,
+   "respuesta": 640000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|multiplo100|s2": {
+   "texto": "500 ∙ 800 = 400000",
+   "textoIncognita": "500 ∙ 800 = [400000]",
+   "resultado": 400000,
+   "respuesta": 400000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|decimales|s1": {
+   "texto": "3 ∙ 0.5 = 1.5",
+   "textoIncognita": "3 ∙ 0.5 = [1.5]",
+   "html": "<p class=\"operacion f-operacion\">3 ∙ 0.5 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">3</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">0.5</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 1.5,
+   "respuesta": 1.5,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|decimales|s2": {
+   "texto": "0.4 ∙ 2 = 0.8",
+   "textoIncognita": "0.4 ∙ 2 = [0.8]",
+   "resultado": 0.8,
+   "respuesta": 0.8,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|primerOperando|s1": {
+   "texto": "12 ∙ 0 = 0",
+   "textoIncognita": "12 ∙ 0 = [0]",
+   "html": "<p class=\"operacion f-operacion\">12 ∙ 0 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">12</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">0</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n3|primerOperando|s2": {
+   "texto": "12 ∙ 0 = 0",
+   "textoIncognita": "12 ∙ 0 = [0]",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|base|s1": {
+   "texto": "7 ∙ 5 = 35",
+   "textoIncognita": "7 ∙ 5 = [35]",
+   "html": "<p class=\"operacion f-operacion\">7 ∙ 5 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">7</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">5</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 35,
+   "respuesta": 35,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|base|s2": {
+   "texto": "5 ∙ 8 = 40",
+   "textoIncognita": "5 ∙ 8 = [40]",
+   "resultado": 40,
+   "respuesta": 40,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|tresOperandos|s1": {
+   "texto": "5 ∙ 5 ∙ 2 = 50",
+   "textoIncognita": "5 ∙ 5 ∙ 2 = [50]",
+   "html": "<p class=\"operacion f-operacion\">5 ∙ 5 ∙ 2 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">5</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">5</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">2</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 50,
+   "respuesta": 50,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|tresOperandos|s2": {
+   "texto": "8 ∙ 8 ∙ 5 = 320",
+   "textoIncognita": "8 ∙ 8 ∙ 5 = [320]",
+   "resultado": 320,
+   "respuesta": 320,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|enfocado|s1": {
+   "texto": "10 ∙ 10 = 100",
+   "textoIncognita": "10 ∙ 10 = [100]",
+   "html": "<p class=\"operacion f-operacion\">10 ∙ 10 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">10</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">10</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 100,
+   "respuesta": 100,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|enfocado|s2": {
+   "texto": "10 ∙ 10 = 100",
+   "textoIncognita": "10 ∙ 10 = [100]",
+   "resultado": 100,
+   "respuesta": 100,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|negativos|s1": {
+   "texto": "2 ∙ 1 = 2",
+   "textoIncognita": "2 ∙ 1 = [2]",
+   "html": "<p class=\"operacion f-operacion\">2 ∙ 1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">2</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 2,
+   "respuesta": 2,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|negativos|s2": {
+   "texto": "0 ∙ 6 = 0",
+   "textoIncognita": "0 ∙ 6 = [0]",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|resultadoNegativo|s1": {
+   "texto": "2 ∙ -1 = -2",
+   "textoIncognita": "2 ∙ -1 = [-2]",
+   "html": "<p class=\"operacion f-operacion\">2 ∙ -1 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">2</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">-1</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": -2,
+   "respuesta": -2,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|resultadoNegativo|s2": {
+   "texto": "6 ∙ -2 = -12",
+   "textoIncognita": "6 ∙ -2 = [-12]",
+   "resultado": -12,
+   "respuesta": -12,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado positivo"
+   ]
+  },
+  "Multiplicacion|n10|multiplo10|s1": {
+   "texto": "80 ∙ 80 = 6400",
+   "textoIncognita": "80 ∙ 80 = [6400]",
+   "html": "<p class=\"operacion f-operacion\">80 ∙ 80 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">80</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">80</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 6400,
+   "respuesta": 6400,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|multiplo10|s2": {
+   "texto": "50 ∙ 80 = 4000",
+   "textoIncognita": "50 ∙ 80 = [4000]",
+   "resultado": 4000,
+   "respuesta": 4000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|multiplo100|s1": {
+   "texto": "800 ∙ 800 = 640000",
+   "textoIncognita": "800 ∙ 800 = [640000]",
+   "html": "<p class=\"operacion f-operacion\">800 ∙ 800 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">800</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">800</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 640000,
+   "respuesta": 640000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|multiplo100|s2": {
+   "texto": "500 ∙ 800 = 400000",
+   "textoIncognita": "500 ∙ 800 = [400000]",
+   "resultado": 400000,
+   "respuesta": 400000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|decimales|s1": {
+   "texto": "10 ∙ 1.5 = 15",
+   "textoIncognita": "10 ∙ 1.5 = [15]",
+   "html": "<p class=\"operacion f-operacion\">10 ∙ 1.5 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">10</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">1.5</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 15,
+   "respuesta": 15,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|decimales|s2": {
+   "texto": "1.2 ∙ 5 = 6",
+   "textoIncognita": "1.2 ∙ 5 = [6]",
+   "resultado": 6,
+   "respuesta": 6,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|primerOperando|s1": {
+   "texto": "12 ∙ 0 = 0",
+   "textoIncognita": "12 ∙ 0 = [0]",
+   "html": "<p class=\"operacion f-operacion\">12 ∙ 0 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">12</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">0</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n10|primerOperando|s2": {
+   "texto": "12 ∙ 0 = 0",
+   "textoIncognita": "12 ∙ 0 = [0]",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|base|s1": {
+   "texto": "31 ∙ 22 = 682",
+   "textoIncognita": "31 ∙ 22 = [682]",
+   "html": "<p class=\"operacion f-operacion\">31 ∙ 22 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">31</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">22</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 682,
+   "respuesta": 682,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|base|s2": {
+   "texto": "25 ∙ 39 = 975",
+   "textoIncognita": "25 ∙ 39 = [975]",
+   "resultado": 975,
+   "respuesta": 975,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|tresOperandos|s1": {
+   "texto": "22 ∙ 23 ∙ 8 = 4048",
+   "textoIncognita": "22 ∙ 23 ∙ 8 = [4048]",
+   "html": "<p class=\"operacion f-operacion\">22 ∙ 23 ∙ 8 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">22</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">23</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">8</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 4048,
+   "respuesta": 4048,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|tresOperandos|s2": {
+   "texto": "39 ∙ 40 ∙ 22 = 34320",
+   "textoIncognita": "39 ∙ 40 ∙ 22 = [34320]",
+   "resultado": 34320,
+   "respuesta": 34320,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|enfocado|s1": {
+   "texto": "50 ∙ 50 = 2500",
+   "textoIncognita": "50 ∙ 50 = [2500]",
+   "html": "<p class=\"operacion f-operacion\">50 ∙ 50 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">50</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">50</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 2500,
+   "respuesta": 2500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|enfocado|s2": {
+   "texto": "50 ∙ 50 = 2500",
+   "textoIncognita": "50 ∙ 50 = [2500]",
+   "resultado": 2500,
+   "respuesta": 2500,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|negativos|s1": {
+   "texto": "11 ∙ 7 = 77",
+   "textoIncognita": "11 ∙ 7 = [77]",
+   "html": "<p class=\"operacion f-operacion\">11 ∙ 7 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">11</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">7</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 77,
+   "respuesta": 77,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|negativos|s2": {
+   "texto": "0 ∙ 28 = 0",
+   "textoIncognita": "0 ∙ 28 = [0]",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|resultadoNegativo|s1": {
+   "texto": "11 ∙ -7 = -77",
+   "textoIncognita": "11 ∙ -7 = [-77]",
+   "html": "<p class=\"operacion f-operacion\">11 ∙ -7 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">11</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">-7</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": -77,
+   "respuesta": -77,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|resultadoNegativo|s2": {
+   "texto": "29 ∙ -8 = -232",
+   "textoIncognita": "29 ∙ -8 = [-232]",
+   "resultado": -232,
+   "respuesta": -232,
+   "aciertaConRespuesta": true,
+   "errores": [
+    "Resultado positivo"
+   ]
+  },
+  "Multiplicacion|n50|multiplo10|s1": {
+   "texto": "80 ∙ 80 = 6400",
+   "textoIncognita": "80 ∙ 80 = [6400]",
+   "html": "<p class=\"operacion f-operacion\">80 ∙ 80 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">80</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">80</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 6400,
+   "respuesta": 6400,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|multiplo10|s2": {
+   "texto": "50 ∙ 80 = 4000",
+   "textoIncognita": "50 ∙ 80 = [4000]",
+   "resultado": 4000,
+   "respuesta": 4000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|multiplo100|s1": {
+   "texto": "800 ∙ 800 = 640000",
+   "textoIncognita": "800 ∙ 800 = [640000]",
+   "html": "<p class=\"operacion f-operacion\">800 ∙ 800 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">800</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">800</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 640000,
+   "respuesta": 640000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|multiplo100|s2": {
+   "texto": "500 ∙ 800 = 400000",
+   "textoIncognita": "500 ∙ 800 = [400000]",
+   "resultado": 400000,
+   "respuesta": 400000,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|decimales|s1": {
+   "texto": "50 ∙ 6.96 = 348",
+   "textoIncognita": "50 ∙ 6.96 = [348]",
+   "html": "<p class=\"operacion f-operacion\">50 ∙ 6.96 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">50</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">6.96</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 348,
+   "respuesta": 348,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|decimales|s2": {
+   "texto": "5.702 ∙ 22 = 125.444",
+   "textoIncognita": "5.702 ∙ 22 = [125.444]",
+   "resultado": 125.444,
+   "respuesta": 125.444,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|primerOperando|s1": {
+   "texto": "12 ∙ 0 = 0",
+   "textoIncognita": "12 ∙ 0 = [0]",
+   "html": "<p class=\"operacion f-operacion\">12 ∙ 0 = <input type=\"number\" size=3 class=\"incognita\"> </p>",
+   "impresion": "<p class=\"operacion f-operacion\"><span class=\"operando\">12</span><span class=\"simbolo ∙\">\n          ∙</span><span class=\"operando\">0</span><span class=\"simbolo igual\"> = </span><span class=\"input\">&nbsp;</span></p>",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  },
+  "Multiplicacion|n50|primerOperando|s2": {
+   "texto": "12 ∙ 0 = 0",
+   "textoIncognita": "12 ∙ 0 = [0]",
+   "resultado": 0,
+   "respuesta": 0,
+   "aciertaConRespuesta": true,
+   "errores": []
+  }
+ },
  "divisiones": {
   "DivisionEntera|n1|base|s1": {
    "texto": "1 / 1 = 1",

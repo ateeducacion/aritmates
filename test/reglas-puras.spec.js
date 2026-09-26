@@ -190,3 +190,16 @@ describe('applyConfig', () => {
     expect(applyConfig(null, target)).to.deep.equal({nivel: 10});
   });
 });
+
+describe('Nombres de los tipos de número', () => {
+  it('une varios tipos con comas y «y»', () => {
+    const texto = TIPO_NUMERO.tiposNumeroToText(
+        [TIPO_NUMERO.NATURAL, TIPO_NUMERO.ENTERO, TIPO_NUMERO.DECIMAL]);
+    expect(texto).to.equal('NATURAL (positivos), ENTERO (negativos) y DECIMAL');
+    expect(TIPO_NUMERO.tiposNumeroToText([TIPO_NUMERO.DECIMAL])).to.equal('DECIMAL');
+  });
+
+  it('un valor desconocido no tiene nombre', () => {
+    expect(TIPO_NUMERO.getKey(999)).to.equal(null);
+  });
+});
