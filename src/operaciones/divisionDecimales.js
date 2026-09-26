@@ -211,6 +211,11 @@ export default class DivisionDecimales extends DivisionEntera {
     });
   }
 
+  /** @inheritdoc */
+  requiereCocienteEntero() {
+    return false;
+  }
+
   obtenerSimbolo() {
     return '/';
   }

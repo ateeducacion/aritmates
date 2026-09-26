@@ -206,7 +206,10 @@
    "resultado": 0,
    "respuesta": 7,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n1|divisor|s3": {
    "texto": "1 / 7 = 0",
@@ -214,7 +217,10 @@
    "resultado": 0,
    "respuesta": 1,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n1|divisor|s4": {
    "texto": "1 / 7 = 0",
@@ -222,7 +228,10 @@
    "resultado": 0,
    "respuesta": 7,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n1|ambos|s1": {
    "texto": "84 / 8 = 10",
@@ -232,7 +241,10 @@
    "resultado": 10,
    "respuesta": 84,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n1|ambos|s2": {
    "texto": "84 / 8 = 10",
@@ -240,7 +252,10 @@
    "resultado": 10,
    "respuesta": 8,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n1|ambos|s3": {
    "texto": "84 / 8 = 10",
@@ -248,7 +263,10 @@
    "resultado": 10,
    "respuesta": 84,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n1|ambos|s4": {
    "texto": "84 / 8 = 10",
@@ -256,7 +274,10 @@
    "resultado": 10,
    "respuesta": 8,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n1|ambosDecimales|s1": {
    "texto": "8.4 / 4 = 2.1",
@@ -456,7 +477,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n1|tresConOperandos|s3": {
    "texto": "84 / 8 / 1 = 10",
@@ -464,7 +488,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n1|tresConOperandos|s4": {
    "texto": "84 / 8 / 1 = 10",
@@ -472,7 +499,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n5|base|s1": {
    "texto": "6 / 3 = 2",
@@ -672,7 +702,10 @@
    "resultado": 0,
    "respuesta": 1,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n5|divisor|s2": {
    "texto": "1 / 7 = 0",
@@ -680,7 +713,10 @@
    "resultado": 0,
    "respuesta": 7,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n5|divisor|s3": {
    "texto": "1 / 7 = 0",
@@ -688,7 +724,10 @@
    "resultado": 0,
    "respuesta": 1,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n5|divisor|s4": {
    "texto": "1 / 7 = 0",
@@ -696,7 +735,10 @@
    "resultado": 0,
    "respuesta": 7,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n5|ambos|s1": {
    "texto": "84 / 8 = 10",
@@ -706,7 +748,10 @@
    "resultado": 10,
    "respuesta": 84,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n5|ambos|s2": {
    "texto": "84 / 8 = 10",
@@ -714,7 +759,10 @@
    "resultado": 10,
    "respuesta": 8,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n5|ambos|s3": {
    "texto": "84 / 8 = 10",
@@ -722,7 +770,10 @@
    "resultado": 10,
    "respuesta": 84,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n5|ambos|s4": {
    "texto": "84 / 8 = 10",
@@ -730,7 +781,10 @@
    "resultado": 10,
    "respuesta": 8,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n5|ambosDecimales|s1": {
    "texto": "8.4 / 4 = 2.1",
@@ -922,7 +976,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n5|tresConOperandos|s2": {
    "texto": "84 / 8 / 1 = 10",
@@ -930,7 +987,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n5|tresConOperandos|s3": {
    "texto": "84 / 8 / 1 = 10",
@@ -938,7 +998,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n5|tresConOperandos|s4": {
    "texto": "84 / 8 / 1 = 10",
@@ -946,7 +1009,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n10|base|s1": {
    "texto": "18 / 6 = 3",
@@ -1146,7 +1212,10 @@
    "resultado": 0,
    "respuesta": 1,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n10|divisor|s2": {
    "texto": "1 / 7 = 0",
@@ -1154,7 +1223,10 @@
    "resultado": 0,
    "respuesta": 7,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n10|divisor|s3": {
    "texto": "1 / 7 = 0",
@@ -1162,7 +1234,10 @@
    "resultado": 0,
    "respuesta": 1,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n10|divisor|s4": {
    "texto": "1 / 7 = 0",
@@ -1170,7 +1245,10 @@
    "resultado": 0,
    "respuesta": 7,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n10|ambos|s1": {
    "texto": "84 / 8 = 10",
@@ -1180,7 +1258,10 @@
    "resultado": 10,
    "respuesta": 84,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n10|ambos|s2": {
    "texto": "84 / 8 = 10",
@@ -1188,7 +1269,10 @@
    "resultado": 10,
    "respuesta": 8,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n10|ambos|s3": {
    "texto": "84 / 8 = 10",
@@ -1196,7 +1280,10 @@
    "resultado": 10,
    "respuesta": 84,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n10|ambos|s4": {
    "texto": "84 / 8 = 10",
@@ -1204,7 +1291,10 @@
    "resultado": 10,
    "respuesta": 8,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n10|ambosDecimales|s1": {
    "texto": "8.4 / 4 = 2.1",
@@ -1396,7 +1486,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n10|tresConOperandos|s2": {
    "texto": "84 / 8 / 1 = 10",
@@ -1404,7 +1497,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n10|tresConOperandos|s3": {
    "texto": "84 / 8 / 1 = 10",
@@ -1412,7 +1508,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n10|tresConOperandos|s4": {
    "texto": "84 / 8 / 1 = 10",
@@ -1420,7 +1519,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n20|base|s1": {
    "texto": "55 / 11 = 5",
@@ -1620,7 +1722,10 @@
    "resultado": 0,
    "respuesta": 1,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n20|divisor|s2": {
    "texto": "1 / 7 = 0",
@@ -1628,7 +1733,10 @@
    "resultado": 0,
    "respuesta": 7,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n20|divisor|s3": {
    "texto": "1 / 7 = 0",
@@ -1636,7 +1744,10 @@
    "resultado": 0,
    "respuesta": 1,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n20|divisor|s4": {
    "texto": "1 / 7 = 0",
@@ -1644,7 +1755,10 @@
    "resultado": 0,
    "respuesta": 7,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n20|ambos|s1": {
    "texto": "84 / 8 = 10",
@@ -1654,7 +1768,10 @@
    "resultado": 10,
    "respuesta": 84,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n20|ambos|s2": {
    "texto": "84 / 8 = 10",
@@ -1662,7 +1779,10 @@
    "resultado": 10,
    "respuesta": 8,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n20|ambos|s3": {
    "texto": "84 / 8 = 10",
@@ -1670,7 +1790,10 @@
    "resultado": 10,
    "respuesta": 84,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n20|ambos|s4": {
    "texto": "84 / 8 = 10",
@@ -1678,7 +1801,10 @@
    "resultado": 10,
    "respuesta": 8,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n20|ambosDecimales|s1": {
    "texto": "8.4 / 4 = 2.1",
@@ -1870,7 +1996,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n20|tresConOperandos|s2": {
    "texto": "84 / 8 / 1 = 10",
@@ -1878,7 +2007,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n20|tresConOperandos|s3": {
    "texto": "84 / 8 / 1 = 10",
@@ -1886,7 +2018,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n20|tresConOperandos|s4": {
    "texto": "84 / 8 / 1 = 10",
@@ -1894,7 +2029,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n50|base|s1": {
    "texto": "308 / 28 = 11",
@@ -2094,7 +2232,10 @@
    "resultado": 0,
    "respuesta": 1,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n50|divisor|s2": {
    "texto": "1 / 7 = 0",
@@ -2102,7 +2243,10 @@
    "resultado": 0,
    "respuesta": 7,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n50|divisor|s3": {
    "texto": "1 / 7 = 0",
@@ -2110,7 +2254,10 @@
    "resultado": 0,
    "respuesta": 1,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n50|divisor|s4": {
    "texto": "1 / 7 = 0",
@@ -2118,7 +2265,10 @@
    "resultado": 0,
    "respuesta": 7,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n50|ambos|s1": {
    "texto": "84 / 8 = 10",
@@ -2128,7 +2278,10 @@
    "resultado": 10,
    "respuesta": 84,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n50|ambos|s2": {
    "texto": "84 / 8 = 10",
@@ -2136,7 +2289,10 @@
    "resultado": 10,
    "respuesta": 8,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n50|ambos|s3": {
    "texto": "84 / 8 = 10",
@@ -2144,7 +2300,10 @@
    "resultado": 10,
    "respuesta": 84,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n50|ambos|s4": {
    "texto": "84 / 8 = 10",
@@ -2152,7 +2311,10 @@
    "resultado": 10,
    "respuesta": 8,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n50|ambosDecimales|s1": {
    "texto": "8.4 / 4 = 2.1",
@@ -2344,7 +2506,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n50|tresConOperandos|s2": {
    "texto": "84 / 8 / 1 = 10",
@@ -2352,7 +2517,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n50|tresConOperandos|s3": {
    "texto": "84 / 8 / 1 = 10",
@@ -2360,7 +2528,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n50|tresConOperandos|s4": {
    "texto": "84 / 8 / 1 = 10",
@@ -2368,7 +2539,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n100|base|s1": {
    "texto": "1155 / 55 = 21",
@@ -2568,7 +2742,10 @@
    "resultado": 0,
    "respuesta": 1,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n100|divisor|s2": {
    "texto": "1 / 7 = 0",
@@ -2576,7 +2753,10 @@
    "resultado": 0,
    "respuesta": 7,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n100|divisor|s3": {
    "texto": "1 / 7 = 0",
@@ -2584,7 +2764,10 @@
    "resultado": 0,
    "respuesta": 1,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n100|divisor|s4": {
    "texto": "1 / 7 = 0",
@@ -2592,7 +2775,10 @@
    "resultado": 0,
    "respuesta": 7,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n100|ambos|s1": {
    "texto": "84 / 8 = 10",
@@ -2602,7 +2788,10 @@
    "resultado": 10,
    "respuesta": 84,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n100|ambos|s2": {
    "texto": "84 / 8 = 10",
@@ -2610,7 +2799,10 @@
    "resultado": 10,
    "respuesta": 8,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n100|ambos|s3": {
    "texto": "84 / 8 = 10",
@@ -2618,7 +2810,10 @@
    "resultado": 10,
    "respuesta": 84,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n100|ambos|s4": {
    "texto": "84 / 8 = 10",
@@ -2626,7 +2821,10 @@
    "resultado": 10,
    "respuesta": 8,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n100|ambosDecimales|s1": {
    "texto": "8.4 / 4 = 2.1",
@@ -2818,7 +3016,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n100|tresConOperandos|s2": {
    "texto": "84 / 8 / 1 = 10",
@@ -2826,7 +3027,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n100|tresConOperandos|s3": {
    "texto": "84 / 8 / 1 = 10",
@@ -2834,7 +3038,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionEntera|n100|tresConOperandos|s4": {
    "texto": "84 / 8 / 1 = 10",
@@ -2842,7 +3049,10 @@
    "resultado": 10,
    "respuesta": 10,
    "aciertaConRespuesta": true,
-   "errores": []
+   "errores": [
+    "Resultado no es entero",
+    "Resultado no es entero"
+   ]
   },
   "DivisionResto|n1|base|s1": {
    "texto": "1 / 1 = 1 Resto: 0",
@@ -3231,8 +3441,8 @@
    "entradaUsuario": "84 / [ 7 ] = 10 Resto: [ 2 ]"
   },
   "DivisionResto|n1|ambosDecimales|s1": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4",
    "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 4 = 2 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
    "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">4</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">2</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
    "resultado": "2",
@@ -3242,15 +3452,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n1|ambosDecimales|s2": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -3258,15 +3465,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n1|ambosDecimales|s3": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -3274,15 +3478,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n1|ambosDecimales|s4": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -3290,11 +3491,8 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n1|tresOperandos|s1": {
    "texto": "1 / 1 = 1 Resto: 0\nSe encontraron errores:\nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \n",
@@ -3969,8 +4167,8 @@
    "entradaUsuario": "84 / [ 7 ] = 10 Resto: [ 2 ]"
   },
   "DivisionResto|n5|ambosDecimales|s1": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4",
    "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 4 = 2 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
    "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">4</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">2</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
    "resultado": "2",
@@ -3980,15 +4178,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n5|ambosDecimales|s2": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -3996,15 +4191,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n5|ambosDecimales|s3": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -4012,15 +4204,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n5|ambosDecimales|s4": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -4028,11 +4217,8 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n5|tresOperandos|s1": {
    "texto": "6 / 3 = 2 Resto: 0\nSe encontraron errores:\nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \n",
@@ -4707,8 +4893,8 @@
    "entradaUsuario": "84 / [ 7 ] = 10 Resto: [ 2 ]"
   },
   "DivisionResto|n10|ambosDecimales|s1": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4",
    "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 4 = 2 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
    "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">4</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">2</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
    "resultado": "2",
@@ -4718,15 +4904,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n10|ambosDecimales|s2": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -4734,15 +4917,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n10|ambosDecimales|s3": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -4750,15 +4930,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n10|ambosDecimales|s4": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -4766,11 +4943,8 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n10|tresOperandos|s1": {
    "texto": "12 / 6 = 2 Resto: 0\nSe encontraron errores:\nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \n",
@@ -5445,8 +5619,8 @@
    "entradaUsuario": "84 / [ 7 ] = 10 Resto: [ 2 ]"
   },
   "DivisionResto|n20|ambosDecimales|s1": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4",
    "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 4 = 2 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
    "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">4</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">2</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
    "resultado": "2",
@@ -5456,15 +5630,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n20|ambosDecimales|s2": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -5472,15 +5643,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n20|ambosDecimales|s3": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -5488,15 +5656,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n20|ambosDecimales|s4": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -5504,11 +5669,8 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n20|tresOperandos|s1": {
    "texto": "49 / 12 = 4 Resto: 1\nSe encontraron errores:\nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \n",
@@ -6183,8 +6345,8 @@
    "entradaUsuario": "84 / [ 7 ] = 10 Resto: [ 2 ]"
   },
   "DivisionResto|n50|ambosDecimales|s1": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4",
    "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 4 = 2 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
    "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">4</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">2</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
    "resultado": "2",
@@ -6194,15 +6356,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n50|ambosDecimales|s2": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -6210,15 +6369,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n50|ambosDecimales|s3": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -6226,15 +6382,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n50|ambosDecimales|s4": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -6242,11 +6395,8 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n50|tresOperandos|s1": {
    "texto": "233 / 29 = 8 Resto: 1\nSe encontraron errores:\nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \n",
@@ -6921,8 +7071,8 @@
    "entradaUsuario": "84 / [ 7 ] = 10 Resto: [ 2 ]"
   },
   "DivisionResto|n100|ambosDecimales|s1": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4",
    "html": "<p class=\"operacion f-operacion\"><input type=\"number\" size=3 class=\"incognita\">  / 4 = 2 &nbsp; <br><span class=\"resto\">Resto: <input type=\"number\" id=\"resto\" class=\"resto\" size=3 ></span></p>",
    "impresion": "<p class=\"operacion f-operacion\"><span class=\"input\">&nbsp;</span><span class=\"simbolo /\">\n          /</span><span class=\"operando\">4</span><span class=\"simbolo igual\"> = </span><span class=\"resultado\">2</span><div class=\"resto\">Resto: <span class=\"input\">&nbsp;</span></div></p>",
    "resultado": "2",
@@ -6932,15 +7082,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n100|ambosDecimales|s2": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -6948,15 +7095,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n100|ambosDecimales|s3": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "[8.4] / 4 = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -6964,15 +7108,12 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "[ 7 ] / 4 = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n100|ambosDecimales|s4": {
-   "texto": "8.4 / 4 = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
-   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n",
+   "texto": "8.4 / 4 = 2 Resto: 0.4",
+   "textoIncognita": "8.4 / [4] = 2 Resto: 0.4",
    "resultado": "2",
    "resto": "0.4",
    "respuesta": {
@@ -6980,11 +7121,8 @@
     "resto": "0.4"
    },
    "aciertaConRespuesta": true,
-   "errores": [
-    "Resultado no es entero",
-    "Resultado no es entero"
-   ],
-   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: 0.4\nSe encontraron errores:\nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \nResultado no es entero: los datos que se enviaron generar un resultado con decimales . \n"
+   "errores": [],
+   "entradaUsuario": "8.4 / [ 7 ] = 2 Resto: [ 2 ]"
   },
   "DivisionResto|n100|tresOperandos|s1": {
    "texto": "930 / 58 = 16 Resto: 2\nSe encontraron errores:\nCantidad de operandos: No se permiten más de dos operandos para esta operación, se enviaron 3. \n",

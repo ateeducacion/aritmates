@@ -2,6 +2,7 @@
 import Operacion from './operacion';
 import Multiplicacion from './multiplicacion';
 import OPERACIONES from './operaciones';
+import {Decimal} from 'decimal.js';
 /**
  * Operacion division entera
  *
@@ -174,7 +175,9 @@ export default class DivisionEntera extends Operacion {
     } else {
       this.resultado = this.dividirValores(this.operandos);
 
-      if ( this.resultado % 1 != 0) {
+      // dividirValores truncates integer operands (7 / 2 -> 3), so the
+      // shown result can look exact: check the real quotient instead.
+      if (this.requiereCocienteEntero() && !this.cocienteExacto().isInteger()) {
         this.errors.push({
           'error': 'Resultado no es entero',
           'msg': 'los datos que se enviaron generar un resultado con decimales ',
@@ -256,6 +259,21 @@ export default class DivisionEntera extends Operacion {
    * Sin efecto: evita que se ejecute la versión de Operacion.
    */
   resolverIncognita() {}
+
+  /**
+   * Whether given operands must divide exactly. DivisionResto and
+   * DivisionDecimales allow a non-integer quotient by definition.
+   * @return {boolean}
+   */
+  requiereCocienteEntero() {
+    return true;
+  }
+
+  /** @return {Decimal} exact quotient of the operands, left to right */
+  cocienteExacto() {
+    return this.operandos.slice(1).reduce(
+        (acc, x) => acc.div(x), new Decimal(this.operandos[0]));
+  }
 
   obtenerSimbolo() {
     return '/';
