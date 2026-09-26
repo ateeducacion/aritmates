@@ -124,7 +124,7 @@ Dos cifras no mejoran y conviene explicarlas:
 | Se marcaba «resultado no es entero» cuando sí lo era | Original | #146 |
 | Los diálogos acumulaban acciones y «Atrás» no cerraba | Original | #137 |
 | Un cero explícito se trataba como «sin operando» | Original | #120, #121 |
-| `debug` alteraba los ejercicios generados | Original | #114 |
+| `debug` alteraba la salida | Original | #114 |
 | Una división entera con operandos inexactos se daba por buena (`7 / 2 = 3`) | Original | #151 |
 | Añadir una operación ya seleccionada lanzaba un error | Original | #153 |
 | Fallaba el ZIP del release | Pipeline del proyecto | #134 |
