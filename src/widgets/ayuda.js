@@ -2,7 +2,6 @@
 import $ from 'jquery';
 import {MDCDrawer} from '../components/mdc-compat.js';
 
-import '../../css/mdc.list.min.css';
 import '../../css/mdc.drawer.min.css';
 
 // para que funcionen los mixin en css hace falta esto!!!

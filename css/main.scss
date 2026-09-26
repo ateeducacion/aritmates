@@ -367,6 +367,14 @@ a[data-toggle=tooltip] {
     justify-content: center;
 }
 
+// Inline SVG icons, sized like the Font Awesome glyphs they replace.
+.icono {
+    width: 1.25em;
+    height: 1em;
+    overflow: visible;
+    vertical-align: -0.125em;
+}
+
 // Dialogos Modales
 .mdc-dialog__actions {
     align-content: flex-start;
@@ -388,6 +396,70 @@ a[data-toggle=tooltip] {
     top: 1rem;
 }
 
+// The only MDC text field rules the dialogs use (replaces mdc.textfield.min.css).
+.mdc-text-field {
+    position: relative;
+    display: inline-flex;
+    box-sizing: border-box;
+    height: 56px;
+    overflow: hidden;
+    border-radius: 4px 4px 0 0;
+    background-color: #f5f5f5;
+    -webkit-font-smoothing: antialiased;
+    &:hover {
+        background-color: #ebebeb;
+    }
+}
+.mdc-text-field--fullwidth {
+    display: block;
+    width: 100%;
+    &, &:hover {
+        background-color: transparent;
+    }
+}
+.mdc-text-field__input {
+    align-self: flex-end;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 20px 16px 6px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+    border-radius: 0;
+    background: none;
+    appearance: none;
+    color: rgba(0, 0, 0, 0.87);
+    caret-color: var(--mdc-theme-primary, #6200ee);
+    font-family: Roboto, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.009375em;
+    &:hover {
+        border-bottom-color: rgba(0, 0, 0, 0.87);
+    }
+    &:focus {
+        outline: none;
+    }
+    .mdc-text-field--fullwidth & {
+        padding: 0;
+    }
+}
+.mdc-floating-label {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    transform-origin: left top;
+    color: rgba(0, 0, 0, 0.6);
+    font: 400 1rem / 1.15rem Roboto, sans-serif;
+    letter-spacing: 0.009375em;
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    pointer-events: none;
+}
+
 .mdc-floating-label.mdc-floating-label--float-above {
     bottom: -2px;
     color: var(--colorPrincipal);
@@ -406,6 +478,14 @@ a[data-toggle=tooltip] {
     color: var(--colorPrincipal);
 }
 // fin Dialogos Modales
+
+// Drawer header divider (replaces mdc.list.min.css).
+.mdc-list-divider {
+    height: 0;
+    margin: 0;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
 
 .incognita, .resto {
     text-align: center;
