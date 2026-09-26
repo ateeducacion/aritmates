@@ -38,7 +38,7 @@ jQuery, Bootstrap y los custom elements de `src/components/` se quedan: la plant
 
 Se queda fuera TypeScript, React, Vue, Angular, Redux, Webpack, Polymer y un backend. Una dependencia nueva tiene que quitar más complejidad de la que añade.
 
-La cobertura se publica en Codecov y `npm run coverage:ci` la exige en el CI: un 80 % en líneas, funciones, ramas y sentencias sobre todo lo que cargan las pruebas unitarias, y un mínimo más alto en los módulos ya saneados. El detalle está en [docs/TESTING.md](docs/TESTING.md). El end-to-end son los specs de `e2e/`: los flujos críticos (`critical.spec.js`), accesibilidad, ayuda y diálogos. Importan `playwright/test`, el paquete que ya está en el proyecto. `npm run visual` genera la galería humana de `docs/visual/`. Esa galería no bloquea el CI.
+La cobertura se publica en Codecov y `npm run coverage:ci` la exige en el CI: un 90 % en líneas, funciones, ramas y sentencias sobre todo lo que cargan las pruebas unitarias, y un mínimo más alto en los módulos ya saneados. El detalle está en [docs/TESTING.md](docs/TESTING.md). El end-to-end son los specs de `e2e/`: los flujos críticos (`critical.spec.js`), accesibilidad, ayuda y diálogos. Importan `playwright/test`, el paquete que ya está en el proyecto. `npm run visual` genera la galería humana de `docs/visual/`. Esa galería no bloquea el CI.
 
 El HTML de un ejercicio sale de números del motor. El parámetro `c` de la URL es un código corto, no HTML. Un sanitizador nuevo solo entra si aparece un sumidero concreto. [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) lo resume en «Seguridad».
 

@@ -264,3 +264,33 @@ describe('Caracterización — límites de nivel (muestra)', () => {
     }
   });
 });
+
+describe('Caracterización — códigos cortos, casos límite', () => {
+  const base = {
+    nivel: 10, cantidadOperaciones: 10, cantidadOperandos: 3, cuentaAtras: 0,
+    resultadoNegativo: false, posicionIncognitaAlAzar: false, enfocado: false,
+    parentesis: true, operacionMultiple: true, complementario: 10,
+    tiposOperaciones: ['division', 'multiplicacion', 'resta', 'suma'],
+    tiposNumero: [],
+  };
+
+  it('el orden de las operaciones no cambia el código', () => {
+    const desordenado = shortcodeApi.generateCodeDirecto(JSON.parse(JSON.stringify(base)));
+    const ordenado = shortcodeApi.generateCodeDirecto({
+      ...JSON.parse(JSON.stringify(base)),
+      tiposOperaciones: ['suma', 'resta', 'multiplicacion', 'division'],
+    });
+    expect(desordenado).to.equal(ordenado);
+  });
+
+  it('conserva los paréntesis y una lista de tipos vacía', () => {
+    const code = shortcodeApi.generateCodeDirecto(JSON.parse(JSON.stringify(base)));
+    const decoded = shortcodeApi.codigoDirectoToOptions(code);
+    expect(decoded.parentesis).to.equal(true);
+    expect(decoded.tiposNumero).to.deep.equal([]);
+  });
+
+  it('un código sin # no se interpreta', () => {
+    expect(shortcodeApi.codigoDirectoToOptions('A1B2')).to.equal(false);
+  });
+});
