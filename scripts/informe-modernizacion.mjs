@@ -165,7 +165,7 @@ async function pageLoad(url, runs = 5) {
 
 const C = { old: '#0C2C84', new: '#FFB300', text: '#1A1A1A', muted: '#595959', grid: '#BFBFBF' };
 
-function barChart({ title, unit, rows, labels = ['upstream', 'main'] }) {
+function barChart({ title, unit, rows, labels = ['Versión original', 'Versión actual'] }) {
   const w = 760; const rowH = 46; const left = 230; const top = 58; const right = 110;
   const h = top + rows.length * rowH + 20;
   const max = Math.max(...rows.flatMap((r) => [r.old, r.new])) || 1;
@@ -181,7 +181,7 @@ function barChart({ title, unit, rows, labels = ['upstream', 'main'] }) {
     body += `<text x="${left + x(r.new) + 6}" y="${y + 35}" font-size="12" fill="${C.muted}">${fmt(r.new)}</text>`;
   });
   const legend = `<rect x="${left}" y="30" width="12" height="12" fill="${C.old}"/><text x="${left + 18}" y="40" font-size="12" fill="${C.text}">${labels[0]}</text>` +
-    `<rect x="${left + 110}" y="30" width="12" height="12" fill="${C.new}"/><text x="${left + 128}" y="40" font-size="12" fill="${C.text}">${labels[1]}</text>`;
+    `<rect x="${left + 150}" y="30" width="12" height="12" fill="${C.new}"/><text x="${left + 168}" y="40" font-size="12" fill="${C.text}">${labels[1]}</text>`;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" font-family="Arial, Liberation Sans, sans-serif">` +
     `<rect width="100%" height="100%" fill="#FFFFFF"/><text x="16" y="22" font-size="15" font-weight="700" fill="${C.text}">${title}</text>${legend}${body}</svg>\n`;
 }
@@ -225,36 +225,38 @@ async function main() {
 
   const a = code.antigua; const n = code.nueva;
   await writeFile(join(outDir, 'dependencias.svg'), barChart({
-    title: 'Dependencias declaradas en package.json', unit: '', rows: [
-      { label: 'dependencies', old: a.dependencias, new: n.dependencias },
-      { label: 'devDependencies', old: a.devDependencias, new: n.devDependencias },
+    title: 'Librerías de terceros que usa el proyecto', unit: '', rows: [
+      { label: 'Para la aplicación', old: a.dependencias, new: n.dependencias },
+      { label: 'Para desarrollar', old: a.devDependencias, new: n.devDependencias },
     ] }));
   const cats = ['JavaScript', 'CSS', 'Imágenes', 'Fuentes', 'PHP (servidor)', 'Mapas de código', 'Otros'];
+  const CAT_LABEL = {'JavaScript': 'Código (JavaScript)', 'CSS': 'Estilos (CSS)', 'PHP (servidor)': 'Servidor (PHP)', 'Mapas de código': 'Ayudas de depuración'};
   await writeFile(join(outDir, 'despliegue.svg'), barChart({
-    title: 'Tamaño de lo desplegado (dist/) por tipo', unit: 'KB', rows: cats.map((c) => ({
-      label: c, old: kb(despliegue.antigua.porTipo[c] || 0), new: kb(despliegue.nueva.porTipo[c] || 0),
+    title: 'Tamaño de lo que se publica, por tipo de fichero', unit: 'KB', rows: cats.map((c) => ({
+      label: CAT_LABEL[c] || c, old: kb(despliegue.antigua.porTipo[c] || 0), new: kb(despliegue.nueva.porTipo[c] || 0),
     })).concat([{ label: 'Total', old: kb(despliegue.antigua.total), new: kb(despliegue.nueva.total) }]) }));
   const types = ['script', 'stylesheet', 'font', 'image', 'document', 'fetch', 'xhr'];
+  const TYPE_LABEL = {script: 'Código', stylesheet: 'Estilos', font: 'Fuentes', image: 'Imágenes', document: 'Página', fetch: 'Plantillas y datos', xhr: 'Otros datos'};
   await writeFile(join(outDir, 'carga.svg'), barChart({
-    title: 'Bytes propios descargados al abrir la portada', unit: 'KB', rows: types.map((t) => ({
-      label: t, old: kb(carga.antigua.bytes[t] || 0), new: kb(carga.nueva.bytes[t] || 0),
+    title: 'Lo que descarga el navegador al abrir la portada', unit: 'KB', rows: types.map((t) => ({
+      label: TYPE_LABEL[t], old: kb(carga.antigua.bytes[t] || 0), new: kb(carga.nueva.bytes[t] || 0),
     })).filter((r) => r.old || r.new).concat([
-      { label: 'Total propio', old: kb(carga.antigua.total), new: kb(carga.nueva.total) },
-      { label: 'Terceros (vídeos…)', old: kb(carga.antigua.bytesExternos), new: kb(carga.nueva.bytesExternos) },
+      { label: 'Total de la aplicación', old: kb(carga.antigua.total), new: kb(carga.nueva.total) },
+      { label: 'De otras webs (vídeos)', old: kb(carga.antigua.bytesExternos), new: kb(carga.nueva.bytesExternos) },
     ]) }));
   await writeFile(join(outDir, 'codigo.svg'), barChart({
-    title: 'Código JavaScript propio (src/); console.log y debug sin contar comentarios', unit: '', rows: [
-      { label: 'Líneas de JS', old: a.lineasJs, new: n.lineasJs },
+    title: 'Código propio de la aplicación', unit: '', rows: [
+      { label: 'Líneas de código', old: a.lineasJs, new: n.lineasJs },
       { label: 'Líneas de comentario', old: a.lineasComentadas, new: n.lineasComentadas },
-      { label: 'console.log', old: a.consoleLog, new: n.consoleLog },
-      { label: 'Bloques if (debug)', old: a.bloquesDebug, new: n.bloquesDebug },
-      { label: 'TODO / FIXME', old: a.todo, new: n.todo },
+      { label: 'Mensajes de consola', old: a.consoleLog, new: n.consoleLog },
+      { label: 'Bloques de depuración', old: a.bloquesDebug, new: n.bloquesDebug },
+      { label: 'Tareas pendientes', old: a.todo, new: n.todo },
     ] }));
   await writeFile(join(outDir, 'pruebas.svg'), barChart({
-    title: 'Pruebas automatizadas', unit: '', rows: [
-      { label: 'Tests declarados', old: a.tests, new: n.tests },
-      { label: 'Tests vacíos (pending)', old: a.testsVacios, new: n.testsVacios },
-      { label: 'Líneas de test', old: a.lineasTest, new: n.lineasTest },
+    title: 'Pruebas automáticas', unit: '', rows: [
+      { label: 'Pruebas', old: a.tests, new: n.tests },
+      { label: 'Pruebas vacías', old: a.testsVacios, new: n.testsVacios },
+      { label: 'Líneas de pruebas', old: a.lineasTest, new: n.lineasTest },
     ] }));
   console.log(JSON.stringify(metricas, null, 2));
 }
