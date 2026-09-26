@@ -105,7 +105,7 @@ También se puede lanzar a mano: Actions → *Deploy GitHub Pages* → *Run work
 | Bootstrap 5 | Layout y utilidades |
 | Decimal.js | Precisión decimal |
 | jsPDF + html2canvas | PDF |
-| Roboto, Material Icons | Tipografía e iconos |
+| Roboto (subconjunto latino en `src/fonts/`), Material Icons | Tipografía e iconos |
 | combinations / shorthash | Reimplementados en `src/utils/` |
 
 `shallow-equal` ya no está: la comparación de arrays del código corto es una función de unas líneas.
