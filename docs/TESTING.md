@@ -26,6 +26,16 @@ El CI sube `coverage/lcov.info` a [Codecov](https://codecov.io/gh/ateeducacion/a
 
 ESLint aplica reglas de corrección a todo el repositorio, `no-unused-vars` incluido. En el legacy se toleran argumentos sin usar; en los módulos ya saneados (`src/application`, reglas puras del motor y E2E) tampoco se permiten, y `no-console` es bloqueante.
 
+## Golden master
+
+`test/golden.spec.js` recorre una rejilla de opciones y semillas (divisiones de los tres tipos, operaciones múltiples y exámenes, incluido el modo sin límite) y compara lo que genera el motor con `test/fixtures/golden.json`: texto, texto con incógnita, HTML, impresión (para la semilla 1), resultado, resto, respuesta y errores. No describe el comportamiento ideal, sino el actual: cualquier cambio en la salida hace fallar el test.
+
+Si el cambio es intencionado, se regenera el fichero y el diff del JSON se revisa en el PR:
+
+```bash
+UPDATE_GOLDEN=1 npm test
+```
+
 ## Semilla
 
 Los tests nuevos pasan `random: seededRandom(n)` al constructor. Para repetir
