@@ -18,7 +18,12 @@ Hay una sola suite, `npm test`, sin `continue-on-error` en el CI. En el CI la ej
 
 GitHub Pages no se publica en paralelo con CI: el workflow de Pages se dispara tras un `CI` correcto sobre `main`. Los releases ejecutan lint, unit tests, build, comprobación de assets y E2E antes de empaquetar.
 
-La cobertura bloqueante (`npm run coverage:ci`) se aplica a los módulos ya saneados: las reglas puras de `src/operaciones/` (`arithmetic`, `evaluate`, `expression`, `random`, `numberRules`, `factorization`, `operationSelection`, `operandRules`) y `src/application/` salvo `results.js`, que depende del DOM. Exige 98% en líneas y statements, 95% en branches y 90% en funciones, sobre el conjunto. Las funciones se quedan en 90% porque el bundle de test duplica algunas y c8 cuenta la copia sin ejecutar. El legacy no tiene umbral para no premiar tests superficiales; un módulo que sale del legacy entra en el gate quitándolo de la lista de `--exclude`.
+`npm run coverage:ci` aplica dos umbrales y el CI falla si no se cumple alguno:
+
+- **Global: 80 %** en líneas, funciones, ramas y sentencias sobre todo lo que cargan las pruebas unitarias. `app.js` no entra en esta medida porque depende de la página completa; lo cubren las pruebas de extremo a extremo.
+- **Módulos ya saneados:** las reglas puras de `src/operaciones/` (`arithmetic`, `evaluate`, `expression`, `random`, `numberRules`, `factorization`, `operationSelection`, `operandRules`) y `src/application/` salvo `results.js`, que depende del DOM. Exige 98 % en líneas y sentencias, 95 % en ramas y 90 % en funciones. Las funciones se quedan en 90 % porque el bundle de test duplica algunas y c8 cuenta la copia sin ejecutar. Un módulo nuevo entra en este grupo quitándolo de la lista de `--exclude`.
+
+Los componentes de la interfaz se prueban en Node con `test/helpers/fakeDom.js`, que imita la parte del DOM que usan (atributos, eventos, `document`). Así se comprueba su lógica sin añadir una dependencia; su aspecto lo cubren las pruebas de extremo a extremo.
 
 El gate usa `--exclude` y no `--include`: el runner ejecuta un bundle de esbuild y c8 remapea después a `src/`. Con `--include` el bundle se descarta antes del remapeo y el informe da un 100% falso.
 
