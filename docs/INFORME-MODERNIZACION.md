@@ -132,7 +132,7 @@ Dos cifras no mejoran tanto como las demás, y conviene explicar por qué:
 | El navegador y las pruebas trataban los decimales de forma distinta | Original | #140 |
 | Se avisaba de «resultado no entero» justo cuando sí lo era | Original | #146 |
 | Las ventanas repetían acciones y «Atrás» no cerraba | Original | #137 |
-| Un cero escrito por el usuario se trataba como un hueco | Original | #120, #121 |
+| Un cero se tomaba por hueco | Original | #120, #121 |
 | El modo de depuración cambiaba los ejercicios | Original | #114 |
 | Una división inexacta se daba por buena (`7 / 2 = 3`) | Original | #151 |
 | Añadir una operación ya elegida daba error | Original | #153 |
