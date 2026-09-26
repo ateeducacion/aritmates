@@ -7,8 +7,6 @@ import OPERACIONES from '../src/operaciones/operaciones';
 import {seededRandom} from '../src/operaciones/random';
 
 // const { equal } = require("assert");
-global.debug = false;
-debug = false;
 
 // filter unique values in array:
 function onlyUnique(value, index, self) {
@@ -70,7 +68,6 @@ describe('Generar Examen', ()=>{
   it(
       'debería generar operaciones con al menos una de cada tipo de operacion seleccionada',
       ()=>{
-        debug = false;
         const o = new GenerarExamen( {
           cantidadOperaciones: 6,
           tiposOperaciones: [
@@ -220,7 +217,6 @@ describe('Generar Examen', ()=>{
 
   it('operandos de las divisiones deberían ser siempre positivos',
       ()=>{
-        debug= false;
 
         const o = new GenerarExamen( {
           cantidadOperaciones: 10,
@@ -271,7 +267,6 @@ describe('Generar Examen', ()=>{
 
   it('Seleccionada la opción de múltiplos de 100 en +,-,* las soluciones que se generan deben ser múltiplos de este número. ',
       ()=>{
-        // debug = true;
         const examen = new GenerarExamen( {
           cantidadOperaciones: 10,
           nivel: 10,
@@ -454,7 +449,6 @@ describe('Generar Examen', ()=>{
   // it('complementarios: se crean operaciones con números positivos al NO permitir negativos',()=>{});
   it('complementarios: se crean operaciones con números negativos al permitir negativos +-*',
       ()=>{
-        debug= false;
 
         const o = new GenerarExamen( {
           cantidadOperaciones: 10,
@@ -475,7 +469,6 @@ describe('Generar Examen', ()=>{
   // En las divisiones esta puesto que siempre sean positivas
   // it('complementarios: se crean operaciones con números negativos al permitir negativos',
   // ()=>{
-  //     debug= false;
 
   //     const o = new GenerarExamen( {
   //         cantidadOperaciones: 10,
@@ -495,7 +488,6 @@ describe('Generar Examen', ()=>{
 
   // Estos 3 test dudo de que estén funcionando bien aun que parece que si
   it('no debería aparecer ningún valor como "undefined"', ()=>{
-    debug= false;
 
     const o = new GenerarExamen( {
       cantidadOperaciones: 100,
@@ -517,7 +509,6 @@ describe('Generar Examen', ()=>{
     }, actual );
   });
   it('no debería aparecer ningún valor como "NaN"', ()=>{
-    debug= false;
 
     const o = new GenerarExamen( {
       cantidadOperaciones: 100,
@@ -539,7 +530,6 @@ describe('Generar Examen', ()=>{
   });
 
   it('no debería aparecer ningún valor como "Infinity"', ()=>{
-    debug= false;
 
     const o = new GenerarExamen( {
       cantidadOperaciones: 100,
@@ -562,7 +552,6 @@ describe('Generar Examen', ()=>{
 
 describe('Generar Examen, Tipos numero', ()=>{
   it('NATURAL : deberia generar solo números positivos', ()=>{
-    debug= false;
     const o = new GenerarExamen( {
       cantidadOperaciones: 100,
       tiposOperaciones: OPERACIONES.enteras,
@@ -576,17 +565,14 @@ describe('Generar Examen, Tipos numero', ()=>{
       const operacionNoMatch = operacion.some(
           (o) => {
             const match = re.exec(o.toString());
-            if ( debug ) console.log(match, o.toString() );
             return !( match && match.length > 0);
           }
       );
       return !operacionNoMatch;
     }, actual.operacionesExamen);
-    debug = false;
   });
 
   it('ENTERO : debería generar números negativos y positivos', ()=>{
-    // debug= true;
     const o = new GenerarExamen( {
       cantidadOperaciones: 100,
       tiposOperaciones: OPERACIONES.enteras,
@@ -600,17 +586,14 @@ describe('Generar Examen, Tipos numero', ()=>{
       const operacionNoMatch = operacion.some(
           (o) => {
             const match = re.exec(o.toString());
-            if ( debug ) console.log(match, o.toString() );
             return !( match && match.length > 0);
           }
       );
       return !operacionNoMatch;
     }, actual.operacionesExamen);
-    debug = false;
   });
 
   it('DECIMAL: números con decimales (máximo 3)', ()=>{
-    global.debug= false;
     const o = new GenerarExamen( {
       cantidadOperaciones: 100,
       tiposOperaciones: OPERACIONES.base,
@@ -643,9 +626,6 @@ describe('Generar Examen, Tipos numero', ()=>{
               if ( match[4] && match[4] != '' ) decimales = true;
               // decimales resultado
               if ( match[6] && match[6] != '' ) decimales = true;
-              if ( debug ) {
-                console.log( 'decimales', decimales );
-              }
             }
             // si no coincide con la exp regular o no tiene ni un numero
             // con decimales falla
@@ -654,11 +634,9 @@ describe('Generar Examen, Tipos numero', ()=>{
       );
       return !operacionNoMatch;
     }, actual.operacionesExamen);
-    debug = false;
   });
 
   it('DECIMAL: deberia generar a nivel 8 máximo 1 o 2 decimal', ()=>{
-    // global.debug = true;
     // let debug = true;
     const o = new GenerarExamen( {
       cantidadOperaciones: 100,
@@ -681,16 +659,6 @@ describe('Generar Examen, Tipos numero', ()=>{
       const operacionNoMatch = operacion.some(
           (o) => {
             const match = re.exec(o.toString());
-            if ( debug ) {
-              if (o.decimalesMaximo>1) {
-                console.log(
-                    match, '\n\t',
-                    o.toString(), '\n\t',
-                    'resultado', o.resultado, '\n\t',
-                    'decimales máximos:', o.decimalesMaximo, '\n\t'
-                );
-              }
-            }
             const algunaCoincide = ( match && match.length > 0);
             let decimales = false;
             if (algunaCoincide) {
@@ -701,21 +669,17 @@ describe('Generar Examen, Tipos numero', ()=>{
               // decimales resultado
               if ( match[6] && match[6] != '' ) decimales = true;
               if ( !decimales ) {
-                if ( debug ) console.log( 'decimales', decimales );
               }
             } else {
-              if ( debug ) console.log('no coincide', o.toString() );
             }
             return !algunaCoincide || !decimales;
           }
       );
       return !operacionNoMatch;
     }, actual.operacionesExamen);
-    debug = false;
   });
 
   it('DECIMAL: +-* a nivel 8 máximo 1 decimal ', ()=>{
-    global.debug = false;
     const o = new GenerarExamen( {
       cantidadOperaciones: 100,
       nivel: 8,
@@ -739,15 +703,6 @@ describe('Generar Examen, Tipos numero', ()=>{
       const operacionNoMatch = operacion.some(
           (o) => {
             const match = re.exec(o.toString());
-            if ( debug ) {
-              console.log(
-                  'testmatch',
-                  match, '\n\t',
-                  o.toString(), '\n\t',
-                  'resultado', o.resultado, '\n\t',
-                  'decimales maximos:', o.decimalesMaximo, '\n\t'
-              );
-            }
             const algunaCoincide = ( match && match.length > 0);
             let decimales = false;
             if (algunaCoincide) {
@@ -757,18 +712,15 @@ describe('Generar Examen, Tipos numero', ()=>{
               if ( match[4] && match[4] != '' ) decimales = true;
               // decimales resultado
               if ( match[6] && match[6] != '' ) decimales = true;
-              if ( debug ) console.log( 'decimales', decimales );
             }
             return !algunaCoincide || !decimales;
           }
       );
       return !operacionNoMatch;
     }, actual.operacionesExamen);
-    debug = false;
   });
 
   it('DECIMAL: a nivel 15 máximo 2 decimales', ()=>{
-    // debug = false;
     // let debug = true;
     const o = new GenerarExamen( {
       cantidadOperaciones: 100,
@@ -787,10 +739,6 @@ describe('Generar Examen, Tipos numero', ()=>{
       const operacionNoMatch = operacion.some(
           (o) => {
             const match = re.exec(o.toString());
-            if ( debug ) {
-              console.log(match, o.toString(),
-                  'resultado', o.resultado );
-            }
             const algunaCoincide = ( match && match.length > 0);
             let decimales = false;
             if (algunaCoincide) {
@@ -800,14 +748,12 @@ describe('Generar Examen, Tipos numero', ()=>{
               if ( match[4] && match[4] != '' ) decimales = true;
               // decimales resultado
               if ( match[6] && match[6] != '' ) decimales = true;
-              if ( debug ) console.log( 'decimales', decimales );
             }
             return !algunaCoincide || !decimales;
           }
       );
       return !operacionNoMatch;
     }, actual.operacionesExamen);
-    debug = false;
   });
 
   it('DECIMAL: forzar 4 decimales ', ()=>{
@@ -827,10 +773,6 @@ describe('Generar Examen, Tipos numero', ()=>{
       const operacionNoMatch = operacion.some(
           (o) => {
             const match = re.exec(o.toString());
-            if ( debug ) {
-              console.log(match, o.toString(),
-                  'resultado', o.resultado );
-            }
             const algunaCoincide = ( match && match.length > 0);
             let decimales = false;
             if (algunaCoincide) {
@@ -840,18 +782,15 @@ describe('Generar Examen, Tipos numero', ()=>{
               if ( match[4] && match[4] != '' ) decimales = true;
               // decimales resultado
               if ( match[6] && match[6] != '' ) decimales = true;
-              if ( debug ) console.log( 'decimales', decimales );
             }
             return !algunaCoincide || !decimales;
           }
       );
       return !operacionNoMatch;
     }, actual.operacionesExamen);
-    debug = false;
   });
 
   it('01. Resultado Negativo: numeros positivos', ()=>{
-    debug = false;
     const op = new GenerarExamen({
       cantidadOperaciones: 100,
       nivel: 10,
@@ -889,7 +828,6 @@ describe('Generar Examen, Tipos numero', ()=>{
   });
 
   it('02. Resultado Negativo: números positivos y decimales', ()=>{
-    debug = false;
     const op = new GenerarExamen({
       cantidadOperaciones: 100,
       nivel: 10,
@@ -923,7 +861,6 @@ describe('Generar Examen, Tipos numero', ()=>{
   });
 
   it('03.  Resultado Negativo y números negativos', ()=>{
-    debug = false;
     const op = new GenerarExamen({
       cantidadOperaciones: 50,
       nivel: 10,
@@ -963,7 +900,6 @@ describe('Generar Examen, Tipos numero', ()=>{
   });
 
   it('04. Resultado Negativo y números negativos decimales', ()=>{
-    debug = false;
     const op = new GenerarExamen({
       cantidadOperaciones: 50,
       nivel: 10,

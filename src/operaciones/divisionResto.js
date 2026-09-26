@@ -173,8 +173,6 @@ export default class DivisionResto extends DivisionEntera {
 
 
     // si el numero que define el nivel es el resultado lo generamos primero
-    // if ( debug ) console.log(tag,'posicion nivel en resultado',
-    // this.cantidad_operandos, this.posicion_nivel);
     if ( this.cantidad_operandos+1 == this.posicion_nivel ) {
       // tambien generamos un resto para obligarle que sea distinto a cero
       this.resultado = this.numeroRandom(true, false, 1);

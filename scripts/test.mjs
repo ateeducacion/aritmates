@@ -77,7 +77,6 @@ const jqueryStubPlugin = {
 async function bundleTests(specs) {
   await mkdir(dist, { recursive: true });
   const entry = [
-    'global.debug = false;',
     'global.window = global;',
     "if (process.env.ARITMATES_TEST_VERBOSE !== '1') console.log = () => {};",
     // Legacy specs that do not inject `random` still need deterministic

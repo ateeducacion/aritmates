@@ -41,7 +41,6 @@ describe('Suma', ()=>{
   it('enfocado debería mostrar un numero igual al del nivel', ()=>{
     const input = {nivel: 10, enfocado: true, permitirNegativos: false};
 
-    // debug = true;
     const s = new objetos.Suma(input);
     const actual = s.getOperandos();
     actual.push(s.resultado);
@@ -54,7 +53,6 @@ describe('Suma', ()=>{
     // console.log(s.getOperandos());
     // console.log('enfocado debería = nivel\n', s );
     // console.log('actual\n',s.toString() );
-    // debug = false;
 
     expect(actual).to.include(10);
   });
@@ -68,15 +66,10 @@ describe('Suma', ()=>{
     // s.enfocado = true;
     // s.generarNumerosOperandos();
     // s.calcularResultado();
-    debug= false;
     const actual = s.operandos;
     actual.push(s.resultado);
     // console.log(s.nivel);
     // console.log(s.toString());
-    if ( debug ) {
-      console.log('actual', actual, 'pos nivel', s.posicion_nivel );
-      console.log('enfocado debería = nivel', s.toString() );
-    }
 
     expect(actual[s.posicion_nivel-1]).be.oneOf([100, -100]);
   });
@@ -86,7 +79,6 @@ describe('Suma', ()=>{
     const actual = s.operandos;
     actual.push(s.resultado);
 
-    // debug = true;
     // console.log(s.nivel);
     // console.log(s.toString());
     //  no funciona con expect(actual).any.within(40,60);
@@ -175,7 +167,6 @@ describe('Suma', ()=>{
   });
   // Operaciones con calculo nivel en resultado
   it('debería ser un numero valido cuando el numero que define el nivel es el resultado', ()=>{
-    // debug = true;
     const input = {
       nivel: 100,
       cantidadOperandos: 3,
@@ -188,10 +179,8 @@ describe('Suma', ()=>{
     // console.log('upper_bound', actual.upper_bound );
 
     expect(Math.abs(actual.resultado)).to.be.within(0, 100);
-    debug = false;
   });
   it('debería dar múltiplos de 10 con la opción x10', ()=>{
-    debug = false;
     const input = {
       nivel: 25,
       cantidadOperandos: 3,
@@ -211,11 +200,9 @@ describe('Suma', ()=>{
       } while (r==true && i<=x.cantidadOperandos );
       return r;
     }, actual.operandos );
-    debug = false;
   });
 
   it('debería dar múltiplos de 100 con la opción x100', ()=>{
-    debug = false;
     const input = {
       nivel: 25,
       cantidadOperandos: 3,
@@ -239,11 +226,9 @@ describe('Suma', ()=>{
       } while (r==true && i<x.cantidad_operandos );
       return r;
     }, actual.operandos);
-    debug = false;
   });
 
   it('con la opción x100 pero no pude ser mayor que nivelx100', ()=>{
-    debug = false;
     const input = {
       nivel: 10,
       cantidadOperandos: 2,
@@ -268,11 +253,9 @@ describe('Suma', ()=>{
       } while (operandoEnNivel==true && i<=x.cantidad_operandos );
       return r;
     }, actual.operandos );
-    debug = false;
   });
 
   it('complementarios debería estar entre 10-100', ()=>{
-    debug = false;
     const input = {
       nivel: 25,
       complementario: 120,
@@ -280,11 +263,9 @@ describe('Suma', ()=>{
     const actual = new objetos.Suma(input);
 
     expect(actual.complementario).to.be.within(10, 100);
-    debug = false;
   });
 
   it('complementarios debería ser múltiplo de 10', ()=>{
-    debug = false;
     const input = {
       nivel: 25,
       complementario: 12,
@@ -294,10 +275,8 @@ describe('Suma', ()=>{
     expect( actual.complementario ).to.satisfy(function(x) {
       return (x % 10)==0;
     }, 'expected '+actual.complementario+' to be divisible by 10' );
-    debug = false;
   });
   it('complemetario debería generar resultado igual al valor de complementario', ()=>{
-    debug = false;
     const input = {
       complementario: 50,
     };
@@ -306,11 +285,9 @@ describe('Suma', ()=>{
     // console.log('\nACTUAL\n', actual );
     expect(actual.resultado).to.be.equal(input.complementario);
 
-    debug = false;
   });
 
   it('complementario debería generar operandos múltiplos de 10 cuando el nivel es 100', ()=>{
-    debug = false;
     const input = {
       complementario: 100,
     };
@@ -328,11 +305,9 @@ describe('Suma', ()=>{
       return r;
     }, 'operandos: ' + actual.operandos );
 
-    debug = false;
   });
 
   it('con complementario, debería tener 2 operandos cuando no lo especificas', ()=>{
-    debug = false;
     const input = {
       complementario: 100,
     };
@@ -341,10 +316,8 @@ describe('Suma', ()=>{
     // console.log('\nACTUAL\n', actual );
     expect(actual.operandos).to.have.length(2);
 
-    debug = false;
   });
   it('con complementario, debería ser igual cantidad_operandos que la longitud de el array operandos', ()=>{
-    debug = false;
     const input = {
       complementario: 100,
     };
@@ -353,7 +326,6 @@ describe('Suma', ()=>{
     // console.log('\nACTUAL\n', actual );
     expect(actual.operandos.length).be.equal(actual.cantidad_operandos);
 
-    debug = false;
   });
 
   it('no debería cambiar los operandos cuando los manda el usuario', ()=>{

@@ -23,7 +23,7 @@ El detalle del motor está en [docs/MATH-ENGINE.md](docs/MATH-ENGINE.md). Estas 
 - Los paréntesis y «resultado igual a» viven en el motor y en el código corto. En la portada `ENABLE.parentesis` y `ENABLE.resultadoIgualA` están apagados.
 - `cantidadOperaciones` en el código corto solo acepta `0` y múltiplos de 10, de 10 a 100.
 - Las divisiones no admiten operandos negativos.
-- `globalThis.debug` es un booleano y vale `false`. Es estrictamente observacional: activarlo no puede cambiar operandos, operadores, resultado, errores ni representación de la operación.
+- No hay flag de depuración. Para trazar un caso se usa el depurador o un log temporal que no se commitea; el motor no puede tener ramas que solo existan para depurar.
 - No se añaden `it(...)` vacíos ni tests `pending` para representar ideas futuras. Un comportamiento soportado lleva una aserción; uno no soportado se documenta sin fingir cobertura.
 
 El correo de resultados no forma parte del producto. Se quitó en 1.0.4. En `upstream` el PHP sigue, con la llamada comentada.
@@ -32,7 +32,7 @@ El correo de resultados no forma parte del producto. Se quitó en 1.0.4. En `ups
 
 La UI llama a la aplicación, y la aplicación llama al motor. `src/operaciones/arithmetic.js`, `expression.js`, `evaluate.js` y `random.js` no usan el DOM y se prueban en Node. Las expresiones combinadas se calculan con `evaluateArithmetic`.
 
-Sin `random` inyectado, la generación usa `Math.random`. La suite sustituye `Math.random` por la semilla 1 solo dentro del proceso de test. Un spec nuevo pasa su propia semilla.
+Sin `random` inyectado, la generación usa `Math.random`. La suite configura `setDefaultRandom(seededRandom(1))` solo dentro del proceso de test; no toca `Math.random`. Un spec nuevo pasa su propia semilla.
 
 jQuery, Bootstrap y los custom elements de `src/components/` se quedan: la plantilla depende de ellos. El build sigue siendo scripts de Node, Sass y esbuild.
 
