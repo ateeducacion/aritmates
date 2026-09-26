@@ -74,6 +74,13 @@ import {valoresNiveles} from './helpers';
 
 import { keyCrono, valoresCrono, keyNivel, textoCrono } from './PortadaUI';
 
+// Desktop and mobile layouts duplicate each control: `#id` and `#id_mv`.
+// Like the pairs it replaces, it throws if either element is missing.
+function setBoth(id, prop, value) {
+  $('#' + id)[0][prop] = value;
+  $('#' + id + '_mv')[0][prop] = value;
+}
+
 // La refactorización es incremental: resultados, temporizador, reglas de opciones
 // y estado de sesión viven en src/application. Este archivo conserva el cableado
 // con el DOM y los eventos mientras se extraen responsabilidades completas.
@@ -191,8 +198,7 @@ const opciones = {
   },
 
   set enfocado(x) {
-    $('#switch-enfocado')[0].checked = x;
-    $('#switch-enfocado_mv')[0].checked = x;
+    setBoth('switch-enfocado', 'checked', x);
   },
   get enfocado() {
     if ( $('#switch-enfocado')[0] ) {
@@ -208,8 +214,7 @@ const opciones = {
     return false;
   },
   set resultadoNegativo(x) {
-    $('#switch-resultadoNegativo')[0].checked = x;
-    $('#switch-resultadoNegativo_mv')[0].checked = x;
+    setBoth('switch-resultadoNegativo', 'checked', x);
   },
 
   // parentesis solo funicona con operaciones multiples
@@ -220,8 +225,7 @@ const opciones = {
     return false;
   },
   set parentesis(x) {
-    $('#opConParentesis')[0].checked = x;
-    $('#opConParentesis_mv')[0].checked = x;
+    setBoth('opConParentesis', 'checked', x);
   },
 
   get complementario() {
@@ -231,8 +235,7 @@ const opciones = {
     return false;
   },
   set complementario(x) {
-    $('#resultadoIgualA')[0].value = x;
-    $('#resultadoIgualA_mv')[0].value = x;
+    setBoth('resultadoIgualA', 'value', x);
   },
 
   addTipoOperacion(tipo) {
@@ -428,8 +431,7 @@ const cbLimiteOpOnChange = (ev) => {
   sliderCantidadOp.sliderCon.show = !ev.target.checked;
   sliderCantidadOp_mv.disabled = ev.target.checked;
   sliderCantidadOp_mv.sliderCon.show = !ev.target.checked;
-  $('#switch-limiteOp')[0].checked = ev.target.checked;
-  $('#switch-limiteOp_mv')[0].checked = ev.target.checked;
+  setBoth('switch-limiteOp', 'checked', ev.target.checked);
 
   // si esta sin limite activar cronometro y no permitir desactivarlo
   //   // sliderCrono.disabled = true;
@@ -561,8 +563,7 @@ const cbDivRestoChange = (ev) => {
     restaurarOpcionMas2Operandos();
   }
   // igualamos los dos cb
-  $('#cbDivResto')[0].checked = ev.target.checked;
-  $('#cbDivResto_mv')[0].checked = ev.target.checked;
+  setBoth('cbDivResto', 'checked', ev.target.checked);
   // desactiva los decimales si esta selecionado solo div con resto
   changeOpTipoNumero();
 };
@@ -594,8 +595,7 @@ $('#opConParentesis')[0].setAttribute('disabled', '');
 $('#opConParentesis_mv')[0].setAttribute('disabled', '');
 
 const opConParentesisChange = (ev) => {
-  $('#opConParentesis')[0].checked = ev.target.checked;
-  $('#opConParentesis_mv')[0].checked = ev.target.checked;
+  setBoth('opConParentesis', 'checked', ev.target.checked);
 };
 
 $('#opConParentesis').on('change', opConParentesisChange );
@@ -1083,8 +1083,7 @@ $('#switch-resultadoNegativo')[0].setAttribute('disabled', '');
 $('#switch-resultadoNegativo_mv')[0].setAttribute('disabled', '');
 
 const cbResultadoOnChange = (ev) => {
-  $('#switch-resultadoNegativo')[0].checked = ev.target.checked;
-  $('#switch-resultadoNegativo_mv')[0].checked = ev.target.checked;
+  setBoth('switch-resultadoNegativo', 'checked', ev.target.checked);
 };
 
 $('#switch-resultadoNegativo').on('change', cbResultadoOnChange );
@@ -1450,12 +1449,10 @@ $('#pdfdown').click( (ev) => {
 
 // Desactivar caracteristicas
 if ( !ENABLE.parentesis ) {
-  $('#opConParentesis')[0].disabled = true;
-  $('#opConParentesis_mv')[0].disabled = true;
+  setBoth('opConParentesis', 'disabled', true);
 }
 if ( !ENABLE.resultadoIgualA ) {
-  $('#resultadoIgualA')[0].disabled = true;
-  $('#resultadoIgualA_mv')[0].disabled = true;
+  setBoth('resultadoIgualA', 'disabled', true);
 }
 if ( !ENABLE.enfocado ) $('#switch-enfocado')[0].disabled = true;
 
