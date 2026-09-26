@@ -1,0 +1,26 @@
+/* Roboto (Apache-2.0), Latin subset of roboto-fontface 0.10.0 with the
+   interface symbols (− → — “ ” …). Regenerate with fonttools:
+   pyftsubset Roboto-<Peso>.woff2 --flavor=woff2 --layout-features='*' \
+     --unicodes="U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2190-2199,U+2212,U+2215,U+2219,U+FEFF,U+FFFD"
+   Only the weights the interface uses (400, 500, 700) are shipped. */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/roboto-latin-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/roboto-latin-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/roboto-latin-700.woff2') format('woff2');
+}

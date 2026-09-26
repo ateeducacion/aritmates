@@ -18,7 +18,6 @@
 /** @global */
 window.debug = false;
 
-import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import $ from 'jquery';
 // Switch nativo compatible (sustituye @material/mwc-switch)
 import './components/mwc-switch.js';
