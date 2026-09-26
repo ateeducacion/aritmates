@@ -158,7 +158,7 @@ export default class DivisionEntera extends Operacion {
 
     if (this.multiplo10 || this.multiplo100) {
       this.operandos_por_usuario = true;
-      this.operandos.sort().reverse();
+      this.operandos.sort((a, b) => b - a);
     }
 
 
