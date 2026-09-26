@@ -174,7 +174,7 @@ export default class DivisionEntera extends Operacion {
     } else {
       this.resultado = this.dividirValores(this.operandos);
 
-      if ( this.resultado % 1 == 0) {
+      if ( this.resultado % 1 != 0) {
         this.errors.push({
           'error': 'Resultado no es entero',
           'msg': 'los datos que se enviaron generar un resultado con decimales ',
