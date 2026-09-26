@@ -8,6 +8,7 @@ import Multiplicacion from '../src/operaciones/multiplicacion';
 import DivisionEntera from '../src/operaciones/divisionEntera';
 import DivisionResto from '../src/operaciones/divisionResto';
 import DivisionDecimales from '../src/operaciones/divisionDecimales';
+import {seededRandom} from '../src/operaciones/random';
 
 const objetos = {};
 objetos.Operacion = Operacion;
@@ -494,3 +495,25 @@ describe('Division Entera', ()=>{
   });
 });
 
+
+describe('Operandos dados en división entera', () => {
+  const noEsEntero = (op) =>
+    op.errors.some((error) => error.error === 'Resultado no es entero');
+
+  it('8 / 2 no registra error', () => {
+    const op = new DivisionEntera({cantidadOperandos: 2, operandos: [8, 2], random: seededRandom(1)});
+    expect(Number(op.resultado)).to.equal(4);
+    expect(noEsEntero(op)).to.equal(false);
+  });
+
+  it('7 / 2 se muestra truncado, pero ya registra que no es entero', () => {
+    const op = new DivisionEntera({cantidadOperandos: 2, operandos: [7, 2], random: seededRandom(1)});
+    expect(Number(op.resultado)).to.equal(3);
+    expect(noEsEntero(op)).to.equal(true);
+  });
+
+  it('en la división con resto un cociente no entero no es un error', () => {
+    const op = new DivisionResto({cantidadOperandos: 2, operandos: [7, 2], random: seededRandom(1)});
+    expect(noEsEntero(op)).to.equal(false);
+  });
+});

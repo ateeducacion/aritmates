@@ -216,6 +216,11 @@ export default class DivisionResto extends DivisionEntera {
     return txt;
   }
 
+  /** @inheritdoc */
+  requiereCocienteEntero() {
+    return false;
+  }
+
   getTipo() {
     return OPERACIONES.DIVISION_RESTO;
   }
