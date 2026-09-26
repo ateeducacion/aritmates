@@ -55,7 +55,7 @@ npm run dev      # build + http://127.0.0.1:9012/
 | CDN / dependencias de UI pesadas | Todo local en `dist/` y `dist/vendor/` |
 | Node en producción | Solo hace falta Node para build y desarrollo |
 
-Documentación: **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**, **[docs/MATH-ENGINE.md](docs/MATH-ENGINE.md)**, **[docs/TESTING.md](docs/TESTING.md)**, **[docs/SIMPLIFICACION.md](docs/SIMPLIFICACION.md)**. Quien mantiene el código sigue **[AGENTS.md](AGENTS.md)**.
+Documentación: **[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)**, **[docs/MATH-ENGINE.md](docs/MATH-ENGINE.md)**, **[docs/TESTING.md](docs/TESTING.md)**, **[docs/SIMPLIFICACION.md](docs/SIMPLIFICACION.md)**, **[docs/INFORME-MODERNIZACION.md](docs/INFORME-MODERNIZACION.md)** (comparación con `upstream`). Quien mantiene el código sigue **[AGENTS.md](AGENTS.md)**.
 
 ## Estructura
 

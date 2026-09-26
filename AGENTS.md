@@ -62,7 +62,7 @@ La configuración del repositorio debe exigir el check `CI` antes de fusionar en
 
 ## Documentación
 
-Código y comentarios en inglés. La documentación para personas está en español: `README.md`, `developers.md`, `changelog.md`, `docs/ARCHITECTURE.md`, `docs/MATH-ENGINE.md`, `docs/TESTING.md`, `docs/SIMPLIFICACION.md` y `docs/COMPONENTES.md`.
+Código y comentarios en inglés. La documentación para personas está en español: `README.md`, `developers.md`, `changelog.md`, `docs/ARCHITECTURE.md`, `docs/MATH-ENGINE.md`, `docs/TESTING.md`, `docs/SIMPLIFICACION.md`, `docs/COMPONENTES.md` y `docs/INFORME-MODERNIZACION.md`.
 
 ## Skills
 

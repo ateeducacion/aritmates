@@ -1,0 +1,122 @@
+{
+  "generado": "2026-09-26",
+  "refs": {
+    "antigua": "origin/upstream",
+    "nueva": "HEAD"
+  },
+  "code": {
+    "antigua": {
+      "ref": "origin/upstream",
+      "dependencias": 56,
+      "devDependencias": 44,
+      "ficherosJs": 31,
+      "lineasJs": 12686,
+      "mayorFichero": {
+        "nombre": "src/operaciones/OperacionMultiple.js",
+        "lineas": 2962
+      },
+      "eval": 1,
+      "consoleLog": 589,
+      "bloquesDebug": 506,
+      "lineasComentadas": 1450,
+      "todo": 18,
+      "ficherosPhp": 3,
+      "lineasPhp": 778,
+      "ficherosTest": 7,
+      "lineasTest": 6338,
+      "tests": 300,
+      "testsVacios": 13,
+      "configBuild": 6,
+      "ci": 1
+    },
+    "nueva": {
+      "ref": "HEAD",
+      "dependencias": 9,
+      "devDependencias": 7,
+      "ficherosJs": 49,
+      "lineasJs": 10403,
+      "mayorFichero": {
+        "nombre": "src/app.js",
+        "lineas": 1542
+      },
+      "eval": 0,
+      "consoleLog": 0,
+      "bloquesDebug": 0,
+      "lineasComentadas": 521,
+      "todo": 11,
+      "ficherosPhp": 0,
+      "lineasPhp": 0,
+      "ficherosTest": 31,
+      "lineasTest": 8370,
+      "tests": 420,
+      "testsVacios": 0,
+      "configBuild": 0,
+      "ci": 4
+    }
+  },
+  "despliegue": {
+    "antigua": {
+      "total": 24633334,
+      "ficheros": 628,
+      "porTipo": {
+        "JavaScript": 1944490,
+        "CSS": 365078,
+        "Otros": 179364,
+        "Fuentes": 5279446,
+        "Imágenes": 5588400,
+        "PHP (servidor)": 10881581,
+        "Mapas de código": 433223
+      }
+    },
+    "nueva": {
+      "total": 5340842,
+      "ficheros": 99,
+      "porTipo": {
+        "Otros": 84621,
+        "CSS": 282110,
+        "Fuentes": 2253190,
+        "Imágenes": 957375,
+        "JavaScript": 984454,
+        "Mapas de código": 779092
+      }
+    }
+  },
+  "carga": {
+    "antigua": {
+      "requests": 45,
+      "bytes": {
+        "document": 38248,
+        "stylesheet": 362743,
+        "image": 567978,
+        "script": 1942523,
+        "xhr": 357,
+        "fetch": 17835,
+        "font": 44300
+      },
+      "total": 2973984,
+      "peticionesExternas": 91,
+      "bytesExternos": 30565772,
+      "errores": 0,
+      "domContentLoadedMs": 94,
+      "loadMs": 1425
+    },
+    "nueva": {
+      "requests": 47,
+      "bytes": {
+        "document": 39095,
+        "stylesheet": 282107,
+        "image": 301311,
+        "script": 365600,
+        "xhr": 315,
+        "font": 239156,
+        "fetch": 14729
+      },
+      "total": 1242313,
+      "peticionesExternas": 0,
+      "bytesExternos": 0,
+      "errores": 0,
+      "domContentLoadedMs": 40,
+      "loadMs": 51
+    }
+  }
+}
