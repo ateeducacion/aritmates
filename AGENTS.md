@@ -46,14 +46,14 @@ El HTML de un ejercicio sale de números del motor. El parámetro `c` de la URL 
 
 ```bash
 npm ci
-npm test          # la misma suite que npm run test:ci y npm run test:all
+npm test          # suite única
 npm run lint
 npm run build
 npm run check
 npm run e2e       # hace falta dist/ y Chromium
 ```
 
-El CI (`.github/workflows/ci.yml`) ejecuta esas comprobaciones en Node 24 y falla si alguna falla.
+El CI (`.github/workflows/ci.yml`) ejecuta esas comprobaciones en Node 24 y falla si alguna falla. Los tests unitarios corren una sola vez, dentro de `npm run coverage:ci`.
 GitHub Pages se despliega únicamente después de un CI correcto en `main`; no se debe volver a un workflow de despliegue paralelo al quality gate. Los releases ejecutan la misma validación esencial antes de publicar artefactos.
 Los workflows usan mínimo privilegio: CI solo necesita `contents: read` e `id-token: write` para subir la cobertura a Codecov por OIDC; un workflow no recibe permisos de escritura salvo para la acción concreta que los requiere (release, Pages o PR automático de skills).
 La configuración del repositorio debe exigir el check `CI` antes de fusionar en `main`; el workflow de Pages es una segunda barrera y no sustituye la protección de rama.

@@ -13,8 +13,8 @@ npm run coverage      # resumen global de c8 y coverage/lcov.info
 npm run coverage:ci   # gate de cobertura de los módulos matemáticos ya saneados
 ```
 
-`npm test` y `npm run test:all` ejecutan lo mismo. No hay una suite «legacy»
-aparte ni `continue-on-error` en el CI.
+Hay una sola suite, `npm test`, sin `continue-on-error` en el CI. En el CI la ejecuta
+`npm run coverage:ci`, que corre la suite con c8 y falla si falla un test.
 
 GitHub Pages no se publica en paralelo con CI: el workflow de Pages se dispara tras un `CI` correcto sobre `main`. Los releases ejecutan lint, unit tests, build, comprobación de assets y E2E antes de empaquetar.
 

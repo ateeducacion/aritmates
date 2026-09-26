@@ -6,7 +6,7 @@
  *   node scripts/test.mjs --grep "suma"
  */
 import * as esbuild from 'esbuild';
-import { mkdir, writeFile, readdir, access } from 'node:fs/promises';
+import { mkdir, writeFile, readdir } from 'node:fs/promises';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
@@ -15,15 +15,6 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
 
 const args = process.argv.slice(2);
-
-async function exists(p) {
-  try {
-    await access(p);
-    return true;
-  } catch {
-    return false;
-  }
-}
 
 async function listSpecFiles() {
   const dir = join(root, 'test');
@@ -127,24 +118,11 @@ async function bundleTests(specs) {
 function runMocha(bundlePath) {
   return new Promise((resolvePromise) => {
     const mocha = join(root, 'node_modules/mocha/bin/mocha.js');
-    const extra = args.filter((a) => a !== '--coverage');
-    const child = spawn(process.execPath, [mocha, bundlePath, '--timeout', '15000', '--forbid-pending', '--forbid-only', ...extra], {
+    const child = spawn(process.execPath, [mocha, bundlePath, '--timeout', '15000', '--forbid-pending', '--forbid-only', ...args], {
       cwd: root,
       stdio: 'inherit',
     });
     child.on('exit', (code) => resolvePromise(code ?? 1));
-  });
-}
-
-// Garantizar binario esbuild (npm allowScripts a veces lo omite en CI)
-if (!(await exists(join(root, 'node_modules/esbuild/bin/esbuild')))) {
-  console.log('Instalando binario esbuild…');
-  await new Promise((res, rej) => {
-    const child = spawn(process.execPath, [join(root, 'node_modules/esbuild/install.js')], {
-      cwd: root,
-      stdio: 'inherit',
-    });
-    child.on('exit', (c) => (c === 0 ? res() : rej(new Error('esbuild install failed'))));
   });
 }
 
