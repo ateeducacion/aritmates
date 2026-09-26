@@ -16,7 +16,6 @@
  * @license AGPL-3.0 
  */
 /** @global */
-window.debug = false;
 
 import $ from 'jquery';
 // Switch nativo compatible (sustituye @material/mwc-switch)
@@ -820,16 +819,10 @@ const enviarRespuesta = (ev) => {
 };
 // Fin enviar respuesta ---
 
-window.opActual = {};
-
 function mostrarOperacion(op) {
   // TODO: no desactiva la barra scroll en input number
   actualizarClaseAyuda( op.getTipo() );
   tagOperacion.innerHTML = op.toHtml();
-  if ( window.debugSelenium ) {
-    window.opActual = op;
-  }
-  actualizarClaseAyuda(op.getTipo() );
 }
 
 let opcionesGuardadas;

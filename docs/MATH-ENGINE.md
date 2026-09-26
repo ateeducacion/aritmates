@@ -102,14 +102,13 @@ Los intervalos enteros y la elección de signo viven en `random.js`. Se conserva
 el `Math.round` histórico de forma explícita para que esta refactorización no
 cambie la distribución ni las secuencias reproducibles de los ejercicios.
 
-La suite de tests, además, sustituye `Math.random` por una semilla fija al
-arrancar. Así los spec antiguos que no pasan `random` también se repiten.
+La suite de tests, además, configura una fuente fija con
+`setDefaultRandom(seededRandom(1))` al arrancar, sin tocar `Math.random`. Así los spec antiguos que no pasan `random` también se repiten.
 Un spec nuevo debe pasar su propia semilla si quiere aislarse del resto.
 
 
-## Debug y determinismo
+## Depuración y determinismo
 
-`globalThis.debug` solo controla trazas de diagnóstico. Con la misma configuración
-y la misma semilla, activar o desactivar debug produce los mismos operandos,
-operadores, resultado y texto. Los bloques de logging no ejecutan reglas del
-motor ni modifican `errors`.
+No hay flag de depuración: se retiró junto con sus más de 400 bloques de trazas.
+Con la misma configuración y la misma semilla el motor produce siempre los mismos
+operandos, operadores, resultado y texto; `test/golden.spec.js` lo comprueba.

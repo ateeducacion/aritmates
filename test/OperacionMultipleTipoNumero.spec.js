@@ -7,7 +7,6 @@ const expect = require('chai').expect;
 
 describe('Operación Multiple N.NATURALES solo positivos', () => {
   it('No negativos con números naturales', ()=>{
-    debug = false;
     const op = new OperacionMultiple(
         {nivel: 50,
           cantidadOperandos: 3,
@@ -21,12 +20,9 @@ describe('Operación Multiple N.NATURALES solo positivos', () => {
     );
     const actual = op.toString();
     expect(actual).to.match(/[0-9]+ [-+\/] [0-9]+ [-+\/] [0-9]+ = [0-9]+/);
-    if ( debug ) console.log(actual);
-    debug = false;
   }),
 
   it('resultado negativos con numeros naturales', ()=>{
-    debug = false;
     const op = new OperacionMultiple(
         {nivel: 50,
           cantidadOperandos: 3,
@@ -42,11 +38,8 @@ describe('Operación Multiple N.NATURALES solo positivos', () => {
     );
     const actual = op.toString();
     expect(actual).to.match(/[0-9]+ [+\/\-∙] [0-9]+ [+\/\-∙] [0-9]+ = -[0-9]+/);
-    if ( debug ) console.log(actual);
-    debug = false;
   });
   it('No decimales con números naturales', ()=>{
-    debug = false;
     const op = new OperacionMultiple(
         {nivel: 50,
           cantidadOperandos: 3,
@@ -61,14 +54,11 @@ describe('Operación Multiple N.NATURALES solo positivos', () => {
     const actual = op.toString();
     expect(actual).to.not.match(
         /[0-9]+ [+\/] [0-9]+ [+\/] [0-9]+ = [0-9]+\.[0-9]+/);
-    if ( debug ) console.log(actual);
-    debug = false;
   });
 });
 
 describe('Operación Multiple N.Enteros', () => {
   it('No decimales con números enteros', ()=>{
-    debug = false;
     const op = new OperacionMultiple(
         {nivel: 50,
           cantidadOperandos: 3,
@@ -82,8 +72,6 @@ describe('Operación Multiple N.Enteros', () => {
     );
     const actual = op.toString();
     expect(actual).to.not.match(/[0-9]+ [+\/] [0-9]+ [+\/] [0-9]+ = [0-9]+\.[0-9]+/);
-    if ( debug ) console.log(actual);
-    debug = false;
   });
   
 });
@@ -96,10 +84,7 @@ describe('Operación Multiple N.Decimales', () => {
   it('deberían aparecen decimales', () => {
     const tag = '[OperacionMultipleTipoNumero.decimales'+
         '.deberíanAparecenDecimales]';
-    // debug = true;
-    if ( debug ) console.log( tag );
 
-    debug= false;
     const o = new OperacionMultiple({
       nivel: 50,
       cantidadOperandos: 3,
@@ -155,7 +140,6 @@ describe('Operación Multiple N.Decimales', () => {
       // con decimales falla
       return decimales;
     }, actual.operacionesExamen);
-    debug = false;
   });
   // fin
 });

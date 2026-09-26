@@ -9,7 +9,6 @@ const expect = require('chai').expect;
 
 describe('Operacion Multiple 4 operandos o mas', () => {
   it('Multiplicación de 4 operandos expresada con solo un tipo de operacion', () => {
-    debug = false;
 
     const op = new OperacionMultiple(
         {
@@ -28,11 +27,9 @@ describe('Operacion Multiple 4 operandos o mas', () => {
     const expected = '32423 ∙ 421 ∙ 4321 ∙ 4 = 235928034572';
 
     expect(actual).to.equal(expected);
-    debug = false;
   });
 
   it('Multiplicación de 4 operandos 32423 ∙ 421 ∙ 4321 ∙ 4 = 235928034572', () => {
-    debug = false;
 
     const op = new OperacionMultiple(
         {
@@ -52,11 +49,9 @@ describe('Operacion Multiple 4 operandos o mas', () => {
     const expected = '32423 ∙ 421 ∙ 4321 ∙ 4 = 235928034572';
 
     expect(actual).to.equal(expected);
-    debug = false;
   });
 
   it('Division entera de 4 operandos 235928034572 / 32423 / 421 / 4321 = 4 ', () => {
-    // debug = true;
 
     const op = new OperacionMultiple(
         {
@@ -76,11 +71,9 @@ describe('Operacion Multiple 4 operandos o mas', () => {
     const expected = '32423 ∙ 421 ∙ 4321 ∙ 4 = 235928034572';
 
     expect(actual).to.equal(expected);
-    debug = false;
   });
 
   it('debería 3 ∙ 2 + 1 - 5 = 2', () => {
-    debug = false;
 
     const op = new OperacionMultiple(
         {nivel: 50,
@@ -103,7 +96,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
   });
 
   it('debería 3 + 2 * 1 - 5 = 0', () => {
-    debug = false;
 
     const op = new OperacionMultiple(
         {nivel: 50,
@@ -127,7 +119,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
 
 
   it('debería 3 + 2 - 1 ∙ 5 = 0', () => {
-    // debug = true;
 
     const op = new OperacionMultiple(
         {nivel: 50,
@@ -146,7 +137,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
   });
 
   it('debería 7 + 3 + 2 + 1 - 5 - 23 = -15', () => {
-    // debug = true;
 
     const op = new OperacionMultiple(
         {nivel: 50,
@@ -171,11 +161,9 @@ describe('Operacion Multiple 4 operandos o mas', () => {
     // const expected = '3 + 2 - ( 1 ∙ 5 ) = 0'; // => 5 - 5 = 0
 
     expect(actual).to.equal(expected);
-    debug = false;
   });
 
   it('debería 7 + 3 + 2 ∙ 1 - 5 - 23 = -16', () => {
-    debug = false;
 
     const op = new OperacionMultiple(
         {nivel: 50,
@@ -200,7 +188,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
   });
 
   it('debería 7 + 3 ∙ 2 + 1 - 5 - 23 = -14', () => {
-    debug = false;
 
     const op = new OperacionMultiple(
         {nivel: 50,
@@ -225,7 +212,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
   });
 
   it('debería 7 ∙ 3 + 2 + 1 - 5 - 23 = -4', () => {
-    debug = false;
 
     const op = new OperacionMultiple(
         {nivel: 50,
@@ -251,7 +237,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
 
   it('Crear una operacion de 4 operandos al azar solo divisiones',
       () => {
-        debug = false;
 
         const op = new OperacionMultiple(
             {nivel: 50,
@@ -272,16 +257,13 @@ describe('Operacion Multiple 4 operandos o mas', () => {
         // expect(actual).to.match(expected);
         // let a = '1 + 3 + 34 / 12 = 34';
         expect(actual).to.match(/[0-9]+ \/ [0-9]+ \/ [0-9]+ \/ [0-9]+ = [0-9]+/);
-        if ( debug ) console.log(actual);
 
         // expect('some thing to test').to.match(/some (\w+) to test/).and.capture(0).equals('thing');
         // 'Here in London'.should.match(/(here|there) in (\w+)/i).and.capture(1).equals('London');
-        debug = false;
       }
   );
 
   it(' 1 + 3 ∙ 3 - 1 ∙ 2 = 8 ', () => {
-    // debug = true;
 
     const op = new OperacionMultiple(
         {
@@ -300,11 +282,9 @@ describe('Operacion Multiple 4 operandos o mas', () => {
     const expected = '1 + 3 ∙ 3 - 1 ∙ 2 = 8';
 
     expect(actual).to.equal(expected);
-    debug = false;
   });
 
   it(' 1 + 3 / 3 - 1 ∙ 2 = 0 ', () => {
-    // debug = true;
 
     const op = new OperacionMultiple(
         {
@@ -326,7 +306,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
     const expected = '1 + 3 / 3 - 1 ∙ 2 = 0';
 
     expect(actual).to.equal(expected);
-    debug = false;
   });
 
   it('4 operandos con +-/*',
@@ -353,7 +332,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
 
   it('4 operandos combinando ∙ / el resultado a de ser un numero entero',
       () => {
-        // debug = true;
 
         const op = new OperacionMultiple(
             {nivel: 50,
@@ -371,14 +349,11 @@ describe('Operacion Multiple 4 operandos o mas', () => {
         expect(actual).to.match(
             /[0-9]+ [∙\/] [0-9]+ [∙\/] [0-9]+ = ([0-9])+$/
         );
-        if ( debug ) console.log(actual);
-        debug = false;
       }
   );
 
   it('4 operandos combinando */+- el resultado a de ser un numero entero positivo',
       () => {
-        // debug = true;
 
         const op = new OperacionMultiple({
           nivel: 50,
@@ -401,7 +376,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
 
   it('5 operandos combinando */+- el resultado a de ser un numero entero',
       () => {
-        // debug = true;
 
         const op = new OperacionMultiple({
           nivel: 50,
@@ -463,7 +437,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
 
   it('A / B ∙ C / D - E',
       () => {
-        // debug = true;
         const op = new OperacionMultiple({
           nivel: 50,
           cantidadOperandos: 5,
@@ -486,7 +459,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
 
   it('A - B - C ∙ D - E',
       () => {
-        // debug = true;
         const op = new OperacionMultiple({
           nivel: 50,
           cantidadOperandos: 5,
@@ -509,7 +481,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
 
   it('A - B ∙ C - D',
       () => {
-        // debug = true;
         const op = new OperacionMultiple({
           nivel: 50,
           cantidadOperandos: 4,
@@ -531,7 +502,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
 
   it('A - B - C / D - E',
       () => {
-        debug = false;
         const op = new OperacionMultiple({
           nivel: 50,
           cantidadOperandos: 5,
@@ -553,7 +523,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
   );
   it('A ∙ B / C - D - E',
       () => {
-        // debug = true;
 
         const op = new OperacionMultiple({
           nivel: 50,
@@ -577,7 +546,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
 
   it('Permitir Negativos A - B - C ∙ D - E',
       () => {
-        // debug = true;
 
         const op = new OperacionMultiple({
           nivel: 50,
@@ -598,7 +566,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
 
   it('Permitir Negativos A - B - C / D - E',
       () => {
-        // debug = true;
 
         const op = new OperacionMultiple({
           nivel: 50,
@@ -620,7 +587,6 @@ describe('Operacion Multiple 4 operandos o mas', () => {
 
 describe('Operacion Multiple', () => {
   it('01 debería devolver operacion de 3 operandos, suma y resta', () => {
-    // debug = true;
 
     const op = new OperacionMultiple(
         {nivel: 50,
@@ -639,11 +605,9 @@ describe('Operacion Multiple', () => {
 
     expect(actual).to.equal(expected);
 
-    debug = false;
   });
 
   it('debería devolver 3 operandos, una suma y una multiplicación', () => {
-    debug = false;
 
     const op = new OperacionMultiple(
         {
@@ -664,7 +628,6 @@ describe('Operacion Multiple', () => {
   // pruebo otras combinaciones de sumas, restas multiplicaciones por si acaso
 
   it('debería 3 ∙ 2 + 5 = 11', () => {
-    // debug = true;
 
     const op = new OperacionMultiple(
         {
@@ -679,11 +642,9 @@ describe('Operacion Multiple', () => {
     const expected = '3 ∙ 2 + 5 = 11';
 
     expect(actual).to.equal(expected);
-    debug = false;
   });
 
   it('debería 1 - 3 ∙ 2 + 5 = 0', () => {
-    // debug = true;
 
     const op = new OperacionMultiple(
         {
@@ -700,7 +661,6 @@ describe('Operacion Multiple', () => {
   });
 
   it(' sumas y restas grandes 1', () => {
-    debug = false;
 
     const op = new OperacionMultiple(
         {
@@ -724,7 +684,6 @@ describe('Operacion Multiple', () => {
   });
 
   it(' sumas y restas grandes 2', () => {
-    debug = false;
 
     const op = new OperacionMultiple(
         {
@@ -753,7 +712,6 @@ describe('Operacion Multiple', () => {
 
   it('Crear una operación de 3 operandos al azar solo divisiones',
       () => {
-        debug = false;
 
         const op = new OperacionMultiple(
             {nivel: 50,
@@ -766,15 +724,12 @@ describe('Operacion Multiple', () => {
         );
         const actual = op.toString();
         expect(actual).to.match(/[0-9]+ \/ [0-9]+ \/ [0-9]+ = [0-9]+/);
-        if ( debug ) console.log(actual);
-        debug = false;
       }
   );
 
 
   it('3 operandos combinando ∙ / el resultado a de ser un numero entero',
       () => {
-        debug = false;
 
         const op = new OperacionMultiple(
             {nivel: 50,
@@ -790,15 +745,12 @@ describe('Operacion Multiple', () => {
         expect(actual).to.match(
             /[0-9]+ [∙\/] [0-9]+ [∙\/] [0-9]+ = ([0-9])+$/
         );
-        if ( debug ) console.log(actual);
-        debug = false;
       }
   );
 
 
   it('24 3 operandos combinando */+- el resultado a de ser un numero entero',
       () => {
-        //  debug = true;
 
         const op = new OperacionMultiple(
             {nivel: 50,
@@ -816,14 +768,11 @@ describe('Operacion Multiple', () => {
         expect(actual).to.match(
             /[0-9]+ [∙\/+\-] [0-9]+ [∙\/+\-] [0-9]+ = ([0-9])+$/
         );
-        if ( debug ) console.log(actual);
-        debug = false;
       }
   );
 
   it('27 Crear una operacion de 3 operandos combinando sumas y restas',
       () => {
-        // debug = true;
         const op = new OperacionMultiple(
             {nivel: 50,
               cantidadOperandos: 3,
@@ -843,13 +792,11 @@ describe('Operacion Multiple', () => {
             /^-?[0-9]+ [+-] (\()?-?[0-9]+(\))? [+-] (\()?-?[0-9]+(\))? = -?([0-9])+$/
         );
         // console.log(actual);
-        debug = false;
       }
   );
 
   it('28 sin negativos, una operacion de 3 operandos combinando sumas y restas',
       () => {
-        // debug = true;
         const op = new OperacionMultiple(
             {nivel: 50,
               cantidadOperandos: 3,
@@ -864,13 +811,11 @@ describe('Operacion Multiple', () => {
         expect(actual).to.match(
             /[0-9]+ [+-] [0-9]+ [+-] [0-9]+ = ([0-9])+/);
         // console.log(actual);
-        debug = false;
       }
   );
 
   it('29 Crear una operacion de 3 operandos combinando sumas,restas,multiplicaciones',
       () => {
-        // debug = true;
 
         const op = new OperacionMultiple(
             {nivel: 50,
@@ -890,13 +835,11 @@ describe('Operacion Multiple', () => {
             /[0-9]+ [+∙-] [0-9]+ [+∙-] [0-9]+ = -?([0-9])+$/);
 
         // console.log('actual', actual);
-        debug = false;
       }
   );
 
   it('40 Posicion incognita no es resultado',
       () => {
-        debug = false;
         const op = new OperacionMultiple(
             {
               nivel: 50,
@@ -921,12 +864,10 @@ describe('Operacion Multiple', () => {
         // /-?[0-9]+ [-] \(?-?[0-9]+\)? [-] \(?-?[0-9]+\)? [\/] -?[0-9]+ [-] \(?-?[0-9]+\)? = -?[0-9]+$/
 
         // console.log('actual', actual);
-        debug = false;
       }
   );
   it('Posicion incognita no es resultado pos : 2 ',
       () => {
-        debug = false;
         const op = new OperacionMultiple(
             {
               nivel: 50,
@@ -951,13 +892,11 @@ describe('Operacion Multiple', () => {
         // /-?[0-9]+ [-] \(?-?[0-9]+\)? [-] \(?-?[0-9]+\)? [\/] -?[0-9]+ [-] \(?-?[0-9]+\)? = -?[0-9]+$/
 
         // console.log('actual', actual);
-        debug = false;
       }
   );
 
   it('Posicion incognita no es resultado pos : 3 ',
       () => {
-        debug = false;
         const op = new OperacionMultiple(
             {
               nivel: 50,
@@ -979,13 +918,11 @@ describe('Operacion Multiple', () => {
         // /-?[0-9]+ [-] \(?-?[0-9]+\)? [-] \(?-?[0-9]+\)? [\/] -?[0-9]+ [-] \(?-?[0-9]+\)? = -?[0-9]+$/
 
         // console.log('actual', actual);
-        debug = false;
       }
   );
 
   // it('Posicion incognita no es resultado, negativos',
   //     () => {
-  //       debug = false;
   //       const op = new OperacionMultiple(
   //           {
   //             nivel: 50,
@@ -1013,12 +950,10 @@ describe('Operacion Multiple', () => {
   //       // /-?[0-9]+ [-] \(?-?[0-9]+\)? [-] \(?-?[0-9]+\)? [\/] -?[0-9]+ [-] \(?-?[0-9]+\)? = -?[0-9]+$/
 
   //       // console.log('actual', actual);
-  //       debug = false;
   //     }
   // );
   // it('Posicion incognita no es resultado pos : 2, negativos',
   //     () => {
-  //       debug = false;
   //       const op = new OperacionMultiple(
   //           {
   //             nivel: 50,
@@ -1046,13 +981,11 @@ describe('Operacion Multiple', () => {
   //       // /-?[0-9]+ [-] \(?-?[0-9]+\)? [-] \(?-?[0-9]+\)? [\/] -?[0-9]+ [-] \(?-?[0-9]+\)? = -?[0-9]+$/
 
   //       // console.log('actual', actual);
-  //       debug = false;
   //     }
   // );
 
   it('43 Posicion incognita no es resultado pos : 3, decimal',
       () => {
-        debug = false;
         const op = new OperacionMultiple(
             {
               nivel: 50,
@@ -1075,12 +1008,10 @@ describe('Operacion Multiple', () => {
         );
 
         // console.log('actual', actual);
-        debug = false;
       }
   );
 
   it('!! suma y resta, operando enfocado', () => {
-    debug = false;
     const op = new OperacionMultiple(
         {
           nivel: 11,
@@ -1102,7 +1033,6 @@ describe('Operacion Multiple', () => {
   });
 
   it('!! suma y resta, con numeros negativos ', () => {
-    debug = false;
     const op = new OperacionMultiple({
       nivel: 11,
       cantidadOperandos: 3,
@@ -1121,7 +1051,6 @@ describe('Operacion Multiple', () => {
   });
 
   it('!! suma y resta, con x10', () => {
-    debug = false;
     const op = new OperacionMultiple(
         {
           nivel: 11,
@@ -1147,7 +1076,6 @@ describe('Operacion Multiple', () => {
   });
 
   it('!! suma y resta, con x100', () => {
-    debug = false;
     const op = new OperacionMultiple(
         {
           nivel: 11,

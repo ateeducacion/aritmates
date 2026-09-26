@@ -49,7 +49,6 @@ describe('Division Entera', ()=>{
   });
   it('enfocado debería mostrar un numero igual al del nivel', ()=>{
     const input = {nivel: 10, enfocado: true, permitirNegativos: false};
-    // debug = true;
 
 
     const s = new objetos.DivisionEntera(input);
@@ -57,13 +56,11 @@ describe('Division Entera', ()=>{
     actual.push(s.resultado);
     // console.log('enfocado debería = nivel\n', s.nivel );
     // console.log('actual\n',s );
-    // debug = false;
 
 
     expect(actual).to.include(10);
   });
   it('enfocado debería mostrar un numero igual al del nivel 100', ()=>{
-    debug= false;
     const input = {
       nivel: 100,
       enfocado: true,
@@ -75,10 +72,6 @@ describe('Division Entera', ()=>{
     actual.push(s.resultado);
     // console.log(s.nivel);
     console.log(s);
-    if ( debug ) {
-      console.log('actual', actual, 'pos nivel', s.posicion_nivel );
-      console.log('enfocado debería = nivel', s.toString() );
-    }
 
     expect(actual[s.posicion_nivel-1]).be.oneOf([100, -100]);
   });
@@ -106,7 +99,6 @@ describe('Division Entera', ()=>{
     const actual = s.operandos;
     actual.push(s.resultado);
 
-    // debug = true;
     // console.log(s.nivel);
     // console.log(s.toString());
     //  no funciona con expect(actual).any.within(40,60);
@@ -195,7 +187,6 @@ describe('Division Entera', ()=>{
   });
   // Operaciones con calculo nivel en resultado
   it('el resultado debería ser un numero valido cuando el numero que define el nivel es el resultado', ()=>{
-    // debug = true;
     const input = {
       nivel: 100,
       cantidadOperandos: 3,
@@ -203,13 +194,10 @@ describe('Division Entera', ()=>{
       posicion_nivel: 4,
     };
     const actual = new objetos.DivisionEntera(input);
-    if ( debug ) console.log(actual.toString());
 
     expect(Math.abs(actual.resultado)).to.be.within(0, 100);
-    debug = false;
   });
   it('el primer operando debería ser un numero valido cuando el numero que define el nivel es el resultado', ()=>{
-    debug = false;
     const input = {
       nivel: 100,
       cantidadOperandos: 2,
@@ -220,10 +208,8 @@ describe('Division Entera', ()=>{
     // console.log(actual.toString());
 
     expect(actual.operandos[0]).not.to.be.equal(NaN);
-    debug = false;
   });
   it('el primer operando debería ser un numero entero cuando el numero que define el nivel es el resultado', ()=>{
-    // debug = true;
     const input = {
       nivel: 100,
       cantidadOperandos: 2,
@@ -237,10 +223,8 @@ describe('Division Entera', ()=>{
       return x % 1 === 0;
     });
 
-    debug = false;
   });
   it('con mas de 2 operandos el primero debería ser entero cuando el numero que define el nivel es el resultado', ()=>{
-    debug = false;
     const input = {
       nivel: 500,
       cantidadOperandos: 4,
@@ -253,11 +237,9 @@ describe('Division Entera', ()=>{
     expect(actual.operandos[0]).to.satisfy(function(x) {
       return x % 1 === 0;
     });
-    debug = false;
   });
 
   it('no pueden haber operandos que no sean números', ()=>{
-    // debug = true;
     const input = {
       nivel: 100,
       cantidadOperandos: 4,
@@ -265,7 +247,6 @@ describe('Division Entera', ()=>{
       posicion_nivel: 5,
     };
     const actual = new objetos.DivisionEntera(input);
-    if ( debug )console.log(actual.toString());
 
 
     expect(actual.operandos).satisfy(function(x) {
@@ -280,11 +261,9 @@ describe('Division Entera', ()=>{
       });
       return r;
     });
-    debug = false;
   });
 
   it('debería dar múltiplos de 10 con la opción x10', ()=>{
-    debug = false;
     const input = {
       nivel: 25,
       cantidadOperandos: 3,
@@ -304,11 +283,9 @@ describe('Division Entera', ()=>{
       } while (r==true && i<=x.cantidadOperandos );
       return r;
     }, actual.operandos );
-    debug = false;
   });
 
   it('debería dar múltiplos de 100 con la opción x100', ()=>{
-    debug = false;
     const input = {
       nivel: 25,
       cantidadOperandos: 3,
@@ -328,11 +305,9 @@ describe('Division Entera', ()=>{
       } while (r==true && i<=x.cantidadOperandos );
       return r;
     }, actual.operandos );
-    debug = false;
   });
 
   it('complementarios debería ser múltiplo de 10', ()=>{
-    debug = false;
     const input = {
       nivel: 25,
       complementario: 12,
@@ -342,10 +317,8 @@ describe('Division Entera', ()=>{
     expect( actual.complementario ).to.satisfy(function(x) {
       return (x % 10)==0;
     }, 'expected '+actual.complementario+' to be divisible by 10' );
-    debug = false;
   });
   it('complemetario debería generar resultado igual al valor de complementario', ()=>{
-    // debug = true;
     const input = {
       complementario: 50,
     };
@@ -354,7 +327,6 @@ describe('Division Entera', ()=>{
     // console.log('\nACTUAL\n', actual );
     expect(actual.resultado).to.be.equal(input.complementario);
 
-    debug = false;
   });
 
 
@@ -364,8 +336,6 @@ describe('Division Entera', ()=>{
     };
     const actual = new objetos.DivisionEntera(input);
 
-    // debug = true;
-    if ( debug ) console.log('\nACTUAL\n', actual );
     expect(actual.operandos).to.satisfy(function(x) {
       let r=true;
       let i= 0;
@@ -377,23 +347,18 @@ describe('Division Entera', ()=>{
       return r;
     }, 'operandos: ' + actual.operandos );
 
-    debug = false;
   });
 
   it('con complementario, debería tener 2 operandos cuando no lo especificas', ()=>{
-    debug = false;
     const input = {
       complementario: 100,
     };
     const actual = new objetos.DivisionEntera(input);
 
-    if ( debug )console.log('\nACTUAL\n', actual );
     expect(actual.operandos).to.have.length(2);
 
-    debug = false;
   });
   it('con complementario, debería ser igual cantidad_operandos que la longitud de el array operandos', ()=>{
-    debug = false;
     const input = {
       complementario: 100,
     };
@@ -402,17 +367,14 @@ describe('Division Entera', ()=>{
     // console.log('\nACTUAL\n', actual );
     expect(actual.operandos.length).be.equal(actual.cantidad_operandos);
 
-    debug = false;
   });
 
   it('con complementario, todos los operandos deberían ser números', ()=>{
-    // debug = true;
     const input = {
       complementario: 40,
     };
     const actual = new objetos.DivisionEntera(input);
 
-    if ( debug )console.log('\nACTUAL\n', actual );
     expect(actual.operandos).satisfy(function(x) {
       let r = true;
       x.forEach((element) => {
@@ -426,7 +388,6 @@ describe('Division Entera', ()=>{
       return r;
     }, '['+actual.operandos+']' );
 
-    debug = false;
   });
 
   it('no debería cambiar los operandos cuando los manda el usuario', ()=>{

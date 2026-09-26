@@ -29,7 +29,6 @@ import {Decimal} from 'decimal.js';
 
 describe('Division con decimales', ()=>{
   it('debería mostrar error si se pasan 3 o mas operando a division', ()=>{
-    debug = false;
     const input = {cantidadOperandos: 3};
     const s = new objetos.DivisionDecimales(input);
 
@@ -39,9 +38,6 @@ describe('Division con decimales', ()=>{
     expect(actual).to.eql(expected);
   });
   it('debería mostrar 2 operandos si se pasan 3 o mas operando a division', ()=>{
-    // debug = true;
-    const msg = 'debería mostrar 2 operandos si se pasan 3 o mas operando a division';
-    if ( debug )console.log('algo pasa en ', msg);
     // se pasa un numero entre 3 y 5 ( con 6 falla el test )
     // ahora falla con el 5 tambien! lo dejo del 2 as 4
     const input = {cantidadOperandos: 4};
@@ -50,10 +46,8 @@ describe('Division con decimales', ()=>{
     const expected = 2;
     // console.log(s);
 
-    if ( debug )console.log('actual ', actual);
 
     expect(actual.cantidad_operandos).to.eql(expected);
-    debug = false;
   });
 
   // it('debería dividir dos números correctamente (auto) con decimales', ()=>{
@@ -71,11 +65,9 @@ describe('Division con decimales', ()=>{
   //   console.log('resultado test', resultado);
 
   //   expect(s.resultado).to.eql(resultado);
-  //   debug = false;
   // });
 
   it('debería dividir dos números correctamente, con decimales ', ()=>{
-    // debug = true;
 
     // si es entera, cambia el primer operando para que tenga resto pero es el mismo resultado
     const input = {
@@ -87,20 +79,17 @@ describe('Division con decimales', ()=>{
     // console.log(actual);
     expect(actual.resultado.toString()).to.eql(expected.toString());
 
-    debug = false;
   });
 
 
   it('enfocado debería mostrar un numero igual al del nivel', ()=>{
     const input = {nivel: 10, enfocado: true, permitirNegativos: false};
-    debug = false;
 
     const s = new objetos.DivisionDecimales(input);
     const actual = s.operandos;
 
     actual.push(s.resultado);
 
-    if ( debug ) console.log(actual);
 
     expect(actual).to.include(10);
   });
@@ -112,14 +101,9 @@ describe('Division con decimales', ()=>{
     };
     const s = new objetos.DivisionDecimales(input);
 
-    debug= false;
     const actual = s.operandos;
     actual.push(s.resultado);
 
-    if ( debug ) {
-      console.log('actual', actual, 'pos nivel', s.posicion_nivel );
-      console.log('enfocado debería = nivel', s.toString() );
-    }
 
     expect(actual[s.posicion_nivel-1]).be.oneOf([100, -100]);
   });
@@ -149,7 +133,6 @@ describe('Division con decimales', ()=>{
 
 
   it('posicion nivel debería cambiarse si es mayor que el numero de operandos', ()=>{
-    // debug = true;
     const input = {
       nivel: 100,
       cantidadOperandos: 3, // cambia 3 operandos a 2
@@ -157,16 +140,13 @@ describe('Division con decimales', ()=>{
       posicion_nivel: 4,
     };
     const actual = new objetos.DivisionDecimales(input);
-    if ( debug ) console.log(actual.toString());
 
     expect(actual.posicion_nivel).to.be.lessThan(4); // 3 , 2 o 1
 
-    debug = false;
   });
 
 
   it('no pueden haber operandos que no sean números', ()=>{
-    // debug = true;
     const input = {
       nivel: 100,
       cantidadOperandos: 4,
@@ -174,7 +154,6 @@ describe('Division con decimales', ()=>{
       posicion_nivel: 5,
     };
     const actual = new objetos.DivisionDecimales(input);
-    if ( debug )console.log(actual.toString());
 
 
     expect(actual.operandos).satisfy(function(x) {
@@ -189,11 +168,9 @@ describe('Division con decimales', ()=>{
       });
       return r;
     });
-    debug = false;
   });
 
   it('debería dar múltiplos de 100 con la opción x100', ()=>{
-    debug = false;
     const input = {
       nivel: 25,
       cantidadOperandos: 3,
@@ -213,11 +190,9 @@ describe('Division con decimales', ()=>{
       } while (r==true && i<=x.cantidadOperandos );
       return r;
     }, actual.operandos );
-    debug = false;
   });
 
   it('complementarios debería ser múltiplo de 10', ()=>{
-    debug = false;
     const input = {
       nivel: 25,
       complementario: 12,
@@ -227,7 +202,6 @@ describe('Division con decimales', ()=>{
     expect( actual.complementario ).to.satisfy(function(x) {
       return (x % 10)==0;
     }, 'expected '+actual.complementario+' to be divisible by 10' );
-    debug = false;
   });
 
   // Decimal complementary behavior is exercised by explicit result tests.
@@ -256,7 +230,6 @@ describe('Division con decimales', ()=>{
     console.log(s.toString(true, true));
   });
   it('deberia generar division dado un solo operando e incluir el operando,inicial', ()=>{
-    debug = false;
     const input = {
       operandos: [100],
       cantidadOperandos: 2,
@@ -269,7 +242,6 @@ describe('Division con decimales', ()=>{
         .to.match(/^100 \/ -?[0-9]+\.[0-9]+ = -?[0-9]+$/);
   });
   // it('deberia generar division dado un operando y resultado, op inicial', ()=>{
-  //   debug = false;
   //   const input = {
   //     operandos: [100],
   //     cantidadOperandos: 2,
