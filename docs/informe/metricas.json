@@ -31,24 +31,24 @@
     },
     "nueva": {
       "ref": "HEAD",
-      "dependencias": 9,
+      "dependencias": 8,
       "devDependencias": 7,
       "ficherosJs": 49,
-      "lineasJs": 10403,
+      "lineasJs": 10406,
       "mayorFichero": {
         "nombre": "src/app.js",
-        "lineas": 1542
+        "lineas": 1526
       },
       "eval": 0,
       "consoleLog": 0,
       "bloquesDebug": 0,
-      "lineasComentadas": 521,
+      "lineasComentadas": 513,
       "todo": 11,
       "ficherosPhp": 0,
       "lineasPhp": 0,
       "ficherosTest": 31,
-      "lineasTest": 8370,
-      "tests": 420,
+      "lineasTest": 7852,
+      "tests": 424,
       "testsVacios": 0,
       "configBuild": 0,
       "ci": 4
@@ -69,15 +69,15 @@
       }
     },
     "nueva": {
-      "total": 5340842,
-      "ficheros": 99,
+      "total": 3205993,
+      "ficheros": 75,
       "porTipo": {
         "Otros": 84621,
-        "CSS": 282110,
-        "Fuentes": 2253190,
+        "CSS": 278457,
+        "Fuentes": 112784,
         "Imágenes": 957375,
-        "JavaScript": 984454,
-        "Mapas de código": 779092
+        "JavaScript": 985995,
+        "Mapas de código": 786761
       }
     }
   },
@@ -94,29 +94,28 @@
         "font": 44300
       },
       "total": 2973984,
-      "peticionesExternas": 91,
-      "bytesExternos": 30565772,
+      "peticionesExternas": 93,
+      "bytesExternos": 30761934,
       "errores": 0,
-      "domContentLoadedMs": 94,
-      "loadMs": 1425
+      "domContentLoadedMs": 95,
+      "loadMs": 1417
     },
     "nueva": {
       "requests": 47,
       "bytes": {
         "document": 39095,
-        "stylesheet": 282107,
+        "stylesheet": 278454,
         "image": 301311,
-        "script": 365600,
-        "xhr": 315,
-        "font": 239156,
-        "fetch": 14729
+        "script": 367141,
+        "fetch": 15044,
+        "font": 112784
       },
-      "total": 1242313,
+      "total": 1113829,
       "peticionesExternas": 0,
       "bytesExternos": 0,
       "errores": 0,
-      "domContentLoadedMs": 40,
-      "loadMs": 51
+      "domContentLoadedMs": 32,
+      "loadMs": 33
     }
   }
 }
