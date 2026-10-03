@@ -22,6 +22,7 @@ const REQUIRED = [
   'templates/modalFaltaOpciones.html',
   'img/Logo_Aritmates.svg',
   'img/GobCanEscudo.ink.svg',
+  'img/og-image.jpg',
   'vendor/jquery/jquery.min.js',
   'vendor/bootstrap/bootstrap.bundle.min.js',
   'vendor/html2canvas/html2canvas.min.js',
@@ -52,6 +53,12 @@ export async function checkAssets() {
   const html = await readFile(join(dist, 'index.html'), 'utf8');
   if (/https?:\/\/cdn\.|unpkg\.com|jsdelivr|cdnjs/.test(html)) {
     missing.push('CDN detectado en index.html');
+  }
+
+  // Previsualización de enlaces: og:image debe ser una URL https absoluta
+  const og = /<meta property="og:image" content="([^"]+)"/.exec(html)?.[1];
+  if (!og || !/^https:\/\//.test(og)) {
+    missing.push(`og:image debe ser una URL https absoluta (es ${og})`);
   }
 
   // No debe referenciar node_modules

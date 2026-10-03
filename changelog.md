@@ -1,5 +1,10 @@
 # Changelog
 
+## Vista previa al compartir (post 1.3)
+
+* Al compartir el enlace en WhatsApp, Telegram o redes sociales aparece una tarjeta con el logotipo, el lema y una captura de la portada. Son etiquetas Open Graph y Twitter con la imagen `img/og-image.jpg` (1200x630, 85 KB).
+* `npm run check` falla si `og:image` no es una URL https absoluta o falta la imagen.
+
 ## CSS de terceros más ligero (post 1.3)
 
 No cambia el aspecto de la aplicación.

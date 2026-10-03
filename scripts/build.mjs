@@ -320,9 +320,12 @@ async function buildHtml() {
     <script defer src="./vendor/bootstrap/bootstrap.bundle.min.js"></script>
     <script defer src="./js/app.js"></script>
 `;
-  const indexHtml = indexTpl.includes('</head>') ?
+  // Link previews need absolute URLs. Other deployments: SITE_URL=https://example.org/aritmates/ npm run build
+  const pkg = JSON.parse(await readFile(join(root, 'package.json'), 'utf8'));
+  const siteUrl = process.env.SITE_URL || pkg.homepage;
+  const indexHtml = (indexTpl.includes('</head>') ?
     indexTpl.replace('</head>', headInject + '</head>') :
-    headInject + indexTpl;
+    headInject + indexTpl).replaceAll('%SITE_URL%', siteUrl);
   await writeFile(join(dist, 'index.html'), indexHtml, 'utf8');
 
   console.log('✓ html (scripts vendor locales)');
