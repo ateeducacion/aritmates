@@ -55,6 +55,8 @@ jobs:
 
       - name: Build static dist
         run: npm run build
+        env:
+          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/
 
       - name: Verify dist assets
         run: npm run check

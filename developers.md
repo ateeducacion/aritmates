@@ -29,6 +29,11 @@ Opciones por defecto y URL de backend (si aplica): `src/config.json`
 Use en `baseurl` la URL pública de **su** despliegue, no valores de entornos  
 internos de desarrollo.
 
+La vista previa al compartir un enlace (WhatsApp, Telegram, redes sociales) necesita
+URLs absolutas. El build las toma de `homepage` en `package.json`; en otro despliegue:
+`SITE_URL=https://example.org/aritmates/ npm run build`. La imagen `src/img/og-image.jpg`
+(1200x630) se regenera con `npm run build && node scripts/make-og-image.mjs`.
+
 ## Pruebas
 
 ```bash
