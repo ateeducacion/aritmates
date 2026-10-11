@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.1
+
+* Los créditos mostraban «Versión 1.3.0». La versión sale ahora de `package.json`, la misma que fija la etiqueta de la release.
+
 ## 2.0.0
 
 Primera versión publicada como release. Incluye todos los cambios «post 1.3» de abajo.
