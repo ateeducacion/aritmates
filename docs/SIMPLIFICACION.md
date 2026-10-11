@@ -73,8 +73,9 @@ Los códigos de ejercicios/configuración son **compatibles** con versiones ante
 2. Publicar `dist/`
 3. Revisar `config.json` (`baseurl` es la URL pública del enlace para compartir)
 
-En el repositorio, `baseurl` es `./` (rutas relativas). Cada entorno debe  
-poner su URL pública si el envío de resultados lo requiere. **No** commitear  
+En el repositorio, `baseurl` es la URL del despliegue de la Consejería
+(<https://www3.gobiernodecanarias.org/medusa/apps/aritmates/>). Cada entorno debe poner la suya; GitHub Pages lo hace en
+su workflow. **No** commitear  
 hosts de PRE/DEV internos.
 
 ## Documentación relacionada
