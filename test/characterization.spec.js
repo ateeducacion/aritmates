@@ -20,8 +20,13 @@ import shortcodeApi from '../src/OptionsShortcode';
 import GenerarExamen from '../src/generarExamen';
 import utils from '../src/utils';
 import {seededRandom} from '../src/operaciones/random';
+import { version } from '../package.json';
 
 describe('Caracterización — defaults y configuración', () => {
+  it('la versión de los créditos es la de package.json', () => {
+    expect(DEFAULTS.version).to.equal(version);
+  });
+
   it('operación predeterminada incluye suma, resta, multiplicación y división', () => {
     expect(DEFAULTS.tiposOperaciones).to.include.members([
       OPERACIONES.SUMA,

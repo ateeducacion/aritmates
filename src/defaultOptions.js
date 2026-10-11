@@ -1,5 +1,7 @@
 import OPERACIONES from './operaciones/operaciones';
 import {TIPO_NUMERO} from './operaciones/tipoNumero';
+// esbuild inlines only this field; the release tag must match it (release.yml).
+import { version } from '../package.json';
 /**
  *  Aqui definimos las opciones predeterminadas que se cargan en la web
  *  @author Fernando Ramirez Perez <fernando.ramirez@altia.es>
@@ -10,7 +12,7 @@ import {TIPO_NUMERO} from './operaciones/tipoNumero';
 
  
 export const DEFAULTS = {
-  version: '1.3.0',
+  version,
   // URL pública de la app (sobrescribible con config.json → baseurl)
   baseurl: './',
   nivel: 10,
