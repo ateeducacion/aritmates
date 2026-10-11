@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.0
+
+Primera versión publicada como release. Incluye todos los cambios «post 1.3» de abajo.
+
+* Cada etiqueta `v*` crea la release en GitHub con el ZIP de `dist/` y publica la imagen Docker `ghcr.io/ateeducacion/aritmates`. El espejo de GitLab crea su release con un enlace al ZIP.
+* La imagen sirve la app con Nginx; `SITE_URL` fija la URL pública del enlace para compartir y de la vista previa.
+
 ## Vista previa al compartir (post 1.3)
 
 * Al compartir el enlace en WhatsApp, Telegram o redes sociales aparece una tarjeta con el logotipo, el lema y una captura de la portada. Son etiquetas Open Graph y Twitter con la imagen `img/og-image.jpg` (1200x630, 85 KB).

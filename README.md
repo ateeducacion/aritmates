@@ -8,7 +8,7 @@
 Aplicación del **Área de Tecnología Educativa** para generar y practicar ejercicios de matemáticas.  
 Se publica como **sitio web estático** (HTML, CSS, JavaScript y assets locales).
 
-**Versión simplificada 1.3** — la funcionalidad que el despliegue anterior ofrecía al usuario, con menos dependencias
+**Versión 2.0** — la funcionalidad que el despliegue anterior ofrecía al usuario, con menos dependencias
 (basada en un desarrollo previo de Netex y Altia).
 
 **Demo (GitHub Pages):** <https://ateeducacion.github.io/aritmates/>
@@ -83,7 +83,8 @@ cp -R dist/* /var/www/aritmates/  # cualquier servidor web estático
 Publique el contenido de **`dist/`** en cualquier servidor de archivos estáticos  
 (Nginx, Apache, GitHub Pages, etc.).
 
-Cada release publica en *Releases* un ZIP de `dist/` listo para desplegar.
+Cada etiqueta `v*` (igual a la `version` de `package.json`) crea la release en *Releases* con un ZIP
+de `dist/` listo para desplegar. El espejo de GitLab crea su release con un enlace a ese ZIP.
 
 ### Docker
 
