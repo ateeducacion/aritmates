@@ -1,8 +1,12 @@
+# Builds, checks and publishes the release for tags v*: ZIP of dist/ and Docker image.
 name: Release and Deploy
 
 on:
-  release:
-    types: [published]
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
 
 jobs:
   build-and-deploy:
@@ -20,6 +24,11 @@ jobs:
         with:
           node-version: 24
           cache: 'npm'
+
+      - name: Tag matches package.json
+        run: |
+          version="v$(node -p "require('./package.json').version")"
+          [ "$version" = "$GITHUB_REF_NAME" ] || { echo "::error::Tag $GITHUB_REF_NAME does not match package.json ($version)"; exit 1; }
 
       - name: Install dependencies
         run: npm ci
@@ -48,10 +57,11 @@ jobs:
       - name: Generate release ZIP with Makefile
         run: make package
 
-      - name: Upload Release Asset
+      - name: Create release with the ZIP
         uses: softprops/action-gh-release@v3
         with:
           files: dist/*.zip
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
