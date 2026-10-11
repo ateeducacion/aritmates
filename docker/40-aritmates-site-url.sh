@@ -1,9 +1,9 @@
 #!/bin/sh
 # Points the app at its public URL: link previews (og:url, og:image, twitter:image) in index.html
 # and the share link (baseurl) in config.json.
-#   SITE_URL  public URL of the app, ending in / (default: the GitHub Pages demo)
+#   SITE_URL  public URL of the app, ending in / (default: the Consejería deployment)
 set -eu
-default='https://ateeducacion.github.io/aritmates/'
+default='https://www3.gobiernodecanarias.org/medusa/apps/aritmates/'
 root=/usr/share/nginx/html
 [ -n "${SITE_URL:-}" ] || exit 0
 # Only plain absolute URLs: it goes into an HTML attribute, JSON and a sed replacement.

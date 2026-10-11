@@ -95,7 +95,8 @@ docker run -d -p 8080:80 -e SITE_URL=https://ejemplo.org/aritmates/ ghcr.io/atee
 ```
 
 `SITE_URL` es la URL pública, terminada en `/`. Se usa en el enlace para compartir ejercicios
-(`baseurl`) y en la vista previa de enlaces. Sin ella, la imagen apunta a la demo de GitHub Pages.
+(`baseurl`) y en la vista previa de enlaces. Sin ella, la imagen apunta al despliegue de la Consejería
+(<https://www3.gobiernodecanarias.org/medusa/apps/aritmates/>).
 
 Para construir la imagen en local:
 

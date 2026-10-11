@@ -30,7 +30,9 @@ Use en `baseurl` la URL pública de **su** despliegue, no valores de entornos
 internos de desarrollo.
 
 La vista previa al compartir un enlace (WhatsApp, Telegram, redes sociales) necesita
-URLs absolutas. El build las toma de `homepage` en `package.json`; en otro despliegue:
+URLs absolutas. Por defecto el build usa la del despliegue de la Consejería
+(<https://www3.gobiernodecanarias.org/medusa/apps/aritmates/>), igual que `baseurl` en `src/config.json`; GitHub Pages
+construye con la suya. En otro despliegue:
 `SITE_URL=https://example.org/aritmates/ npm run build`. La imagen `src/img/og-image.jpg`
 (1200x630) se regenera con `npm run build && node scripts/make-og-image.mjs`.
 

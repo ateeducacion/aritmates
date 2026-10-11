@@ -8,5 +8,5 @@
     "resultadoNegativo": false,
     "maximoOperandos": 3,
     "tiposNumero": [0],
-    "baseurl": "./"
+    "baseurl": "https://www3.gobiernodecanarias.org/medusa/apps/aritmates/"
 }
