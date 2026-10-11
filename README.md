@@ -70,10 +70,39 @@ AGENTS.md      reglas para quien mantiene el código
 dist/          salida publicable (generada; no requiere Node)
 ```
 
-## Despliegue
+## Instalación y despliegue
+
+Hace falta Node.js 24 o superior **solo para construir**. El resultado es una carpeta estática.
+
+```bash
+npm ci
+npm run build                     # genera dist/
+cp -R dist/* /var/www/aritmates/  # cualquier servidor web estático
+```
 
 Publique el contenido de **`dist/`** en cualquier servidor de archivos estáticos  
 (Nginx, Apache, GitHub Pages, etc.).
+
+Cada release publica en *Releases* un ZIP de `dist/` listo para desplegar.
+
+### Docker
+
+Cada release publica también una imagen de Nginx con la app en `ghcr.io/ateeducacion/aritmates`:
+
+```bash
+docker run -d -p 8080:80 -e SITE_URL=https://ejemplo.org/aritmates/ ghcr.io/ateeducacion/aritmates:latest
+```
+
+`SITE_URL` es la URL pública, terminada en `/`. Se usa en el enlace para compartir ejercicios
+(`baseurl`) y en la vista previa de enlaces. Sin ella, la imagen apunta a la demo de GitHub Pages.
+
+Para construir la imagen en local:
+
+```bash
+npm run build
+docker build -t aritmates .
+docker run -p 8080:80 aritmates   # http://localhost:8080/
+```
 
 - Rutas **relativas**: funciona en la raíz o en un subdirectorio (`/aritmates/`).
 - `baseurl` en `src/config.json` es la URL pública que se copia en el enlace para compartir ejercicios.
