@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.2
+
+* El enlace para compartir ejercicios y la vista previa al compartir (WhatsApp, Telegram, redes sociales) apuntan por defecto al despliegue de la Consejería (<https://www3.gobiernodecanarias.org/medusa/apps/aritmates/>), que es donde CAU_CE instala el ZIP de la release. Antes el enlace para compartir era relativo (`./?c=…`) y no servía fuera de la página. GitHub Pages sigue usando su propia dirección.
+
 ## 2.0.1
 
 * Los créditos mostraban «Versión 1.3.0». La versión sale ahora de `package.json`, la misma que fija la etiqueta de la release.
