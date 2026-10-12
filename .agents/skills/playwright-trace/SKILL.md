@@ -1,11 +1,11 @@
 ---
-allowed-tools: Bash(npx:*)
+allowed-tools: Bash(npx playwright trace:*)
 description: Inspect Playwright trace files from the command line — list actions, view requests, console, errors, snapshots and screenshots.
 metadata:
     github-path: packages/playwright-core/src/tools/skills/playwright-trace
-    github-ref: refs/tags/v1.63.0
+    github-ref: refs/tags/v1.64.0
     github-repo: https://github.com/microsoft/playwright
-    github-tree-sha: 4964895a22f45c0b0b496e88d551005877db52ea
+    github-tree-sha: a1d5f43906b95c995da460dac32ccf1996223388
 name: playwright-trace
 ---
 # Playwright Trace CLI
