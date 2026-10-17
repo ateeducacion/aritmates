@@ -61,6 +61,34 @@ jobs:
       - name: Verify dist assets
         run: npm run check
 
+      - name: Add Sentry error monitoring
+        env:
+          SENTRY_DSN: https://be343f7d81d717f3d93524a4a61c84cd@o4510456164712448.ingest.de.sentry.io/4512272277635152
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: erseco
+          SENTRY_PROJECT: aritmates
+          SENTRY_URL: https://de.sentry.io/
+          DIST: dist
+        run: |
+          REL="${GITHUB_SHA::12}"
+          work="$RUNNER_TEMP/sentry"; mkdir -p "$work"
+          printf '%s\n' \
+            "import * as Sentry from '@sentry/browser';" \
+            "Sentry.init({ dsn: '$SENTRY_DSN', release: '$REL', environment: 'production', sendDefaultPii: false, integrations: (d) => d.filter((i) => i.name !== 'BrowserSession') });" \
+            > "$work/entry.js"
+          (cd "$work" && npm i --no-save --no-audit --no-fund --silent @sentry/browser@11.4.0 esbuild@0.28.2 \
+            && npx esbuild entry.js --bundle --minify --format=iife --outfile="$GITHUB_WORKSPACE/$DIST/sentry.js")
+          # load before the app's own scripts, from every built page (<head>, not <header>)
+          find "$DIST" -name '*.html' -print0 | while IFS= read -r -d '' f; do
+            rel=$(realpath --relative-to="$(dirname "$f")" "$DIST/sentry.js")
+            sed -E -i "0,/<head(\s[^>]*)?>/s##&<script src=\"$rel\"></script>#" "$f"
+          done
+          if [ -n "$SENTRY_AUTH_TOKEN" ] && find "$DIST" -name '*.map' | grep -q .; then
+            npx --yes @sentry/cli@3.8.0 sourcemaps inject "$DIST"
+            npx --yes @sentry/cli@3.8.0 sourcemaps upload --release "$REL" "$DIST"
+          fi
+          find "$DIST" -name '*.map' -delete   # never publish sourcemaps
+
       - name: Setup Pages
         uses: actions/configure-pages@v6
 
