@@ -1,6 +1,6 @@
 {
   "name": "aritmates",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Aplicación web estática de ejercicios de matemáticas (Aritmates) — versión simplificada",
   "private": true,
   "type": "module",

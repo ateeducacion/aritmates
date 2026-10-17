@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.3
+
+* La demo de GitHub Pages envía los errores de JavaScript a Sentry para detectarlos y corregirlos antes. Solo se registran errores: sin datos personales, sin grabación de sesiones ni seguimiento de uso, y al cargar la página no se hace ninguna petición a Sentry. No cambia la aplicación ni el ZIP de la release que instala CAU_CE.
+
 ## 2.0.2
 
 * El enlace para compartir ejercicios y la vista previa al compartir (WhatsApp, Telegram, redes sociales) apuntan por defecto al despliegue de la Consejería (<https://www3.gobiernodecanarias.org/medusa/apps/aritmates/>), que es donde CAU_CE instala el ZIP de la release. Antes el enlace para compartir era relativo (`./?c=…`) y no servía fuera de la página. GitHub Pages sigue usando su propia dirección.
