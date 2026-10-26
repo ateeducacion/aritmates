@@ -96,7 +96,7 @@ Esos skills no amplían el producto. El end-to-end del repositorio sigue siendo 
 
 [`.github/workflows/update-agent-skills.yml`](.github/workflows/update-agent-skills.yml) corre cada lunes a las 06:17 UTC y también a mano. Actualiza `.agents/skills` con `gh skill update --all`, copia el árbol a `.claude/skills/` y abre un pull request contra `main` en la rama `feature/update-agent-skills`. No empuja a `main`. Un pull request abierto con el token por defecto no dispara el resto de workflows. Los skills sin `metadata.github-*` los omite el actualizador. Hoy no hay skills locales.
 
-En ese workflow las actions quedan fijadas a tag de versión: `actions/checkout@v7`, `devantler-tech/actions/update-agent-skills@v13.3.3` y `peter-evans/create-pull-request@v8`. Dependabot ya sigue el ecosistema `github-actions` cada semana. Esos tags no se sustituyen por un SHA en un cambio de paso.
+En ese workflow las actions quedan fijadas a tag de versión: `actions/checkout@v7`, `erseco/update-agent-skills@v1` y `peter-evans/create-pull-request@v8`. Dependabot ya sigue el ecosistema `github-actions` cada semana. Esos tags no se sustituyen por un SHA en un cambio de paso.
 
 ## Integración
 
